@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        button {
+            margin-top: 20px;
+            font-family: Arial;
+            background-color: #eee;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            cursor: hand;
+        }
+        
+        button:hover {
+            background-color: #cfd8dc;
+        }
+        
+        button:disabled {
+            background-color: #eee;
+            color: #ccc;
+            cursor: auto;
+        }
+    </style>
+</head>
+
+<p>
+    Here's a simple Plotly plot -
+    <a href="http://bit.ly/1Or9igj">plotly.js documentation</a>
+</p>
+
+<div id="tester" style="width:90%;height:450px;"></div>
+<script>
+    Plotly.d3.csv('https://raw.githubusercontent.com/juanrarodriguez18/DreamStill/master/graphTest.csv', function(rows) {
+        var trace = {
+            type: 'scatter', // set the chart type
+            mode: 'lines', // connect points with lines
+            x: rows.map(function(row) { // set the x-data
+                return row['01:04'];
+            }),
+            y: rows.map(function(row) { // set the x-data
+                return row['2361'];
+            }),
+            line: { // set the width of the line.
+                width: 1
+            }
+        };
+
+        var layout = {
+            yaxis: {
+                title: ""
+            }, // set the y axis title
+            xaxis: {
+                title: "Hours"
+            },
+            margin: { // update the left, bottom, right, top margin
+                l: 40,
+                b: 80,
+                r: 10,
+                t: 50
+            }
+        };
+
+        Plotly.plot(document.getElementById('tester'), [trace], layout, {
+            showLink: false
+        });
+    });
+</script>
+
+<button onclick="redirect()">Go Back</button>
+
+<script>
+    function redirect() {
+        window.location = "http://localhost:3000/dashboard";
+    }
+</script>
+
+</html>
