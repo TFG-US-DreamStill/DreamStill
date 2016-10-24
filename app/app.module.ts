@@ -17,7 +17,6 @@ import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 import { HeroService }          from './hero.service';
 import { HeroSearchComponent}   from './hero-search.component';
-import { TestComponent}         from './test.component';
 import { LoginComponent}        from './login.component';
 import { PrivateComponent}      from './private.component';
 
@@ -35,7 +34,6 @@ import { PrivateComponent}      from './private.component';
     HeroDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
-    TestComponent,
     LoginComponent,
     PrivateComponent
   ],
