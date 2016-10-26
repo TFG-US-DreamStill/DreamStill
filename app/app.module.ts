@@ -19,6 +19,7 @@ import { HeroService }          from './hero.service';
 import { HeroSearchComponent}   from './hero-search.component';
 import { LoginComponent}        from './login.component';
 import { PrivateComponent}      from './private.component';
+import { FirebaseComponent}     from './firebase.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { PrivateComponent}      from './private.component';
     HeroesComponent,
     HeroSearchComponent,
     LoginComponent,
-    PrivateComponent
+    PrivateComponent,
+    FirebaseComponent
   ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ]
