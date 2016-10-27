@@ -1,5 +1,5 @@
 import {Component, ElementRef} from '@angular/core';
-import {AuthenticationService, User} from './authentication.service'
+import {AuthenticationService, User} from './authentication.service';
  
 @Component({
     moduleId: module.id,
