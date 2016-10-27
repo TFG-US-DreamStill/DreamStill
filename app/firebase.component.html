@@ -4,11 +4,11 @@
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
             <div>
                 <label for="first-name">First Name</label>
-                <input type="text" ngControl="firstName">
+                <input type="text" name="firstName" ngModel>
             </div>
             <div>
                 <label for="last-name">Last name</label>
-                <input type="text" ngControl="lastName">
+                <input type="text" name="lastName" ngModel>
             </div>
             <button type="submit">Submit</button>
         </form>

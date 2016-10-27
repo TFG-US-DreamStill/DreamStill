@@ -1,7 +1,6 @@
 import { Injectable }   from '@angular/core';
 import { Http }         from '@angular/http';
 import { last }         from 'rxjs/operator/last';
-import 'rxjs/Rx';
 
 @Injectable()
 export class FirebaseService{

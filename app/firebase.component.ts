@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FirebaseService } from './firebase.service';
-import { FormGroup }     from '@angular/forms';
+import { NgForm }     from '@angular/forms';
  
 @Component({
     moduleId: module.id,
@@ -15,7 +15,7 @@ export class FirebaseComponent {
 
     constructor(private _firebaseService: FirebaseService) {}
 
-    onSubmit(form: FormGroup){
+    onSubmit(form: NgForm){
         this._firebaseService.setUser(form.value.firstName, form.value
         .lastName).subscribe(
             user => this.response = JSON.stringify(user),
