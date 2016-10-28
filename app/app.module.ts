@@ -16,10 +16,11 @@ import { DashboardComponent }   from './dashboard.component';
 import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 import { HeroService }          from './hero.service';
-import { HeroSearchComponent}   from './hero-search.component';
-import { LoginComponent}        from './login.component';
-import { PrivateComponent}      from './private.component';
-import { FirebaseComponent}     from './firebase.component';
+import { HeroSearchComponent }  from './hero-search.component';
+import { LoginComponent }       from './login.component';
+import { PrivateComponent }     from './private.component';
+import { FirebaseComponent }    from './firebase.component';
+import { MorpheuzReprComponent }from './morpheuzRepr.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { FirebaseComponent}     from './firebase.component';
     HeroSearchComponent,
     LoginComponent,
     PrivateComponent,
-    FirebaseComponent
+    FirebaseComponent,
+    MorpheuzReprComponent
   ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ]
