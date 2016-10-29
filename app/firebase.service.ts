@@ -14,6 +14,11 @@ export class FirebaseService{
         body).map(response => response.json());
     }
 
+    setUserDate(user: string, json: String){
+        const body = json;
+        return this._http.patch("https://dreamstill-d507c.firebaseio.com/"+user+".json",body).map(response => response.json());
+    }
+
     getUser(){
         return this._http.get('https://dreamstill-d507c.firebaseio.com/user.json')
         .map(response => response.json());
