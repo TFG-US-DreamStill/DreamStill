@@ -106,16 +106,5 @@ export class MorpheuzReprComponent implements OnInit {
             resp => this.response = resp["2016-10-29"],
             error => console.log(error)
         );
-    }
-
-    getJSOnUserData(){
-        var json = this.response;
-        this.data = json["2016-10-29"];
-        for(var temp of json["2016-10-29"]){
-            console.log(temp["Hour"]);
-            console.log(temp["Movements"]);
-        }
-    }
-
- 
+    } 
 }
