@@ -80,43 +80,41 @@ var exampleEMail = `
     moduleId: module.id,
     selector: 'morphuez-view',
     providers: [Csv2JsonService, FirebaseService],
-    template: `
-            <div> 
-            <p>Test</p> 
-            <button (click)="getUserData()">Get User Data</button>
-            <div class="container" id="response">Response: {{response}}</div>
-            <button (click)="getJSOnUserData()">Get User Data1</button>
-            </div>`,
-    styleUrls: [ 'login.component.css' ]
+    templateUrl: 'morpheuzRepr.component.html',
+    styleUrls: [ 'morpheuzRepr.component.css' ]
 })
  
 export class MorpheuzReprComponent implements OnInit {
-    response: JSON;
-    
+    sendResponse: string;
+    response: String[];
+
     constructor(
         private csv2json:Csv2JsonService, private firebaseService: FirebaseService) {}
 
     ngOnInit(): void {
         var json: String;
-        var response: String;
         json = this.csv2json.parseCsv2Json("Morpheuz-2016-10-29",exampleEMail);
         this.firebaseService.setUserData("18",json);
         this.firebaseService.setUserData("18",json).subscribe(
-            resp => response = JSON.stringify(resp),
+            resp => this.sendResponse = JSON.stringify(resp),
             error => console.log(error));
-        console.log(response);
+        console.log(this.sendResponse);
     }
 
     getUserData(){
         this.firebaseService.getUserData("18").subscribe(
-            resp => this.response = resp,
+            resp => this.response = resp["2016-10-29"],
             error => console.log(error)
         );
     }
 
     getJSOnUserData(){
         var json = this.response;
-        console.log(json["2016-10-29"]);
+        this.data = json["2016-10-29"];
+        for(var temp of json["2016-10-29"]){
+            console.log(temp["Hour"]);
+            console.log(temp["Movements"]);
+        }
     }
 
  
