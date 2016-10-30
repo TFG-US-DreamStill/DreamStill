@@ -7,7 +7,7 @@ import { HeroDetailComponent }  from './hero-detail.component';
 import { LoginComponent }       from './login.component';
 import { PrivateComponent }     from './private.component';
 import { FirebaseComponent }    from './firebase.component';
-
+import { MorpheuzReprComponent }from './morpheuzRepr.component';
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
@@ -15,7 +15,8 @@ const routes: Routes = [
   { path: 'heroes',     component: HeroesComponent },
   { path: 'login',      component: LoginComponent },
   { path: 'private',    component: PrivateComponent },
-  { path: 'firebase',   component: FirebaseComponent }
+  { path: 'firebase',   component: FirebaseComponent },
+  { path: 'morpheuz',   component: MorpheuzReprComponent }
 ];
 
 @NgModule({
