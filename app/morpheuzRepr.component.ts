@@ -91,7 +91,7 @@ var exampleEMail = `
 })
  
 export class MorpheuzReprComponent implements OnInit {
-    response: string;
+    response: JSON;
     
     constructor(
         private csv2json:Csv2JsonService, private firebaseService: FirebaseService) {}
@@ -109,13 +109,13 @@ export class MorpheuzReprComponent implements OnInit {
 
     getUserData(){
         this.firebaseService.getUserData("18").subscribe(
-            resp => this.response = JSON.stringify(resp),
+            resp => this.response = resp,
             error => console.log(error)
         );
     }
 
     getJSOnUserData(){
-        var json = JSON.parse(this.response);
+        var json = this.response;
         console.log(json["2016-10-29"]);
     }
 
