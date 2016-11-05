@@ -65,9 +65,9 @@ mailListener.on("server:disconnected", function(){
 
     console.log('email parsed', { 
       i: i, 
-      to: mail.to,
+      to: mail.to[0].address,
       subject: mail.subject, 
-      body: mail.text,
+      body: mail.html,
       /*seqno: seqno, 
       uid: attributes.uid,
       attributes: attributes */
