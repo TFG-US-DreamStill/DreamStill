@@ -1,3 +1,6 @@
+var email2Json = require('./email2Json.js');
+var firebaseApi = require('./firebase.api.js');
+
 var fs, passwordFile;
 
 passwordFile = 'passwords.json';
@@ -62,24 +65,29 @@ mailListener.on("server:disconnected", function(){
       mailListener.stop(); // start listening
       return;
     }
+    if (mail.from[0].address.indexOf("noreply@morpheuz.co.uk") !== -1){
+      console.log('email parsed', { 
+        i: i, 
+        to: mail.to[0].address,
+        subject: mail.subject, 
+        body: mail.html,
+        /*seqno: seqno, 
+        uid: attributes.uid,
+        attributes: attributes */
+      });
+      var data = email2Json.parseEmail2Json(mail.to[0].address, mail.subject, mail.html)[0];
+      var user = email2Json.parseEmail2Json(mail.to[0].address, mail.subject, mail.html)[1];
 
-    console.log('email parsed', { 
-      i: i, 
-      to: mail.to[0].address,
-      subject: mail.subject, 
-      body: mail.html,
-      /*seqno: seqno, 
-      uid: attributes.uid,
-      attributes: attributes */
-    });
+      firebaseApi.setUserData(data, user);
 
-    console.log('attempting to mark msg read/seen');
-    mailListener.imap.addFlags(mailuid, '\\Seen', function (err) {
-      if (err) {
-        console.log('error marking message read/SEEN');
-        return;
-      }
-    });
+      console.log('attempting to mark msg read/seen');
+      mailListener.imap.addFlags(mailuid, '\\Seen', function (err) {
+        if (err) {
+          console.log('error marking message read/SEEN');
+          return;
+        }
+      });
+    }
   });
 })();
 

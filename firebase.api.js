@@ -1,28 +1,31 @@
 // We need this to build our patch string
 var fs = require('fs');
 var request = require('request');
-var email2Json = require('./email2Json.js')
+var email2Json = require('./email2Json.js');
 
-function setUserData(data, user) {
-  request({
-    url: 'https://dreamstill-d507c.firebaseio.com/'+ user + '.json',
-    method: 'PATCH',
-    headers: {
-      'Content-Type' :' application/json'/*,
-      'Authorization': 'key=AI...8o'*/
-    },
-    body: data
-  }, function(error, response, body) {
-    if (error) { 
-      console.error(error, response, body); 
-    }
-    else if (response.statusCode >= 400) { 
-      console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
-    }
-    else {
-      console.log('Done!')
-    }
-  });
+module.exports = {
+
+  setUserData: function (data, user) {
+    request({
+      url: 'https://dreamstill-d507c.firebaseio.com/'+ user + '.json',
+      method: 'PATCH',
+      headers: {
+        'Content-Type' :' application/json'/*,
+        'Authorization': 'key=AI...8o'*/
+      },
+      body: data
+    }, function(error, response, body) {
+      if (error) { 
+        console.error(error, response, body); 
+      }
+      else if (response.statusCode >= 400) { 
+        console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+      }
+      else {
+        console.log('Done!')
+      }
+    });
+  }
 }
 
 var to = 'dreamstillapp+18@gmail.com';
@@ -38,4 +41,4 @@ reply, this is an unmonitored mailbox</small><br/></body></html>`;
 var data = email2Json.parseEmail2Json(to,subject,body)[0];
 var user = email2Json.parseEmail2Json(to,subject,body)[1];
 
-setUserData(data, user);
+//setUserData(data, user);
