@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "tsc && concurrently \"npm run tsc:w\" \"node app.js\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
     "typings": "typings",
     "postinstall": "typings install"
-    },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juanrarodriguez18/DreamStill.git"
@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/juanrarodriguez18/DreamStill#readme",
   "dependencies": {
-    "express": "^4.14.0",
     "@angular/common": "~2.0.2",
     "@angular/compiler": "~2.0.2",
     "@angular/core": "~2.0.2",
@@ -33,13 +32,15 @@
     "@angular/platform-browser-dynamic": "~2.0.2",
     "@angular/router": "~3.0.2",
     "@angular/upgrade": "~2.0.2",
-
     "angular-in-memory-web-api": "~0.1.5",
     "bootstrap": "^3.3.7",
-    "systemjs": "0.19.39",
     "core-js": "^2.4.1",
+    "express": "^3.21.2",
+    "imap": "^0.8.18",
+    "mail-listener2": "^0.2.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
+    "systemjs": "0.19.39",
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
@@ -47,7 +48,6 @@
     "lite-server": "^2.2.2",
     "typescript": "^2.0.3",
     "typings": "^1.4.0",
-
     "canonical-path": "0.0.2",
     "http-server": "^0.9.0",
     "tslint": "^3.15.1",
@@ -60,5 +60,6 @@
     "karma-jasmine": "^1.0.2",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "^3.3.0",
-    "rimraf": "^2.5.4"}
+    "rimraf": "^2.5.4"
+  }
 }
