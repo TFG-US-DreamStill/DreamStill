@@ -47,14 +47,14 @@ app.use(passport.authenticationMiddleware(), function(req, res) {
   }
 });
 
-app.get('/',  passport.authenticationMiddleware(), function(req, res) {
+app.get('**',  passport.authenticationMiddleware(), function(req, res) {
 		res.sendfile(__dirname + '/app/index.html');
 	});
 
 app.post('/login',
   passport.authenticate('local', {
-    successRedirect: '/loginSuccess',
-    failureRedirect: '/loginFailure'
+    successRedirect: '/',
+    failureRedirect: '/login'
   }));
 
 http.createServer(app).listen(app.get('port'), function(){
