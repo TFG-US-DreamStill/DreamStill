@@ -15,15 +15,53 @@ module.exports = {
       },
       body: data
     }, function(error, response, body) {
-      if (error) { 
-        console.error(error, response, body); 
+        if (error) { 
+          console.error(error, response, body); 
+        }
+        else if (response.statusCode >= 400) { 
+          console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+        }
+        else {
+          console.log('Done!')
+        }
+      });
+    },
+
+  getUserCredentials: function (username) {
+    var user = { username: '', password: '', id: '', email: ''}
+
+    http.get('https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json', (res) => {
+      const statusCode = res.statusCode;
+      const contentType = res.headers['content-type'];
+
+      let error;
+      if (statusCode !== 200) {
+        error = new Error(`Request Failed.\n` +
+                          `Status Code: ${statusCode}`);
+      } else if (!/^application\/json/.test(contentType)) {
+        error = new Error(`Invalid content-type.\n` +
+                          `Expected application/json but received ${contentType}`);
       }
-      else if (response.statusCode >= 400) { 
-        console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+      if (error) {
+        console.log(error.message);
+        // consume response data to free up memory
+        res.resume();
+        return;
       }
-      else {
-        console.log('Done!')
-      }
+
+      res.setEncoding('utf8');
+      let rawData = '';
+      res.on('data', (chunk) => rawData += chunk);
+      res.on('end', () => {
+        try {
+          let parsedData = JSON.parse(rawData);
+          console.log(parsedData);
+        } catch (e) {
+          console.log(e.message);
+        }
+      });
+    }).on('error', (e) => {
+      console.log(`Got error: ${e.message}`);
     });
   }
 }
