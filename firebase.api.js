@@ -2,6 +2,7 @@
 var fs = require('fs');
 var request = require('request');
 var email2Json = require('./email2Json.js');
+var request = require('sync-request');
 
 module.exports = {
 
@@ -28,41 +29,25 @@ module.exports = {
     },
 
   getUserCredentials: function (username) {
-    var user = { username: '', password: '', id: '', email: ''}
+    var user = { username: '', password: '', id: '', email: ''};
 
-    http.get('https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json', (res) => {
-      const statusCode = res.statusCode;
-      const contentType = res.headers['content-type'];
+    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json',{
+    'headers': {
+      'Content-Type' :' application/json'
+    }});
 
-      let error;
-      if (statusCode !== 200) {
-        error = new Error(`Request Failed.\n` +
-                          `Status Code: ${statusCode}`);
-      } else if (!/^application\/json/.test(contentType)) {
-        error = new Error(`Invalid content-type.\n` +
-                          `Expected application/json but received ${contentType}`);
-      }
-      if (error) {
-        console.log(error.message);
-        // consume response data to free up memory
-        res.resume();
-        return;
-      }
+    console.log(JSON.parse(res.getBody('utf8')));
 
-      res.setEncoding('utf8');
-      let rawData = '';
-      res.on('data', (chunk) => rawData += chunk);
-      res.on('end', () => {
-        try {
-          let parsedData = JSON.parse(rawData);
-          console.log(parsedData);
-        } catch (e) {
-          console.log(e.message);
-        }
-      });
-    }).on('error', (e) => {
-      console.log(`Got error: ${e.message}`);
-    });
+    var json = JSON.parse(res.getBody('utf8'));
+
+    if (json !== null){
+      user.id = json["id"];
+      user.username = "juanra";
+      user.email = json["email"];
+      user.password = json["password"];
+    }
+
+  return user;
   }
 }
 
