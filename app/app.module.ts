@@ -21,6 +21,8 @@ import { LoginComponent }       from './login.component';
 import { PrivateComponent }     from './private.component';
 import { FirebaseComponent }    from './firebase.component';
 import { MorpheuzReprComponent }from './morpheuzRepr.component';
+import { PlotlyComponent }      from './plotly.component';
+import { GraphComponent }       from './graph.component';
 
 @NgModule({
   imports: [
@@ -39,7 +41,9 @@ import { MorpheuzReprComponent }from './morpheuzRepr.component';
     LoginComponent,
     PrivateComponent,
     FirebaseComponent,
-    MorpheuzReprComponent
+    MorpheuzReprComponent,
+    PlotlyComponent,
+    GraphComponent
   ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ]

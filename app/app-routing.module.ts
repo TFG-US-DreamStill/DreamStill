@@ -8,6 +8,8 @@ import { LoginComponent }       from './login.component';
 import { PrivateComponent }     from './private.component';
 import { FirebaseComponent }    from './firebase.component';
 import { MorpheuzReprComponent }from './morpheuzRepr.component';
+import { GraphComponent }       from './graph.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
@@ -16,7 +18,8 @@ const routes: Routes = [
   { path: 'login',      component: LoginComponent },
   { path: 'private',    component: PrivateComponent },
   { path: 'firebase',   component: FirebaseComponent },
-  { path: 'morpheuz',   component: MorpheuzReprComponent }
+  { path: 'morpheuz',   component: MorpheuzReprComponent },
+  { path: 'graph',      component: GraphComponent }
 ];
 
 @NgModule({
