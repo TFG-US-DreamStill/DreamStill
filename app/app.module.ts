@@ -4,6 +4,10 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
+import {MdCardModule} from '@angular2-material/card';
+import {MdButtonModule} from '@angular2-material/button';
+import {MdIconModule} from '@angular2-material/icon';
+import {MdIconRegistry} from '@angular2-material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -30,6 +34,10 @@ import { GraphComponent }       from './graph.component';
     FormsModule,
     HttpModule,
     //InMemoryWebApiModule.forRoot(InMemoryDataService),
+    BrowserModule, 
+    MdCardModule, 
+    MdButtonModule, 
+    MdIconModule,
     AppRoutingModule
   ],
   declarations: [
@@ -45,7 +53,7 @@ import { GraphComponent }       from './graph.component';
     PlotlyComponent,
     GraphComponent
   ],
-  providers: [ HeroService ],
+  providers: [ HeroService, MdIconRegistry ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
