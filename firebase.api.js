@@ -2,6 +2,7 @@
 var fs = require('fs');
 var request = require('request');
 var email2Json = require('./email2Json.js');
+var request = require('sync-request');
 
 module.exports = {
 
@@ -15,16 +16,38 @@ module.exports = {
       },
       body: data
     }, function(error, response, body) {
-      if (error) { 
-        console.error(error, response, body); 
-      }
-      else if (response.statusCode >= 400) { 
-        console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
-      }
-      else {
-        console.log('Done!')
-      }
-    });
+        if (error) { 
+          console.error(error, response, body); 
+        }
+        else if (response.statusCode >= 400) { 
+          console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+        }
+        else {
+          console.log('Done!')
+        }
+      });
+    },
+
+  getUserCredentials: function (username) {
+    var user = { username: '', password: '', id: '', email: ''};
+
+    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json',{
+    'headers': {
+      'Content-Type' :' application/json'
+    }});
+
+    console.log(JSON.parse(res.getBody('utf8')));
+
+    var json = JSON.parse(res.getBody('utf8'));
+
+    if (json !== null){
+      user.id = json["id"];
+      user.username = "juanra";
+      user.email = json["email"];
+      user.password = json["password"];
+    }
+
+  return user;
   }
 }
 
