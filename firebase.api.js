@@ -1,14 +1,22 @@
 // We need this to build our patch string
 var fs = require('fs');
-var request = require('request');
+var requestA = require('request');
 var email2Json = require('./email2Json.js');
 var request = require('sync-request');
+var passwordFile;
+
+passwordFile = 'passwords.json';
+fs = require('fs');
+
+var configuration = JSON.parse(
+    fs.readFileSync(passwordFile)
+);
 
 module.exports = {
 
   setUserData: function (data, user) {
-    request({
-      url: 'https://dreamstill-d507c.firebaseio.com/'+ user + '.json',
+    requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/'+ user + '.json?auth='+configuration["Firebase"].secret,
       method: 'PATCH',
       headers: {
         'Content-Type' :' application/json'/*,
@@ -31,7 +39,7 @@ module.exports = {
   getUserCredentials: function (username) {
     var user = { username: '', password: '', id: '', email: ''};
 
-    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json',{
+    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json?auth='+configuration["Firebase"].secret,{
     'headers': {
       'Content-Type' :' application/json'
     }});
