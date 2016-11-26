@@ -60,11 +60,15 @@ app.post('/login',
   }));
 
 app.post('/register', function(req, res){
+    var body = req.body
     console.log(req.body);
     console.log("username:"+req.body.username);
     console.log("email:"+req.body.email);
     console.log("password:"+req.body.password);
     console.log("confirmpassword:"+req.body.confirmPassword);
+    if(body.username !== '' && body.email !== '' && body.password !== '' && body.password === body.confirmPassword){
+      firebaseAPI.registerUser(body.username, body.email, body.password);
+    }
     res.sendfile('views/login.html')
 });
 

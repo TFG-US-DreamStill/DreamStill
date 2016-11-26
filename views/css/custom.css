@@ -41,15 +41,9 @@ body .custom-container .panel-default .form-group .highlight.no-light { opacity:
 
 body .custom-container .btn-custom { background-color: #3F51B5; border: none; color: white; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.2s; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); border-radius: 2px; padding: 10px 0px; font-size: 16px; font-weight: 700; letter-spacing: 0.3px; margin: 0 auto; outline: none !important; position: relative; overflow: hidden; }
 
-body .custom-container .btn-custom.not-visible { opacity: 0; transform: translateY(10px); color: transparent; }
-
-body .custom-container .btn-custom:hover { transition-delay: 0s; box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2); background-color: #4d5ec1; border-color: #4d5ec1; }
+body .custom-container .btn-custom:hover { transition-delay: 0s; box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2); -webkit-filter: brightness(110%); filter: bightness(110%);}
 
 body .custom-container .btn-custom:active { transform: scale(0.98); }
-
-body .custom-container .btn-custom .ripple-svg { position: absolute; left: 0; top: 0; }
-
-body .custom-container .btn-custom .ripple-svg .circle { opacity: 0.3; transform: traslateZ(0); }
 
 input.material-input[type=password] { font: large Verdana, sans-serif; }
 

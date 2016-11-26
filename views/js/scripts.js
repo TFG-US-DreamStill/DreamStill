@@ -48,28 +48,4 @@ $(function() {
         }
     });
 
-    // Ripple effect
-    $('#flow-button').on("click", function(event) {
-        // Get mouse coordinates
-        var offset = $(this).offset();
-        var MousePosX = (event.pageX - offset.left);
-        var MousePosY = (event.pageY - offset.top);
-
-        // Append svg with coordinates in circle element
-        $('#flow-button').append('<svg class="ripple-svg" height="100%" width="100%"><circle class="circle" r="10" cy="' + MousePosY + '" cx="' + MousePosX + '" fill="black" /></svg>');
-
-        // Animate the circle radius and opacity with velocity
-        $('.ripple-svg:last .circle').velocity({
-            r: 300,
-            opacity: 0
-        }, 600);
-
-        // If there are more than 5, delete all of them but the last one - Wait 600ms (animation time)
-        if ($('.ripple-svg').length > 5) {
-            setTimeout(function() {
-                $('.ripple-svg:not(:last-child)').remove();
-            }, 600);
-        }
-    });
-
 });

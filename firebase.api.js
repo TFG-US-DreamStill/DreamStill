@@ -63,7 +63,7 @@ module.exports = {
     var user = { username: '', password: '', id: '', email: ''};
     
     user.username = username.toLowerCase();
-    user.password = password;
+    user.password = md5(password);
     user.id = 1;
     user.email = email;
 
