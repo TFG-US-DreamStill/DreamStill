@@ -18,8 +18,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 
-//app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(__dirname));
+//app.use(express.static(path.join(__dirname, 'views')));
 /*app.use(express.cookieParser('cookies monster')); // Cookie secret
 app.use(express.bodyParser());
 app.use(express.session({ secret: 'keyboard cat' }));
