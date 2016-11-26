@@ -27,6 +27,7 @@ import { FirebaseComponent }    from './firebase.component';
 import { MorpheuzReprComponent }from './morpheuzRepr.component';
 import { PlotlyComponent }      from './plotly.component';
 import { GraphComponent }       from './graph.component';
+import { Config }           from './config.service';
 
 @NgModule({
   imports: [
@@ -53,7 +54,7 @@ import { GraphComponent }       from './graph.component';
     PlotlyComponent,
     GraphComponent
   ],
-  providers: [ HeroService, MdIconRegistry ],
+  providers: [ HeroService, MdIconRegistry, Config],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
