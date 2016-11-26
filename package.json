@@ -4,7 +4,7 @@
   "description": "Trabajo de Fin de Grado",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "start": "tsc && concurrently \"npm run tsc:w\" \"node app.js\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
