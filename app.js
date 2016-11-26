@@ -4,6 +4,7 @@ var path = require('path');
 const passport = require('passport');  
 const session = require('express-session'); 
 var LocalStrategy = require('passport-local').Strategy;
+const firebaseAPI = require('./firebase.api.js');
 
 var app = express();
 
@@ -17,7 +18,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 
-app.use(express.static(__dirname));
+//app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'views')));
 /*app.use(express.cookieParser('cookies monster')); // Cookie secret
 app.use(express.bodyParser());
 app.use(express.session({ secret: 'keyboard cat' }));
@@ -56,6 +58,15 @@ app.post('/login',
     successRedirect: '/',
     failureRedirect: '/login'
   }));
+
+app.post('/register', function(req, res){
+    console.log(req.body);
+    console.log("username:"+req.body.username);
+    console.log("email:"+req.body.email);
+    console.log("password:"+req.body.password);
+    console.log("confirmpassword:"+req.body.confirmPassword);
+    res.sendfile('views/login.html')
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
