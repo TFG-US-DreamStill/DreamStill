@@ -49,6 +49,13 @@ app.use(passport.authenticationMiddleware(), function(req, res) {
   }
 });
 
+app.get('/logout', function(req, res){
+  req.session.destroy();
+  req.logout();
+  res.redirect('/');
+});
+
+
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
 		res.sendfile(__dirname + '/app/index.html');
 	});
@@ -70,11 +77,6 @@ app.post('/register', function(req, res){
       firebaseAPI.registerUser(body.username, body.email, body.password);
     }
     res.sendfile('views/login.html')
-});
-
-app.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
 });
 
 http.createServer(app).listen(app.get('port'), function(){
