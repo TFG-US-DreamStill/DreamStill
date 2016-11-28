@@ -1,21 +1,22 @@
+require('dotenv').config()
 var email2Json = require('./email2Json.js');
 var firebaseApi = require('./firebase.api.js');
 
-var fs, passwordFile;
+/*var fs, passwordFile;
 
 passwordFile = 'passwords.json';
 fs = require('fs');
 
 var configuration = JSON.parse(
     fs.readFileSync(passwordFile)
-);
+);*/
 // sample adapted from mail-listener2
 
 var MailListener = require("mail-listener2");
 
 var mailListener = new MailListener({
-  username: configuration["Gmail"].username,
-  password: configuration["Gmail"].password, // works for me: https://accounts.google.com/b/0/IssuedAuthSubTokens?hide_authsub=1
+  username: process.env.GMAIL_USERNAME,
+  password: process.env.GMAIL_PASSWORD, // works for me: https://accounts.google.com/b/0/IssuedAuthSubTokens?hide_authsub=1
   host: "imap.gmail.com",
   port: 993, // imap port 
   tls: true,
