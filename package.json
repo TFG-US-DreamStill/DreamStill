@@ -8,9 +8,9 @@
     "start": "tsc && concurrently \"npm run tsc:w\" \"node app.js\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "lite": "lite-server",
+    "lite": "lite-server"/*,
     "typings": "typings",
-    "postinstall": "typings install"
+    "postinstall": "typings install"*/
   },
   "repository": {
     "type": "git",
