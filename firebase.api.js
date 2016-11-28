@@ -51,7 +51,7 @@ module.exports = {
 
     if (json !== null){
       user.id = json["id"];
-      user.username = json["username"];
+      user.username = username;
       user.email = json["email"];
       user.password = json["password"];
     }

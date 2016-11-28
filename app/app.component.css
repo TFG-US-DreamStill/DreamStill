@@ -19,8 +19,7 @@ nav a {
     border-radius: 4px;
 }
 
-nav a:visited,
-a:link {
+nav a:visited, nav a:link {
     color: #607D8B;
 }
 
@@ -31,4 +30,18 @@ nav a:hover {
 
 nav a.active {
     color: #039be5;
+}
+
+.logout-button{
+    color: white;
+    background-color: purple;
+    float: right;
+}
+
+.logout-button:hover{
+    color: white;
+    background-color: purple;
+    float: right;
+    -webkit-filter: brightness(120%);
+    filter: bightness(120%);
 }
