@@ -16,7 +16,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-ap
 import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard.component';
+import { CalendarComponent }    from './calendar.component';
 import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 import { HeroService }          from './hero.service';
@@ -27,7 +27,8 @@ import { FirebaseComponent }    from './firebase.component';
 import { MorpheuzReprComponent }from './morpheuzRepr.component';
 import { PlotlyComponent }      from './plotly.component';
 import { GraphComponent }       from './graph.component';
-import { Config }           from './config.service';
+import { Config }               from './config.service';
+import { CalendarModule }       from 'angular-calendar';
 
 @NgModule({
   imports: [
@@ -43,7 +44,7 @@ import { Config }           from './config.service';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
+    CalendarComponent,
     HeroDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
