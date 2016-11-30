@@ -1,0 +1,52 @@
+<div class="container">
+      <div class="row text-center">
+        <div class="btn-first-group">
+           <div class="btn-group">
+             <div class="purple-button" md-raised-button style="background-color:#673AB7; color: white;" (click)="decrement()">
+               Previous
+             </div>
+             <div class="purple-button" md-raised-button style="background-color:#673AB7; color: white;" (click)="today()">
+               Today
+             </div>
+             <div class="purple-button" md-raised-button style="background-color:#673AB7; color: white;" (click)="increment()">
+               Next
+             </div>
+           </div>
+        </div>
+        <div class="title">
+          <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+        </div>
+        <div class="btn-second-group">
+          <div class="btn-group">
+            <div md-raised-button (click)="view = 'month'" [class.active]="view === 'month'">Month</div>
+            <div md-raised-button (click)="view = 'week'" [class.active]="view === 'week'">Week</div>
+            <div md-raised-button (click)="view = 'day'" [class.active]="view === 'day'">Day</div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div [ngSwitch]="view">
+        <mwl-calendar-month-view
+          *ngSwitchCase="'month'"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          [activeDayIsOpen]="activeDayIsOpen"
+          (dayClicked)="dayClicked($event.day)">
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view
+          *ngSwitchCase="'week'"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-week-view>
+        <mwl-calendar-day-view
+          *ngSwitchCase="'day'"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-day-view>
+      </div>
+    </div>

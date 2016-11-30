@@ -11,7 +11,7 @@ import { Observable }  from 'rxjs/Observable';
 
  load() {
     return new Promise((resolve, reject) => {
-      this.http.get('/passwords.json')
+      this.http.get('./passwords.json')
       .map(res => res.json())
       .catch((error: any) => {
         console.error(error);

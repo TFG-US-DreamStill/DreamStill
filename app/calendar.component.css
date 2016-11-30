@@ -1,0 +1,19 @@
+h3 {
+    margin: 0;
+}
+.container {
+    margin-top: 2%;
+    padding-bottom: 50px;
+}
+.btn-first-group{
+    width: 16%;
+    float: left;
+}
+.title{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 0.5%;
+    text-align: center;
+    width: 8%;
+    float: left;
+}

@@ -34,14 +34,14 @@ nav a.active {
 
 .logout-button{
     color: white;
-    background-color: purple;
+    background-color: #673AB7;
     float: right;
 }
 
 .logout-button:hover{
     color: white;
-    background-color: purple;
+    background-color: #673AB7;
     float: right;
-    -webkit-filter: brightness(120%);
-    filter: bightness(120%);
+    -webkit-filter: brightness(110%);
+    filter: bightness(110%);
 }

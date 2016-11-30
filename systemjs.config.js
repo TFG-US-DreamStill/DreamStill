@@ -28,6 +28,10 @@
       '@angular2-material/card': 'npm:@angular2-material/card/card.umd.js',
       '@angular2-material/button': 'npm:@angular2-material/button/button.umd.js',
       '@angular2-material/icon': 'npm:@angular2-material/icon/icon.umd.js',
+      'angular-calendar': 'npm:angular-calendar/dist/umd/angular-calendar.js',
+      'calendar-utils': 'npm:calendar-utils/dist/umd/calendarUtils.js',
+      'angular-resizable-element': 'npm:angular-resizable-element/dist/umd/angular-resizable-element.js',
+      'date-fns': 'npm:date-fns',
 
       // other libraries
       'rxjs':                      'npm:rxjs',
@@ -43,6 +47,10 @@
         defaultExtension: 'js'
       },
       'angular-in-memory-web-api': {
+        main: './index.js',
+        defaultExtension: 'js'
+      },
+      'date-fns': {
         main: './index.js',
         defaultExtension: 'js'
       }

@@ -28,7 +28,7 @@ import { MorpheuzReprComponent }from './morpheuzRepr.component';
 import { PlotlyComponent }      from './plotly.component';
 import { GraphComponent }       from './graph.component';
 import { Config }               from './config.service';
-import { CalendarModule }       from 'angular-calendar';
+import { CalendarModule } from 'angular-calendar';
 
 @NgModule({
   imports: [
@@ -40,7 +40,8 @@ import { CalendarModule }       from 'angular-calendar';
     MdCardModule, 
     MdButtonModule, 
     MdIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CalendarModule.forRoot()
   ],
   declarations: [
     AppComponent,
