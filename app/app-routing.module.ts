@@ -2,8 +2,6 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CalendarComponent }    from './calendar.component';
-import { HeroesComponent }      from './heroes.component';
-import { HeroDetailComponent }  from './hero-detail.component';
 import { LoginComponent }       from './login.component';
 import { PrivateComponent }     from './private.component';
 import { FirebaseComponent }    from './firebase.component';
@@ -12,9 +10,7 @@ import { GraphComponent }       from './graph.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },
-  { path: 'calendar',  component: CalendarComponent },
-  { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'heroes',     component: HeroesComponent },
+  { path: 'calendar',   component: CalendarComponent },
   { path: 'login',      component: LoginComponent },
   { path: 'private',    component: PrivateComponent },
   { path: 'firebase',   component: FirebaseComponent },
