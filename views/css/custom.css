@@ -62,3 +62,9 @@ a.download-button:hover { color: rgba(63, 81, 181, 0.43); }
     float: left;
     margin-left: 50px;
 }
+
+.validation{
+    margin-top: 1%;
+    color: red;
+    font: Verdana;
+}

@@ -49,3 +49,20 @@ $(function() {
     });
 
 });
+
+function validateLogin(){
+    var username = document.forms["loginForm"]["username"].value;
+    var password = document.forms["loginForm"]["password"].value;
+    document.getElementById("username-login").innerHTML = "";
+    document.getElementById("password-login").innerHTML = "";
+    if (username == "" && password == ""){
+        document.getElementById("username-login").innerHTML = 'No puede estar vacío';
+        document.getElementById("password-login").innerHTML = 'No puede estar vacío';
+    }else if (username == "") {
+        document.getElementById("username-login").innerHTML = 'No puede estar vacío';
+    }else if (password == ""){
+        document.getElementById("password-login").innerHTML = 'No puede estar vacío';
+    }else{
+        $('#loginForm').submit();
+    }
+}

@@ -42,7 +42,7 @@ require('./authentication').init(app);
 
 app.use(passport.authenticationMiddleware(), function(req, res) {
   if (req.url.indexOf("/login") !== -1){
-    res.sendfile('views/login.html');
+    res.render('login');
   }else{
   // Use res.sendfile, as it streams instead of reading the file into memory.
   res.sendfile(__dirname + '/app/index.html');
@@ -60,11 +60,24 @@ app.get('**',  passport.authenticationMiddleware(), function(req, res) {
 		res.sendfile(__dirname + '/app/index.html');
 	});
 
-app.post('/login',
+app.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err) }
+    if (!user) {
+      // *** Display message using Express 3 locals
+      return res.render('login', {loginMessage: 'Nombre de usuario o contraseña incorrectos'});
+    }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.redirect('/');
+    });
+  })(req, res, next);
+});
+/*app.post('/login',
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login'
-  }));
+  }));*/
 
 app.post('/register', function(req, res){
     var body = req.body
@@ -76,7 +89,7 @@ app.post('/register', function(req, res){
     if(body.username !== '' && body.email !== '' && body.password !== '' && body.password === body.confirmPassword){
       firebaseAPI.registerUser(body.username, body.email, body.password);
     }
-    res.sendfile('views/login.html')
+    res.render('login')
 });
 
 http.createServer(app).listen(app.get('port'), function(){
