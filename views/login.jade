@@ -26,7 +26,7 @@ html
               input.form-control.material-input(name='username', type='text', autocomplete='off')
               span.bottom-liner
               span.highlight
-            div.validation#username-login
+            span.validation#username-login
             .form-group.custom-elem
               label.placeholder Password
               input.form-control.material-input(name='password', type='password', autocomplete='off')
@@ -59,23 +59,29 @@ html
               input.form-control.material-input(name='username', type='text', autocomplete='off')
               span.bottom-liner
               span.highlight
+            span.validation#username-register
             .form-group.custom-elem
               label.placeholder Email
               input.form-control.material-input(name='email', type='email', autocomplete='off')
               span.bottom-liner
               span.highlight
+            span.validation#email-register
             .form-group.custom-elem
               label.placeholder Password
               input.form-control.material-input(name='password', type='password', autocomplete='off')
               span.bottom-liner
               span.highlight
+            span.validation#password-register
             .form-group.custom-elem
               label.placeholder Confirm Password
               input.form-control.material-input(name='confirmPassword', type='password', autocomplete='off')
               span.bottom-liner
               span.highlight
+            span.validation#confirmPassword-register
           br
-      button.btn.btn-custom.btn-block(style='background-color:green', onclick="$('#registerForm').submit();") Sign Up
+          span.validation !{registerFailureMessage}
+          span.success    !{registerSuccessMessage}
+      button.btn.btn-custom.btn-block(style='background-color:green', onclick="validateRegister()") Sign Up
     // Bootstrap.min.js was deleted since it wasn't used in this example
     script(src='views/js/jquery-1.11.3.min.js')
     script(src='views/js/velocity.min.js')

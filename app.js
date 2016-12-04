@@ -81,15 +81,19 @@ app.post('/login', function(req, res, next) {
 
 app.post('/register', function(req, res){
     var body = req.body
-    console.log(req.body);
+    /*console.log(req.body);
     console.log("username:"+req.body.username);
     console.log("email:"+req.body.email);
     console.log("password:"+req.body.password);
-    console.log("confirmpassword:"+req.body.confirmPassword);
-    if(body.username !== '' && body.email !== '' && body.password !== '' && body.password === body.confirmPassword){
+    console.log("confirmpassword:"+req.body.confirmPassword);*/
+    var reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if(firebaseAPI.getUserCredentials(body.username).username!==''){
+      res.render('login', {registerFailureMessage: 'Ya existe un usuario con ese nombre'});
+    }else if(body.username !== '' && body.email !== '' && reEmail.test(body.email) && body.password !== '' && body.password === body.confirmPassword){
       firebaseAPI.registerUser(body.username, body.email, body.password);
+      res.render('login', {registerSuccessMessage: '¡Registro realizado con éxito!'});
     }
-    res.render('login')
 });
 
 http.createServer(app).listen(app.get('port'), function(){

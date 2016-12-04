@@ -68,3 +68,9 @@ a.download-button:hover { color: rgba(63, 81, 181, 0.43); }
     color: red;
     font: Verdana;
 }
+
+.success{
+    margin-top: 1%;
+    color: green;
+    font: Verdana;
+}
