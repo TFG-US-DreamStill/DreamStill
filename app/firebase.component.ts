@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { FirebaseService } from './firebase.service';
-import { NgForm }     from '@angular/forms';
+import { Component }        from '@angular/core';
+import { FirebaseService }  from './firebase.service';
+import { NgForm }           from '@angular/forms';  
  
 @Component({
     moduleId: module.id,

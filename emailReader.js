@@ -1,18 +1,19 @@
-var fs, passwordFile;
+require('dotenv').config()
+//var fs, passwordFile;
 
-passwordFile = 'passwords.json';
+/*passwordFile = 'passwords.json';
 fs = require('fs');
 
 var configuration = JSON.parse(
     fs.readFileSync(passwordFile)
-);
+);*/
 
 var Imap = require('imap'),
     inspect = require('util').inspect;
 
 var imap = new Imap({
-  user: configuration["Gmail"].username,
-  password: configuration["Gmail"].password,
+  user: process.env.GMAIL_USERNAME,
+  password: process.env.GMAIL_PASSWORD,
   host: 'imap.gmail.com',
   port: 993,
   tls: true,

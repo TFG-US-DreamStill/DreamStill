@@ -1,14 +1,23 @@
-// We need this to build our patch string
-var fs = require('fs');
-var request = require('request');
+require('dotenv').config()
+//var fs = require('fs');
+var requestA = require('request');
 var email2Json = require('./email2Json.js');
 var request = require('sync-request');
+const md5 = require('md5');
+/*var passwordFile;
+
+passwordFile = 'passwords.json';
+fs = require('fs');
+
+var configuration = JSON.parse(
+    fs.readFileSync(passwordFile)
+);*/
 
 module.exports = {
 
   setUserData: function (data, user) {
-    request({
-      url: 'https://dreamstill-d507c.firebaseio.com/'+ user + '.json',
+    requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/'+ user + '.json?auth='+process.env.FIREBASE_SECRET,
       method: 'PATCH',
       headers: {
         'Content-Type' :' application/json'/*,
@@ -31,7 +40,7 @@ module.exports = {
   getUserCredentials: function (username) {
     var user = { username: '', password: '', id: '', email: ''};
 
-    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json',{
+    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json?auth='+process.env.FIREBASE_SECRET,{
     'headers': {
       'Content-Type' :' application/json'
     }});
@@ -42,13 +51,42 @@ module.exports = {
 
     if (json !== null){
       user.id = json["id"];
-      user.username = "juanra";
+      user.username = username;
       user.email = json["email"];
       user.password = json["password"];
     }
 
   return user;
-  }
+  },
+
+  registerUser: function (username, email, password) {
+    var user = { username: '', password: '', id: '', email: ''};
+    
+    user.username = username.toLowerCase();
+    user.password = md5(password);
+    user.id = 1;
+    user.email = email;
+
+    requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+ user.username + '.json?auth='+process.env.FIREBASE_SECRET,
+      method: 'PATCH',
+      headers: {
+        'Content-Type' :' application/json'/*,
+        'Authorization': 'key=AI...8o'*/
+      },
+      body: JSON.stringify(user)
+    }, function(error, response, body) {
+        if (error) { 
+          console.error(error, response, body); 
+        }
+        else if (response.statusCode >= 400) { 
+          console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+        }
+        else {
+          console.log('Done!')
+        }
+      });
+    }
 }
 
 var to = 'dreamstillapp+18@gmail.com';
@@ -65,3 +103,4 @@ var data = email2Json.parseEmail2Json(to,subject,body)[0];
 var user = email2Json.parseEmail2Json(to,subject,body)[1];
 
 //setUserData(data, user);
+//registerUser("Test", "test@test.com", "test");

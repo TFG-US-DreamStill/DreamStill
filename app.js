@@ -4,6 +4,7 @@ var path = require('path');
 const passport = require('passport');  
 const session = require('express-session'); 
 var LocalStrategy = require('passport-local').Strategy;
+const firebaseAPI = require('./firebase.api.js');
 
 var app = express();
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 
 app.use(express.static(__dirname));
+//app.use(express.static(path.join(__dirname, 'views')));
 /*app.use(express.cookieParser('cookies monster')); // Cookie secret
 app.use(express.bodyParser());
 app.use(express.session({ secret: 'keyboard cat' }));
@@ -47,6 +49,13 @@ app.use(passport.authenticationMiddleware(), function(req, res) {
   }
 });
 
+app.get('/logout', function(req, res){
+  req.session.destroy();
+  req.logout();
+  res.redirect('/');
+});
+
+
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
 		res.sendfile(__dirname + '/app/index.html');
 	});
@@ -56,6 +65,19 @@ app.post('/login',
     successRedirect: '/',
     failureRedirect: '/login'
   }));
+
+app.post('/register', function(req, res){
+    var body = req.body
+    console.log(req.body);
+    console.log("username:"+req.body.username);
+    console.log("email:"+req.body.email);
+    console.log("password:"+req.body.password);
+    console.log("confirmpassword:"+req.body.confirmPassword);
+    if(body.username !== '' && body.email !== '' && body.password !== '' && body.password === body.confirmPassword){
+      firebaseAPI.registerUser(body.username, body.email, body.password);
+    }
+    res.sendfile('views/login.html')
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
