@@ -64,7 +64,7 @@ module.exports = {
     
     user.username = username.toLowerCase();
     user.password = md5(password);
-    user.id = 1;
+    user.id = new Date().valueOf();;
     user.email = email;
 
     requestA({

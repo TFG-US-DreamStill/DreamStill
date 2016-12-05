@@ -1,7 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700);
 html { height: 100%; }
 
-body { width: 100%; font-family: 'Merriweather Sans', sans-serif; background-color: #f9f9f9; background-image: url("../images/background.jpg"); background-size: cover; background-repeat: no-repeat; background-position: center center; -webkit-font-smoothing: antialiased; }
+body { 
+    width: 100%; font-family: 'Merriweather Sans', sans-serif; 
+    background-color: #f9f9f9; 
+    background: url("../images/background.jpg") no-repeat center center fixed;; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-font-smoothing: antialiased; 
+}
 
 body .custom-container { max-width: 390px; margin-top: 8vw; }
 
@@ -55,12 +64,14 @@ a.download-button:hover { color: rgba(63, 81, 181, 0.43); }
 
 #loginContainer{
     float: left;
-    margin-left: 500px;
+    margin-left: 50vh;
+    height: auto;
 }
 
 #registerContainer{
     float: left;
-    margin-left: 50px;
+    margin-left: 5vh;
+    height: auto;
 }
 
 .validation{
