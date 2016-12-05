@@ -50,6 +50,23 @@ $(function() {
 
 });
 
+//Submit on press 'Enter'
+
+$("#loginForm input").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+        validateLogin();
+    }
+});
+
+$("#registerForm input").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+        validateRegister();
+    }
+});
+
+
+// Validation functions
+
 function validateLogin(){
     var username = document.forms["loginForm"]["username"].value;
     var password = document.forms["loginForm"]["password"].value;
