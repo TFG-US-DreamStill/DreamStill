@@ -57,15 +57,14 @@ mailListener.on("server:disconnected", function(){
   // make sure you include in options:  
   //   fetchUnreadOnStart: true,
   var count = 0;
-
   mailListener.on("mail", function(mail, seqno, attributes) {
     var mailuid = attributes.uid,
       i = ++count;
 
-    if (i > 20) {
+    /*if (i > 20) {
       mailListener.stop(); // start listening
       return;
-    }
+    }*/
     if (mail.from[0].address.indexOf("noreply@morpheuz.co.uk") !== -1){
       console.log('email parsed', { 
         i: i, 

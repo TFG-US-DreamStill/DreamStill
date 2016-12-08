@@ -32,4 +32,11 @@ export class FirebaseService{
     getUserData(user: string){
         return this._http.get('https://dreamstill-d507c.firebaseio.com/'+user+'.json?auth='+this.configData).map(response => response.json());
     }
+
+    getMorpheuzDataOfUserAtDate(user: String, date: Date){
+        var year: String = ""+date.getFullYear();
+        var month: String = ""+date.getMonth();
+        var day: String = ""+date.getDay();
+        return this._http.get('https://dreamstill-d507c.firebaseio.com/'+user+'/'+year+'-'+month+'-'+day+'.json?auth='+this.configData).map(response => response.json());
+    }
 }

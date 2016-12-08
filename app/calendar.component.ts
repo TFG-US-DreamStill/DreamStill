@@ -18,6 +18,7 @@ import {
   CalendarEventAction,
   CalendarEventTimesChangedEvent
 }                  from 'angular-calendar';
+//import { FirebaseService }  from './firebase.service';
 
 const colors: any = {
   red: {
@@ -38,20 +39,24 @@ const colors: any = {
     moduleId: module.id,
     selector: 'calendar',
     styleUrls: ['calendar.component.css'],
-    templateUrl: 'calendar.component.html'
+    templateUrl: 'calendar.component.html',
+    providers: [FirebaseService]
 })
 export class CalendarComponent implements OnInit {
     view: string = 'month';
     viewDate: Date = new Date();
 
-    constructor() { }
+    constructor(/*private _firebaseService: FirebaseService*/) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+      var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), 0).getDate();
+      console.log(daysOfMonth); 
+     }
     
   actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
     onClick: ({event}: {event: CalendarEvent}): void => {
-      console.log('Edit event', event);
+      console.log('Edit event', event); 
     }
   }, {
     label: '<i class="fa fa-fw fa-times"></i>',
@@ -59,6 +64,17 @@ export class CalendarComponent implements OnInit {
       this.events = this.events.filter(iEvent => iEvent !== event);
     }
   }];
+
+  getDays(): void{
+      var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
+      console.log("Días: "+daysOfMonth); 
+      for (var i = 1; i < daysOfMonth; i++){
+        /*this._firebaseService.getMorpheuzDataOfUserAtDate("18",new Date(this.viewDate.getFullYear(),this.viewDate.getMonth()+1,i)).subscribe(
+            info => console.log(JSON.stringify(info)),
+            error => console.log(error)
+        )*/
+      }
+  }
 
   refresh: Subject<any> = new Subject();
 
@@ -79,9 +95,9 @@ export class CalendarComponent implements OnInit {
     title: 'A long event that spans 2 months',
     color: colors.blue
   }, {
-    start: addHours(startOfDay(new Date()), 2),
+    start: new Date(2016,11,15),
     end: new Date(),
-    title: 'A resizable event',
+    title: 'Test',
     color: colors.yellow,
     actions: this.actions,
     resizable: {
@@ -101,7 +117,7 @@ export class CalendarComponent implements OnInit {
     }[this.view];
 
     this.viewDate = addFn(this.viewDate, 1);
-
+    this.getDays();
   }
 
   decrement(): void {
@@ -113,11 +129,12 @@ export class CalendarComponent implements OnInit {
     }[this.view];
 
     this.viewDate = subFn(this.viewDate, 1);
-
+    this.getDays();
   }
 
   today(): void {
     this.viewDate = new Date();
+    this.getDays();
   }
 
   dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
