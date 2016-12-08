@@ -40,7 +40,7 @@ const colors: any = {
     selector: 'calendar',
     styleUrls: ['calendar.component.css'],
     templateUrl: 'calendar.component.html',
-    providers: [FirebaseService]
+    providers: [/*FirebaseService*/]
 })
 export class CalendarComponent implements OnInit {
     view: string = 'month';
