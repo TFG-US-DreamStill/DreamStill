@@ -18,7 +18,7 @@ import {
   CalendarEventAction,
   CalendarEventTimesChangedEvent
 }                  from 'angular-calendar';
-//import { FirebaseService }  from './firebase.service';
+import { FirebaseService }  from './firebase.service';
 
 const colors: any = {
   red: {
@@ -39,18 +39,15 @@ const colors: any = {
     moduleId: module.id,
     selector: 'calendar',
     styleUrls: ['calendar.component.css'],
-    templateUrl: 'calendar.component.html',
-    providers: [/*FirebaseService*/]
+    templateUrl: 'calendar.component.html'
 })
 export class CalendarComponent implements OnInit {
     view: string = 'month';
     viewDate: Date = new Date();
 
-    constructor(/*private _firebaseService: FirebaseService*/) { }
+    constructor(private _firebaseService: FirebaseService) { }
 
     ngOnInit() {
-      var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), 0).getDate();
-      console.log(daysOfMonth); 
      }
     
   actions: CalendarEventAction[] = [{
@@ -65,14 +62,20 @@ export class CalendarComponent implements OnInit {
     }
   }];
 
-  getDays(): void{
+  createEvents(event: String): void{
+      if(event!=='null'){
+        console.log("Event: "+event);
+      }
+  }
+  getInfoOfDays(): void{
       var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
       console.log("Días: "+daysOfMonth); 
-      for (var i = 1; i < daysOfMonth; i++){
-        /*this._firebaseService.getMorpheuzDataOfUserAtDate("18",new Date(this.viewDate.getFullYear(),this.viewDate.getMonth()+1,i)).subscribe(
-            info => console.log(JSON.stringify(info)),
+      for (var _i = 1; _i <= daysOfMonth; _i++){
+        console.log(_i);
+        this._firebaseService.getMorpheuzDataOfUserAtDate("18",new Date(this.viewDate.getFullYear(),this.viewDate.getMonth(),_i)).subscribe(
+            info => this.createEvents(JSON.stringify(info)),
             error => console.log(error)
-        )*/
+        )
       }
   }
 
@@ -117,7 +120,7 @@ export class CalendarComponent implements OnInit {
     }[this.view];
 
     this.viewDate = addFn(this.viewDate, 1);
-    this.getDays();
+    this.getInfoOfDays();
   }
 
   decrement(): void {
@@ -129,12 +132,12 @@ export class CalendarComponent implements OnInit {
     }[this.view];
 
     this.viewDate = subFn(this.viewDate, 1);
-    this.getDays();
+    this.getInfoOfDays();
   }
 
   today(): void {
     this.viewDate = new Date();
-    this.getDays();
+    this.getInfoOfDays();
   }
 
   dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
