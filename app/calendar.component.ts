@@ -71,6 +71,7 @@ export class CalendarComponent implements OnInit {
       afterEnd: true
     }
   }];
+    countEvents: number = 0;
 
     constructor(private _firebaseService: FirebaseService) { }
 
@@ -89,28 +90,31 @@ export class CalendarComponent implements OnInit {
     }
   }];
 
-  createEvents(date: Number, event: String): void{
+  createEvents(event: String): void{
+      this.countEvents = this.countEvents+1;
       if(event!=='null'){
-        console.log(this.viewDate);
+        var date: Date = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), this.countEvents);
         console.log(date);
-        //console.log("Event: "+event);
-        /*this.events.push({start: date,
+        this.events.push({start: date,
                            end: date,
                            title: 'Sueño de Morpheuz',
                            color: colors.blue,
                            actions: this.actions
-        })*/
+        })
       }
+      this.refresh.next();
   }
   getInfoOfDays(): void{
       var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
       var date: Date;
       console.log("Días: "+daysOfMonth); 
+      console.log(this.viewDate);
+      this.countEvents = 0;
+      this.events = [];
       for (var _i = 1; _i <= daysOfMonth; _i++){
         //console.log(_i);
-        date = new Date(this.viewDate.getFullYear(),this.viewDate.getMonth(),_i);
-        this._firebaseService.getMorpheuzDataOfUserAtDate("18",date).subscribe(
-            info => this.createEvents(_i, JSON.stringify(info)),
+        this._firebaseService.getMorpheuzDataOfUserAtDate("18",new Date(this.viewDate.getFullYear(),this.viewDate.getMonth(),_i)).subscribe(
+            info => this.createEvents(JSON.stringify(info)),
             error => console.log(error)
         )
       }
