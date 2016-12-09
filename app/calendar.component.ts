@@ -44,44 +44,7 @@ const colors: any = {
 export class CalendarComponent implements OnInit {
     view: string = 'month';
     viewDate: Date = new Date();
-
-    constructor(private _firebaseService: FirebaseService) { }
-
-    ngOnInit() {
-     }
-    
-  actions: CalendarEventAction[] = [{
-    label: '<i class="fa fa-fw fa-pencil"></i>',
-    onClick: ({event}: {event: CalendarEvent}): void => {
-      console.log('Edit event', event); 
-    }
-  }, {
-    label: '<i class="fa fa-fw fa-times"></i>',
-    onClick: ({event}: {event: CalendarEvent}): void => {
-      this.events = this.events.filter(iEvent => iEvent !== event);
-    }
-  }];
-
-  createEvents(event: String): void{
-      if(event!=='null'){
-        console.log("Event: "+event);
-      }
-  }
-  getInfoOfDays(): void{
-      var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
-      console.log("Días: "+daysOfMonth); 
-      for (var _i = 1; _i <= daysOfMonth; _i++){
-        console.log(_i);
-        this._firebaseService.getMorpheuzDataOfUserAtDate("18",new Date(this.viewDate.getFullYear(),this.viewDate.getMonth(),_i)).subscribe(
-            info => this.createEvents(JSON.stringify(info)),
-            error => console.log(error)
-        )
-      }
-  }
-
-  refresh: Subject<any> = new Subject();
-
-  events: CalendarEvent[] = [{
+    events: CalendarEvent[] = [{
     start: subDays(startOfDay(new Date()), 1),
     end: addDays(new Date(), 1),
     title: 'A 3 day event',
@@ -108,6 +71,52 @@ export class CalendarComponent implements OnInit {
       afterEnd: true
     }
   }];
+
+    constructor(private _firebaseService: FirebaseService) { }
+
+    ngOnInit() {
+     }
+    
+  actions: CalendarEventAction[] = [{
+    label: '<i class="fa fa-fw fa-pencil"></i>',
+    onClick: ({event}: {event: CalendarEvent}): void => {
+      console.log('Edit event', event); 
+    }
+  }, {
+    label: '<i class="fa fa-fw fa-times"></i>',
+    onClick: ({event}: {event: CalendarEvent}): void => {
+      this.events = this.events.filter(iEvent => iEvent !== event);
+    }
+  }];
+
+  createEvents(date: Number, event: String): void{
+      if(event!=='null'){
+        console.log(this.viewDate);
+        console.log(date);
+        //console.log("Event: "+event);
+        /*this.events.push({start: date,
+                           end: date,
+                           title: 'Sueño de Morpheuz',
+                           color: colors.blue,
+                           actions: this.actions
+        })*/
+      }
+  }
+  getInfoOfDays(): void{
+      var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
+      var date: Date;
+      console.log("Días: "+daysOfMonth); 
+      for (var _i = 1; _i <= daysOfMonth; _i++){
+        //console.log(_i);
+        date = new Date(this.viewDate.getFullYear(),this.viewDate.getMonth(),_i);
+        this._firebaseService.getMorpheuzDataOfUserAtDate("18",date).subscribe(
+            info => this.createEvents(_i, JSON.stringify(info)),
+            error => console.log(error)
+        )
+      }
+  }
+
+  refresh: Subject<any> = new Subject();
 
   activeDayIsOpen: boolean = true;
 
