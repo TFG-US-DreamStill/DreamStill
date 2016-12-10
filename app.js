@@ -49,12 +49,17 @@ app.use(passport.authenticationMiddleware(), function(req, res) {
   }
 });
 
-app.get('/logout', function(req, res){
+app.get('/logout', passport.authenticationMiddleware(), function(req, res){
   req.session.destroy();
   req.logout();
   res.redirect('/');
 });
 
+app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res){
+  var loggedUser;
+  loggedUser = {"id": req.user.id, "username": req.user.username};
+  res.send(loggedUser);
+});
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
 		res.sendfile(__dirname + '/app/index.html');

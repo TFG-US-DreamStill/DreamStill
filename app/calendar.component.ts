@@ -19,6 +19,7 @@ import {
   CalendarEventTimesChangedEvent
 }                  from 'angular-calendar';
 import { FirebaseService }  from './firebase.service';
+import { Http }         from '@angular/http';
 
 const colors: any = {
   red: {
@@ -72,8 +73,20 @@ export class CalendarComponent implements OnInit {
     }
   }];
     countEvents: number = 0;
+    user: JSON;
 
-    constructor(private _firebaseService: FirebaseService) { }
+    constructor(private _firebaseService: FirebaseService, private _http: Http) {
+         _http.get('/getLoggedUser')
+                  .map(res => res.json())
+                  .subscribe(
+                     (data) => {
+                       this.user=data;
+                       console.log(this.user);
+                     },
+                     err=>console.log(err),
+                     ()=>console.log('done')
+                   );
+     }
 
     ngOnInit() {
      }
@@ -113,7 +126,7 @@ export class CalendarComponent implements OnInit {
       this.events = [];
       for (var _i = 1; _i <= daysOfMonth; _i++){
         //console.log(_i);
-        this._firebaseService.getMorpheuzDataOfUserAtDate("18",new Date(this.viewDate.getFullYear(),this.viewDate.getMonth(),_i)).subscribe(
+        this._firebaseService.getMorpheuzDataOfUserAtDate(this.user["id"],new Date(this.viewDate.getFullYear(),this.viewDate.getMonth(),_i)).subscribe(
             info => this.createEvents(JSON.stringify(info)),
             error => console.log(error)
         )
