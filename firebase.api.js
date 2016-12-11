@@ -15,9 +15,9 @@ var configuration = JSON.parse(
 
 module.exports = {
 
-  setUserData: function (data, user) {
+  setMorpheuzUserData: function (data, user) {
     requestA({
-      url: 'https://dreamstill-d507c.firebaseio.com/'+ user + '.json?auth='+process.env.FIREBASE_SECRET,
+      url: 'https://dreamstill-d507c.firebaseio.com/morpheuz/'+ user + '.json?auth='+process.env.FIREBASE_SECRET,
       method: 'PATCH',
       headers: {
         'Content-Type' :' application/json'/*,
@@ -38,7 +38,7 @@ module.exports = {
     },
 
   getUserCredentials: function (username) {
-    var user = { username: '', password: '', id: '', email: ''};
+    var user = { username: '', password: '', id: '', email: '', morpheuzID: ''};
 
     var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json?auth='+process.env.FIREBASE_SECRET,{
     'headers': {
@@ -54,6 +54,7 @@ module.exports = {
       user.username = username;
       user.email = json["email"];
       user.password = json["password"];
+      user.morpheuzID = json["morpheuzID"];
     }
 
   return user;

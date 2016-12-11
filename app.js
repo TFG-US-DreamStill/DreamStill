@@ -57,7 +57,7 @@ app.get('/logout', passport.authenticationMiddleware(), function(req, res){
 
 app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res){
   var loggedUser;
-  loggedUser = {"id": req.user.id, "username": req.user.username};
+  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID};
   res.send(loggedUser);
 });
 

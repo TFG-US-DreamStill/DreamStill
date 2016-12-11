@@ -43,7 +43,7 @@ export class FirebaseService{
         var year: String = ""+date.getFullYear();
         var month:string  = String(date.getMonth()+1);
         var day: String = ("0" + date.getDate()).slice(-2)
-        console.log('https://dreamstill-d507c.firebaseio.com/'+user+'/'+year+'-'+month+'-'+day+'.json?auth='+this.configData);
-        return this._http.get('https://dreamstill-d507c.firebaseio.com/'+user+'/'+year+'-'+month+'-'+day+'.json?auth='+this.configData).map(response => response.json());
+        console.log('https://dreamstill-d507c.firebaseio.com/morpheuz/'+user+'/'+year+'-'+month+'-'+day+'.json?auth='+this.configData);
+        return this._http.get('https://dreamstill-d507c.firebaseio.com/morpheuz/'+user+'/'+year+'-'+month+'-'+day+'.json?auth='+this.configData).map(response => response.json());
     }
 }
