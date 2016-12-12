@@ -107,6 +107,23 @@ module.exports = {
             res.send(body)
           }
         });
+  },
+
+  getMorpheuzDaysWithData: function (res, morpheuzID) {
+    requestA('https://dreamstill-d507c.firebaseio.com/morpheuz/'+user+'.json?auth='+process.env.FIREBASE_SECRET+'&shallow=true', function(error, response, body) {
+          if (error) { 
+            console.error(error, response, body); 
+            res.send(error)
+          }
+          else if (response.statusCode >= 400) { 
+            console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+          }
+          else {
+            console.log('Done!')
+            console.log(body)
+            res.send(body)
+          }
+        });
   }
 }
 

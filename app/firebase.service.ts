@@ -42,7 +42,11 @@ export class FirebaseService{
     getMorpheuzDataOfUserAtDate(date: Date){
         var year: String = ""+date.getFullYear();
         var month:string  = String(date.getMonth()+1);
-        var day: String = ("0" + date.getDate()).slice(-2)
+        var day: String = ("0" + date.getDate()).slice(-2);
         return this._http.get('getMorpheuzDataAtDate?date='+year+'-'+month+'-'+day).map(response => response.json());
+    }
+
+    getMorpheuzDaysWithData(){
+        return this._http.get('getMorpheuzDaysWithData').map(response => response.json());
     }
 }

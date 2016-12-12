@@ -72,7 +72,6 @@ export class CalendarComponent implements OnInit {
       afterEnd: true
     }
   }];
-    countEvents: number = 0;
     user: JSON;
 
     constructor(private _firebaseService: FirebaseService, private _http: Http) {
@@ -103,35 +102,35 @@ export class CalendarComponent implements OnInit {
     }
   }];
 
-  createEvents(event: String): void{
-      this.countEvents = this.countEvents+1;
-      if(event!=='null'){
-        var date: Date = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), this.countEvents);
-        console.log(date);
-        this.events.push({start: date,
+  createEvents(event: JSON): void{
+      console.log(event);
+      if(event!==undefined){
+        var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
+        for (var _i = 1; _i <= daysOfMonth; _i++){
+          var date: Date = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), _i)
+          var year: String = ""+date.getFullYear();
+          var month:string  = String(date.getMonth()+1);
+          var day: String = ("0" + date.getDate()).slice(-2);
+          if(event[year+"-"+month+"-"+day]!==undefined){
+              this.events.push({start: date,
                            end: date,
                            title: 'Sueño de Morpheuz',
                            color: colors.blue,
-                           actions: this.actions
-        })
+                           actions: this.actions})
+          }
+        }
       }
       this.refresh.next();
   }
   getInfoOfDays(): void{
-      var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
       var date: Date;
-      console.log("Días: "+daysOfMonth); 
       console.log(this.viewDate);
-      this.countEvents = 0;
       this.events = [];
-      for (var _i = 1; _i <= daysOfMonth; _i++){
-        //console.log(_i);
-        if(this.user["morpheuzID"]!==undefined){
-          this._firebaseService.getMorpheuzDataOfUserAtDate(new Date(this.viewDate.getFullYear(),this.viewDate.getMonth(),_i)).subscribe(
-              info => this.createEvents(JSON.stringify(info)),
-              error => console.log(error)
-          )
-        }
+      if(this.user["morpheuzID"]!==undefined){
+        this._firebaseService.getMorpheuzDaysWithData().subscribe(
+            info => this.createEvents(info),
+            error => console.log(error)
+        )
       }
   }
 
