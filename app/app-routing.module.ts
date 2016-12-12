@@ -7,6 +7,7 @@ import { PrivateComponent }     from './private.component';
 import { FirebaseComponent }    from './firebase.component';
 import { MorpheuzReprComponent }from './morpheuzRepr.component';
 import { GraphComponent }       from './graph.component';
+import { GraphsComponent }       from './graphs.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'private',    component: PrivateComponent },
   { path: 'firebase',   component: FirebaseComponent },
   { path: 'morpheuz',   component: MorpheuzReprComponent },
-  { path: 'graph',      component: GraphComponent }
+  { path: 'graph',      component: GraphComponent },
+  { path: 'graphs',      component: GraphsComponent }
 ];
 
 @NgModule({

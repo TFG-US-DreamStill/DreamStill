@@ -23,7 +23,8 @@ import { MorpheuzReprComponent }from './morpheuzRepr.component';
 import { PlotlyComponent }      from './plotly.component';
 import { GraphComponent }       from './graph.component';
 import { CalendarModule }       from 'angular-calendar';
-import { FirebaseService }  from './firebase.service';
+import { FirebaseService }      from './firebase.service';
+import { GraphsComponent }      from './graphs.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { FirebaseService }  from './firebase.service';
     FirebaseComponent,
     MorpheuzReprComponent,
     PlotlyComponent,
-    GraphComponent
+    GraphComponent,
+    GraphsComponent
   ],
   providers: [ MdIconRegistry, FirebaseService],
   bootstrap: [ AppComponent ]
