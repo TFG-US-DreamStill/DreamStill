@@ -127,7 +127,7 @@ export class CalendarComponent implements OnInit {
       for (var _i = 1; _i <= daysOfMonth; _i++){
         //console.log(_i);
         if(this.user["morpheuzID"]!==undefined){
-          this._firebaseService.getMorpheuzDataOfUserAtDate(this.user["morpheuzID"],new Date(this.viewDate.getFullYear(),this.viewDate.getMonth(),_i)).subscribe(
+          this._firebaseService.getMorpheuzDataOfUserAtDate(new Date(this.viewDate.getFullYear(),this.viewDate.getMonth(),_i)).subscribe(
               info => this.createEvents(JSON.stringify(info)),
               error => console.log(error)
           )
