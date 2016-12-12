@@ -14,9 +14,9 @@ export class GraphsComponent implements OnInit {
 
      ngOnInit(): void {
         this.route.queryParams.forEach((params: Params) => {
-            if (params['app'] !== undefined && params['id'] !== undefined && params['date'] !== undefined) {
+            if (params['app'] !== undefined && params['date'] !== undefined) {
                 if (params['app'] === 'morpheuz'){
-                    this._firebaseService.getMorpheuzDataOfUserAtDate(params['id'],new Date(params['date'])).subscribe(
+                    this._firebaseService.getMorpheuzDataOfUserAtDate(new Date(params['date'])).subscribe(
                                                                         info => console.log(JSON.stringify(info)),
                                                                         error => console.log(error))
                 }

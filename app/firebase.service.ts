@@ -39,11 +39,10 @@ export class FirebaseService{
         return this._http.get('https://dreamstill-d507c.firebaseio.com/'+user+'.json?auth='+this.configData).map(response => response.json());
     }
 
-    getMorpheuzDataOfUserAtDate(user: String, date: Date){
+    getMorpheuzDataOfUserAtDate(date: Date){
         var year: String = ""+date.getFullYear();
         var month:string  = String(date.getMonth()+1);
         var day: String = ("0" + date.getDate()).slice(-2)
-        console.log('https://dreamstill-d507c.firebaseio.com/morpheuz/'+user+'/'+year+'-'+month+'-'+day+'.json?auth='+this.configData);
-        return this._http.get('https://dreamstill-d507c.firebaseio.com/morpheuz/'+user+'/'+year+'-'+month+'-'+day+'.json?auth='+this.configData).map(response => response.json());
+        return this._http.get('getMorpheuzDataAtDate?date='+year+'-'+month+'-'+day).map(response => response.json());
     }
 }

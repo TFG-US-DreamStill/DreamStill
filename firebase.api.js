@@ -87,7 +87,27 @@ module.exports = {
           console.log('Done!')
         }
       });
-    }
+    },
+
+    getMorpheuzDataOfUserAtDate: function (res, morpheuzID, date) {
+    var year = date.split('-')[0];
+    var month = date.split('-')[1];
+    var day = date.split('-')[2];
+    requestA('https://dreamstill-d507c.firebaseio.com/morpheuz/'+user+'/'+year+'-'+month+'-'+day+'.json?auth='+process.env.FIREBASE_SECRET, function(error, response, body) {
+          if (error) { 
+            console.error(error, response, body); 
+            res.send(error)
+          }
+          else if (response.statusCode >= 400) { 
+            console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+          }
+          else {
+            console.log('Done!')
+            console.log(body)
+            res.send(body)
+          }
+        });
+  }
 }
 
 var to = 'dreamstillapp+18@gmail.com';

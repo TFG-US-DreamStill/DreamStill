@@ -5,7 +5,7 @@ const passport = require('passport');
 const session = require('express-session'); 
 var LocalStrategy = require('passport-local').Strategy;
 const firebaseAPI = require('./firebase.api.js');
-
+var requestA = require('request');
 var app = express();
 
 // all environments
@@ -53,6 +53,10 @@ app.get('/logout', passport.authenticationMiddleware(), function(req, res){
   req.session.destroy();
   req.logout();
   res.redirect('/');
+});
+
+app.get('/getMorpheuzDataAtDate', passport.authenticationMiddleware(), function(req, res){
+  firebaseAPI.getMorpheuzDataOfUserAtDate(res, req.user.morpheuzID, req.query.date);
 });
 
 app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res){
