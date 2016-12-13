@@ -47,7 +47,7 @@ export class CalendarComponent implements OnInit {
     viewDate: Date = new Date();
     events: CalendarEvent[] = [];
     user: JSON;
-
+    info: JSON;
     constructor(private _firebaseService: FirebaseService, private _http: Http) {
          _http.get('/getLoggedUser')
                   .map(res => res.json())
@@ -55,7 +55,15 @@ export class CalendarComponent implements OnInit {
                      (data) => {
                        this.user=data;
                        console.log(this.user);
-                       this.getInfoOfDays();
+                       if(this.user['morpheuzID']!==undefined){
+                          this._firebaseService.getMorpheuzDaysWithData().subscribe(
+                          info => {
+                            this.info = info;
+                            this.getInfoOfDays();
+                            },
+                          error => console.log(error)
+                          )
+                       }
                      },
                      err=>console.log(err),
                      ()=>console.log('done')
@@ -101,10 +109,7 @@ export class CalendarComponent implements OnInit {
       console.log(this.viewDate);
       this.events = [];
       if(this.user['morpheuzID']!==undefined){
-        this._firebaseService.getMorpheuzDaysWithData().subscribe(
-            info => this.createEventsMorpheuz(info),
-            error => console.log(error)
-        )
+        this.createEventsMorpheuz(this.info);
       }
   }
 
