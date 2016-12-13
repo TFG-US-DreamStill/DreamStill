@@ -7,7 +7,7 @@ export class FirebaseService{
     private configData: Object;
 
     constructor(private _http: Http) {
-        _http.get('passwords.json')
+        /*_http.get('passwords.json')
                   .map(res => res.json())
                   .subscribe(
                      (data) => {
@@ -15,7 +15,7 @@ export class FirebaseService{
                      },
                      err=>console.log(err),
                      ()=>console.log('done')
-                   );
+                   );*/
     }
 
     setUser(firstName: string, lastName: string){

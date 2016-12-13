@@ -43,11 +43,11 @@ export class GraphsComponent implements OnInit {
         this.sleepStates = ["Inquieto","Ligero","Profundo","Ignorar"];
         this.sleepDataStates = [0, 0, 0, 0];
         for (let d of data){
-            console.log("d:"+d);
+            //console.log("d:"+d);
             if(d.Movements!=='-1' && d.Movements!=='-2'){
                 this.dreamDataX.push(d.Hour);
                 this.dreamDataY.push(d.Movements);
-                console.log("movimientos:"+parseInt(d.Movents)+"/"+d.Movements);
+                //console.log("movimientos:"+parseInt(d.Movents)+"/"+d.Movements);
                 if(d.Movements > 1000){
                     this.sleepDataStates[0] = this.sleepDataStates[0]+1;
                 }else if(d.Movements <= 120){
@@ -94,7 +94,7 @@ export class GraphsComponent implements OnInit {
             }
         ];
 
-        console.log("recieved plotly data");
-        console.log(this.PlotlyData);
+        //console.log("recieved plotly data");
+        //console.log(this.PlotlyData);
   }
 }

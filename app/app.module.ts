@@ -16,8 +16,6 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-ap
 
 import { AppComponent }         from './app.component';
 import { CalendarComponent }    from './calendar.component';
-import { LoginComponent }       from './login.component';
-import { PrivateComponent }     from './private.component';
 import { FirebaseComponent }    from './firebase.component';
 import { MorpheuzReprComponent }from './morpheuzRepr.component';
 import { PlotlyComponent }      from './plotly.component';
@@ -41,8 +39,6 @@ import { GraphsComponent }      from './graphs.component';
   declarations: [
     AppComponent,
     CalendarComponent,
-    LoginComponent,
-    PrivateComponent,
     FirebaseComponent,
     MorpheuzReprComponent,
     PlotlyComponent,
