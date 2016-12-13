@@ -45,33 +45,7 @@ const colors: any = {
 export class CalendarComponent implements OnInit {
     view: string = 'month';
     viewDate: Date = new Date();
-    events: CalendarEvent[] = [{
-    start: subDays(startOfDay(new Date()), 1),
-    end: addDays(new Date(), 1),
-    title: 'A 3 day event',
-    color: colors.red,
-    actions: this.actions
-  }, {
-    start: startOfDay(new Date()),
-    title: 'An event with no end date',
-    color: colors.yellow,
-    actions: this.actions
-  }, {
-    start: subDays(endOfMonth(new Date()), 3),
-    end: addDays(endOfMonth(new Date()), 3),
-    title: 'A long event that spans 2 months',
-    color: colors.blue
-  }, {
-    start: new Date(2016,11,15),
-    end: new Date(),
-    title: 'Test',
-    color: colors.yellow,
-    actions: this.actions,
-    resizable: {
-      beforeStart: true,
-      afterEnd: true
-    }
-  }];
+    events: CalendarEvent[] = [];
     user: JSON;
 
     constructor(private _firebaseService: FirebaseService, private _http: Http) {
@@ -81,6 +55,7 @@ export class CalendarComponent implements OnInit {
                      (data) => {
                        this.user=data;
                        console.log(this.user);
+                       this.getInfoOfDays();
                      },
                      err=>console.log(err),
                      ()=>console.log('done')
