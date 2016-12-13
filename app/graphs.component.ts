@@ -55,7 +55,8 @@ export class GraphsComponent implements OnInit {
                 }else{
                     this.sleepDataStates[1] = this.sleepDataStates[1]+1;
                 }
-            }else{
+            }
+            if(d.Movements==='-2'){
                    this.sleepDataStates[3] = this.sleepDataStates[0]+1; 
             }
         }

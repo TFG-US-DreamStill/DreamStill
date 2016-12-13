@@ -1,17 +1,12 @@
-<div *ngIf="PlotlyData">
+<div *ngIf="PlotlyData && PlotlyDataPie">
     <plotlychart 
-          [data]="PlotlyData"  
+          [data]="PlotlyData" 
+          [data1]="PlotlyDataPie"  
           [layout]="PlotlyLayout" 
-          [options]="PlotlyOptions" 
-          [displayRawData]="true">
-    </plotlychart>
-</div>
-
-<div *ngIf="PlotlyDataPie">
-    <plotlychart 
-          [data]="PlotlyDataPie"  
-          [layout]="PlotlyLayoutPie" 
-          [options]="PlotlyOptionsPie" 
-          [displayRawData]="true">
+          [layout1]="PlotlyLayoutPie" 
+          [options]="PlotlyOptions"
+          [options1]="PlotlyOptionsPie" 
+          [displayRawData]="true"
+          [displayRawData1]="true">
     </plotlychart>
 </div>
