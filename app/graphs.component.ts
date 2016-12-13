@@ -8,15 +8,16 @@ import { FirebaseService }          from './firebase.service';
     templateUrl: 'graphs.component.html'
 })
 export class GraphsComponent implements OnInit {
-    datos: JSON;
-    public message: string;
-    private sub: any;
     public dreamDataX: String[];
     public dreamDataY: String[];
-    private name: string;
+    public sleepStates: String[];
+    public sleepDataStates: number[];
     public PlotlyLayout: any;
     public PlotlyData: any;
     public PlotlyOptions: any;
+    public PlotlyLayoutPie: any;
+    public PlotlyDataPie: any;
+    public PlotlyOptionsPie: any;
 
     constructor(private _firebaseService: FirebaseService, private route: ActivatedRoute) { }
 
@@ -39,10 +40,24 @@ export class GraphsComponent implements OnInit {
         console.log(data);
         this.dreamDataX = [];
         this.dreamDataY = [];
+        this.sleepStates = ["Inquieto","Ligero","Profundo","Ignorar"];
+        this.sleepDataStates = [0, 0, 0, 0];
         for (let d of data){
             console.log("d:"+d);
-            this.dreamDataX.push(d.Hour);
-            this.dreamDataY.push(d.Movements);
+            if(d.Movements!=='-1' && d.Movements!=='-2'){
+                this.dreamDataX.push(d.Hour);
+                this.dreamDataY.push(d.Movements);
+                console.log("movimientos:"+parseInt(d.Movents)+"/"+d.Movements);
+                if(d.Movements > 1000){
+                    this.sleepDataStates[0] = this.sleepDataStates[0]+1;
+                }else if(d.Movements <= 120){
+                    this.sleepDataStates[2] = this.sleepDataStates[2]+1;
+                }else{
+                    this.sleepDataStates[1] = this.sleepDataStates[1]+1;
+                }
+            }else{
+                   this.sleepDataStates[3] = this.sleepDataStates[0]+1; 
+            }
         }
         /*for (let d in data){
             this.dreamDataY.push(d.Movements);
@@ -57,9 +72,24 @@ export class GraphsComponent implements OnInit {
             {
                 x: this.dreamDataX,
                 y: this.dreamDataY,
-                name: "Number of snake bite deaths",
+                name: "Number of movements",
                 type: 'scatter', // set the chart type
                 mode: 'lines' // connect points with lines
+            }
+        ];
+
+        this.PlotlyLayoutPie = {
+            title: "Calidad del sueño",
+            height: 500,
+            width: 1800
+        };
+
+        this.PlotlyDataPie = [
+            {
+                labels: this.sleepStates,
+                values: this.sleepDataStates,
+                name: "Sleep Quality",
+                type: 'pie'
             }
         ];
 

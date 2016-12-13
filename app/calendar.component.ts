@@ -102,7 +102,7 @@ export class CalendarComponent implements OnInit {
     }
   }];
 
-  createEvents(event: JSON): void{
+  createEventsMorpheuz(event: JSON): void{
       console.log(event);
       if(event!==undefined){
         var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
@@ -114,9 +114,8 @@ export class CalendarComponent implements OnInit {
           if(event[year+"-"+month+"-"+day]!==undefined){
               this.events.push({start: date,
                            end: date,
-                           title: 'Sueño de Morpheuz',
-                           color: colors.blue,
-                           actions: this.actions})
+                           title: "<a href=/graphs?app=morpheuz&date="+year+"-"+month+"-"+day+" style='color: white;'> Sueño de Morpheuz </a>",
+                           color: colors.blue})
           }
         }
       }
@@ -126,9 +125,9 @@ export class CalendarComponent implements OnInit {
       var date: Date;
       console.log(this.viewDate);
       this.events = [];
-      if(this.user["morpheuzID"]!==undefined){
+      if(this.user['morpheuzID']!==undefined){
         this._firebaseService.getMorpheuzDaysWithData().subscribe(
-            info => this.createEvents(info),
+            info => this.createEventsMorpheuz(info),
             error => console.log(error)
         )
       }

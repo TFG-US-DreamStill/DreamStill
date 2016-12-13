@@ -6,3 +6,12 @@
           [displayRawData]="true">
     </plotlychart>
 </div>
+
+<div *ngIf="PlotlyDataPie">
+    <plotlychart 
+          [data]="PlotlyDataPie"  
+          [layout]="PlotlyLayoutPie" 
+          [options]="PlotlyOptionsPie" 
+          [displayRawData]="true">
+    </plotlychart>
+</div>
