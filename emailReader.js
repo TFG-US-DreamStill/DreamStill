@@ -29,7 +29,7 @@ imap.once('ready', function() {
       markSeen: true
     });
     }catch(Exception){
-
+      imap.end();
     }
     if(f!==undefined){
       f.on('message', function(msg, seqno) {
