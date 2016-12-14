@@ -15,7 +15,7 @@ var imap = new Imap({
 });
 
 function openInbox(cb) {
-  imap.openBox('INBOX', true, cb);
+  imap.openBox('INBOX', false, cb);
 }
 
 imap.once('ready', function() {
