@@ -15,9 +15,9 @@ var configuration = JSON.parse(
 
 module.exports = {
 
-  setUserData: function (data, user) {
+  setMorpheuzUserData: function (data, user) {
     requestA({
-      url: 'https://dreamstill-d507c.firebaseio.com/'+ user + '.json?auth='+process.env.FIREBASE_SECRET,
+      url: 'https://dreamstill-d507c.firebaseio.com/morpheuz/'+ user + '.json?auth='+process.env.FIREBASE_SECRET,
       method: 'PATCH',
       headers: {
         'Content-Type' :' application/json'/*,
@@ -38,7 +38,7 @@ module.exports = {
     },
 
   getUserCredentials: function (username) {
-    var user = { username: '', password: '', id: '', email: ''};
+    var user = { username: '', password: '', id: '', email: '', morpheuzID: ''};
 
     var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json?auth='+process.env.FIREBASE_SECRET,{
     'headers': {
@@ -54,6 +54,7 @@ module.exports = {
       user.username = username;
       user.email = json["email"];
       user.password = json["password"];
+      user.morpheuzID = json["morpheuzID"];
     }
 
   return user;
@@ -64,7 +65,7 @@ module.exports = {
     
     user.username = username.toLowerCase();
     user.password = md5(password);
-    user.id = 1;
+    user.id = new Date().valueOf();;
     user.email = email;
 
     requestA({
@@ -86,7 +87,44 @@ module.exports = {
           console.log('Done!')
         }
       });
-    }
+    },
+
+    getMorpheuzDataOfUserAtDate: function (res, morpheuzID, date) {
+    var year = date.split('-')[0];
+    var month = date.split('-')[1];
+    var day = date.split('-')[2];
+    requestA('https://dreamstill-d507c.firebaseio.com/morpheuz/'+user+'/'+year+'-'+month+'-'+day+'.json?auth='+process.env.FIREBASE_SECRET, function(error, response, body) {
+          if (error) { 
+            console.error(error, response, body); 
+            res.send(error)
+          }
+          else if (response.statusCode >= 400) { 
+            console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+          }
+          else {
+            console.log('Done!')
+            console.log(body)
+            res.send(body)
+          }
+        });
+  },
+
+  getMorpheuzDaysWithData: function (res, morpheuzID) {
+    requestA('https://dreamstill-d507c.firebaseio.com/morpheuz/'+user+'.json?auth='+process.env.FIREBASE_SECRET+'&shallow=true', function(error, response, body) {
+          if (error) { 
+            console.error(error, response, body); 
+            res.send(error)
+          }
+          else if (response.statusCode >= 400) { 
+            console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+          }
+          else {
+            console.log('Done!')
+            console.log(body)
+            res.send(body)
+          }
+        });
+  }
 }
 
 var to = 'dreamstillapp+18@gmail.com';

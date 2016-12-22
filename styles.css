@@ -25,6 +25,7 @@ button {
 }
 
 a {
+    color: white;
     cursor: pointer;
     cursor: hand;
 }
@@ -184,4 +185,12 @@ nav a.router-link-active {
     background-color: #673AB7;
     -webkit-filter: brightness(110%);
     filter: bightness(110%);
+}
+
+.loading-image{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -125px;
 }

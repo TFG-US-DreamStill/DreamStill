@@ -13,29 +13,22 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
-import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }         from './app.component';
 import { CalendarComponent }    from './calendar.component';
-import { HeroesComponent }      from './heroes.component';
-import { HeroDetailComponent }  from './hero-detail.component';
-import { HeroService }          from './hero.service';
-import { HeroSearchComponent }  from './hero-search.component';
-import { LoginComponent }       from './login.component';
-import { PrivateComponent }     from './private.component';
 import { FirebaseComponent }    from './firebase.component';
 import { MorpheuzReprComponent }from './morpheuzRepr.component';
 import { PlotlyComponent }      from './plotly.component';
 import { GraphComponent }       from './graph.component';
-import { Config }               from './config.service';
-import { CalendarModule } from 'angular-calendar';
+import { CalendarModule }       from 'angular-calendar';
+import { FirebaseService }      from './firebase.service';
+import { GraphsComponent }      from './graphs.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    //InMemoryWebApiModule.forRoot(InMemoryDataService),
     BrowserModule, 
     MdCardModule, 
     MdButtonModule, 
@@ -46,17 +39,13 @@ import { CalendarModule } from 'angular-calendar';
   declarations: [
     AppComponent,
     CalendarComponent,
-    HeroDetailComponent,
-    HeroesComponent,
-    HeroSearchComponent,
-    LoginComponent,
-    PrivateComponent,
     FirebaseComponent,
     MorpheuzReprComponent,
     PlotlyComponent,
-    GraphComponent
+    GraphComponent,
+    GraphsComponent
   ],
-  providers: [ HeroService, MdIconRegistry, Config],
+  providers: [ MdIconRegistry, FirebaseService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

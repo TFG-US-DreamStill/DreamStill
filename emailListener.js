@@ -57,15 +57,14 @@ mailListener.on("server:disconnected", function(){
   // make sure you include in options:  
   //   fetchUnreadOnStart: true,
   var count = 0;
-
   mailListener.on("mail", function(mail, seqno, attributes) {
     var mailuid = attributes.uid,
       i = ++count;
 
-    if (i > 20) {
+    /*if (i > 20) {
       mailListener.stop(); // start listening
       return;
-    }
+    }*/
     if (mail.from[0].address.indexOf("noreply@morpheuz.co.uk") !== -1){
       console.log('email parsed', { 
         i: i, 
@@ -79,7 +78,7 @@ mailListener.on("server:disconnected", function(){
       var data = email2Json.parseEmail2Json(mail.to[0].address, mail.subject, mail.html)[0];
       var user = email2Json.parseEmail2Json(mail.to[0].address, mail.subject, mail.html)[1];
 
-      firebaseApi.setUserData(data, user);
+      firebaseApi.setMorpheuzUserData(data, user);
 
       console.log('attempting to mark msg read/seen');
       mailListener.imap.addFlags(mailuid, '\\Seen', function (err) {

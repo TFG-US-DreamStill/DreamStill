@@ -1,15 +1,21 @@
 import { Injectable }   from '@angular/core';
 import { Http }         from '@angular/http';
 import { last }         from 'rxjs/operator/last';
-import { Config }           from './config.service';  
 
 @Injectable()
 export class FirebaseService{
     private configData: Object;
 
-    constructor(private _http: Http, private _config: Config) {
-        _config.load()
-        this.configData = _config.get("Firebase").secret
+    constructor(private _http: Http) {
+        /*_http.get('passwords.json')
+                  .map(res => res.json())
+                  .subscribe(
+                     (data) => {
+                       this.configData=data["Firebase"].secret;
+                     },
+                     err=>console.log(err),
+                     ()=>console.log('done')
+                   );*/
     }
 
     setUser(firstName: string, lastName: string){
@@ -31,5 +37,16 @@ export class FirebaseService{
 
     getUserData(user: string){
         return this._http.get('https://dreamstill-d507c.firebaseio.com/'+user+'.json?auth='+this.configData).map(response => response.json());
+    }
+
+    getMorpheuzDataOfUserAtDate(date: Date){
+        var year: String = ""+date.getFullYear();
+        var month:string  = String(date.getMonth()+1);
+        var day: String = ("0" + date.getDate()).slice(-2);
+        return this._http.get('getMorpheuzDataAtDate?date='+year+'-'+month+'-'+day).map(response => response.json());
+    }
+
+    getMorpheuzDaysWithData(){
+        return this._http.get('getMorpheuzDaysWithData').map(response => response.json());
     }
 }

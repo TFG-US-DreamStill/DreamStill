@@ -3,7 +3,7 @@ function authenticationMiddleware () {
     if (req.isAuthenticated()) {
       return next()
     }
-    res.sendfile('views/login.html')
+    res.render('login')
   }
 }
 

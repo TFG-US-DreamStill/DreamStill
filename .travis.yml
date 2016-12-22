@@ -1,3 +1,7 @@
 language: node_js
 node_js:
   - "6.7"
+deploy:
+  provider: heroku
+  api_key: 530e560b-ba49-4801-be24-2954ee3222d4
+  app: dreamstillapp

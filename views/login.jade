@@ -1,0 +1,89 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Login screen
+    link(rel="shortcut icon" href="/favicon.ico?v=2")
+    link(href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css', rel='stylesheet')
+    link(href='views/css/custom.css', rel='stylesheet')
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+  body
+    #loginContainer.container.custom-container
+      .panel.panel-default
+        .panel-body
+          h3.text-center Logueate con tu
+          h3.text-center cuenta
+          br
+          form#loginForm.form(role='form', action='/login', method='POST')
+            br
+            br
+            br
+            .form-group.custom-elem
+              label.placeholder Username
+              input.form-control.material-input(name='username', type='text', autocomplete='off')
+              span.bottom-liner
+              span.highlight
+            span.validation#username-login
+            .form-group.custom-elem
+              label.placeholder Password
+              input.form-control.material-input(name='password', type='password', autocomplete='off')
+              span.bottom-liner
+              span.highlight
+            span.validation#password-login
+          br
+          p.text-center
+            small
+              b
+                a(href='#') Forgot something?
+          br
+          br
+          span.validation !{loginMessage}
+          br
+      button#flow-button.btn.btn-custom.btn-block(onclick="validateLogin()") Sign In
+    // Bootstrap.min.js was deleted since it wasn't used in this example
+    script(src='js/jquery-1.11.3.min.js')
+    script(src='js/velocity.min.js')
+    script(src='js/scripts.js')
+    #registerContainer.container.custom-container
+      .panel.panel-default
+        .panel-body
+          h3.text-center ¿Aún no tienes cuenta?
+          h3.text-center ¡Registrate!
+          br
+          form#registerForm.form(role='form', action='/register', method='POST')
+            .form-group.custom-elem
+              label.placeholder Username
+              input.form-control.material-input(name='username', type='text', autocomplete='off')
+              span.bottom-liner
+              span.highlight
+            span.validation#username-register
+            .form-group.custom-elem
+              label.placeholder Email
+              input.form-control.material-input(name='email', type='email', autocomplete='off')
+              span.bottom-liner
+              span.highlight
+            span.validation#email-register
+            .form-group.custom-elem
+              label.placeholder Password
+              input.form-control.material-input(name='password', type='password', autocomplete='off')
+              span.bottom-liner
+              span.highlight
+            span.validation#password-register
+            .form-group.custom-elem
+              label.placeholder Confirm Password
+              input.form-control.material-input(name='confirmPassword', type='password', autocomplete='off')
+              span.bottom-liner
+              span.highlight
+            span.validation#confirmPassword-register
+          br
+          span.validation !{registerFailureMessage}
+          span.success    !{registerSuccessMessage}
+      button.btn.btn-custom.btn-block(style='background-color:green', onclick="validateRegister()") Sign Up
+    // Bootstrap.min.js was deleted since it wasn't used in this example
+    script(src='views/js/jquery-1.11.3.min.js')
+    script(src='views/js/velocity.min.js')
+    script(src='views/js/scripts.js')

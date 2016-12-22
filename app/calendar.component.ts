@@ -18,6 +18,8 @@ import {
   CalendarEventAction,
   CalendarEventTimesChangedEvent
 }                  from 'angular-calendar';
+import { FirebaseService }  from './firebase.service';
+import { Http }         from '@angular/http';
 
 const colors: any = {
   red: {
@@ -43,15 +45,38 @@ const colors: any = {
 export class CalendarComponent implements OnInit {
     view: string = 'month';
     viewDate: Date = new Date();
+    events: CalendarEvent[] = [];
+    user: JSON;
+    info: JSON;
+    constructor(private _firebaseService: FirebaseService, private _http: Http) {
+         _http.get('/getLoggedUser')
+                  .map(res => res.json())
+                  .subscribe(
+                     (data) => {
+                       this.user=data;
+                       console.log(this.user);
+                       if(this.user['morpheuzID']!==undefined){
+                          this._firebaseService.getMorpheuzDaysWithData().subscribe(
+                          info => {
+                            this.info = info;
+                            this.getInfoOfDays();
+                            },
+                          error => console.log(error)
+                          )
+                       }
+                     },
+                     err=>console.log(err),
+                     ()=>console.log('done')
+                   );
+     }
 
-    constructor() { }
-
-    ngOnInit() { }
+    ngOnInit() {
+     }
     
   actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
     onClick: ({event}: {event: CalendarEvent}): void => {
-      console.log('Edit event', event);
+      console.log('Edit event', event); 
     }
   }, {
     label: '<i class="fa fa-fw fa-times"></i>',
@@ -60,35 +85,35 @@ export class CalendarComponent implements OnInit {
     }
   }];
 
-  refresh: Subject<any> = new Subject();
+  createEventsMorpheuz(event: JSON): void{
+      console.log(event);
+      if(event!==undefined){
+        var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
+        for (var _i = 1; _i <= daysOfMonth; _i++){
+          var date: Date = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), _i)
+          var year: String = ""+date.getFullYear();
+          var month:string  = String(date.getMonth()+1);
+          var day: String = ("0" + date.getDate()).slice(-2);
+          if(event[year+"-"+month+"-"+day]!==undefined){
+              this.events.push({start: date,
+                           end: date,
+                           title: "<a href=/graphs?app=morpheuz&date="+year+"-"+month+"-"+day+" style='color: white;'> Sueño de Morpheuz </a>",
+                           color: colors.blue})
+          }
+        }
+      }
+      this.refresh.next();
+  }
+  getInfoOfDays(): void{
+      var date: Date;
+      console.log(this.viewDate);
+      this.events = [];
+      if(this.user['morpheuzID']!==undefined){
+        this.createEventsMorpheuz(this.info);
+      }
+  }
 
-  events: CalendarEvent[] = [{
-    start: subDays(startOfDay(new Date()), 1),
-    end: addDays(new Date(), 1),
-    title: 'A 3 day event',
-    color: colors.red,
-    actions: this.actions
-  }, {
-    start: startOfDay(new Date()),
-    title: 'An event with no end date',
-    color: colors.yellow,
-    actions: this.actions
-  }, {
-    start: subDays(endOfMonth(new Date()), 3),
-    end: addDays(endOfMonth(new Date()), 3),
-    title: 'A long event that spans 2 months',
-    color: colors.blue
-  }, {
-    start: addHours(startOfDay(new Date()), 2),
-    end: new Date(),
-    title: 'A resizable event',
-    color: colors.yellow,
-    actions: this.actions,
-    resizable: {
-      beforeStart: true,
-      afterEnd: true
-    }
-  }];
+  refresh: Subject<any> = new Subject();
 
   activeDayIsOpen: boolean = true;
 
@@ -101,7 +126,7 @@ export class CalendarComponent implements OnInit {
     }[this.view];
 
     this.viewDate = addFn(this.viewDate, 1);
-
+    this.getInfoOfDays();
   }
 
   decrement(): void {
@@ -113,11 +138,12 @@ export class CalendarComponent implements OnInit {
     }[this.view];
 
     this.viewDate = subFn(this.viewDate, 1);
-
+    this.getInfoOfDays();
   }
 
   today(): void {
     this.viewDate = new Date();
+    this.getInfoOfDays();
   }
 
   dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {

@@ -49,3 +49,77 @@ $(function() {
     });
 
 });
+
+//Submit on press 'Enter'
+
+$("#loginForm input").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+        validateLogin();
+    }
+});
+
+$("#registerForm input").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+        validateRegister();
+    }
+});
+
+
+// Validation functions
+
+function validateLogin(){
+    var username = document.forms["loginForm"]["username"].value;
+    var password = document.forms["loginForm"]["password"].value;
+    document.getElementById("username-login").innerHTML = "";
+    document.getElementById("password-login").innerHTML = "";
+
+    if (username == "" && password == ""){
+        document.getElementById("username-login").innerHTML = 'No puede estar vacío';
+        document.getElementById("password-login").innerHTML = 'No puede estar vacío';
+    }else if (username == "") {
+        document.getElementById("username-login").innerHTML = 'No puede estar vacío';
+    }else if (password == ""){
+        document.getElementById("password-login").innerHTML = 'No puede estar vacío';
+    }else{
+        $('#loginForm').submit();
+    }
+}
+
+function validateRegister(){
+    var username = document.forms["registerForm"]["username"].value;
+    var email = document.forms["registerForm"]["email"].value;
+    var password = document.forms["registerForm"]["password"].value;
+    var confirmPassword = document.forms["registerForm"]["confirmPassword"].value;
+    document.getElementById("username-register").innerHTML = "";
+    document.getElementById("email-register").innerHTML = "";
+    document.getElementById("password-register").innerHTML = "";
+    document.getElementById("confirmPassword-register").innerHTML = "";
+    var reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    valid = true;
+    validation = {};
+
+    if (username == ""){
+        validation['username'] = 'No puede estar vacío';
+    }
+    if (email == "" ){
+        validation['email'] = 'No puede estar vacío';
+    }else if (!reEmail.test(email)){
+        validation['email'] = 'Introduce un email válido';
+    }
+    if (password == ""){
+        validation['password'] = 'No puede estar vacío';
+    }
+    if (confirmPassword == ""){
+        validation['confirmPassword'] = 'No puede estar vacío';
+    }
+    if (password != "" && confirmPassword != "" && password != confirmPassword){
+        validation['confirmPassword'] = 'Las contraseñas introducias no coinciden';
+    }
+    if (Object.keys(validation).length==0){
+        $('#registerForm').submit();
+    }else{
+        for (v in validation){
+             document.getElementById(v+"-register").innerHTML = validation[v];
+        }
+    }
+}
