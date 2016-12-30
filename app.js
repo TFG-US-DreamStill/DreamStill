@@ -17,15 +17,7 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
-
 app.use(express.static(__dirname));
-//app.use(express.static(path.join(__dirname, 'views')));
-/*app.use(express.cookieParser('cookies monster')); // Cookie secret
-app.use(express.bodyParser());
-app.use(express.session({ secret: 'keyboard cat' }));
-app.use(passport.initialize());
-app.use(passport.session());*/
-
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.session({ secret: 'keyboard cat' }));
@@ -67,6 +59,10 @@ app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res
   var loggedUser;
   loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID};
   res.send(loggedUser);
+});
+
+app.get('/getAuthToGoogleFit', passport.authenticationMiddleware(), function(req, res){
+  // params -> req.query.code
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
