@@ -1,17 +1,8 @@
 require('dotenv').config()
-//var fs = require('fs');
 var requestA = require('request');
 var email2Json = require('./email2Json.js');
 var request = require('sync-request');
 const md5 = require('md5');
-/*var passwordFile;
-
-passwordFile = 'passwords.json';
-fs = require('fs');
-
-var configuration = JSON.parse(
-    fs.readFileSync(passwordFile)
-);*/
 
 module.exports = {
 

@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -62,7 +63,29 @@ app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res
 });
 
 app.get('/getAuthToGoogleFit', passport.authenticationMiddleware(), function(req, res){
+  // console.log(req.query.code)
   // params -> req.query.code
+    requestA({
+        url: 'https://accounts.google.com/o/oauth2/token',
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/x-www-form-urlencoded',
+          'Host' : 'accounts.google.com'
+        },
+        body: 'code='+req.query.code+'&client_id='+process.env.CLIENT_ID+'&client_secret='+process.env.CLIENT_SECRET+'&redirect_uri=http://localhost:3000/getAuthToGoogleFit&grant_type=authorization_code'
+      }, function(error, response, body) {
+          if (error) { 
+            console.error(error, response, body); 
+          }
+          else if (response.statusCode >= 400) { 
+            console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+          }
+          else {
+            console.log('Done!')
+            console.log(body)
+            res.redirect("/")            
+          }
+        });
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
