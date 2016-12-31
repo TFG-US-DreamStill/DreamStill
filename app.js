@@ -58,7 +58,7 @@ app.get('/getMorpheuzDaysWithData', passport.authenticationMiddleware(), functio
 
 app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res){
   var loggedUser;
-  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID};
+  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID, "googleToken": req.user.googleToken};
   res.send(loggedUser);
 });
 
@@ -82,7 +82,9 @@ app.get('/getAuthToGoogleFit', passport.authenticationMiddleware(), function(req
           }
           else {
             console.log('Done!')
-            console.log(body)
+            //console.log(body)
+            //console.log(JSON.parse(body)["access_token"])
+            firebaseAPI.setGoogleTokenToUser(req.user.username, JSON.parse(body)["access_token"])
             res.redirect("/")            
           }
         });
