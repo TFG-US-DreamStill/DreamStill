@@ -72,7 +72,7 @@ app.get('/getAuthToGoogleFit', passport.authenticationMiddleware(), function(req
           'Content-Type' : 'application/x-www-form-urlencoded',
           'Host' : 'accounts.google.com'
         },
-        body: 'code='+req.query.code+'&client_id='+process.env.CLIENT_ID+'&client_secret='+process.env.CLIENT_SECRET+'&redirect_uri=http://localhost:3000/getAuthToGoogleFit&grant_type=authorization_code'
+        body: 'code='+req.query.code+'&client_id='+process.env.GOOGLE_CLIENT_ID+'&client_secret='+process.env.GOOGLE_CLIENT_SECRET+'&redirect_uri=http://localhost:3000/getAuthToGoogleFit&grant_type=authorization_code'
       }, function(error, response, body) {
           if (error) { 
             console.error(error, response, body); 
@@ -88,6 +88,14 @@ app.get('/getAuthToGoogleFit', passport.authenticationMiddleware(), function(req
             res.redirect("/")            
           }
         });
+});
+
+app.get('/getAuthToFitbit', /*passport.authenticationMiddleware(),*/ function(req, res){
+  console.log(req.query.access_token)
+  // params -> req.query.access_token
+    
+  //firebaseAPI.setGoogleTokenToUser(req.user.username, req.query.access_token);
+  //res.redirect("/");
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {

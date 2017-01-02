@@ -136,6 +136,27 @@ module.exports = {
           console.log('Done!')
         }
       });
+    },
+
+  setFitbitTokenToUser: function (username, token) {
+    requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+ username + '.json?auth='+process.env.FIREBASE_SECRET,
+      method: 'PATCH',
+      headers: {
+        'Content-Type' :' application/json'
+      },
+      body: JSON.stringify({"fitbitToken": token})
+    }, function(error, response, body) {
+        if (error) { 
+          console.error(error, response, body); 
+        }
+        else if (response.statusCode >= 400) { 
+          console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+        }
+        else {
+          console.log('Done!')
+        }
+      });
     }
   
 }
