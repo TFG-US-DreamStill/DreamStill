@@ -90,12 +90,12 @@ app.get('/getAuthToGoogleFit', passport.authenticationMiddleware(), function(req
         });
 });
 
-app.get('/getAuthToFitbit', /*passport.authenticationMiddleware(),*/ function(req, res){
-  console.log(req.query.access_token)
+app.get('/getAuthToFitbit', passport.authenticationMiddleware(), function(req, res){
+  //console.log(req.query.access_token)
   // params -> req.query.access_token
     
-  //firebaseAPI.setGoogleTokenToUser(req.user.username, req.query.access_token);
-  //res.redirect("/");
+  firebaseAPI.setFitbitTokenToUser(req.user.username, req.query.access_token);
+  res.redirect("/");
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {

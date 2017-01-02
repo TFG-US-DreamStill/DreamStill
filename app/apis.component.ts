@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router }            from '@angular/router';
+import { Http }         from '@angular/http';
 
 @Component({
     moduleId: module.id,
@@ -8,7 +10,19 @@ import { Component, OnInit } from '@angular/core';
     
 })
 export class ApisComponent implements OnInit {
-    constructor() { }
+    router: Router;
+    pattern: RegExp;
 
-    ngOnInit() { }
+    constructor(private _router: Router, private _http: Http) {
+        this.router = _router;
+        this.pattern = /access_token=(.*)&user_id/g;
+    }
+
+    ngOnInit() {
+            if (this.router.url.includes("#")){
+                //this.pattern = /access_token=(.*)&user_id/g;
+                var access_token = this.pattern.exec(this.router.url)[1];
+                window.location.href = 'getAuthToFitbit?access_token='+access_token;
+            }
+     }
 }
