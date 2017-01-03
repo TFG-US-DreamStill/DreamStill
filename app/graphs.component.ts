@@ -90,7 +90,11 @@ export class GraphsComponent implements OnInit {
                 labels: this.sleepStates,
                 values: this.sleepDataStates,
                 name: "Sleep Quality",
-                type: 'pie'
+                type: 'pie',
+                marker: {'colors': ['rgb(144,123,210)',
+                                    'rgb(121,85,212)',
+                                    'rgb(92,60,171)',
+                                    'rgb(246,243,251)']},
             }
         ];
 
