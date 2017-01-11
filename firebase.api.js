@@ -1,17 +1,8 @@
 require('dotenv').config()
-//var fs = require('fs');
 var requestA = require('request');
 var email2Json = require('./email2Json.js');
 var request = require('sync-request');
 const md5 = require('md5');
-/*var passwordFile;
-
-passwordFile = 'passwords.json';
-fs = require('fs');
-
-var configuration = JSON.parse(
-    fs.readFileSync(passwordFile)
-);*/
 
 module.exports = {
 
@@ -124,7 +115,50 @@ module.exports = {
             res.send(body)
           }
         });
-  }
+  },
+
+  setGoogleTokenToUser: function (username, token) {
+    requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+ username + '.json?auth='+process.env.FIREBASE_SECRET,
+      method: 'PATCH',
+      headers: {
+        'Content-Type' :' application/json'
+      },
+      body: JSON.stringify({"googleToken": token})
+    }, function(error, response, body) {
+        if (error) { 
+          console.error(error, response, body); 
+        }
+        else if (response.statusCode >= 400) { 
+          console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+        }
+        else {
+          console.log('Done!')
+        }
+      });
+    },
+
+  setFitbitTokenToUser: function (username, token) {
+    requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+ username + '.json?auth='+process.env.FIREBASE_SECRET,
+      method: 'PATCH',
+      headers: {
+        'Content-Type' :' application/json'
+      },
+      body: JSON.stringify({"fitbitToken": token})
+    }, function(error, response, body) {
+        if (error) { 
+          console.error(error, response, body); 
+        }
+        else if (response.statusCode >= 400) { 
+          console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+        }
+        else {
+          console.log('Done!')
+        }
+      });
+    }
+  
 }
 
 var to = 'dreamstillapp+18@gmail.com';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  startOfDay,
+  //startOfDay,
   subDays,
   addDays,
   endOfMonth,
@@ -9,8 +9,8 @@ import {
   addWeeks,
   subWeeks,
   addMonths,
-  subMonths,
-  addHours
+  subMonths/*,
+  addHours*/
 } from 'date-fns';
 import { Subject } from 'rxjs/Subject';
 import {

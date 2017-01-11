@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -17,15 +18,7 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
-
 app.use(express.static(__dirname));
-//app.use(express.static(path.join(__dirname, 'views')));
-/*app.use(express.cookieParser('cookies monster')); // Cookie secret
-app.use(express.bodyParser());
-app.use(express.session({ secret: 'keyboard cat' }));
-app.use(passport.initialize());
-app.use(passport.session());*/
-
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.session({ secret: 'keyboard cat' }));
@@ -65,8 +58,44 @@ app.get('/getMorpheuzDaysWithData', passport.authenticationMiddleware(), functio
 
 app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res){
   var loggedUser;
-  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID};
+  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID, "googleToken": req.user.googleToken};
   res.send(loggedUser);
+});
+
+app.get('/getAuthToGoogleFit', passport.authenticationMiddleware(), function(req, res){
+  // console.log(req.query.code)
+  // params -> req.query.code
+    requestA({
+        url: 'https://accounts.google.com/o/oauth2/token',
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/x-www-form-urlencoded',
+          'Host' : 'accounts.google.com'
+        },
+        body: 'code='+req.query.code+'&client_id='+process.env.GOOGLE_CLIENT_ID+'&client_secret='+process.env.GOOGLE_CLIENT_SECRET+'&redirect_uri=http://localhost:3000/getAuthToGoogleFit&grant_type=authorization_code'
+      }, function(error, response, body) {
+          if (error) { 
+            console.error(error, response, body); 
+          }
+          else if (response.statusCode >= 400) { 
+            console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+          }
+          else {
+            console.log('Done!')
+            //console.log(body)
+            //console.log(JSON.parse(body)["access_token"])
+            firebaseAPI.setGoogleTokenToUser(req.user.username, JSON.parse(body)["access_token"])
+            res.redirect("/")            
+          }
+        });
+});
+
+app.get('/getAuthToFitbit', passport.authenticationMiddleware(), function(req, res){
+  //console.log(req.query.access_token)
+  // params -> req.query.access_token
+    
+  firebaseAPI.setFitbitTokenToUser(req.user.username, req.query.access_token);
+  res.redirect("/");
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
