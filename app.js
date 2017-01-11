@@ -91,11 +91,31 @@ app.get('/getAuthToGoogleFit', passport.authenticationMiddleware(), function(req
 });
 
 app.get('/getAuthToFitbit', passport.authenticationMiddleware(), function(req, res){
-  //console.log(req.query.access_token)
-  // params -> req.query.access_token
-    
-  firebaseAPI.setFitbitTokenToUser(req.user.username, req.query.access_token);
-  res.redirect("/");
+  console.log(req.query.code)
+  // params -> req.query.code
+  requestA({
+      url: 'https://api.fitbit.com/oauth2/token',
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/x-www-form-urlencoded',
+        'Authorization' : 'Basic '+new Buffer(process.env.FITBIT_CLIENT_ID+":"+process.env.FITBIT_CLIENT_SECRET).toString("base64")
+      },
+      body: 'code='+req.query.code+'&client_id='+process.env.FITBIT_CLIENT_ID+'&redirect_uri=http://localhost:3000/getAuthToFitbit&grant_type=authorization_code'
+    }, function(error, response, body) {
+        if (error) { 
+          console.error(error, response, body); 
+        }
+        else if (response.statusCode >= 400) { 
+          console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+        }
+        else {
+          console.log('Done!')
+          //console.log(body)
+          //console.log(JSON.parse(body)["access_token"])
+          firebaseAPI.setFitbitTokenToUser(req.user.username, JSON.parse(body)["access_token"], JSON.parse(body)["refresh_token"])
+          res.redirect("/")        
+        }
+      }); 
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
