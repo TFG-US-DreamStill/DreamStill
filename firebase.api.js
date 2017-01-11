@@ -117,14 +117,14 @@ module.exports = {
         });
   },
 
-  setGoogleTokenToUser: function (username, token) {
+  setGoogleTokenToUser: function (username, access_token, refresh_token) {
     requestA({
       url: 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+ username + '.json?auth='+process.env.FIREBASE_SECRET,
       method: 'PATCH',
       headers: {
         'Content-Type' :' application/json'
       },
-      body: JSON.stringify({"googleToken": token})
+      body: JSON.stringify({"googleFit": {"access_token": access_token, "refresh_token": refresh_token}})
     }, function(error, response, body) {
         if (error) { 
           console.error(error, response, body); 

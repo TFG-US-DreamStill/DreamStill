@@ -84,7 +84,7 @@ app.get('/getAuthToGoogleFit', passport.authenticationMiddleware(), function(req
             console.log('Done!')
             //console.log(body)
             //console.log(JSON.parse(body)["access_token"])
-            firebaseAPI.setGoogleTokenToUser(req.user.username, JSON.parse(body)["access_token"])
+            firebaseAPI.setGoogleTokenToUser(req.user.username, JSON.parse(body)["access_token"], JSON.parse(body)["refresh_token"])
             res.redirect("/")            
           }
         });
