@@ -155,6 +155,8 @@ app.post('/register', function(req, res){
     }else if(body.username !== '' && body.email !== '' && reEmail.test(body.email) && body.password !== '' && body.password === body.confirmPassword){
       firebaseAPI.registerUser(body.username, body.email, body.password);
       res.render('login', {registerSuccessMessage: '¡Registro realizado con éxito!'});
+    }else{
+      return res.redirect('/');
     }
 });
 
