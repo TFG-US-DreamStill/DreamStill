@@ -29,7 +29,7 @@ module.exports = {
     },
 
   getUserCredentials: function (username) {
-    var user = { username: '', password: '', id: '', email: '', morpheuzID: ''};
+    var user = { username: '', password: '', id: '', email: '', morpheuzID: '', googleFit: {}, fitbit: {}};
 
     var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+username.toLowerCase()+'.json?auth='+process.env.FIREBASE_SECRET,{
     'headers': {
@@ -46,6 +46,8 @@ module.exports = {
       user.email = json["email"];
       user.password = json["password"];
       user.morpheuzID = json["morpheuzID"];
+      user.googleFit = json["googleFit"];
+      user.fitbit = json["fitbit"];
     }
 
   return user;
@@ -94,7 +96,7 @@ module.exports = {
           }
           else {
             console.log('Done!')
-            console.log(body)
+            //console.log(body)
             res.send(body)
           }
         });

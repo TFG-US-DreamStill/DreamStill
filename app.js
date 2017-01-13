@@ -88,6 +88,12 @@ app.post('/login', function(req, res, next) {
     }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
+      if (req.user.googleFit!=undefined){
+        oauth2.googleFitCheckToken(req.user.username, req.user.googleFit.access_token, req.user.googleFit.refresh_token)
+      }
+      if (req.user.fitbit!=undefined){
+        oauth2.fitbitCheckToken(req.user.username, req.user.fitbit.access_token, req.user.fitbit.refresh_token)
+      }
       return res.redirect('/');
     });
   })(req, res, next);

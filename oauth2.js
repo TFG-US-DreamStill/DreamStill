@@ -66,7 +66,7 @@ module.exports = {
       }
       else if (response.statusCode >= 400) {
         console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
-        errorCause = JSON.parse(body)["error"];
+        errorCause = JSON.parse(body)["errors"];
         console.log(errorCause);
         if (errorCause == "invalid_token") {
           googleFitRefreshToken(username, refresh_token);
@@ -78,7 +78,7 @@ module.exports = {
     });
   },
 
-  fitibitCheckToken: function (username, access_token, refresh_token) {
+  fitbitCheckToken: function (username, access_token, refresh_token) {
     /*
     GET https://api.fitbit.com/1/user/-/profile.json
     Authorization: Bearer access_token
@@ -95,10 +95,10 @@ module.exports = {
       }
       else if (response.statusCode >= 400) {
         console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
-        errorCause = JSON.parse(body)["error"];
+        errorCause = JSON.parse(body)["errors"][0]["errorType"];
         console.log(errorCause);
-        if (errorCause == "invalid_token") {
-          googleFitRefreshToken(username, refresh_token);
+        if (errorCause == "expired_token") {
+          fitbitRefreshToken(username, refresh_token);
         }
       } else {
         console.log('Done!')
@@ -112,7 +112,7 @@ function googleFitRefreshToken(username, refresh_token) {
       url: 'https://www.googleapis.com/oauth2/v4/token',
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
       body: 'client_id=' + process.env.GOOGLE_CLIENT_ID + '&client_secret=' + process.env.GOOGLE_CLIENT_SECRET + '&refresh_token=' + refresh_token + '&grant_type=refresh_token&access_type=offline'
     }, function (error, response, body) {
@@ -133,4 +133,28 @@ function googleFitRefreshToken(username, refresh_token) {
 }
 
 function fitbitRefreshToken(username, refresh_token) {
+  requestA({
+      url: 'https://api.fitbit.com/oauth2/token',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + new Buffer(process.env.FITBIT_CLIENT_ID + ":" + process.env.FITBIT_CLIENT_SECRET).toString("base64")
+      },
+      body: 'grant_type=refresh_token&refresh_token=' + refresh_token + '&expires_in=604800'
+    }, function (error, response, body) {
+      if (error) {
+        console.error(error, response, body);
+      }
+      else if (response.statusCode >= 400) {
+        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        console.log(refresh_token)
+      }
+      else {
+        console.log('Done!')
+        //console.log(body)
+        console.log(JSON.parse(body)["access_token"])
+        //firebaseAPI.setGoogleTokenToUser(username, JSON.parse(body)["access_token"], refresh_token)
+      }
+    });
 }
+
