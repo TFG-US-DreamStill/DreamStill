@@ -47,9 +47,9 @@ module.exports = {
         console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
-        //console.log(body)
+        console.log(body)
         //console.log(JSON.parse(body)["access_token"])
-        firebaseAPI.setFitbitTokenToUser(username, JSON.parse(body)["access_token"], JSON.parse(body)["refresh_token"])
+        firebaseAPI.setFitbitTokenToUser(username, JSON.parse(body)["user_id"], JSON.parse(body)["access_token"], JSON.parse(body)["refresh_token"])
         res.redirect("/")
       }
     });
@@ -66,25 +66,25 @@ module.exports = {
       }
       else if (response.statusCode >= 400) {
         console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
-        errorCause = JSON.parse(body)["errors"];
+        errorCause = JSON.parse(body)["error"];
         console.log(errorCause);
         if (errorCause == "invalid_token") {
           googleFitRefreshToken(username, refresh_token);
         }
       } else {
         console.log('Done!')
-        console.log(body)
+        //console.log(body)
       }
     });
   },
 
-  fitbitCheckToken: function (username, access_token, refresh_token) {
+  fitbitCheckToken: function (username, fitbitID, access_token, refresh_token) {
     /*
     GET https://api.fitbit.com/1/user/-/profile.json
     Authorization: Bearer access_token
     */
     requestA({
-      url: 'https://api.fitbit.com/1/user/-/profile.json',
+      url: 'https://api.fitbit.com/1/user/' + fitbitID + '/profile.json',
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + access_token
@@ -98,10 +98,11 @@ module.exports = {
         errorCause = JSON.parse(body)["errors"][0]["errorType"];
         console.log(errorCause);
         if (errorCause == "expired_token") {
-          fitbitRefreshToken(username, refresh_token);
+          fitbitRefreshToken(username, fitbitID, refresh_token);
         }
       } else {
         console.log('Done!')
+        //console.log(body)
       }
     });
   }
@@ -132,7 +133,7 @@ function googleFitRefreshToken(username, refresh_token) {
     });
 }
 
-function fitbitRefreshToken(username, refresh_token) {
+function fitbitRefreshToken(username, fitbitID, refresh_token) {
   requestA({
       url: 'https://api.fitbit.com/oauth2/token',
       method: 'POST',
@@ -153,7 +154,7 @@ function fitbitRefreshToken(username, refresh_token) {
         console.log('Done!')
         //console.log(body)
         console.log(JSON.parse(body)["access_token"])
-        //firebaseAPI.setGoogleTokenToUser(username, JSON.parse(body)["access_token"], refresh_token)
+        firebaseAPI.setFitbitTokenToUser(username, fitbitID, JSON.parse(body)["access_token"], refresh_token)
       }
     });
 }

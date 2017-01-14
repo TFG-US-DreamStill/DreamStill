@@ -140,14 +140,14 @@ module.exports = {
       });
     },
 
-  setFitbitTokenToUser: function (username, access_token, refresh_token) {
+  setFitbitTokenToUser: function (username, fitbitID, access_token, refresh_token) {
     requestA({
       url: 'https://dreamstill-d507c.firebaseio.com/user_credentials/'+ username + '.json?auth='+process.env.FIREBASE_SECRET,
       method: 'PATCH',
       headers: {
         'Content-Type' :' application/json'
       },
-      body: JSON.stringify({"fitbit": {"access_token": access_token, "refresh_token": refresh_token}})
+      body: JSON.stringify({"fitbit": {"access_token": access_token, "refresh_token": refresh_token, "fitbitID": fitbitID}})
     }, function(error, response, body) {
         if (error) { 
           console.error(error, response, body); 
