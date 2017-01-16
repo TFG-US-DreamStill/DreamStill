@@ -3,30 +3,9 @@ var requestA = require('request');
 var email2Json = require('./email2Json.js');
 var request = require('sync-request');
 const md5 = require('md5');
+var fitbitApi = require('./fitbit.api.js')
 
 module.exports = {
-
-  setMorpheuzUserData: function (data, user) {
-    requestA({
-      url: 'https://dreamstill-d507c.firebaseio.com/morpheuz/'+ user + '.json?auth='+process.env.FIREBASE_SECRET,
-      method: 'PATCH',
-      headers: {
-        'Content-Type' :' application/json'/*,
-        'Authorization': 'key=AI...8o'*/
-      },
-      body: data
-    }, function(error, response, body) {
-        if (error) { 
-          console.error(error, response, body); 
-        }
-        else if (response.statusCode >= 400) { 
-          console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
-        }
-        else {
-          console.log('Done!')
-        }
-      });
-    },
 
   getUserCredentials: function (username) {
     var user = { username: '', password: '', id: '', email: '', morpheuzID: '', googleFit: {}, fitbit: {}};
@@ -50,7 +29,7 @@ module.exports = {
       user.fitbit = json["fitbit"];
     }
 
-  return user;
+    return user;
   },
 
   registerUser: function (username, email, password) {
@@ -72,29 +51,25 @@ module.exports = {
     }, function(error, response, body) {
         if (error) { 
           console.error(error, response, body); 
-        }
-        else if (response.statusCode >= 400) { 
+        } else if (response.statusCode >= 400) { 
           console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
-        }
-        else {
+        } else {
           console.log('Done!')
         }
       });
     },
 
-    getMorpheuzDataOfUserAtDate: function (res, morpheuzID, date) {
+  getMorpheuzDataOfUserAtDate: function (res, morpheuzID, date) {
     var year = date.split('-')[0];
     var month = date.split('-')[1];
     var day = date.split('-')[2];
-    requestA('https://dreamstill-d507c.firebaseio.com/morpheuz/'+user+'/'+year+'-'+month+'-'+day+'.json?auth='+process.env.FIREBASE_SECRET, function(error, response, body) {
+    requestA('https://dreamstill-d507c.firebaseio.com/morpheuz/'+morpheuzID+'/'+year+'-'+month+'-'+day+'.json?auth='+process.env.FIREBASE_SECRET, function(error, response, body) {
           if (error) { 
             console.error(error, response, body); 
             res.send(error)
-          }
-          else if (response.statusCode >= 400) { 
+          } else if (response.statusCode >= 400) { 
             console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
-          }
-          else {
+          } else {
             console.log('Done!')
             //console.log(body)
             res.send(body)
@@ -102,16 +77,34 @@ module.exports = {
         });
   },
 
+  setMorpheuzUserData: function (data, morpheuzID) {
+    requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/morpheuz/'+ morpheuzID + '.json?auth='+process.env.FIREBASE_SECRET,
+      method: 'PATCH',
+      headers: {
+        'Content-Type' :' application/json'/*,
+        'Authorization': 'key=AI...8o'*/
+      },
+      body: data
+    }, function(error, response, body) {
+        if (error) { 
+          console.error(error, response, body); 
+        } else if (response.statusCode >= 400) { 
+          console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+        } else {
+          console.log('Done!')
+        }
+      });
+  },
+
   getMorpheuzDaysWithData: function (res, morpheuzID) {
-    requestA('https://dreamstill-d507c.firebaseio.com/morpheuz/'+user+'.json?auth='+process.env.FIREBASE_SECRET+'&shallow=true', function(error, response, body) {
+    requestA('https://dreamstill-d507c.firebaseio.com/morpheuz/'+morpheuzID+'.json?auth='+process.env.FIREBASE_SECRET+'&shallow=true', function(error, response, body) {
           if (error) { 
             console.error(error, response, body); 
             res.send(error)
-          }
-          else if (response.statusCode >= 400) { 
+          } else if (response.statusCode >= 400) { 
             console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
-          }
-          else {
+          } else {
             console.log('Done!')
             console.log(body)
             res.send(body)
@@ -130,11 +123,9 @@ module.exports = {
     }, function(error, response, body) {
         if (error) { 
           console.error(error, response, body); 
-        }
-        else if (response.statusCode >= 400) { 
+        } else if (response.statusCode >= 400) { 
           console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
-        }
-        else {
+        } else {
           console.log('Done!')
         }
       });
@@ -151,14 +142,63 @@ module.exports = {
     }, function(error, response, body) {
         if (error) { 
           console.error(error, response, body); 
-        }
-        else if (response.statusCode >= 400) { 
+        } else if (response.statusCode >= 400) { 
           console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
-        }
-        else {
+        } else {
           console.log('Done!')
         }
       });
+    },
+
+    getFitbitDataOfUser: function (fitbitID, access_token) {
+      requestA('https://dreamstill-d507c.firebaseio.com/fitbit/'+fitbitID+'.json?auth='+process.env.FIREBASE_SECRET+'&shallow=true', function(error, response, body) {
+            if (error) { 
+              console.error(error, response, body); 
+            } else if (response.statusCode >= 400) { 
+              console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+
+            } else {
+              console.log('Done!');
+              console.log(body)
+              body === "null"
+              ? fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, "2015-01-01")
+              : fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, "2015-01-01");
+            }
+          });
+    },
+
+    setFitbitDataToUser: function (fitbitID, data) {
+      requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/fitbit/'+ fitbitID + '.json?auth='+process.env.FIREBASE_SECRET,
+      method: 'PATCH',
+      headers: {
+        'Content-Type' :' application/json'
+      },
+      body: data
+      }, function(error, response, body) {
+        if (error) { 
+          console.error(error, response, body); 
+        } else if (response.statusCode >= 400) { 
+          console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+        } else {
+          console.log('Done!')
+        }
+      });
+    },
+
+    getFitbitDaysWithData: function (res, fitbitID) {
+      requestA('https://dreamstill-d507c.firebaseio.com/fitbit/'+fitbitID+'.json?auth='+process.env.FIREBASE_SECRET+'&shallow=true', function(error, response, body) {
+            if (error) { 
+              console.error(error, response, body); 
+              res.send(error)
+            } else if (response.statusCode >= 400) { 
+              console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+            } else {
+              console.log('Done!')
+              console.log(body)
+              res.send(body)
+            }
+          });
     }
   
 }
