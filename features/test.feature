@@ -1,4 +1,8 @@
-Feature: Running Cucumber with Protractor
-    As a user of Protractor
-    I should be able to use Cucumber
-    In order to run my E2E tests
+Feature: Go to homepage
+  In order to go to homepage
+  As a visitor
+  I want to be able to view the homepage
+
+  Scenario: Seeing homepage
+    Given I am on the homepage
+    Then the title should equal "DreamStill"

@@ -64,6 +64,8 @@
   },
   "devDependencies": {
     "canonical-path": "0.0.2",
+    "chai":             "^2.0.0",
+    "chai-as-promised": "^4.2.0",
     "concurrently": "^3.0.0",
     "cucumber": "^0.9.3",
     "http-server": "^0.9.0",
