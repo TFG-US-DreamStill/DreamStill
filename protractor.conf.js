@@ -20,7 +20,7 @@ exports.config = {
     jasmineNodeOpts: {
         showColors: true
     },
-    useAllAngular2AppRoots: true,
+    //useAllAngular2AppRoots: true,
     cucumberOpts: {
         require: 'features/stepDefinitions.js',
         format: 'pretty', // or summary
