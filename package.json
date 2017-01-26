@@ -64,6 +64,7 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
+    "@types/hammerjs": "^2.0.34",
     "canonical-path": "0.0.2",
     "chai": "^2.0.0",
     "chai-as-promised": "^4.2.0",

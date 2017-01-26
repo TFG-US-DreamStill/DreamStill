@@ -4,7 +4,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
-//import {MdCardModule} from '@angular2-material/card';
+import {MdCardModule} from '@angular2-material/card';
 import {MdButtonModule} from '@angular2-material/button';
 //import {MdIconModule} from '@angular2-material/icon';
 import {MdIconRegistry} from '@angular2-material/icon';
@@ -21,6 +21,7 @@ import { GraphsComponent }      from './graphs.component';
 import { CalendarModule }       from 'angular-calendar';
 import { FirebaseService }      from './firebase.service';
 import { ApisComponent }        from './apis.component';
+import { MorpheuzComponent }    from './morpheuz.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { ApisComponent }        from './apis.component';
     FormsModule,
     HttpModule,
     BrowserModule, 
-    //MdCardModule, 
+    MdCardModule, 
     MdButtonModule, 
     //MdIconModule,
     AppRoutingModule,
@@ -39,7 +40,8 @@ import { ApisComponent }        from './apis.component';
     CalendarComponent,
     PlotlyComponent,
     GraphsComponent,
-    ApisComponent
+    ApisComponent,
+    MorpheuzComponent
   ],
   providers: [ MdIconRegistry, FirebaseService],
   bootstrap: [ AppComponent ]

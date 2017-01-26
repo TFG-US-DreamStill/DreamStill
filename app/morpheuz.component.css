@@ -1,0 +1,24 @@
+md-card {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    box-shadow: 2px 1px 15px #888888;
+}
+
+.morpheuz-email {
+    text-align: center;
+    background: gainsboro;
+    font-weight: bold;
+    font-size: 3vh;
+    padding: 20px;
+}
