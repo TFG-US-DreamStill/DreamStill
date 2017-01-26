@@ -16,8 +16,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent }         from './app.component';
 import { CalendarComponent }    from './calendar.component';
-import { FirebaseComponent }    from './firebase.component';
-import { MorpheuzReprComponent }from './morpheuzRepr.component';
 import { PlotlyComponent }      from './plotly.component';
 import { GraphsComponent }      from './graphs.component';
 import { CalendarModule }       from 'angular-calendar';
@@ -39,8 +37,6 @@ import { ApisComponent }        from './apis.component';
   declarations: [
     AppComponent,
     CalendarComponent,
-    FirebaseComponent,
-    MorpheuzReprComponent,
     PlotlyComponent,
     GraphsComponent,
     ApisComponent
