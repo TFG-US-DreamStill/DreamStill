@@ -7,6 +7,7 @@ const session = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 const firebaseAPI = require('./firebase.api.js');
 var requestA = require('request');
+var oauth2 = require('./oauth2.js');
 var app = express();
 
 // all environments
@@ -65,37 +66,13 @@ app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res
 app.get('/getAuthToGoogleFit', passport.authenticationMiddleware(), function(req, res){
   // console.log(req.query.code)
   // params -> req.query.code
-    requestA({
-        url: 'https://accounts.google.com/o/oauth2/token',
-        method: 'POST',
-        headers: {
-          'Content-Type' : 'application/x-www-form-urlencoded',
-          'Host' : 'accounts.google.com'
-        },
-        body: 'code='+req.query.code+'&client_id='+process.env.GOOGLE_CLIENT_ID+'&client_secret='+process.env.GOOGLE_CLIENT_SECRET+'&redirect_uri=http://localhost:3000/getAuthToGoogleFit&grant_type=authorization_code'
-      }, function(error, response, body) {
-          if (error) { 
-            console.error(error, response, body); 
-          }
-          else if (response.statusCode >= 400) { 
-            console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
-          }
-          else {
-            console.log('Done!')
-            //console.log(body)
-            //console.log(JSON.parse(body)["access_token"])
-            firebaseAPI.setGoogleTokenToUser(req.user.username, JSON.parse(body)["access_token"])
-            res.redirect("/")            
-          }
-        });
+  oauth2.googleFitAuth(req.user.username, req.query.code, res);
 });
 
 app.get('/getAuthToFitbit', passport.authenticationMiddleware(), function(req, res){
-  //console.log(req.query.access_token)
-  // params -> req.query.access_token
-    
-  firebaseAPI.setFitbitTokenToUser(req.user.username, req.query.access_token);
-  res.redirect("/");
+  //console.log(req.query.code)
+  // params -> req.query.code
+  oauth2.fitbitAuth(req.user.username, req.query.code, res);
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
@@ -111,6 +88,12 @@ app.post('/login', function(req, res, next) {
     }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
+      if (req.user.googleFit!=undefined){
+        oauth2.googleFitCheckToken(req.user.username, req.user.googleFit.access_token, req.user.googleFit.refresh_token)
+      }
+      if (req.user.fitbit!=undefined){
+        oauth2.fitbitCheckToken(req.user.username, req.user.fitbit.fitbitID, req.user.fitbit.access_token, req.user.fitbit.refresh_token)
+      }
       return res.redirect('/');
     });
   })(req, res, next);
@@ -135,6 +118,8 @@ app.post('/register', function(req, res){
     }else if(body.username !== '' && body.email !== '' && reEmail.test(body.email) && body.password !== '' && body.password === body.confirmPassword){
       firebaseAPI.registerUser(body.username, body.email, body.password);
       res.render('login', {registerSuccessMessage: '¡Registro realizado con éxito!'});
+    }else{
+      return res.redirect('/');
     }
 });
 
