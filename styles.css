@@ -198,8 +198,8 @@ nav a.router-link-active {
 .md-overlay-container {
   position: absolute;
   pointer-events: none;
-  top: 0;
-  left: 0;
+  top: 41px;
+  left: -20px;
   height: 100%;
   width: 100%; }
 

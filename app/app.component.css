@@ -32,13 +32,13 @@ nav a.active {
     color: #039be5;
 }
 
-.logout-button{
+.menu-button{
     color: white;
     background-color: #673AB7;
     float: right;
 }
 
-.logout-button:hover{
+.menu-button:hover{
     color: white;
     background-color: #673AB7;
     float: right;
