@@ -6,7 +6,7 @@ import {Http} from '@angular/http';
             templateUrl: 'morpheuz.component.html', 
             styleUrls: ['morpheuz.component.css']})
 
-export class MorpheuzComponent implements OnInit {
+export class MorpheuzComponent{
     morpheuzID: String;
     constructor(private _http : Http) {
         _http
@@ -17,6 +17,4 @@ export class MorpheuzComponent implements OnInit {
                 console.log(this.morpheuzID);
             }, err => console.log(err), () => console.log('done'));
     }
-
-    ngOnInit() {}
 }

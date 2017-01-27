@@ -38,6 +38,7 @@
     "@angular2-material/card": "^2.0.0-alpha.8-2",
     "@angular2-material/core": "^2.0.0-alpha.8-2",
     "@angular2-material/icon": "^2.0.0-alpha.8-2",
+    "@angular2-material/menu": "^2.0.0-alpha.8-2",
     "angular-calendar": "^0.4.1",
     "angular-in-memory-web-api": "~0.1.5",
     "bootstrap": "^3.3.7",
