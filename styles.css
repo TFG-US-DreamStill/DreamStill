@@ -208,3 +208,9 @@ nav a.router-link-active {
   pointer-events: auto;
   box-sizing: border-box;
   z-index: 1000; }
+
+.mdMenuItem {
+    color: black;
+    margin-left: 0.5vh;
+    text-decoration: none;
+}
