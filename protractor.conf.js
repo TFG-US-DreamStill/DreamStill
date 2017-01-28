@@ -22,7 +22,7 @@ exports.config = {
     },
     //useAllAngular2AppRoots: true,
     cucumberOpts: {
-        require: 'features/stepDefinitions.js',
+        require: 'features/step_definitions/*.js',
         format: 'pretty', // or summary
         keepAlive: false
     }
