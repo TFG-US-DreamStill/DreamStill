@@ -28,9 +28,17 @@ module.exports = function() {
     });
 
     this.Then(/the title should equal "([^"]*)"$/, function(text, next) {
+            browser.waitForAngular();
+            browser.sleep(500); 
             expect(browser.getTitle())
             .to.eventually.equal(text)
             .and.notify(next);
+    });
+
+    this.Then(/I logout$/, function(next) {
+            element(by.css('.menu-button')).click();
+            element.all(by.css('.mdMenuItem')).get(2).click();
+            next();
     });
     
 };

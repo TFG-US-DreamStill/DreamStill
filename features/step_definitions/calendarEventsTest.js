@@ -27,9 +27,9 @@ module.exports = function() {
     });
 
     this.Then(/^there are must be "([^"]*)" events on current month$/, function(text, next) {
-            //element.all(by.name('username')).get(0).sendKeys(text);
-            console.log((element.all(by.class('cal-event')).length()));//.get(0).sendKeys("test");
-            //element(by.css('#loginContainer #flow-button')).click();
+            browser.waitForAngular();
+            browser.sleep(5000); 
+            console.log((element.all(by.css('.cal-event'))));
             //next();
     });
 

@@ -7,6 +7,7 @@ Feature: Go to homepage
     Given I am on the homepage
     Then login to the Login Page as "test"
     Then the title should equal "DreamStill"
+    Then I logout
 
 Feature: Check calendar events
   In order to check calendar events
