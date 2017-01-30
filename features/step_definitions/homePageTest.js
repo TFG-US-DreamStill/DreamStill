@@ -29,7 +29,7 @@ module.exports = function() {
 
     this.Then(/the title should equal "([^"]*)"$/, function(text, next) {
             browser.waitForAngular();
-            browser.sleep(500); 
+            browser.sleep(5000); 
             expect(browser.getTitle())
             .to.eventually.equal(text)
             .and.notify(next);

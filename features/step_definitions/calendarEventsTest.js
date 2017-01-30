@@ -28,9 +28,11 @@ module.exports = function() {
 
     this.Then(/^there are must be "([^"]*)" events on current month$/, function(text, next) {
             browser.waitForAngular();
-            browser.sleep(5000); 
-            console.log((element.all(by.css('.cal-event'))));
-            //next();
+            browser.sleep(6000); 
+            element.all(by.css('.cal-event')).then(function(items) {
+                        expect(items.length).to.equal(Number(text));
+                        next();
+                        });
     });
 
 };
