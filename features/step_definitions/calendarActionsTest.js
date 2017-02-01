@@ -37,8 +37,10 @@ module.exports = function () {
     });
 
     this.Then(/^we must be on the "([^"]*)" month$/, function (arg1, callback) {
-        // Write code here that turns the phrase above into concrete actions
-        callback.pending();
+        element.all(by.css('.title h3')).then(function(item) {
+                        expect(items.getText()).to.equal(text);
+                        next();
+                        });
     });
 
     this.Then(/^click to the calendar button "([^"]*)" one time$/, function (arg1, callback) {
