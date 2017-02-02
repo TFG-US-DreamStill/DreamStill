@@ -6,6 +6,8 @@ chai.use(chaiAsPromised);
 
 var expect = chai.expect;
 
+var params = browser.params;
+
 module.exports = function() {
     this.registerHandler('AfterScenario', function (event, callback) {
         // clear localStorage
@@ -21,7 +23,7 @@ module.exports = function() {
 
     this.Then(/login to the Login Page that time as "([^"]*)"$/, function(text, next) {
             element.all(by.name('username')).get(0).sendKeys(text);
-            element.all(by.name('password')).get(0).sendKeys("");
+            element.all(by.name('password')).get(0).sendKeys(params.passwords[text]);
             element(by.css('#loginContainer #flow-button')).click();
             next();
     });

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 exports.config = {
     baseUrl: 'http://localhost:3000',
     getPageTimeout: 60000,
@@ -8,6 +10,15 @@ exports.config = {
         browserName: 'chrome',
         version: '',
         platform: 'ANY'
+    },
+
+    // This can be changed via the command line as:
+    // --params.login.user 'ngrocks'
+    params: {
+        passwords: {
+        test: process.env.TEST_PASSWORD,
+        juanra: process.env.JUANRA_PASSWORD
+        }
     },
 
     framework: 'custom',

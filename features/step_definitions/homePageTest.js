@@ -6,6 +6,8 @@ chai.use(chaiAsPromised);
 
 var expect = chai.expect;
 
+var params = browser.params;
+
 module.exports = function() {
     this.setDefaultTimeout(60 * 1000);
     this.registerHandler('AfterScenario', function (event, callback) {
@@ -22,7 +24,7 @@ module.exports = function() {
 
     this.Then(/login to the Login Page as "([^"]*)"$/, function(text, next) {
             element.all(by.name('username')).get(0).sendKeys(text);
-            element.all(by.name('password')).get(0).sendKeys("");
+            element.all(by.name('password')).get(0).sendKeys(params.passwords[text]);
             element(by.css('#loginContainer #flow-button')).click();
             next();
     });
