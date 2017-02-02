@@ -18,6 +18,11 @@ exports.config = {
         passwords: {
         test: process.env.TEST_PASSWORD,
         juanra: process.env.JUANRA_PASSWORD
+        },
+        date: {
+            currentMonth: '',
+            twoMonthsBefore: '',
+            oneMonthBefore: ''
         }
     },
 
