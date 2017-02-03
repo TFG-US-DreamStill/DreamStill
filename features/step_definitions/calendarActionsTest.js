@@ -38,16 +38,6 @@ module.exports = function() {
         }
     });
 
-    this.Then(/^we must be on the "([^"]*)" month$/, function (text, next) {
-        var title = element(by.css('.title h3'));
-        element(by.css('.title h3')).getText().then(function (value) {
-
-            expect(value).to.equal(text);
-            next();
-        });
-        
-    });
-
     this.Then(/^click to the calendar button "([^"]*)" one time$/, function (text, next) {
         if (text==="Previous"){
             element.all(by.css('.purple-button')).get(0).click();
@@ -61,6 +51,36 @@ module.exports = function() {
             element.all(by.css('.purple-button')).get(2).click();
             next();
         }
+    });
+
+    this.Then(/^we must be on the view of two months before$/, function (next) {
+        var title = element(by.css('.title h3'));
+        element(by.css('.title h3')).getText().then(function (value) {
+
+            expect(value).to.equal(params.date.twoMonthsBefore);
+            next();
+        });
+        
+    });
+
+    this.Then(/^we must be on the view of one month before$/, function (next) {
+        var title = element(by.css('.title h3'));
+        element(by.css('.title h3')).getText().then(function (value) {
+
+            expect(value).to.equal(params.date.oneMonthBefore);
+            next();
+        });
+        
+    });
+
+    this.Then(/^we must be on the view of the current month$/, function (next) {
+        var title = element(by.css('.title h3'));
+        element(by.css('.title h3')).getText().then(function (value) {
+
+            expect(value).to.equal(params.date.currentMonth);
+            next();
+        });
+        
     });
 
 };

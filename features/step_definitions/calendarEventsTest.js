@@ -28,11 +28,11 @@ module.exports = function() {
             next();
     });
 
-    this.Then(/^there are must be "([^"]*)" events on current month$/, function(text, next) {
+    this.Then(/^there are must be the correct number of events on current month$/, function(next) {
             browser.waitForAngular();
             browser.sleep(6000); 
             element.all(by.css('.cal-event')).then(function(items) {
-                        expect(items.length).to.equal(Number(text));
+                        expect(items.length).to.equal(params.events);
                         next();
                         });
     });

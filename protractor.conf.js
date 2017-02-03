@@ -1,4 +1,5 @@
 require('dotenv').config()
+var ancillaryMethods = require('./ancillaryMethods.js');
 
 exports.config = {
     baseUrl: 'http://localhost:3000',
@@ -19,10 +20,11 @@ exports.config = {
         test: process.env.TEST_PASSWORD,
         juanra: process.env.JUANRA_PASSWORD
         },
+        events: ancillaryMethods.getNumMorpheuzEventsOfCurrentMonthForUserId(18),
         date: {
-            currentMonth: '',
-            twoMonthsBefore: '',
-            oneMonthBefore: ''
+            currentMonth: ancillaryMethods.getDates()[0],
+            twoMonthsBefore: ancillaryMethods.getDates()[1],
+            oneMonthBefore: ancillaryMethods.getDates()[2]
         }
     },
 
