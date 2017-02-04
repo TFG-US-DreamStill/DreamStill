@@ -56,21 +56,20 @@ body .custom-container .btn-custom:active { transform: scale(0.98); }
 
 input.material-input[type=password] { font: large Verdana, sans-serif; }
 
-.material-icons { vertical-align: bottom; }
+#row1, #row2 {
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+}
 
-a.download-button { font-weight: 700; color: #3f51b5; position: absolute; top: 20px; right: 20px; text-decoration: none; transition: all 200ms ease-in-out; }
-
-a.download-button:hover { color: rgba(63, 81, 181, 0.43); }
 
 #loginContainer{
-    float: left;
-    margin-left: 50vh;
+    margin-right: 2%;
     height: auto;
 }
 
 #registerContainer{
-    float: left;
-    margin-left: 5vh;
+    margin-left: 2%;
     height: auto;
 }
 
