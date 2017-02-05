@@ -7,7 +7,7 @@ before_script:
   - 'node_modules/protractor/bin/webdriver-manager update --standalone --firefox'
   - 'node_modules/protractor/bin/webdriver-manager start 2>&1 &'  
   - sleep 5
-  - npm start
+  - node app.js
   - sleep 5
 deploy:
   provider: heroku
