@@ -89,3 +89,9 @@ input.material-input[type=password] { font: large Verdana, sans-serif; }
     display: inline-block;
     margin-top: 17%;
 }
+
+.messageText {
+    /* font-family: arial; */
+    text-align: center;
+    padding: 20px;
+}

@@ -14,14 +14,19 @@ html
         .col.s12.m6.offset-m3.hcenter
             .card.grey.darken-1
                 .card-content.white
-                    span.card-title Introduzca su nombre de usuario para restablecer la contraseña
+                    span.card-title Introduzca su nueva contraseña
                     .row
-                        form.col.s12(action='/forgot', method='POST')
+                        form.col.s12(action='/reset', method='POST')
                             .row
                                 br
+                                input(name='user' type='hidden', value='#{user}')
                                 .input-field.col.s12
-                                    input#username.validate(name='username' type='text', required='')
-                                    label(for='username', data-error='El nombre de usuario no puede ser vacío', ) Nombre de usuario
+                                    input#password.validate(name='password' type='password', required='')
+                                    label(for='password', data-error='La contraseña no puede ser vacía', ) Contraseña
+                                br
+                                .input-field.col.s12
+                                    input#confirmPassword.validate(name='confirmPassword' type='password', required='')
+                                    label(for='confirmPassword', data-error='La contraseña no puede ser vacía', ) Repita la contraseña
                                     span.validation !{errorMessage}
                             button.btn.waves-effect.waves-light(type='submit', name='action', style='background-color:#3F51B5')
                                 | Submit

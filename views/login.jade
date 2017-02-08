@@ -24,13 +24,13 @@ html
               br
               br
               .form-group.custom-elem
-                label.placeholder Username
+                label.placeholder Nombre de usuario
                 input.form-control.material-input(name='username', type='text', autocomplete='off')
                 span.bottom-liner
                 span.highlight
               span.validation#username-login
               .form-group.custom-elem
-                label.placeholder Password
+                label.placeholder Contraseña
                 input.form-control.material-input(name='password', type='password', autocomplete='off')
                 span.bottom-liner
                 span.highlight
@@ -39,7 +39,7 @@ html
             p.text-center
               small
                 b
-                  a(href='#') Forgot something?
+                  a(href='/forgot') ¿Has olvidado la contraseña?
             br
             br
             span.validation !{loginMessage}
@@ -54,7 +54,7 @@ html
             br
             form#registerForm.form(role='form', action='/register', method='POST')
               .form-group.custom-elem
-                label.placeholder Username
+                label.placeholder Nombre de usuario
                 input.form-control.material-input(name='username', type='text', autocomplete='off')
                 span.bottom-liner
                 span.highlight
@@ -66,13 +66,13 @@ html
                 span.highlight
               span.validation#email-register
               .form-group.custom-elem
-                label.placeholder Password
+                label.placeholder Contraseña
                 input.form-control.material-input(name='password', type='password', autocomplete='off')
                 span.bottom-liner
                 span.highlight
               span.validation#password-register
               .form-group.custom-elem
-                label.placeholder Confirm Password
+                label.placeholder Confirmar Contraseña
                 input.form-control.material-input(name='confirmPassword', type='password', autocomplete='off')
                 span.bottom-liner
                 span.highlight

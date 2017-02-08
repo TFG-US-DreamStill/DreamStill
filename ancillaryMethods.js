@@ -41,5 +41,20 @@ module.exports = {
             }
         }
         return result;
+    },
+
+    obscureEmail: function (email) {
+        var emailSplit = email.split('@');
+        var email = '';
+        for (i = 0; i < emailSplit[0].length; i++) {
+            if (i <= emailSplit.length / 2) {
+                email += emailSplit[0][i];
+            } else {
+                email += '*';
+            }
+        }
+        var result = email + '@' + emailSplit[1];
+        
+        return result;
     }
 };

@@ -15,7 +15,8 @@ module.exports = {
       email: '',
       morpheuzID: '',
       googleFit: {},
-      fitbit: {}
+      fitbit: {},
+      passwordResetToken: ''
     };
 
     var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/' + username.toLowerCase() + '.json?auth=' + process.env.FIREBASE_SECRET, {
@@ -36,6 +37,7 @@ module.exports = {
       user.morpheuzID = json["morpheuzID"];
       user.googleFit = json["googleFit"];
       user.fitbit = json["fitbit"];
+      user.passwordResetToken = json["passwordResetToken"];
     }
 
     return user;
@@ -46,13 +48,35 @@ module.exports = {
       username: '',
       password: '',
       id: '',
-      email: ''
+      email: '',
+      passwordResetToken: ''
     };
 
     user.username = username.toLowerCase();
     user.password = md5(password);
-    user.id = new Date().valueOf();;
+    user.id = new Date().valueOf();
     user.email = email;
+
+    requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/user_credentials/' + user.username + '.json?auth=' + process.env.FIREBASE_SECRET,
+      method: 'PATCH',
+      headers: {
+        'Content-Type': ' application/json'/*,
+        'Authorization': 'key=AI...8o'*/
+      },
+      body: JSON.stringify(user)
+    }, function (error, response, body) {
+      if (error) {
+        console.error(error, response, body);
+      } else if (response.statusCode >= 400) {
+        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+      } else {
+        console.log('Done!')
+      }
+    });
+  },
+
+  updateUserCredentials: function (user) {
 
     requestA({
       url: 'https://dreamstill-d507c.firebaseio.com/user_credentials/' + user.username + '.json?auth=' + process.env.FIREBASE_SECRET,

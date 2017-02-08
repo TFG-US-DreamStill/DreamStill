@@ -8,6 +8,9 @@ var LocalStrategy = require('passport-local').Strategy;
 const firebaseAPI = require('./firebase.api.js');
 var requestA = require('request');
 var oauth2 = require('./oauth2.js');
+var nodemailer = require('nodemailer');
+const md5 = require('md5');
+var ancillaryMethods = require('./ancillaryMethods.js');
 var app = express();
 
 // all environments
@@ -32,11 +35,15 @@ if ('development' == app.get('env')) {
 app.use(express.errorHandler());
 }
 
-//forgot Password method
-var forgot = require('password-reset')({
-    uri : 'http://localhost:3000/password_reset',
-    from : process.env.GMAIL_USERNAME,
-    host : 'smtp.gmail.com', port : 465,
+//email
+var transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.GMAIL_USERNAME,
+        pass: process.env.GMAIL_PASSWORD
+    },
 });
 
 require('./authentication').init(app);
@@ -49,8 +56,6 @@ app.use(passport.authenticationMiddleware(), function(req, res) {
   res.sendfile(__dirname + '/app/index.html');
   }
 });
-
-app.use(forgot.middleware);
 
 app.get('/logout', passport.authenticationMiddleware(), function(req, res){
   req.session.destroy();
@@ -86,6 +91,15 @@ app.get('/getAuthToFitbit', passport.authenticationMiddleware(), function(req, r
 
 app.get('/forgot', function(req, res){
    return res.render('forgot');
+});
+
+app.get('/reset', function(req, res){
+
+  if(firebaseAPI.getUserCredentials(req.query.user).passwordResetToken===req.query.token){
+    return res.render('reset', {user: req.query.user});
+  }else{
+    return res.render('messages', {message: 'El token no es válido, por favor vuelva a comprobar el correo o en caso contrario vuelva a seguir el proceso para restablecer la contraseña.'});
+  }
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
@@ -136,31 +150,46 @@ app.post('/register', function(req, res){
     }
 });
 
-app.post('/forgot', express.bodyParser(), function (req, res) {
-    var email = req.body.email;
-    var reset = forgot(email, function (err) {
-        if (err) res.end('Error sending message: ' + err)
-        else res.end('Check your inbox for a password reset message.')
+app.post('/forgot', function (req, res) {
+    console.log('Username: '+req.body.username);
+    var username = req.body.username;
+    var user = firebaseAPI.getUserCredentials(username);
+    if(user.email!=''){
+      token = md5(user.id+new Date().valueOf());
+      var mailOptions = {
+      from: 'DreamStill <dreamstillapp@gmail.com>',
+      to: user.email,
+      subject: 'Restablecer contraseña',
+      text: 'Hola '+user.username+': \n\nPara restablecer tu contraseña te rogamos que accedas al siguiente enlace http://localhost:3000/reset?user='+user.username+'&token='+token+' \n\nSi no has sido tú quien ha pedido restablecer la contraseña te rogamos que ignores éste mensaje. \n\nUn saludo. \nGracias por usar DreamStill.'
+      };
+      user.passwordResetToken = token;
+      firebaseAPI.updateUserCredentials(user);
+      userMail = ancillaryMethods.obscureEmail(user.email);
+      transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);
+            return res.render('messages', {message: 'El email ha sido envíado a la siguiente dirección: '+userMail+' por favor compruebe su bandeja de entrada.'});
+        };
     });
-
-    reset.on('request', function (req_, res_) {
-        req_.session.reset = { email : email, id : reset.id };
-        fs.createReadStream(__dirname + '/forgot.html').pipe(res_);
-    });
+    }else{
+      res.render('forgot', {errorMessage: 'El usuario introducido no está registrado en el sistema'});
+    }
 });
 
-app.post('/reset', express.bodyParser(), function (req, res) {
-    if (!req.session.reset) return res.end('reset token not set');
-
+app.post('/reset', function (req, res) {
     var password = req.body.password;
-    var confirm = req.body.confirm;
-    if (password !== confirm) return res.end('passwords do not match');
+    var confirm = req.body.confirmPassword;
+    var username = req.body.user;
+    if (password !== confirm) return res.render('reset', {errorMessage: 'Las contraseñas introducidas no coinciden.', user: username});
 
-    // update the user db here
+    var user = firebaseAPI.getUserCredentials(username);
+    user.password = md5(password);
+    user.passwordResetToken = '';
+    firebaseAPI.updateUserCredentials(user);
 
-    forgot.expire(req.session.reset.id);
-    delete req.session.reset;
-    res.end('password reset');
+    return res.render('messages', {message: 'Su contraseña ha sido restablecida con éxito vuelva a la página principal y acceda con su nueva contraseña.'});
 });
 
 http.createServer(app).listen(app.get('port'), function(){
