@@ -95,3 +95,12 @@ input.material-input[type=password] { font: large Verdana, sans-serif; }
     text-align: center;
     padding: 20px;
 }
+
+.input-field input[type=text]:focus + label {
+     color: #3F51B5;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #3F51B5;
+    box-shadow: 0 1px 0 0 #3F51B5;
+}
