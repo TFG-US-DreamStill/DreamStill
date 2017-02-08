@@ -32,6 +32,13 @@ if ('development' == app.get('env')) {
 app.use(express.errorHandler());
 }
 
+//forgot Password method
+var forgot = require('password-reset')({
+    uri : 'http://localhost:3000/password_reset',
+    from : 'password-robot@localhost',
+    host : 'localhost', port : 25,
+});
+
 require('./authentication').init(app);
 
 app.use(passport.authenticationMiddleware(), function(req, res) {
@@ -42,6 +49,8 @@ app.use(passport.authenticationMiddleware(), function(req, res) {
   res.sendfile(__dirname + '/app/index.html');
   }
 });
+
+app.use(forgot.middleware);
 
 app.get('/logout', passport.authenticationMiddleware(), function(req, res){
   req.session.destroy();
@@ -73,6 +82,10 @@ app.get('/getAuthToFitbit', passport.authenticationMiddleware(), function(req, r
   //console.log(req.query.code)
   // params -> req.query.code
   oauth2.fitbitAuth(req.user.username, req.query.code, res);
+});
+
+app.get('/forgot', function(req, res){
+   return res.render('forgot');
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
@@ -121,6 +134,33 @@ app.post('/register', function(req, res){
     }else{
       return res.redirect('/');
     }
+});
+
+app.post('/forgot', express.bodyParser(), function (req, res) {
+    var email = req.body.email;
+    var reset = forgot(email, function (err) {
+        if (err) res.end('Error sending message: ' + err)
+        else res.end('Check your inbox for a password reset message.')
+    });
+
+    reset.on('request', function (req_, res_) {
+        req_.session.reset = { email : email, id : reset.id };
+        fs.createReadStream(__dirname + '/forgot.html').pipe(res_);
+    });
+});
+
+app.post('/reset', express.bodyParser(), function (req, res) {
+    if (!req.session.reset) return res.end('reset token not set');
+
+    var password = req.body.password;
+    var confirm = req.body.confirm;
+    if (password !== confirm) return res.end('passwords do not match');
+
+    // update the user db here
+
+    forgot.expire(req.session.reset.id);
+    delete req.session.reset;
+    res.end('password reset');
 });
 
 http.createServer(app).listen(app.get('port'), function(){
