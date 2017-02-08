@@ -35,8 +35,8 @@ app.use(express.errorHandler());
 //forgot Password method
 var forgot = require('password-reset')({
     uri : 'http://localhost:3000/password_reset',
-    from : 'password-robot@localhost',
-    host : 'localhost', port : 25,
+    from : process.env.GMAIL_USERNAME,
+    host : 'smtp.gmail.com', port : 465,
 });
 
 require('./authentication').init(app);

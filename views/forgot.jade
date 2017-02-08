@@ -16,7 +16,7 @@ html
                 .card-content.white
                     span.card-title Introduzca su email para restablecer la contraseña
                     .row
-                        form.col.s12
+                        form.col.s12(action='/forgot', method='POST')
                             .row
                                 br
                                 .input-field.col.s12
