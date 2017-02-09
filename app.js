@@ -121,11 +121,6 @@ app.post('/login', function(req, res, next) {
       if (req.user.fitbit!=undefined){
         oauth2.fitbitCheckToken(req.user.username, req.user.fitbit.fitbitID, req.user.fitbit.access_token, req.user.fitbit.refresh_token)
       }
-      if (req.body.rememberme) {
-          req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // Cookie expires after 30 days
-        } else {
-          req.session.cookie.expires = false; // Cookie expires at end of session
-        }
       return res.redirect('/');
     });
   })(req, res, next);
