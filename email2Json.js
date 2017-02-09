@@ -5,7 +5,7 @@ module.exports = {
         var emailSleepData = emailArray[1].split("<br/>");
         var sleepData = [];
         var result = [];
-        for (let temp of emailSleepData) {
+        for (var temp of emailSleepData) {
             temp = "" + temp;
             if (temp.indexOf("</pre>") !== -1) {
                 break;
