@@ -19,10 +19,8 @@ html
             h3.text-center Logueate con tu
             h3.text-center cuenta
             br
+            br
             form#loginForm.form(role='form', action='/login', method='POST')
-              br
-              br
-              br
               .form-group.custom-elem
                 label.placeholder Nombre de usuario
                 input.form-control.material-input(name='username', type='text', autocomplete='off')
@@ -34,8 +32,11 @@ html
                 input.form-control.material-input(name='password', type='password', autocomplete='off')
                 span.bottom-liner
                 span.highlight
+              .form-group.custom-elem
+                br
+                input.customcheckbox(name='rememberme', type='checkbox', autocomplete='off')
+                |  Recordarme durante 30 días
               span.validation#password-login
-            br
             p.text-center
               small
                 b
