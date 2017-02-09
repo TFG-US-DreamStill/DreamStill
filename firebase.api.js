@@ -253,7 +253,7 @@ module.exports = {
 
 }
 
-var to = 'dreamstillapp+18@gmail.com';
+/*var to = 'dreamstillapp+18@gmail.com';
 var subject = 'Morpheuz-2016-11-05';
 var body = `<html><body><h2>Chart Display</h2><a
 href='http://ui.morpheuz.net/morpheuz/view-46.html?base=1478303450000&fromhr=08&tohr=09&frommin=45&tomin=00&smart=Y&vers=46&goneoff=N&token=7abbac9e47999d4ef5a44b1e59ebaeee&age=21&emailto=dreamstillapp%2b18@gmail.com&noset=Y&zz=0&lat=37.5&long=-5.1&fault=0&graphx=6c52d31e434234e4980d20a94191a00fa1d303b0442f503235104728002bffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'>Report</a><br/><h2>CSV
@@ -264,6 +264,6 @@ represent smart alarm actual, start and end<br/><br/><small>Please don't
 reply, this is an unmonitored mailbox</small><br/></body></html>`;
 
 var data = email2Json.parseEmail2Json(to, subject, body)[0];
-var user = email2Json.parseEmail2Json(to, subject, body)[1];
+var user = email2Json.parseEmail2Json(to, subject, body)[1];*/
 
 //setUserData(data, user); registerUser("Test", "test@test.com", "test");
