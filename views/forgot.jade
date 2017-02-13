@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title ¿Has olvidad la contraseña?
+    link(rel="shortcut icon" href="/favicon.ico?v=2")
+    link(href='views/css/materialize.min.css', rel='stylesheet')
+    link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(href='views/css/custom.css', rel='stylesheet')
+  body
+    .row
+        .col.s12.m6.offset-m3.hcenter
+            .card.grey.darken-1
+                .card-content.white
+                    span.card-title Introduzca su nombre de usuario para restablecer la contraseña
+                    .row
+                        form.col.s12(action='/forgot', method='POST')
+                            .row
+                                br
+                                .input-field.col.s12
+                                    input#username.validate(name='username' type='text', required='')
+                                    label(for='username', data-error='El nombre de usuario no puede ser vacío', ) Nombre de usuario
+                                    span.validation !{errorMessage}
+                            button.btn.waves-effect.waves-light(type='submit', name='action', style='background-color:#3F51B5')
+                                | Submit
+                                i.material-icons.right send
+    script(src='views/js/jquery-1.11.3.min.js')
+    script(src='views/js/materialize.min.js')

@@ -194,3 +194,23 @@ nav a.router-link-active {
     margin-top: -150px;
     margin-left: -125px;
 }
+
+.md-overlay-container {
+  position: absolute;
+  pointer-events: none;
+  top: 41px;
+  left: -20px;
+  height: 100%;
+  width: 100%; }
+
+.md-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000; }
+
+.mdMenuItem {
+    color: black;
+    margin-left: 0.5vh;
+    text-decoration: none;
+}

@@ -28,6 +28,7 @@
       '@angular2-material/card': 'npm:@angular2-material/card/card.umd.js',
       '@angular2-material/button': 'npm:@angular2-material/button/button.umd.js',
       '@angular2-material/icon': 'npm:@angular2-material/icon/icon.umd.js',
+      '@angular2-material/menu': 'npm:@angular2-material/menu/menu.umd.js',
       'angular-calendar': 'npm:angular-calendar/dist/umd/angular-calendar.js',
       'calendar-utils': 'npm:calendar-utils/dist/umd/calendarUtils.js',
       'angular-resizable-element': 'npm:angular-resizable-element/dist/umd/angular-resizable-element.js',

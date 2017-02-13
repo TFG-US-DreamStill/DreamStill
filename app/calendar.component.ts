@@ -92,7 +92,7 @@ export class CalendarComponent implements OnInit {
         for (var _i = 1; _i <= daysOfMonth; _i++){
           var date: Date = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), _i)
           var year: String = ""+date.getFullYear();
-          var month:string  = ("0" + date.getMonth()+1).slice(-2);
+          var month:string  = ("0" + (date.getMonth()+1)).slice(-2);
           var day: String = ("0" + date.getDate()).slice(-2);
           console.log(year+"-"+month+"-"+day);
           if(event[year+"-"+month+"-"+day]!==undefined){

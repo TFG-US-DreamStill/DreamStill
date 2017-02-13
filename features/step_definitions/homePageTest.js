@@ -6,6 +6,8 @@ chai.use(chaiAsPromised);
 
 var expect = chai.expect;
 
+var params = browser.params;
+
 module.exports = function() {
     this.setDefaultTimeout(60 * 1000);
     this.registerHandler('AfterScenario', function (event, callback) {
@@ -20,17 +22,25 @@ module.exports = function() {
         next();
     });
 
-    this.Then(/register to the Login Page as "([^"]*)"$/, function(text, next) {
-            element(by.name('username')).sendKeys(text);
-            element(by.name('password')).sendKeys("");
+    this.Then(/login to the Login Page as "([^"]*)"$/, function(text, next) {
+            element.all(by.name('username')).get(0).sendKeys(text);
+            element.all(by.name('password')).get(0).sendKeys(params.passwords[text]);
             element(by.css('#loginContainer #flow-button')).click();
             next();
     });
 
     this.Then(/the title should equal "([^"]*)"$/, function(text, next) {
+            browser.waitForAngular();
+            browser.sleep(5000); 
             expect(browser.getTitle())
             .to.eventually.equal(text)
             .and.notify(next);
-            //next();
     });
+
+    this.Then(/I logout$/, function(next) {
+            element(by.css('.menu-button')).click();
+            element.all(by.css('.mdMenuItem')).get(2).click();
+            next();
+    });
+    
 };

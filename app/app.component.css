@@ -1,7 +1,11 @@
 h1 {
-    font-size: 1.2em;
+    font-size: 3em;
     color: #999;
     margin-bottom: 0;
+    display: inline-block;
+    position: absolute;
+    margin-top: 0%;
+    margin-left: 0.2%;
 }
 
 h2 {
@@ -32,16 +36,21 @@ nav a.active {
     color: #039be5;
 }
 
-.logout-button{
+.menu-button{
     color: white;
     background-color: #673AB7;
     float: right;
+    margin: 0.7%;
 }
 
-.logout-button:hover{
+.menu-button:hover{
     color: white;
     background-color: #673AB7;
     float: right;
     -webkit-filter: brightness(110%);
     filter: bightness(110%);
+}
+
+.logo{
+    width: 25%;
 }

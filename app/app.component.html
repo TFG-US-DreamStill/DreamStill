@@ -1,9 +1,26 @@
-<a class="logout-button" md-raised-button href="/logout">LogOut</a>
+<div><img class="logo" src="app/images/vectorlogo.svg" alt="DreamStill Logo">
+<button class="menu-button" md-icon-button [md-menu-trigger-for]="menu">
+  <md-icon>person</md-icon>
+</button>
+<div>
+<br/>
+<md-menu #menu="mdMenu" x-position="before">
+    <button md-menu-item routerLink="/calendar">
+    <md-icon>event</md-icon>
+    <span class="mdMenuItem">Calendario</span>
+  </button>
+    <button md-menu-item routerLink="/apis">
+    <md-icon>cloud_queue</md-icon>
+    <span class="mdMenuItem">APIs</span>
+  </button>
+    <button md-menu-item onClick="location.href='/logout'">
+    <md-icon>exit_to_app</md-icon>
+    <span class="mdMenuItem">LogOut</span>
+</button>
+</md-menu>
 <nav>
     <a routerLink="/calendar" routerLinkActive="active">Calendar</a>
     <a href="app/graphTest.html">Graph Test</a>
-    <a routerLink="/firebase" routerLinkActive="active">Firebase</a>
-    <a routerLink="/morpheuz" routerLinkActive="active">Morpheuz</a>
     <a routerLink="/apis" routerLinkActive="active">APIs</a>
     <button md-raised-button color="primary">Angular-Material</button>
 </nav>
