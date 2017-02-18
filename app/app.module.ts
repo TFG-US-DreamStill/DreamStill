@@ -13,9 +13,6 @@ import {OVERLAY_PROVIDERS} from "@angular2-material/core";
 
 import { AppRoutingModule } from './app-routing.module';
 
-// Imports for loading & configuring the in-memory web api
-//import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
-
 import { AppComponent }         from './app.component';
 import { CalendarComponent }    from './calendar.component';
 import { PlotlyComponent }      from './plotly.component';
