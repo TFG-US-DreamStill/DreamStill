@@ -36,7 +36,6 @@
 
       // other libraries
       'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -45,10 +44,6 @@
         defaultExtension: 'js'
       },
       rxjs: {
-        defaultExtension: 'js'
-      },
-      'angular-in-memory-web-api': {
-        main: './index.js',
         defaultExtension: 'js'
       },
       'date-fns': {

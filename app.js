@@ -44,6 +44,9 @@ var transporter = nodemailer.createTransport({
         user: process.env.GMAIL_USERNAME,
         pass: process.env.GMAIL_PASSWORD
     },
+    tls: {
+        rejectUnauthorized: false
+    }
 });
 
 require('./authentication').init(app);
