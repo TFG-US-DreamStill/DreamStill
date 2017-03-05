@@ -136,7 +136,7 @@ module.exports = {
       } else {
         console.log('Done!');
         var user = getUserByMorpheuzID(morpheuzID);
-        if (user.alerts===true){
+        if (user.alerts === true) {
           alerts.checkAlerts(user);
         }
       }
@@ -242,7 +242,7 @@ module.exports = {
         console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!');
-        if (user.alerts===true){
+        if (user.alerts === true) {
           alerts.checkAlerts(user);
         }
       }
@@ -262,24 +262,11 @@ module.exports = {
         res.send(body)
       }
     });
-  }
+  },
 
-}
+  getDaysWithDataFromApi: function (api, apiID) {
 
-function getUserByMorpheuzID(morpheuzID) {
-    var user = {
-      username: '',
-      password: '',
-      id: '',
-      email: '',
-      morpheuzID: '',
-      googleFit: {},
-      fitbit: {},
-      passwordResetToken: '',
-      alerts: ''
-    };
-
-    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials.json?auth=' + process.env.FIREBASE_SECRET + '&orderBy="morpheuzID"&equalTo=' + morpheuzID, {
+    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '.json?auth=' + process.env.FIREBASE_SECRET + '&shallow=true', {
       'headers': {
         'Content-Type': ' application/json'
       }
@@ -288,22 +275,64 @@ function getUserByMorpheuzID(morpheuzID) {
     console.log(JSON.parse(res.getBody('utf8')));
 
     var json = JSON.parse(res.getBody('utf8'));
-    username = Object.keys(json)[0];
-    json = json[username];
 
-    if (json !== null) {
-      user.id = json["id"];
-      user.username = username;
-      user.email = json["email"];
-      user.password = json["password"];
-      user.morpheuzID = json["morpheuzID"];
-      user.googleFit = json["googleFit"];
-      user.fitbit = json["fitbit"];
-      user.passwordResetToken = json["passwordResetToken"];
-      user.alerts = json["alerts"];
+    return json;
+  },
+
+  getDaysWithDataFromApiAtDate: function (api, apiID, date) {
+
+    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '/' + date + '.json?auth=' + process.env.FIREBASE_SECRET, {
+      'headers': {
+        'Content-Type': ' application/json'
+      }
+    });
+
+    console.log(JSON.parse(res.getBody('utf8')));
+
+    var json = JSON.parse(res.getBody('utf8'));
+
+    return json;
+  }
+}
+
+function getUserByMorpheuzID(morpheuzID) {
+  var user = {
+    username: '',
+    password: '',
+    id: '',
+    email: '',
+    morpheuzID: '',
+    googleFit: {},
+    fitbit: {},
+    passwordResetToken: '',
+    alerts: ''
+  };
+
+  var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials.json?auth=' + process.env.FIREBASE_SECRET + '&orderBy="morpheuzID"&equalTo=' + morpheuzID, {
+    'headers': {
+      'Content-Type': ' application/json'
     }
+  });
 
-    return user;
+  console.log(JSON.parse(res.getBody('utf8')));
+
+  var json = JSON.parse(res.getBody('utf8'));
+  username = Object.keys(json)[0];
+  json = json[username];
+
+  if (json !== null) {
+    user.id = json["id"];
+    user.username = username;
+    user.email = json["email"];
+    user.password = json["password"];
+    user.morpheuzID = json["morpheuzID"];
+    user.googleFit = json["googleFit"];
+    user.fitbit = json["fitbit"];
+    user.passwordResetToken = json["passwordResetToken"];
+    user.alerts = json["alerts"];
+  }
+
+  return user;
 }
 
 /*var to = 'dreamstillapp+18@gmail.com';
