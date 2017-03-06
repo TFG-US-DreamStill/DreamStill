@@ -272,7 +272,7 @@ module.exports = {
       }
     });
 
-    console.log(JSON.parse(res.getBody('utf8')));
+    //console.log(JSON.parse(res.getBody('utf8')));
 
     var json = JSON.parse(res.getBody('utf8'));
 
@@ -280,14 +280,14 @@ module.exports = {
   },
 
   getDaysWithDataFromApiAtDate: function (api, apiID, date) {
-
+    console.log('https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '/' + date);
     var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '/' + date + '.json?auth=' + process.env.FIREBASE_SECRET, {
       'headers': {
         'Content-Type': ' application/json'
       }
     });
 
-    console.log(JSON.parse(res.getBody('utf8')));
+    //console.log(JSON.parse(res.getBody('utf8')));
 
     var json = JSON.parse(res.getBody('utf8'));
 

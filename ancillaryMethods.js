@@ -54,7 +54,24 @@ module.exports = {
             }
         }
         var result = email + '@' + emailSplit[1];
-        
+
+        return result;
+    },
+
+    getSleepedHours: function (api, date) {
+        var result = 0;
+        var minutes = 0;
+        if (api === 'morpheuz') {
+            for (moment in date) {
+                if (date[moment]['Movements'] !== '-1' && date[moment]['Movements'] !== '-2' && date[moment]['Movements'] !== 'START' && date[moment]['Movements'] !== 'END' && date[moment]['Movements'] !== 'ALARM') {
+                    minutes = minutes + 10;
+                }
+            }
+        }
+        if (api === 'fitbit') {}
+
+        result = Math.round((minutes / 60) * 100) / 100;
+
         return result;
     }
 };
