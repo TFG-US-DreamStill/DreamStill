@@ -6,15 +6,16 @@ module.exports = {
 
     checkAlerts: function (user) {
         var days = 3;
-        var today = new Date();
+        var desiredHours = 9;
         var dateDays = [];
         var apisOfUser = {};
         var daysWithData = {};
         var sleepedHours = {};
+        var sleepedHoursAverage = 0.;
 
         for (var i = 0; i < days; i++) {
-            var date = today;
-            date.setDate(today.getDate() - i);
+            var date = new Date();
+            date.setDate(date.getDate() - i);
             dateDays.push(date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2));
         }
 
@@ -33,8 +34,7 @@ module.exports = {
         for (api in apisOfUser) {
             for (date of dateDays) {
                 var infoOfDay = firebaseAPI.getDaysWithDataFromApiAtDate(api, apisOfUser[api], date);
-                // console.log(infoOfDay); console.log(ancillaryMethods.getSleepedHours(api,
-                // infoOfDay));
+                // console.log(infoOfDay); console.log(ancillaryMethods.getSleepedHours(api, infoOfDay));
                 if (infoOfDay !== null && ancillaryMethods.getSleepedHours(api, infoOfDay) !== 0) {
                     if (sleepedHours[date] !== 'undefined') {
                         sleepedHours[date] = ancillaryMethods.getSleepedHours(api, infoOfDay);
@@ -51,8 +51,25 @@ module.exports = {
         console.log(dateDays);
         console.log(sleepedHours);*/
 
-        return sleepedHours;
+        if (Object.keys(sleepedHours).length === days) {
+            for (var date in sleepedHours) {
+                sleepedHoursAverage += sleepedHours[date];
+            }
+
+            sleepedHoursAverage = Math.round((sleepedHoursAverage / days) * 100) / 100;;
+        }
+
+        console.log(sleepedHoursAverage);
+
+        if (sleepedHoursAverage < desiredHours) {
+            sendAlert(user, days, desiredHours);
+        }
+
     }
 }
 
-console.log(module.exports.checkAlerts(firebaseAPI.getUserCredentials("juanra")));
+function sendAlert(user, days, desiredHours) {
+    console.log("Mensaje enviado a <" + user.email + ">: ¡No estás descansando bien! En los últimos " + days + " días has dormido de media menos de " + desiredHours + " horas.");
+}
+
+//module.exports.checkAlerts(firebaseAPI.getUserCredentials("juanra"));
