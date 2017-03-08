@@ -38,6 +38,7 @@
     "@angular2-material/core": "^2.0.0-alpha.8-2",
     "@angular2-material/icon": "^2.0.0-alpha.8-2",
     "@angular2-material/menu": "^2.0.0-alpha.8-2",
+    "@angular2-material/slide-toggle": "^2.0.0-alpha.8-2",
     "angular-calendar": "^0.4.1",
     "concurrently": "3.1.0",
     "core-js": "^2.4.1",

@@ -5,18 +5,22 @@
 <div>
 <br/>
 <md-menu #menu="mdMenu" x-position="before">
-    <button md-menu-item routerLink="/calendar">
+  <button md-menu-item routerLink="/calendar">
     <md-icon>event</md-icon>
     <span class="mdMenuItem">Calendario</span>
   </button>
-    <button md-menu-item routerLink="/apis">
+  <button md-menu-item routerLink="/apis">
     <md-icon>cloud_queue</md-icon>
     <span class="mdMenuItem">APIs</span>
   </button>
-    <button md-menu-item onClick="location.href='/logout'">
+  <button md-menu-item routerLink="/alerts">
+    <md-icon>notifications</md-icon>
+    <span class="mdMenuItem">Alerts</span>
+  </button>
+  <button md-menu-item onClick="location.href='/logout'">
     <md-icon>exit_to_app</md-icon>
     <span class="mdMenuItem">LogOut</span>
-</button>
+  </button>
 </md-menu>
 <nav>
     <a routerLink="/calendar" routerLinkActive="active">Calendar</a>
