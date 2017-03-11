@@ -105,6 +105,14 @@ app.get('/reset', function(req, res){
   }
 });
 
+app.get('/setAlerts', passport.authenticationMiddleware(), function(req, res){
+  console.log(req.query.alerts);
+  var loggedUser = req.user;
+  loggedUser.alerts = req.query.alerts;
+  console.log(loggedUser);
+  //res.send(loggedUser);
+});
+
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {
 		res.sendfile(__dirname + '/app/index.html');
 	});

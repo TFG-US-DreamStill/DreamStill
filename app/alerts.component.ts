@@ -29,6 +29,7 @@ export class AlertsComponent implements OnInit {
     ngOnInit() { }
 
     changeAlerts(event: Event): void{
-        console.log(event);
+        console.log(event["checked"]);
+        window.location.href='/setAlerts?alerts='+event["checked"];
      }
 }
