@@ -76,7 +76,7 @@ app.get('/getMorpheuzDaysWithData', passport.authenticationMiddleware(), functio
 
 app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res){
   var loggedUser;
-  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID, "googleToken": req.user.googleToken};
+  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID, "googleToken": req.user.googleToken, "alerts": req.user.alerts};
   res.send(loggedUser);
 });
 
