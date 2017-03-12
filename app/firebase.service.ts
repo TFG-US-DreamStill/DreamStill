@@ -18,4 +18,8 @@ export class FirebaseService{
     getMorpheuzDaysWithData(){
         return this._http.get('getMorpheuzDaysWithData').map(response => response.json());
     }
+
+    setAlerts(value: Boolean){
+        return this._http.get('setAlerts?alerts='+value).map(response => response.json());
+    }
 }

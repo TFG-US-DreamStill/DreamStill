@@ -106,11 +106,12 @@ app.get('/reset', function(req, res){
 });
 
 app.get('/setAlerts', passport.authenticationMiddleware(), function(req, res){
-  console.log(req.query.alerts);
+  //console.log(req.query.alerts);
   var loggedUser = req.user;
   loggedUser.alerts = req.query.alerts;
-  console.log(loggedUser);
-  //res.send(loggedUser);
+  //console.log(loggedUser);
+  firebaseAPI.updateUserCredentials(loggedUser);
+  res.send({status: '200 OK'});
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {

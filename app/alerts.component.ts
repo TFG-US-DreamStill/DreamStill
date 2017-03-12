@@ -10,7 +10,7 @@ import { Http }         from '@angular/http';
 })
 export class AlertsComponent implements OnInit {
     user: JSON;
-    isChecked: Boolean;
+    isChecked: String;
 
     constructor(private _firebaseService: FirebaseService, private _http: Http) {
          _http.get('/getLoggedUser')
@@ -19,7 +19,9 @@ export class AlertsComponent implements OnInit {
                      (data) => {
                        this.user=data;
                        console.log(this.user)
-                       this.isChecked = this.user["alerts"];;
+                       if(this.user["alerts"]==='true'){
+                           this.isChecked = 'true';
+                       }
                      },
                      err=>console.log(err),
                      ()=>console.log('done')
@@ -30,6 +32,7 @@ export class AlertsComponent implements OnInit {
 
     changeAlerts(event: Event): void{
         console.log(event["checked"]);
-        window.location.href='/setAlerts?alerts='+event["checked"];
+        this._firebaseService.setAlerts(event["checked"]).subscribe(
+                          response => { console.log(response)});
      }
 }
