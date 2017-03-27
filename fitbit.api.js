@@ -4,8 +4,7 @@ var requestA = require('request');
 
 module.exports = {
 
-    getDaysWithSleepFromDate: function (user, access_token, date) {
-        var fitbitID = user.fitbit.fitbitID;
+    getDaysWithSleepFromDate: function (fitbitID, access_token, date) {
         requestA({
             url: 'https://api.fitbit.com/1/user/' + fitbitID + '/sleep/timeInBed/date/' + date + '/today.json',
             method: 'GET',
@@ -25,7 +24,7 @@ module.exports = {
                 for (var day of JSON.parse(body)["sleep-timeInBed"]) {
                     if (day["value"] > 0) {
                         console.log(day)
-                        getSleepOfDate(user, access_token, day["dateTime"]);
+                        getSleepOfDate(fitbitID, access_token, day["dateTime"]);
                     }
                 }
             }
@@ -33,8 +32,7 @@ module.exports = {
     }
 }
 
-function getSleepOfDate(user, access_token, date) {
-    var fitbitID = user.fitbit.fitbitID;
+function getSleepOfDate(fitbitID, access_token, date) {
     requestA({
         url: 'https://api.fitbit.com/1/user/' + fitbitID + '/sleep/date/' + date + '.json',
         method: 'GET',
@@ -69,15 +67,14 @@ function getSleepOfDate(user, access_token, date) {
                     json += "]}";
                     console.log(json)
                     //console.log(json[json.length-1])
-                    setFitbitDataToUser(user, json);
+                    setFitbitDataToUser(fitbitID, json);
                 }
             }
         }
     });
 }
 
-function setFitbitDataToUser(user, data) {
-    var fitbitID = user.fitbit.fitbitID;
+function setFitbitDataToUser(fitbitID, data) {
     requestA({
         url: 'https://dreamstill-d507c.firebaseio.com/fitbit/' + fitbitID + '.json?auth=' + process.env.FIREBASE_SECRET,
         method: 'PATCH',
@@ -96,6 +93,6 @@ function setFitbitDataToUser(user, data) {
     });
 }
 
-/*user = {fitbit:{fitbitID:'5BMBQH'}}
+/*fitbitID = '5BMBQH';
 access_token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1Qk1CUUgiLCJhdWQiOiIyMjg3M1giLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJycHJvIHJzbGUiLCJleHAiOjE0OTA2NjMzOTMsImlhdCI6MTQ5MDYzNDU5M30.lA ZC2Q0bKB3g3Mkr8S7r0VZMlz0b19L-VQs6mrjr5GA'
-module.exports.getDaysWithSleepFromDate(user, access_token, '2016-01-01');*/
+module.exports.getDaysWithSleepFromDate(fitbitID, access_token, '2016-01-01');*/

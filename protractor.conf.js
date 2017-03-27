@@ -20,7 +20,7 @@ exports.config = {
         test: process.env.TEST_PASSWORD,
         juanra: process.env.JUANRA_PASSWORD
         },
-        events: ancillaryMethods.getNumMorpheuzEventsOfCurrentMonthForUserId(18),
+        events: ancillaryMethods.getNumEventsOfCurrentMonthForUserId(18,'5BMBQH'),
         date: {
             currentMonth: ancillaryMethods.getDates()[0],
             twoMonthsBefore: ancillaryMethods.getDates()[1],

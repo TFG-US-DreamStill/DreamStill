@@ -97,8 +97,9 @@ module.exports = {
           fitbitRefreshToken(username, fitbitID, refresh_token);
         }
       } else {
-        console.log('Done!')
+        console.log('Done!');
         //console.log(body)
+        firebaseAPI.getFitbitDataOfUser(fitbitID, access_token);
       }
     });
   }
@@ -166,10 +167,11 @@ function fitbitRefreshToken(username, fitbitID, refresh_token) {
       console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       console.log(refresh_token)
     } else {
-      console.log('Done!')
+      console.log('Done!');
       //console.log(body)
-      console.log(JSON.parse(body)["access_token"])
-      firebaseAPI.setFitbitTokenToUser(username, fitbitID, JSON.parse(body)["access_token"], refresh_token)
+      console.log(JSON.parse(body)["access_token"]);
+      firebaseAPI.setFitbitTokenToUser(username, fitbitID, JSON.parse(body)["access_token"], refresh_token);
+      firebaseAPI.getFitbitDataOfUser(fitbitID, JSON.parse(body)["access_token"]);
     }
   });
 }

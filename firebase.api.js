@@ -208,8 +208,7 @@ module.exports = {
     });
   },
 
-  getFitbitDataOfUser: function (user, access_token) {
-    var fitbitID = user.fitbit.fitbitID;
+  getFitbitDataOfUser: function (fitbitID, access_token) {
     requestA('https://dreamstill-d507c.firebaseio.com/fitbit/' + fitbitID + '.json?auth=' + process.env.FIREBASE_SECRET + '&shallow=true', function (error, response, body) {
       if (error) {
         console.error(error, response, body);
@@ -221,8 +220,8 @@ module.exports = {
         console.log(body);
         console.log(Object.keys(JSON.parse(body)).sort().reverse()[0]);
         body === "null"
-          ? fitbitApi.getDaysWithSleepFromDate(user, access_token, "2016-01-01")
-          : fitbitApi.getDaysWithSleepFromDate(user, access_token, Object.keys(JSON.parse(body)).sort().reverse()[0]);
+          ? fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, "2016-01-01")
+          : fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, Object.keys(JSON.parse(body)).sort().reverse()[0]);
       }
     });
   },
