@@ -70,6 +70,10 @@ app.get('/getMorpheuzDataAtDate', passport.authenticationMiddleware(), function(
   firebaseAPI.getMorpheuzDataOfUserAtDate(res, req.user.morpheuzID, req.query.date);
 });
 
+app.get('/getFitbitDataAtDate', passport.authenticationMiddleware(), function(req, res){
+  firebaseAPI.getFitbitDataOfUserAtDate(res, req.user.fitbit.fitbitID, req.query.date)
+});
+
 app.get('/getMorpheuzDaysWithData', passport.authenticationMiddleware(), function(req, res){
   firebaseAPI.getMorpheuzDaysWithData(res, req.user.morpheuzID);
 });

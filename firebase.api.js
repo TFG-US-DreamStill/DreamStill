@@ -265,6 +265,24 @@ module.exports = {
     });
   },
 
+  getFitbitDataOfUserAtDate: function (res, fitbitID, date) {
+    var year = date.split('-')[0];
+    var month = date.split('-')[1];
+    var day = date.split('-')[2];
+    requestA('https://dreamstill-d507c.firebaseio.com/fitbit/' + fitbitID + '/' + year + '-' + month + '-' + day + '.json?auth=' + process.env.FIREBASE_SECRET, function (error, response, body) {
+      if (error) {
+        console.error(error, response, body);
+        res.send(error)
+      } else if (response.statusCode >= 400) {
+        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+      } else {
+        console.log('Done!')
+        //console.log(body)
+        res.send(body)
+      }
+    });
+  },
+
   getDaysWithDataFromApi: function (api, apiID) {
 
     var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '.json?auth=' + process.env.FIREBASE_SECRET + '&shallow=true', {
