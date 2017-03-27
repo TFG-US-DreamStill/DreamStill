@@ -74,9 +74,14 @@ app.get('/getMorpheuzDaysWithData', passport.authenticationMiddleware(), functio
   firebaseAPI.getMorpheuzDaysWithData(res, req.user.morpheuzID);
 });
 
+app.get('/getFitbitDaysWithData', passport.authenticationMiddleware(), function(req, res){
+  firebaseAPI.getFitbitDaysWithData(res, req.user.fitbit.fitbitID);
+});
+
+
 app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res){
   var loggedUser;
-  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID, "googleToken": req.user.googleToken, "alerts": req.user.alerts};
+  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID, "googleToken": req.user.googleToken, "fitbit": req.user.fitbit, "alerts": req.user.alerts};
   res.send(loggedUser);
 });
 
