@@ -40,7 +40,7 @@ const colors: any = {
     moduleId: module.id,
     selector: 'calendar',
     styleUrls: ['calendar.component.css'],
-    templateUrl: 'calendar.component.html'
+    templateUrl: 'calendar.component.html',
 })
 export class CalendarComponent implements OnInit {
     view: string = 'month';

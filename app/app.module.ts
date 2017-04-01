@@ -23,6 +23,8 @@ import { FirebaseService }    from './firebase.service';
 import { ApisComponent }      from './apis.component';
 import { MorpheuzComponent }  from './morpheuz.component';
 import { AlertsComponent }    from './alerts.component';
+import {CapitalizePipe} from "./capitalize.pipe";
+
 
 @NgModule({
   imports: [
@@ -45,7 +47,8 @@ import { AlertsComponent }    from './alerts.component';
     GraphsComponent,
     ApisComponent,
     MorpheuzComponent,
-    AlertsComponent
+    AlertsComponent,
+    CapitalizePipe
   ],
   providers: [ MdIconRegistry, OVERLAY_PROVIDERS, FirebaseService],
   bootstrap: [ AppComponent ]

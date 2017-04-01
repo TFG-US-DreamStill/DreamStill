@@ -1,20 +1,36 @@
 require('dotenv').config()
 var request = require('sync-request');
 
+const months = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre'
+];
+
 module.exports = {
+    
     getDates: function () {
         var result;
         var currentMonth;
         var twoMonthBefore;
         var oneMonthBefore;
 
-        currentMonth = new Date().toLocaleString('en-us', {month: 'long'}) + " " + new Date().getFullYear();
+        currentMonth = months[new Date().getMonth()] + " de "  + new Date().getFullYear();
         twoMonthBefore = new Date();
         twoMonthBefore.setMonth(twoMonthBefore.getMonth() - 2);
-        twoMonthBefore = twoMonthBefore.toLocaleString('en-us', {month: 'long'}) + " " + twoMonthBefore.getFullYear();
+        twoMonthBefore = months[twoMonthBefore.getMonth()] + " de " + twoMonthBefore.getFullYear();
         oneMonthBefore = new Date();
         oneMonthBefore.setMonth(oneMonthBefore.getMonth() - 1);
-        oneMonthBefore = oneMonthBefore.toLocaleString('en-us', {month: 'long'}) + " " + oneMonthBefore.getFullYear();
+        oneMonthBefore = months[oneMonthBefore.getMonth()] + " de "  + oneMonthBefore.getFullYear();
         result = [currentMonth, twoMonthBefore, oneMonthBefore]
 
         return result;
