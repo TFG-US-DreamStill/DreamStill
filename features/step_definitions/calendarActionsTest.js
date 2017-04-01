@@ -54,8 +54,8 @@ module.exports = function() {
     });
 
     this.Then(/^we must be on the view of two months before$/, function (next) {
-        var title = element(by.css('.title h3'));
-        element(by.css('.title h3')).getText().then(function (value) {
+        var title = element(by.css('.title h2'));
+        title.getText().then(function (value) {
 
             expect(value).to.equal(params.date.twoMonthsBefore);
             next();
@@ -64,8 +64,8 @@ module.exports = function() {
     });
 
     this.Then(/^we must be on the view of one month before$/, function (next) {
-        var title = element(by.css('.title h3'));
-        element(by.css('.title h3')).getText().then(function (value) {
+        var title = element(by.css('.title h2'));
+        title.getText().then(function (value) {
 
             expect(value).to.equal(params.date.oneMonthBefore);
             next();
@@ -74,8 +74,8 @@ module.exports = function() {
     });
 
     this.Then(/^we must be on the view of the current month$/, function (next) {
-        var title = element(by.css('.title h3'));
-        element(by.css('.title h3')).getText().then(function (value) {
+        var title = element(by.css('.title h2'));
+        title.getText().then(function (value) {
 
             expect(value).to.equal(params.date.currentMonth);
             next();
