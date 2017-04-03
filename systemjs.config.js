@@ -30,6 +30,7 @@
       '@angular2-material/icon': 'npm:@angular2-material/icon/icon.umd.js',
       '@angular2-material/menu': 'npm:@angular2-material/menu/menu.umd.js',
       '@angular2-material/slide-toggle': 'npm:@angular2-material/slide-toggle/slide-toggle.umd.js',
+      '@angular2-material/input': 'npm:@angular2-material/input/input.umd.js',
       'angular-calendar': 'npm:angular-calendar/dist/umd/angular-calendar.js',
       'calendar-utils': 'npm:calendar-utils/dist/umd/calendarUtils.js',
       'angular-resizable-element': 'npm:angular-resizable-element/dist/umd/angular-resizable-element.js',

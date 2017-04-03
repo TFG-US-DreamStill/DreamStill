@@ -1,9 +1,14 @@
 <div class="alerts">
     <md-card>
-    <p>Puedes activar un sistema de notificaciones que te avisará cada vez que no estés durmiendo adecuadamente durante 3 días consecutivos, lo que resulta de gran ayuda para controlar tu sueño sin necesidad
+    <p>Puedes activar un sistema de notificaciones que te avisará cada vez que no estés durmiendo adecuadamente durante varios días consecutivos, lo que resulta de gran ayuda para controlar tu sueño sin necesidad
     de acceder a la aplicación, y lo mejor de todo ¡Tendrás un mayor control de tu sueño! El sistema de alertas te enviará un correo a la cuenta de correo que tengas configurada cada vez que se produzca
     una nueva alerta.
     </p>
+    <p>- Quiero que se me avise si:</p>
+    <span>Duermo de media menos de: </span>
+    <md-input class="alertInput"  placeholder="Horas" type="number" min="1" max="24" dividerColor="accent" value="1" [(ngModel)] = "hours"></md-input>
+    <span> Durante: </span>
+    <md-input class="alertInput" placeholder="Días" type="number"  min="1" dividerColor="accent" [(ngModel)] = "days"></md-input>
     <br/>
     <md-slide-toggle [color]="purple" [checked]="isChecked" (change)="changeAlerts($event)">
         Activar notificaciones

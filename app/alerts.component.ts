@@ -9,18 +9,22 @@ import { Http }         from '@angular/http';
     templateUrl: 'alerts.component.html'
 })
 export class AlertsComponent implements OnInit {
-    user: JSON;
+    alerts: JSON;
     isChecked: String;
+    hours: Number;
+    days: Number;
 
     constructor(private _firebaseService: FirebaseService, private _http: Http) {
-         _http.get('/getLoggedUser')
+         _http.get('/getUserAlert')
                   .map(res => res.json())
                   .subscribe(
                      (data) => {
-                       this.user=data;
-                       console.log(this.user)
-                       if(this.user["alerts"]==='true'){
+                       this.alerts=data;
+                       console.log(this.alerts)
+                       if(this.alerts["alerts"]==='true'){
                            this.isChecked = 'true';
+                           this.hours = this.alerts["hours"];
+                           this.days = this.alerts["days"]
                        }
                      },
                      err=>console.log(err),
@@ -31,8 +35,19 @@ export class AlertsComponent implements OnInit {
     ngOnInit() { }
 
     changeAlerts(event: Event): void{
+        if (event["checked"]) {
+            if (this.hours!=undefined && this.days!=undefined) {
+                console.log("Test");
+            }else{
+
+            }
+        }else{
+
+        }
         console.log(event["checked"]);
-        this._firebaseService.setAlerts(event["checked"]).subscribe(
+        console.log(this.hours);
+        console.log(this.days);
+        this._firebaseService.setAlerts(event["checked"], this.hours, this.days).subscribe(
                           response => { console.log(response)});
      }
 }

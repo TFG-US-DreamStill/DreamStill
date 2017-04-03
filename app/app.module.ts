@@ -9,8 +9,9 @@ import {MdButtonModule}       from '@angular2-material/button';
 import {MdIconModule}         from '@angular2-material/icon';
 import {MdIconRegistry}       from '@angular2-material/icon';
 import {MdMenuModule}         from '@angular2-material/menu';
-import {MdSlideToggleModule}       from "@angular2-material/slide-toggle";
+import {MdSlideToggleModule}  from "@angular2-material/slide-toggle";
 import {OVERLAY_PROVIDERS}    from "@angular2-material/core";
+import {MdInputModule}        from "@angular2-material/input";
 
 import { AppRoutingModule }   from './app-routing.module';
 
@@ -23,7 +24,7 @@ import { FirebaseService }    from './firebase.service';
 import { ApisComponent }      from './apis.component';
 import { MorpheuzComponent }  from './morpheuz.component';
 import { AlertsComponent }    from './alerts.component';
-import {CapitalizePipe} from "./capitalize.pipe";
+import { CapitalizePipe }     from "./capitalize.pipe";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {CapitalizePipe} from "./capitalize.pipe";
     MdIconModule,
     MdMenuModule,
     MdSlideToggleModule,
+    MdInputModule,
     AppRoutingModule,
     CalendarModule.forRoot()
   ],

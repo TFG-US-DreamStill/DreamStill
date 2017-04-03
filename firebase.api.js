@@ -310,6 +310,43 @@ module.exports = {
     var json = JSON.parse(res.getBody('utf8'));
 
     return json;
+  },
+
+  getUserAlerts: function (userID, res) {
+    requestA('https://dreamstill-d507c.firebaseio.com/alert/' + userID + '.json?auth=' + process.env.FIREBASE_SECRET, function (error, response, body) {
+      if (error) {
+        console.error(error, response, body);
+        res.send(error)
+      } else if (response.statusCode >= 400) {
+        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+      } else {
+        console.log('Done!')
+        console.log(body)
+        console.log(JSON.parse(body)['hours'])
+        console.log(JSON.parse(body)['days'])
+        res.send({alerts: 'true', hours: JSON.parse(body)['hours'], days: JSON.parse(body)['days']})
+      }
+    });
+  },
+
+  setAlert: function (userID, hours, days) {
+    requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/alert/' + userID + '.json?auth=' + process.env.FIREBASE_SECRET,
+      method: 'PATCH',
+      headers: {
+        'Content-Type': ' application/json'/*,
+        'Authorization': 'key=AI...8o'*/
+      },
+      body: JSON.stringify({"hours": hours, "days": days})
+    }, function (error, response, body) {
+      if (error) {
+        console.error(error, response, body);
+      } else if (response.statusCode >= 400) {
+        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+      } else {
+        console.log('Done!');
+      }
+    });
   }
 }
 

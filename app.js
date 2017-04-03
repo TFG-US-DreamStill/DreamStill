@@ -117,10 +117,24 @@ app.get('/reset', function(req, res){
 app.get('/setAlerts', passport.authenticationMiddleware(), function(req, res){
   //console.log(req.query.alerts);
   var loggedUser = req.user;
+  var hours = req.query.hours;
+  var days = req.query.days;
   loggedUser.alerts = req.query.alerts;
   //console.log(loggedUser);
   firebaseAPI.updateUserCredentials(loggedUser);
+  if(req.query.alerts=="true"){
+    firebaseAPI.setAlert(loggedUser.id, hours, days);
+  }
   res.send({status: '200 OK'});
+});
+
+app.get('/getUserAlert', passport.authenticationMiddleware(), function(req, res){
+  console.log(req.user.alerts)
+  if(req.user.alerts=="true"){
+    firebaseAPI.getUserAlerts(req.user.id, res);
+  }else{
+    res.send({alerts: 'false', hours: '', days: ''});
+  }
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {

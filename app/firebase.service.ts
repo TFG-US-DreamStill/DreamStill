@@ -30,7 +30,7 @@ export class FirebaseService{
         return this._http.get('getFitbitDaysWithData').map(response => response.json());
     }
 
-    setAlerts(value: Boolean){
-        return this._http.get('setAlerts?alerts='+value).map(response => response.json());
+    setAlerts(value: Boolean, hours: Number, days: Number){
+        return this._http.get('setAlerts?alerts='+value+'&hours='+hours+'&days='+days).map(response => response.json());
     }
 }
