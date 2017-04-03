@@ -92,3 +92,7 @@ function setFitbitDataToUser(fitbitID, data) {
         }
     });
 }
+
+/*fitbitID = '5BMBQH';
+access_token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1Qk1CUUgiLCJhdWQiOiIyMjg3M1giLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJycHJvIHJzbGUiLCJleHAiOjE0OTA2NjMzOTMsImlhdCI6MTQ5MDYzNDU5M30.lA ZC2Q0bKB3g3Mkr8S7r0VZMlz0b19L-VQs6mrjr5GA'
+module.exports.getDaysWithSleepFromDate(fitbitID, access_token, '2016-01-01');*/

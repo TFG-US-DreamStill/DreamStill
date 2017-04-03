@@ -11,7 +11,7 @@ declare var Plotly: any;
         <div style="margin-bottom:100px;">
             <div id="myPlotlyDiv"
                 name="myPlotlyDiv"
-                style="width: 480px; height: 400px;">
+                style="width: 1800px; height: 400px; margin: 0 auto;">
                 <!-- Plotly chart will be drawn inside this DIV -->
             </div>
         </div>
@@ -30,7 +30,7 @@ declare var Plotly: any;
         <div style="margin-bottom:100px;">
             <div id="myPlotlyDiv1"
                 name="myPlotlyDiv1"
-                style="width: 480px; height: 400px;">
+                style="width: 1800px; height: 400px; margin: 0 auto;">
                 <!-- Plotly chart will be drawn inside this DIV -->
             </div>
         </div>

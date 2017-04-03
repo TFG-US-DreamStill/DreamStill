@@ -30,9 +30,9 @@ const colors: any = {
     primary: '#1e90ff',
     secondary: '#D1E8FF'
   },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA'
+  lightblue: {
+    primary: '#add8e6',
+    secondary: '#E2F1FF'
   }
 };
 
@@ -40,7 +40,7 @@ const colors: any = {
     moduleId: module.id,
     selector: 'calendar',
     styleUrls: ['calendar.component.css'],
-    templateUrl: 'calendar.component.html'
+    templateUrl: 'calendar.component.html',
 })
 export class CalendarComponent implements OnInit {
     view: string = 'month';
@@ -48,6 +48,7 @@ export class CalendarComponent implements OnInit {
     events: CalendarEvent[] = [];
     user: JSON;
     info: JSON;
+    infoFitbit: JSON;
     constructor(private _firebaseService: FirebaseService, private _http: Http) {
          _http.get('/getLoggedUser')
                   .map(res => res.json())
@@ -59,6 +60,13 @@ export class CalendarComponent implements OnInit {
                           this._firebaseService.getMorpheuzDaysWithData().subscribe(
                           info => {
                             this.info = info;
+                            this.getInfoOfDays();
+                            },
+                          error => console.log(error)
+                          ),
+                          this._firebaseService.getFitbitDaysWithData().subscribe(
+                          info => {
+                            this.infoFitbit = info;
                             this.getInfoOfDays();
                             },
                           error => console.log(error)
@@ -105,12 +113,37 @@ export class CalendarComponent implements OnInit {
       }
       this.refresh.next();
   }
+
+  createEventsFitbit(event: JSON): void{
+      console.log(event);
+      if(event!==undefined){
+        var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
+        for (var _i = 1; _i <= daysOfMonth; _i++){
+          var date: Date = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), _i)
+          var year: String = ""+date.getFullYear();
+          var month:string  = ("0" + (date.getMonth()+1)).slice(-2);
+          var day: String = ("0" + date.getDate()).slice(-2);
+          console.log(year+"-"+month+"-"+day);
+          if(event[year+"-"+month+"-"+day]!==undefined){
+              this.events.push({start: date,
+                           end: date,
+                           title: "<a href=/graphs?app=fitbit&date="+year+"-"+month+"-"+day+" style='color: white;'> Sueño de Fitbit </a>",
+                           color: colors.lightblue})
+          }
+        }
+      }
+      this.refresh.next();
+  }
+
   getInfoOfDays(): void{
       var date: Date;
       console.log(this.viewDate);
       this.events = [];
       if(this.user['morpheuzID']!==undefined){
         this.createEventsMorpheuz(this.info);
+      }
+      if(this.user['fitbit']['fitbitID']!==undefined){
+        this.createEventsFitbit(this.infoFitbit);
       }
   }
 

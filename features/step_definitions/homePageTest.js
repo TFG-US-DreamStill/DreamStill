@@ -39,7 +39,7 @@ module.exports = function() {
 
     this.Then(/I logout$/, function(next) {
             element(by.css('.menu-button')).click();
-            element.all(by.css('.mdMenuItem')).get(2).click();
+            element.all(by.css('.mdMenuItem')).get(3).click();
             next();
     });
     

@@ -70,13 +70,22 @@ app.get('/getMorpheuzDataAtDate', passport.authenticationMiddleware(), function(
   firebaseAPI.getMorpheuzDataOfUserAtDate(res, req.user.morpheuzID, req.query.date);
 });
 
+app.get('/getFitbitDataAtDate', passport.authenticationMiddleware(), function(req, res){
+  firebaseAPI.getFitbitDataOfUserAtDate(res, req.user.fitbit.fitbitID, req.query.date)
+});
+
 app.get('/getMorpheuzDaysWithData', passport.authenticationMiddleware(), function(req, res){
   firebaseAPI.getMorpheuzDaysWithData(res, req.user.morpheuzID);
 });
 
+app.get('/getFitbitDaysWithData', passport.authenticationMiddleware(), function(req, res){
+  firebaseAPI.getFitbitDaysWithData(res, req.user.fitbit.fitbitID);
+});
+
+
 app.get('/getLoggedUser', passport.authenticationMiddleware(), function(req, res){
   var loggedUser;
-  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID, "googleToken": req.user.googleToken};
+  loggedUser = {"id": req.user.id, "username": req.user.username, "morpheuzID": req.user.morpheuzID, "googleToken": req.user.googleToken, "fitbit": req.user.fitbit, "alerts": req.user.alerts};
   res.send(loggedUser);
 });
 
@@ -103,6 +112,15 @@ app.get('/reset', function(req, res){
   }else{
     return res.render('messages', {message: 'El token no es válido, por favor vuelva a comprobar el correo o en caso contrario vuelva a seguir el proceso para restablecer la contraseña.'});
   }
+});
+
+app.get('/setAlerts', passport.authenticationMiddleware(), function(req, res){
+  //console.log(req.query.alerts);
+  var loggedUser = req.user;
+  loggedUser.alerts = req.query.alerts;
+  //console.log(loggedUser);
+  firebaseAPI.updateUserCredentials(loggedUser);
+  res.send({status: '200 OK'});
 });
 
 app.get('**',  passport.authenticationMiddleware(), function(req, res) {

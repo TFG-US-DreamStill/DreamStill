@@ -54,3 +54,13 @@ nav a.active {
 .logo{
     width: 25%;
 }
+
+.headerTitle{
+    font-size: 659%;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    width: 22%;
+    height: 50%;
+    color: rgb(182, 182, 182);
+    top: 1%;
+    position: absolute;
+}

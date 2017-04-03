@@ -3,7 +3,8 @@ var requestA = require('request');
 var email2Json = require('./email2Json.js');
 var request = require('sync-request');
 const md5 = require('md5');
-var fitbitApi = require('./fitbit.api.js')
+var fitbitApi = require('./fitbit.api.js');
+var alerts = require('./alerts');
 
 module.exports = {
 
@@ -16,7 +17,8 @@ module.exports = {
       morpheuzID: '',
       googleFit: {},
       fitbit: {},
-      passwordResetToken: ''
+      passwordResetToken: '',
+      alerts: ''
     };
 
     var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials/' + username.toLowerCase() + '.json?auth=' + process.env.FIREBASE_SECRET, {
@@ -38,6 +40,7 @@ module.exports = {
       user.googleFit = json["googleFit"];
       user.fitbit = json["fitbit"];
       user.passwordResetToken = json["passwordResetToken"];
+      user.alerts = json["alerts"];
     }
 
     return user;
@@ -49,7 +52,8 @@ module.exports = {
       password: '',
       id: '',
       email: '',
-      passwordResetToken: ''
+      passwordResetToken: '',
+      alerts: false
     };
 
     user.username = username.toLowerCase();
@@ -130,7 +134,11 @@ module.exports = {
       } else if (response.statusCode >= 400) {
         console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
-        console.log('Done!')
+        console.log('Done!');
+        var user = getUserByMorpheuzID(morpheuzID);
+        if (user.alerts === true) {
+          alerts.checkAlerts(user);
+        }
       }
     });
   },
@@ -209,15 +217,17 @@ module.exports = {
 
       } else {
         console.log('Done!');
-        console.log(body)
+        console.log(body);
+        console.log(Object.keys(JSON.parse(body)).sort().reverse()[0]);
         body === "null"
-          ? fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, "2015-01-01")
-          : fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, "2015-01-01");
+          ? fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, "2016-01-01")
+          : fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, Object.keys(JSON.parse(body)).sort().reverse()[0]);
       }
     });
   },
 
-  setFitbitDataToUser: function (fitbitID, data) {
+  setFitbitDataToUser: function (user, data) {
+    var fitbitID = user.fitbit.fitbitID;
     requestA({
       url: 'https://dreamstill-d507c.firebaseio.com/fitbit/' + fitbitID + '.json?auth=' + process.env.FIREBASE_SECRET,
       method: 'PATCH',
@@ -231,7 +241,10 @@ module.exports = {
       } else if (response.statusCode >= 400) {
         console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
-        console.log('Done!')
+        console.log('Done!');
+        if (user.alerts === true) {
+          alerts.checkAlerts(user);
+        }
       }
     });
   },
@@ -249,8 +262,95 @@ module.exports = {
         res.send(body)
       }
     });
+  },
+
+  getFitbitDataOfUserAtDate: function (res, fitbitID, date) {
+    var year = date.split('-')[0];
+    var month = date.split('-')[1];
+    var day = date.split('-')[2];
+    requestA('https://dreamstill-d507c.firebaseio.com/fitbit/' + fitbitID + '/' + year + '-' + month + '-' + day + '.json?auth=' + process.env.FIREBASE_SECRET, function (error, response, body) {
+      if (error) {
+        console.error(error, response, body);
+        res.send(error)
+      } else if (response.statusCode >= 400) {
+        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+      } else {
+        console.log('Done!')
+        //console.log(body)
+        res.send(body)
+      }
+    });
+  },
+
+  getDaysWithDataFromApi: function (api, apiID) {
+
+    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '.json?auth=' + process.env.FIREBASE_SECRET + '&shallow=true', {
+      'headers': {
+        'Content-Type': ' application/json'
+      }
+    });
+
+    //console.log(JSON.parse(res.getBody('utf8')));
+
+    var json = JSON.parse(res.getBody('utf8'));
+
+    return json;
+  },
+
+  getDaysWithDataFromApiAtDate: function (api, apiID, date) {
+    console.log('https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '/' + date);
+    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '/' + date + '.json?auth=' + process.env.FIREBASE_SECRET, {
+      'headers': {
+        'Content-Type': ' application/json'
+      }
+    });
+
+    //console.log(JSON.parse(res.getBody('utf8')));
+
+    var json = JSON.parse(res.getBody('utf8'));
+
+    return json;
+  }
+}
+
+function getUserByMorpheuzID(morpheuzID) {
+  var user = {
+    username: '',
+    password: '',
+    id: '',
+    email: '',
+    morpheuzID: '',
+    googleFit: {},
+    fitbit: {},
+    passwordResetToken: '',
+    alerts: ''
+  };
+
+  var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/user_credentials.json?auth=' + process.env.FIREBASE_SECRET + '&orderBy="morpheuzID"&equalTo=' + morpheuzID, {
+    'headers': {
+      'Content-Type': ' application/json'
+    }
+  });
+
+  console.log(JSON.parse(res.getBody('utf8')));
+
+  var json = JSON.parse(res.getBody('utf8'));
+  username = Object.keys(json)[0];
+  json = json[username];
+
+  if (json !== null) {
+    user.id = json["id"];
+    user.username = username;
+    user.email = json["email"];
+    user.password = json["password"];
+    user.morpheuzID = json["morpheuzID"];
+    user.googleFit = json["googleFit"];
+    user.fitbit = json["fitbit"];
+    user.passwordResetToken = json["passwordResetToken"];
+    user.alerts = json["alerts"];
   }
 
+  return user;
 }
 
 /*var to = 'dreamstillapp+18@gmail.com';
@@ -267,3 +367,7 @@ var data = email2Json.parseEmail2Json(to, subject, body)[0];
 var user = email2Json.parseEmail2Json(to, subject, body)[1];*/
 
 //setUserData(data, user); registerUser("Test", "test@test.com", "test");
+
+/*user = {fitbit:{fitbitID:'5BMBQH'}}
+access_token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1Qk1CUUgiLCJhdWQiOiIyMjg3M1giLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJycHJvIHJzbGUiLCJleHAiOjE0OTA2NjMzOTMsImlhdCI6MTQ5MDYzNDU5M30.lA ZC2Q0bKB3g3Mkr8S7r0VZMlz0b19L-VQs6mrjr5GA'
+module.exports.getFitbitDataOfUser(user, access_token);*/
