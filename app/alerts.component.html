@@ -10,8 +10,17 @@
     <span> Durante: </span>
     <md-input class="alertInput" placeholder="Días" type="number"  min="1" dividerColor="accent" [(ngModel)] = "days"></md-input>
     <br/>
-    <md-slide-toggle [color]="purple" [checked]="isChecked" (change)="changeAlerts($event)">
-        Activar notificaciones
-    </md-slide-toggle>
+    <div *ngIf="(hours && days) || isChecked">
+        <md-slide-toggle [color]="purple" [checked]="isChecked" (change)="changeAlerts($event)">
+            Activar notificaciones <span class="error" *ngIf="error">Debe seleccionarse un número de horas y días válidos para activar las notificaciones.</span>
+        </md-slide-toggle>
+        
+    </div>
+    <div *ngIf="(!hours || !days) && !isChecked">
+        <md-slide-toggle [color]="purple" [checked]="isChecked" (change)="changeAlerts($event)" disabled>
+            Activar notificaciones <span class="error" *ngIf="error" >Debe seleccionarse un número de horas y días válidos para activar las notificaciones.</span>
+        </md-slide-toggle>
+    </div>
     </md-card>
+    
 <div>

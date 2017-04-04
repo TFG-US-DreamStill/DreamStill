@@ -13,6 +13,7 @@ export class AlertsComponent implements OnInit {
     isChecked: String;
     hours: Number;
     days: Number;
+    error: Boolean;
 
     constructor(private _firebaseService: FirebaseService, private _http: Http) {
          _http.get('/getUserAlert')
@@ -30,6 +31,7 @@ export class AlertsComponent implements OnInit {
                      err=>console.log(err),
                      ()=>console.log('done')
                    );
+        this.error = false;
      }
 
     ngOnInit() { }
@@ -38,16 +40,21 @@ export class AlertsComponent implements OnInit {
         if (event["checked"]) {
             if (this.hours!=undefined && this.days!=undefined) {
                 console.log("Test");
+                console.log(event["checked"]);
+                console.log(this.hours);
+                console.log(this.days);
+                this._firebaseService.setAlerts(event["checked"], this.hours, this.days).subscribe(
+                                response => { console.log(response)});
             }else{
-
+                this.error = true;
+                this.isChecked = 'false';
             }
         }else{
-
+            console.log(event["checked"]);
+            console.log(this.hours);
+            console.log(this.days);
+            this._firebaseService.setAlerts(event["checked"], this.hours, this.days).subscribe(
+                            response => { console.log(response)});
         }
-        console.log(event["checked"]);
-        console.log(this.hours);
-        console.log(this.days);
-        this._firebaseService.setAlerts(event["checked"], this.hours, this.days).subscribe(
-                          response => { console.log(response)});
      }
 }
