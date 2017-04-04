@@ -75,7 +75,11 @@ module.exports = {
     });
   },
 
-  fitbitCheckToken: function (username, fitbitID, access_token, refresh_token) {
+  fitbitCheckToken: function (user) {
+    username = user.username;
+    fitbitID = user.fitbit.fitbitID;
+    access_token = user.fitbit.access_token;
+    refresh_token = user.fitbit.refresh_token;
     /*
     GET https://api.fitbit.com/1/user/-/profile.json
     Authorization: Bearer access_token
@@ -94,12 +98,12 @@ module.exports = {
         errorCause = JSON.parse(body)["errors"][0]["errorType"];
         console.log(errorCause);
         if (errorCause == "expired_token") {
-          fitbitRefreshToken(username, fitbitID, refresh_token);
+          fitbitRefreshToken(user);
         }
       } else {
         console.log('Done!');
         //console.log(body)
-        firebaseAPI.getFitbitDataOfUser(fitbitID, access_token);
+        firebaseAPI.getFitbitDataOfUser(user);
       }
     });
   }
@@ -151,7 +155,10 @@ function googleFitRefreshToken(username, refresh_token) {
   });
 }
 
-function fitbitRefreshToken(username, fitbitID, refresh_token) {
+function fitbitRefreshToken(user) {
+  username = user.username;
+  fitbitID = user.fitbit.fitbitID;
+  refresh_token = user.fitbit.refresh_token;
   requestA({
     url: 'https://api.fitbit.com/oauth2/token',
     method: 'POST',
@@ -171,7 +178,8 @@ function fitbitRefreshToken(username, fitbitID, refresh_token) {
       //console.log(body)
       console.log(JSON.parse(body)["access_token"]);
       firebaseAPI.setFitbitTokenToUser(username, fitbitID, JSON.parse(body)["access_token"], refresh_token);
-      firebaseAPI.getFitbitDataOfUser(fitbitID, JSON.parse(body)["access_token"]);
+      user.fitbit.access_token = JSON.parse(body)["access_token"];
+      firebaseAPI.getFitbitDataOfUser(user);
     }
   });
 }

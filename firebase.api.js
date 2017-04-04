@@ -208,7 +208,8 @@ module.exports = {
     });
   },
 
-  getFitbitDataOfUser: function (fitbitID, access_token) {
+  getFitbitDataOfUser: function (user) {
+    fitbitID = user.fitbit.fitbitID;
     requestA('https://dreamstill-d507c.firebaseio.com/fitbit/' + fitbitID + '.json?auth=' + process.env.FIREBASE_SECRET + '&shallow=true', function (error, response, body) {
       if (error) {
         console.error(error, response, body);
@@ -220,8 +221,8 @@ module.exports = {
         console.log(body);
         console.log(Object.keys(JSON.parse(body)).sort().reverse()[0]);
         body === "null"
-          ? fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, "2016-01-01")
-          : fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, Object.keys(JSON.parse(body)).sort().reverse()[0]);
+          ? fitbitApi.getDaysWithSleepFromDate(user, "2016-01-01")
+          : fitbitApi.getDaysWithSleepFromDate(user, Object.keys(JSON.parse(body)).sort().reverse()[0]);
       }
     });
   },
@@ -242,7 +243,7 @@ module.exports = {
         console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!');
-        if (user.alerts === true) {
+        if (user.alerts == 'true') {
           alerts.checkAlerts(user);
         }
       }
@@ -347,6 +348,20 @@ module.exports = {
         console.log('Done!');
       }
     });
+  },
+
+  getInfoOfUserAlerts: function (userID) {
+    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/alert/' + userID + '.json?auth=' + process.env.FIREBASE_SECRET, {
+      'headers': {
+        'Content-Type': ' application/json'
+      }
+    });
+
+    //console.log(JSON.parse(res.getBody('utf8')));
+
+    var json = JSON.parse(res.getBody('utf8'));
+
+    return json;
   }
 }
 

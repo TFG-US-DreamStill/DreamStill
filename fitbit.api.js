@@ -1,10 +1,13 @@
 require('dotenv').config()
 const firebaseAPI = require('./firebase.api.js');
 var requestA = require('request');
+var alerts = require('./alerts.js');
 
 module.exports = {
 
-    getDaysWithSleepFromDate: function (fitbitID, access_token, date) {
+    getDaysWithSleepFromDate: function (user, date) {
+        fitbitID = user.fitbit.fitbitID;
+        access_token = user.fitbit.access_token;
         requestA({
             url: 'https://api.fitbit.com/1/user/' + fitbitID + '/sleep/timeInBed/date/' + date + '/today.json',
             method: 'GET',
@@ -24,7 +27,7 @@ module.exports = {
                 for (var day of JSON.parse(body)["sleep-timeInBed"]) {
                     if (day["value"] > 0) {
                         console.log(day)
-                        getSleepOfDate(fitbitID, access_token, day["dateTime"]);
+                        getSleepOfDate(user, day["dateTime"]);
                     }
                 }
             }
@@ -32,7 +35,9 @@ module.exports = {
     }
 }
 
-function getSleepOfDate(fitbitID, access_token, date) {
+function getSleepOfDate(user, date) {
+    fitbitID = user.fitbit.fitbitID;
+    access_token = user.fitbit.access_token;
     requestA({
         url: 'https://api.fitbit.com/1/user/' + fitbitID + '/sleep/date/' + date + '.json',
         method: 'GET',
@@ -67,14 +72,15 @@ function getSleepOfDate(fitbitID, access_token, date) {
                     json += "]}";
                     console.log(json)
                     //console.log(json[json.length-1])
-                    setFitbitDataToUser(fitbitID, json);
+                    setFitbitDataToUser(user, json);
                 }
             }
         }
     });
 }
 
-function setFitbitDataToUser(fitbitID, data) {
+function setFitbitDataToUser(user, data) {
+    fitbitID = user.fitbit.fitbitID;
     requestA({
         url: 'https://dreamstill-d507c.firebaseio.com/fitbit/' + fitbitID + '.json?auth=' + process.env.FIREBASE_SECRET,
         method: 'PATCH',
@@ -88,7 +94,10 @@ function setFitbitDataToUser(fitbitID, data) {
         } else if (response.statusCode >= 400) {
             console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
         } else {
-            console.log('Done!')
+            console.log('Done! Fitbit');
+            /*if (user.alerts == 'true') {
+                alerts.checkAlerts(user);
+            }*/
         }
     });
 }

@@ -5,8 +5,10 @@ var ancillaryMethods = require('./ancillaryMethods.js');
 module.exports = {
 
     checkAlerts: function (user) {
-        var days = 3;
-        var desiredHours = 9;
+        console.log("DIAS: "+ firebaseAPI.getInfoOfUserAlerts(user.id).days);
+        console.log("HORAS: "+ firebaseAPI.getInfoOfUserAlerts(user.id).hours);
+        var days = firebaseAPI.getInfoOfUserAlerts(user.id).days;
+        var desiredHours = firebaseAPI.getInfoOfUserAlerts(user.id).hours;
         var dateDays = [];
         var apisOfUser = {};
         var daysWithData = {};

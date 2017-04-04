@@ -154,7 +154,7 @@ app.post('/login', function(req, res, next) {
         oauth2.googleFitCheckToken(req.user.username, req.user.googleFit.access_token, req.user.googleFit.refresh_token)
       }
       if (req.user.fitbit!=undefined){
-        oauth2.fitbitCheckToken(req.user.username, req.user.fitbit.fitbitID, req.user.fitbit.access_token, req.user.fitbit.refresh_token)
+        oauth2.fitbitCheckToken(req.user)
       }
       return res.redirect('/');
     });
