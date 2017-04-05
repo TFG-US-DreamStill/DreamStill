@@ -87,14 +87,16 @@ module.exports = {
     getSleepedHours: function (api, date) {
         var result = 0;
         var minutes = 0;
-        if (api === 'morpheuz') {
+        if (api === 'morpheuz' && date !== null) {
             for (moment in date) {
                 if (date[moment]['Movements'] !== '-1' && date[moment]['Movements'] !== '-2' && date[moment]['Movements'] !== 'START' && date[moment]['Movements'] !== 'END' && date[moment]['Movements'] !== 'ALARM') {
                     minutes = minutes + 10;
                 }
             }
         }
-        if (api === 'fitbit') {}
+        if (api === 'fitbit' && date !== null) {
+            minutes = date.length;
+        }
 
         result = Math.round((minutes / 60) * 100) / 100;
 

@@ -95,9 +95,9 @@ function setFitbitDataToUser(user, data) {
             console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
         } else {
             console.log('Done! Fitbit');
-            /*if (user.alerts == 'true') {
+            if (user.alerts == 'true') {
                 alerts.checkAlerts(user);
-            }*/
+            }
         }
     });
 }

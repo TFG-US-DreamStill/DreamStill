@@ -283,36 +283,6 @@ module.exports = {
     });
   },
 
-  getDaysWithDataFromApi: function (api, apiID) {
-
-    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '.json?auth=' + process.env.FIREBASE_SECRET + '&shallow=true', {
-      'headers': {
-        'Content-Type': ' application/json'
-      }
-    });
-
-    //console.log(JSON.parse(res.getBody('utf8')));
-
-    var json = JSON.parse(res.getBody('utf8'));
-
-    return json;
-  },
-
-  getDaysWithDataFromApiAtDate: function (api, apiID, date) {
-    console.log('https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '/' + date);
-    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '/' + date + '.json?auth=' + process.env.FIREBASE_SECRET, {
-      'headers': {
-        'Content-Type': ' application/json'
-      }
-    });
-
-    //console.log(JSON.parse(res.getBody('utf8')));
-
-    var json = JSON.parse(res.getBody('utf8'));
-
-    return json;
-  },
-
   getUserAlerts: function (userID, res) {
     requestA('https://dreamstill-d507c.firebaseio.com/alert/' + userID + '.json?auth=' + process.env.FIREBASE_SECRET, function (error, response, body) {
       if (error) {
@@ -348,20 +318,6 @@ module.exports = {
         console.log('Done!');
       }
     });
-  },
-
-  getInfoOfUserAlerts: function (userID) {
-    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/alert/' + userID + '.json?auth=' + process.env.FIREBASE_SECRET, {
-      'headers': {
-        'Content-Type': ' application/json'
-      }
-    });
-
-    //console.log(JSON.parse(res.getBody('utf8')));
-
-    var json = JSON.parse(res.getBody('utf8'));
-
-    return json;
   }
 }
 
