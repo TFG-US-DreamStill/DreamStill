@@ -1,4 +1,7 @@
 require('dotenv').config()
+var log4js = require('log4js');
+log4js.replaceConsole();
+var logger = log4js.getLogger();
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -202,7 +205,7 @@ app.post('/forgot', function (req, res) {
       userMail = ancillaryMethods.obscureEmail(user.email);
       transporter.sendMail(mailOptions, function(error, info){
         if(error){
-            console.log(error);
+            logger.error(error);
         }else{
             console.log('Message sent: ' + info.response);
             return res.render('messages', {message: 'El email ha sido envíado a la siguiente dirección: '+userMail+' por favor compruebe su bandeja de entrada.'});

@@ -1,4 +1,7 @@
 require('dotenv').config()
+var log4js = require('log4js');
+log4js.replaceConsole();
+var logger = log4js.getLogger();
 const firebaseAPI = require('./firebase.api.js');
 var requestA = require('request');
 var alerts = require('./alerts.js');
@@ -17,9 +20,9 @@ module.exports = {
             }
         }, function (error, response, body) {
             if (error) {
-                console.error(error, response, body);
+                logger.error(error, response, body);
             } else if (response.statusCode >= 400) {
-                console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+                logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
 
             } else {
                 console.log('Done!')
@@ -47,9 +50,9 @@ function getSleepOfDate(user, date) {
         }
     }, function (error, response, body) {
         if (error) {
-            console.error(error, response, body);
+            logger.error(error, response, body);
         } else if (response.statusCode >= 400) {
-            console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+            logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
 
         } else {
             console.log('Done!');
@@ -90,9 +93,9 @@ function setFitbitDataToUser(user, data) {
         body: data
     }, function (error, response, body) {
         if (error) {
-            console.error(error, response, body);
+            logger.error(error, response, body);
         } else if (response.statusCode >= 400) {
-            console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+            logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
         } else {
             console.log('Done! Fitbit');
             if (user.alerts == 'true') {

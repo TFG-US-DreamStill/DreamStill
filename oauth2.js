@@ -1,4 +1,7 @@
 require('dotenv').config()
+var log4js = require('log4js');
+log4js.replaceConsole();
+var logger = log4js.getLogger();
 const firebaseAPI = require('./firebase.api.js');
 var requestA = require('request');
 
@@ -16,9 +19,9 @@ module.exports = {
           'code'
     }, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
         //console.log(body) console.log(JSON.parse(body)["access_token"])
@@ -40,9 +43,9 @@ module.exports = {
           'e'
     }, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
         console.log(body)
@@ -60,11 +63,11 @@ module.exports = {
       method: 'GET'
     }, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
         errorCause = JSON.parse(body)["error"];
-        console.log(errorCause);
+        logger.error(errorCause);
         if (errorCause == "invalid_token") {
           googleFitRefreshToken(username, refresh_token);
         }
@@ -92,9 +95,9 @@ module.exports = {
       }
     }, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
         errorCause = JSON.parse(body)["errors"][0]["errorType"];
         console.log(errorCause);
         if (errorCause == "expired_token") {
@@ -118,9 +121,9 @@ function googleFitSetTokenToUser(username, access_token, refresh_token) {
     }
   }, function (error, response, body) {
     if (error) {
-      console.error(error, response, body);
+      logger.error(error, response, body);
     } else if (response.statusCode >= 400) {
-      console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+      logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       console.log(refresh_token)
     } else {
       console.log('Done!')
@@ -142,9 +145,9 @@ function googleFitRefreshToken(username, refresh_token) {
     body: 'client_id=' + process.env.GOOGLE_CLIENT_ID + '&client_secret=' + process.env.GOOGLE_CLIENT_SECRET + '&refresh_token=' + refresh_token + '&grant_type=refresh_token&access_type=offline'
   }, function (error, response, body) {
     if (error) {
-      console.error(error, response, body);
+      logger.error(error, response, body);
     } else if (response.statusCode >= 400) {
-      console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+      logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       console.log(refresh_token)
     } else {
       console.log('Done!')
@@ -169,9 +172,9 @@ function fitbitRefreshToken(user) {
     body: 'grant_type=refresh_token&refresh_token=' + refresh_token + '&expires_in=604800'
   }, function (error, response, body) {
     if (error) {
-      console.error(error, response, body);
+      logger.error(error, response, body);
     } else if (response.statusCode >= 400) {
-      console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+      logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       console.log(refresh_token)
     } else {
       console.log('Done!');

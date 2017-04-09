@@ -55,26 +55,26 @@ export class CalendarComponent implements OnInit {
                   .subscribe(
                      (data) => {
                        this.user=data;
-                       console.log(this.user);
+                       //console.log(this.user);
                        if(this.user['morpheuzID']!==undefined){
                           this._firebaseService.getMorpheuzDaysWithData().subscribe(
                           info => {
                             this.info = info;
                             this.getInfoOfDays();
                             },
-                          error => console.log(error)
+                          //error => console.log(error)
                           ),
                           this._firebaseService.getFitbitDaysWithData().subscribe(
                           info => {
                             this.infoFitbit = info;
                             this.getInfoOfDays();
                             },
-                          error => console.log(error)
+                          ///error => console.log(error)
                           )
                        }
-                     },
+                     }/*,
                      err=>console.log(err),
-                     ()=>console.log('done')
+                     ()=>console.log('done')*/
                    );
      }
 
@@ -84,7 +84,7 @@ export class CalendarComponent implements OnInit {
   actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
     onClick: ({event}: {event: CalendarEvent}): void => {
-      console.log('Edit event', event); 
+      //console.log('Edit event', event); 
     }
   }, {
     label: '<i class="fa fa-fw fa-times"></i>',
@@ -94,7 +94,7 @@ export class CalendarComponent implements OnInit {
   }];
 
   createEventsMorpheuz(event: JSON): void{
-      console.log(event);
+      //console.log(event);
       if(event!==undefined){
         var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
         for (var _i = 1; _i <= daysOfMonth; _i++){
@@ -102,7 +102,7 @@ export class CalendarComponent implements OnInit {
           var year: String = ""+date.getFullYear();
           var month:string  = ("0" + (date.getMonth()+1)).slice(-2);
           var day: String = ("0" + date.getDate()).slice(-2);
-          console.log(year+"-"+month+"-"+day);
+          //console.log(year+"-"+month+"-"+day);
           if(event[year+"-"+month+"-"+day]!==undefined){
               this.events.push({start: date,
                            end: date,
@@ -115,7 +115,7 @@ export class CalendarComponent implements OnInit {
   }
 
   createEventsFitbit(event: JSON): void{
-      console.log(event);
+      //console.log(event);
       if(event!==undefined){
         var daysOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0).getDate();
         for (var _i = 1; _i <= daysOfMonth; _i++){
@@ -123,7 +123,7 @@ export class CalendarComponent implements OnInit {
           var year: String = ""+date.getFullYear();
           var month:string  = ("0" + (date.getMonth()+1)).slice(-2);
           var day: String = ("0" + date.getDate()).slice(-2);
-          console.log(year+"-"+month+"-"+day);
+          //console.log(year+"-"+month+"-"+day);
           if(event[year+"-"+month+"-"+day]!==undefined){
               this.events.push({start: date,
                            end: date,
@@ -137,7 +137,7 @@ export class CalendarComponent implements OnInit {
 
   getInfoOfDays(): void{
       var date: Date;
-      console.log(this.viewDate);
+      //console.log(this.viewDate);
       this.events = [];
       if(this.user['morpheuzID']!==undefined){
         this.createEventsMorpheuz(this.info);

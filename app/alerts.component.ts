@@ -21,15 +21,15 @@ export class AlertsComponent implements OnInit {
                   .subscribe(
                      (data) => {
                        this.alerts=data;
-                       console.log(this.alerts)
+                       //console.log(this.alerts)
                        if(this.alerts["alerts"]==='true'){
                            this.isChecked = 'true';
                            this.hours = this.alerts["hours"];
                            this.days = this.alerts["days"]
                        }
                      },
-                     err=>console.log(err),
-                     ()=>console.log('done')
+                     //err=>console.log(err),
+                     //()=>console.log('done')
                    );
         this.error = false;
      }
@@ -39,22 +39,22 @@ export class AlertsComponent implements OnInit {
     changeAlerts(event: Event): void{
         if (event["checked"]) {
             if (this.hours!=undefined && this.days!=undefined) {
-                console.log("Test");
+                /*console.log("Test");
                 console.log(event["checked"]);
                 console.log(this.hours);
-                console.log(this.days);
+                console.log(this.days);*/
                 this._firebaseService.setAlerts(event["checked"], this.hours, this.days).subscribe(
-                                response => { console.log(response)});
+                                response => { /*console.log(response)*/});
             }else{
                 this.error = true;
                 this.isChecked = 'false';
             }
         }else{
-            console.log(event["checked"]);
+            /*console.log(event["checked"]);
             console.log(this.hours);
-            console.log(this.days);
+            console.log(this.days);*/
             this._firebaseService.setAlerts(event["checked"], this.hours, this.days).subscribe(
-                            response => { console.log(response)});
+                            response => { /*console.log(response)*/});
         }
      }
 }

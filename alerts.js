@@ -1,5 +1,7 @@
 require('dotenv').config()
-require('dotenv').config()
+var log4js = require('log4js');
+var logger = log4js.getLogger();
+log4js.replaceConsole();
 var request = require('sync-request');
 var firebaseAPI = require('./firebase.api.js');
 var nodemailer = require('nodemailer');
@@ -143,7 +145,7 @@ function sendAlert(user, days, desiredHours) {
     };
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
-            console.log(error);
+            logger.error(error);
         }else{
             console.log('Message sent: ' + info.response);
         };
