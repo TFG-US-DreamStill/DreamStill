@@ -1,4 +1,7 @@
 require('dotenv').config()
+var log4js = require('log4js');
+log4js.replaceConsole();
+var logger = log4js.getLogger();
 var requestA = require('request');
 var email2Json = require('./email2Json.js');
 var request = require('sync-request');
@@ -71,9 +74,9 @@ module.exports = {
       body: JSON.stringify(user)
     }, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
       }
@@ -92,9 +95,9 @@ module.exports = {
       body: JSON.stringify(user)
     }, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
       }
@@ -107,10 +110,10 @@ module.exports = {
     var day = date.split('-')[2];
     requestA('https://dreamstill-d507c.firebaseio.com/morpheuz/' + morpheuzID + '/' + year + '-' + month + '-' + day + '.json?auth=' + process.env.FIREBASE_SECRET, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
         res.send(error)
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
         //console.log(body)
@@ -130,9 +133,9 @@ module.exports = {
       body: data
     }, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!');
         var user = getUserByMorpheuzID(morpheuzID);
@@ -146,10 +149,10 @@ module.exports = {
   getMorpheuzDaysWithData: function (res, morpheuzID) {
     requestA('https://dreamstill-d507c.firebaseio.com/morpheuz/' + morpheuzID + '.json?auth=' + process.env.FIREBASE_SECRET + '&shallow=true', function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
         res.send(error)
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
         console.log(body)
@@ -174,9 +177,9 @@ module.exports = {
       })
     }, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
       }
@@ -199,29 +202,30 @@ module.exports = {
       })
     }, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
       }
     });
   },
 
-  getFitbitDataOfUser: function (fitbitID, access_token) {
+  getFitbitDataOfUser: function (user) {
+    fitbitID = user.fitbit.fitbitID;
     requestA('https://dreamstill-d507c.firebaseio.com/fitbit/' + fitbitID + '.json?auth=' + process.env.FIREBASE_SECRET + '&shallow=true', function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
 
       } else {
         console.log('Done!');
         console.log(body);
         console.log(Object.keys(JSON.parse(body)).sort().reverse()[0]);
         body === "null"
-          ? fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, "2016-01-01")
-          : fitbitApi.getDaysWithSleepFromDate(fitbitID, access_token, Object.keys(JSON.parse(body)).sort().reverse()[0]);
+          ? fitbitApi.getDaysWithSleepFromDate(user, "2016-01-01")
+          : fitbitApi.getDaysWithSleepFromDate(user, Object.keys(JSON.parse(body)).sort().reverse()[0]);
       }
     });
   },
@@ -237,12 +241,12 @@ module.exports = {
       body: data
     }, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!');
-        if (user.alerts === true) {
+        if (user.alerts == 'true') {
           alerts.checkAlerts(user);
         }
       }
@@ -252,10 +256,10 @@ module.exports = {
   getFitbitDaysWithData: function (res, fitbitID) {
     requestA('https://dreamstill-d507c.firebaseio.com/fitbit/' + fitbitID + '.json?auth=' + process.env.FIREBASE_SECRET + '&shallow=true', function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
         res.send(error)
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
         console.log(body)
@@ -270,10 +274,10 @@ module.exports = {
     var day = date.split('-')[2];
     requestA('https://dreamstill-d507c.firebaseio.com/fitbit/' + fitbitID + '/' + year + '-' + month + '-' + day + '.json?auth=' + process.env.FIREBASE_SECRET, function (error, response, body) {
       if (error) {
-        console.error(error, response, body);
+        logger.error(error, response, body);
         res.send(error)
       } else if (response.statusCode >= 400) {
-        console.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
       } else {
         console.log('Done!')
         //console.log(body)
@@ -282,34 +286,41 @@ module.exports = {
     });
   },
 
-  getDaysWithDataFromApi: function (api, apiID) {
-
-    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '.json?auth=' + process.env.FIREBASE_SECRET + '&shallow=true', {
-      'headers': {
-        'Content-Type': ' application/json'
+  getUserAlerts: function (userID, res) {
+    requestA('https://dreamstill-d507c.firebaseio.com/alert/' + userID + '.json?auth=' + process.env.FIREBASE_SECRET, function (error, response, body) {
+      if (error) {
+        logger.error(error, response, body);
+        res.send(error)
+      } else if (response.statusCode >= 400) {
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+      } else {
+        console.log('Done!')
+        console.log(body)
+        console.log(JSON.parse(body)['hours'])
+        console.log(JSON.parse(body)['days'])
+        res.send({alerts: 'true', hours: JSON.parse(body)['hours'], days: JSON.parse(body)['days']})
       }
     });
-
-    //console.log(JSON.parse(res.getBody('utf8')));
-
-    var json = JSON.parse(res.getBody('utf8'));
-
-    return json;
   },
 
-  getDaysWithDataFromApiAtDate: function (api, apiID, date) {
-    console.log('https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '/' + date);
-    var res = request('GET', 'https://dreamstill-d507c.firebaseio.com/' + api + '/' + apiID + '/' + date + '.json?auth=' + process.env.FIREBASE_SECRET, {
-      'headers': {
-        'Content-Type': ' application/json'
+  setAlert: function (userID, hours, days) {
+    requestA({
+      url: 'https://dreamstill-d507c.firebaseio.com/alert/' + userID + '.json?auth=' + process.env.FIREBASE_SECRET,
+      method: 'PATCH',
+      headers: {
+        'Content-Type': ' application/json'/*,
+        'Authorization': 'key=AI...8o'*/
+      },
+      body: JSON.stringify({"hours": hours, "days": days})
+    }, function (error, response, body) {
+      if (error) {
+        logger.error(error, response, body);
+      } else if (response.statusCode >= 400) {
+        logger.error('HTTP Error: ' + response.statusCode + ' - ' + response.statusMessage + '\n' + body);
+      } else {
+        console.log('Done!');
       }
     });
-
-    //console.log(JSON.parse(res.getBody('utf8')));
-
-    var json = JSON.parse(res.getBody('utf8'));
-
-    return json;
   }
 }
 

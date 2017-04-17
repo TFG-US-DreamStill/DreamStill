@@ -15,6 +15,6 @@ export class MorpheuzComponent{
             .subscribe((data) => {
                 this.morpheuzID = data["morpheuzID"];
                 console.log(this.morpheuzID);
-            }, err => console.log(err), () => console.log('done'));
+            }/*, err => console.log(err), () => console.log('done')*/);
     }
 }

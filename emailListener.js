@@ -1,4 +1,7 @@
 require('dotenv').config()
+var log4js = require('log4js');
+log4js.replaceConsole();
+var logger = log4js.getLogger();
 var email2Json = require('./email2Json.js');
 var firebaseApi = require('./firebase.api.js');
 
@@ -83,7 +86,7 @@ mailListener.on("server:disconnected", function(){
       console.log('attempting to mark msg read/seen');
       mailListener.imap.addFlags(mailuid, '\\Seen', function (err) {
         if (err) {
-          console.log('error marking message read/SEEN');
+          logger.error('error marking message read/SEEN');
           return;
         }
       });

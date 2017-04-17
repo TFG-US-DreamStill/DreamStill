@@ -3,3 +3,14 @@
     margin-right: 16%;
     margin-top: 3%;
 }
+
+.alertInput{
+    margin-left: 1em;
+    margin-right: 1em;   
+    width: 3.5em;
+}
+
+.error{
+    margin-left: 1em;
+    color: red;
+}

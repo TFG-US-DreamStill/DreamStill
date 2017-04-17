@@ -61,9 +61,9 @@ export class PlotlyComponent implements OnInit {
     @Input() displayRawData1: boolean;
  
     ngOnInit() {
-        console.log("ngOnInit PlotlyComponent");
+        /*console.log("ngOnInit PlotlyComponent");
         console.log(this.data);
-        console.log(this.layout);
+        console.log(this.layout);*/
  
         Plotly.newPlot('myPlotlyDiv', this.data, this.layout, this.options);
         Plotly.newPlot('myPlotlyDiv1', this.data1, this.layout1, this.options1);

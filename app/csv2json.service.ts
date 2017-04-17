@@ -34,9 +34,9 @@ export class Csv2JsonService{
             result += "]}";
         }
         
-        //console.log(ExampleArray);
+        /*console.log(ExampleArray);
         console.log(csvData);
-        console.log(parseDate);
+        console.log(parseDate);*/
 
         return result;
     }

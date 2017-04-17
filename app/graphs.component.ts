@@ -26,13 +26,13 @@ export class GraphsComponent implements OnInit {
             if (params['app'] !== undefined && params['date'] !== undefined) {
                 if (params['app'] === 'morpheuz'){
                     this._firebaseService.getMorpheuzDataOfUserAtDate(new Date(params['date'])).subscribe(
-                                                                        data => this.setReturnedData(data),
-                                                                        error => console.log(error))
+                                                                        data => this.setReturnedData(data)/*,
+                                                                        error => console.log(error)*/)
                 }
                 if (params['app'] === 'fitbit'){
                     this._firebaseService.getFitbitDataOfUserAtDate(new Date(params['date'])).subscribe(
-                                                                        data => this.setReturnedDataFitbit(data),
-                                                                        error => console.log(error))
+                                                                        data => this.setReturnedDataFitbit(data)/*,
+                                                                        error => console.log(error)*/)
                 }
             } else {
                /* this.navigated = false; 
@@ -42,7 +42,7 @@ export class GraphsComponent implements OnInit {
      }
 
     private setReturnedData(data: any) {
-        console.log(data);
+        //console.log(data);
         this.dreamDataX = [];
         this.dreamDataY = [];
         this.sleepStates = ["Inquieto","Ligero","Profundo","Ignorar"];
@@ -108,7 +108,7 @@ export class GraphsComponent implements OnInit {
   }
 
   private setReturnedDataFitbit(data: any) {
-        console.log(data);
+        //console.log(data);
         this.dreamDataX = [];
         this.dreamDataY = [];
         this.sleepStates = ["Inquieto","Ligero","Profundo"];

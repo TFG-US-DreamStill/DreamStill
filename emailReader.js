@@ -1,5 +1,7 @@
 require('dotenv').config()
-
+var log4js = require('log4js');
+log4js.replaceConsole();
+var logger = log4js.getLogger();
 var email2Json = require('./email2Json.js');
 var firebaseApi = require('./firebase.api.js');
 var Imap = require('imap'),
@@ -67,7 +69,7 @@ imap.once('ready', function() {
         });
       });
       f.once('error', function(err) {
-        console.log('Fetch error: ' + err);
+        logger.error('Fetch error: ' + err);
       });
       f.once('end', function() {
         console.log('Done fetching all messages!');
@@ -79,7 +81,7 @@ imap.once('ready', function() {
 });
 
 imap.once('error', function(err) {
-  console.log(err);
+  logger.error(err);
 });
 
 imap.once('end', function() {
