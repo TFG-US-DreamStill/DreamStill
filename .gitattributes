@@ -81,3 +81,4 @@
 #*.vcxitems  merge=binary
 
 documentacion/* linguist-documentation
+documentacion/* linguist-vendored
