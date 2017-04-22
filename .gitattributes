@@ -80,4 +80,4 @@
 #*.filters   merge=binary
 #*.vcxitems  merge=binary
 
-documentation/* linguist-documentation
+documentacion/* linguist-documentation
