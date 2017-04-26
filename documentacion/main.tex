@@ -116,41 +116,39 @@
 % )
 \chapter{Introducción}
 
-El estilo de vida moderno conlleva un ritmo frenético de las actividades y ha provocado un cambio en las costumbres actuales. Sin embargo, hay actividades que han de mantenerse, ya que el descuido de las mismas tiene consecuencias desfavorables por no seguir un estilo de vida saludable. Entre éstas actividades encontramos la alimentación, el deporte y el descanso entre muchas otras. Es en ésta última actividad en la que se va a centrar el presente proyecto.
+El estilo de vida moderno conlleva un ritmo frenético de las tareas que realizamos, provocando un cambio en las costumbres actuales. Sin embargo, hay actividades que han de mantenerse, ya que el descuido de las mismas tiene consecuencias desfavorables para nuestra salud. Entre éstas actividades encontramos la alimentación, el deporte y el descanso entre muchas otras. Es en ésta última actividad en la que se va a centrar el presente proyecto.
 
 ¿Sería usted capaz de responderme cuántas horas duerme normalmente? ¿Cree que duerme las horas suficientes? Probablemente no sea capaz de responder a estas preguntas, porque actualmente, debido a nuestra vida ajetreada o a la inclusión de otras actividades, no le damos la suficiente importancia al descanso. Teóricamente se deben dormir de media, dependiendo de la edad por supuesto, entre siete y nueve horas \cite{1}. Sin embargo, ¿Cree que usted cumple con esa media?
 
-Debido a ésta necesidad, actualmente existen diversas soluciones que permiten medir nuestro sueño, tanto en términos de calidad como de cantidad del mismo. Pero muchas de éstas soluciones son privativas y necesitan de una plataforma o aplicación específica. Así, un usuario que cambia por ejemplo de smartwatch, pulsómetro o incluso de Smartphone, una práctica bastante habitual hoy día, o le surge la necesidad de consultar sus datos desde su ordenador, no podrá hacerlo, ya que necesitará una aplicación que sólo se ejecuta en determinadas plataformas. 
-
 Además, el tema de la monitorización del sueño o en inglés ``Sleep Tracking'' se encuentra en auge, ya que con las nuevas tecnologías podemos realizar un seguimiento más exacto y sencillo de nuestras actividades físicas, nuestra nutrición o nuestro descanso. Ésto despierta mucho interés entre los usuarios que desean llevar un estilo de vida saludable y que desean mejorar sus hábitos para mejorar su calidad de vida. 
+
+Debido a éste problema, actualmente existen diversas soluciones que permiten medir nuestro sueño, tanto en términos de cantidad de horas como de calidad del mismo. Pero muchas de éstas soluciones son privativas y necesitan de una plataforma o aplicación específica. Así, un usuario que cambia por ejemplo de smartwatch, pulsómetro o incluso de Smartphone, una práctica bastante habitual hoy día, o al que le surge la necesidad de consultar sus datos desde su ordenador, puede no llegar a tener acceso a los datos de su propio sueño, ya que necesitará una aplicación que sólo se ejecuta en determinadas plataformas. 
 
 \section{El problema}
 
 El problema reside en un principio en la variedad de plataformas móviles, ya que dependiendo del Sistema Operativo que tengamos en nuestro Smartphone tendremos acceso a los datos de unas u otras aplicaciones. 
 
-El proyecto nace con la idea de eliminar ésta barrera y dar soporte a todos los usuarios sin importar de que plataforma accedan al ser una aplicación web, por lo que cualquier usuario con un navegador web instalado pueda acceder a ella.
+El proyecto nace con la idea de eliminar ésta barrera y dar soporte a todos los usuarios sin importar de que plataforma accedan mediante una aplicación web, por lo que cualquier usuario con un navegador web instalado pueda acceder a sus propios datos de sueño.
 
-Además, nos encontramos con problemas a la hora de revisar nuestro datos de sueño, ya que en unas aplicaciones los datos son muy detallados pero carecen de funcionalidad, y en otras, ofrecen éstas funcionalidades pero el detalle que ofrecen en la aplicación no es suficiente, sin olvidar la falta de homogeneidad entre una y otra. También, nos encontramos con la carencia a la hora de mostrar los datos obtenidos de las distintas fuentes, por ejemplo, aplicaciones como Google Fit o Apple Health se limitan a mostrar el intervalo de sueño de ese usuario, es decir, la hora a la que se quedó dormido/a y la hora a la que se despertó, sin ofrecer mayor información.
+Además, nos encontramos con problemas a la hora de revisar nuestro datos de sueño, ya que en unas aplicaciones los datos son muy detallados pero carecen de funcionalidad, y en otras, ofrecen éstas funcionalidades pero el detalle que ofrecen en la aplicación no es suficiente, sin olvidar la falta de homogeneidad entre unas y otras. También, nos encontramos con las carencias a la hora de mostrar los datos obtenidos de las distintas fuentes, por ejemplo, aplicaciones como Google Fit o Apple Health se limitan a mostrar el intervalo de sueño de ese usuario, es decir, la hora a la que se quedó dormido/a y la hora a la que se despertó, sin ofrecer mayor información, aún cuando los datos detallados están disponibles.
 
-Por tanto nuestro problema se basará en tres pilares fundamentales: resolver el problema de la diversidad de plataformas y abstraer al usuario que utilice la aplicación de dicha diversidad, agrupar en una sola aplicación todos los reportes que ofrecen algunas plataformas sin necesidad de que el usuario tenga que consultarlos diariamente y añadir mayor información a los reportes que utilizan distintas plataformas sobre el sueño de un usuario en la aplicación de la misma.
+Por tanto nuestra propuesta se basará en tres pilares fundamentales: resolver el problema de la diversidad de plataformas y abstraer al usuario que utilice la aplicación de dicha diversidad, agrupar en una sola aplicación todos los reportes que ofrecen algunas plataformas sin necesidad de que el usuario tenga que consultarlos diariamente y añadir mayor información a los reportes que utilizan distintas plataformas sobre el sueño de un usuario en la aplicación de la misma, en base a los datos reales de monitorización capturados.
 
 \section{La solución}
 
-El presente proyecto tiene la finalidad de mostrarle a los usuarios su calidad de sueño, cuantas horas han dormido, en qué estado y una representación de estos datos de tal forma que puedan intuirlos de ``un vistazo''. Además, la aplicación que se va a desarrollar en el presente Trabajo de Fin de Grado sería transparente a los cambios entre aplicaciones, ya que no diferenciará entre obtener los datos entre una aplicación u otra.
+El presente proyecto tiene la finalidad de mostrarle a los usuarios su calidad de sueño, cuantas horas han dormido, en qué estado y una representación de estos datos de tal forma que puedan intuirlos de ``un vistazo''. Además, la aplicación que se va a desarrollar será transparente a los cambios entre aplicaciones de medimiento de sueño, ya que podrá obtener todos los datos tanto de una aplicación u otra.
 
 La solución consiste en crear una aplicación web, a la que el usuario podrá acceder y revisar sus distintos ``eventos''. Se conocerá como evento toda aquella actividad recopilada de otras aplicaciones en las que el usuario ha registrado una actividad de sueño. Ésta aplicación web dará a los usuarios de manera sencilla la posibilidad de integrarse con distintas aplicaciones. Con ésta solución se pretende que el usuario de una manera simple pueda ver los datos de ambas aplicaciones sin tener la necesidad de ira a buscarlo a fuentes distintas. Para que la interfaz resulte lo más intuitiva posible, se creará un calendario en la vista principal, desde el que el usuario que acceda a la aplicación podrá ver los eventos que han sido extraídos de las distintas fuentes representados en los días de éste calendario y podrá ir accediendo individualmente a cada uno de ellos sin la necesidad de verlos detalladamente todos. 
 
-Dentro de cada evento anteriormente comentado, el usuario se encontrará con dos gráficas. La primera de ella le representará en movimientos/horas o actividad/horas (entiéndase como actividad: durmiendo, inquieto o despierto) el punto de movimiento o actividad en el que estaba en una unidad de tiempo concreta. La segunda gráfica, representará la calidad del sueño ofreciendo un resumen de cada uno de los estados por los que el usuario ha pasado a lo largo de la actividad y dando una idea de como ha sido la calidad de sueño general de ese usuario.
+Dentro de cada evento anteriormente comentado, el usuario se encontrará con dos gráficas. La primera de ellas representará los movimientos o estados (siendo el estado: durmiendo, inquieto o despierto) que ha generado el usuario durante sus horas de sueño. La segunda gráfica, representará la calidad del sueño ofreciendo un resumen de cada uno de los estados por los que el usuario ha pasado a lo largo de la actividad y dando una idea de como ha sido la calidad de sueño general de ese usuario.
 
 El interés de ésta solución se encuentra en ofrecerle a los usuarios potenciales de la aplicación, tener una aplicación multiplataforma que recoge datos de distintas fuentes, posibilitándole a aquellos usuarios que tienen varios dispositivos para el registro de sus actividades físicas o que quieren tener una sola aplicación para la visualización de los datos del mismo, el no necesitar cambiar entre aplicaciones para ver los datos de una u otra.
 
 Respecto al resto de alternativas, nos diferenciamos en distintos aspectos. El primero es que algunas aplicaciones se restringen a los sistemas operativos para los que han sido desarrollados, nuestra aplicación, al tratarse de una aplicación web no tendría éste problema. Por otro lado, no todas las fuentes se sincronizan con las aplicaciones que traen los sistemas operativos para el registro de la actividad física, lo cual imposibilita el poder almacenar los datos de todas las fuentes que deseemos en éstos, nuestra aplicación se destaca por ofrecer de manera más directa una integración con éstos servicios. 
 
-Por otra parte cabría pensar por qué no usar la aplicación que se han desarrollado nativamente para estos dispositivos. Lo que diferencia el presente proyecto de éstas aplicaciones, es que permite mostrar más detalles sobre los datos, mostrarlos en una estructura más representativa y aunar distintas fuentes, sin importar la plataforma o marca de donde provengan.
+Por otra parte cabría pensar en usar la aplicación que se han desarrollado nativamente para estos dispositivos. Lo que diferencia el presente proyecto de éstas aplicaciones, es que permite mostrar más detalles sobre los datos, mostrarlos en una estructura más representativa y aunar distintas fuentes, sin importar la plataforma o marca de donde provengan.
 
 \section{Estructura del documento}
-
-En el capítulo 1, se ha abordado la introducción al proyecto, introduciendo el dominio del problema y la solución que se le ha planteado a éste. El lector tras leer éste apartado, debería de tener una visión global de cuál ha sido la motivación del proyecto y qué solución se le ha dado.
 
 En el capítulo 2, se definirán las tecnologías que se han usado a lo largo de la realización del proyecto, nombrándolas y explicando para que se han usado cada una de ellas.
 
@@ -172,9 +170,9 @@ En el capítulo 9, se encuentran todas las referencias que se mostrarán a lo la
 % 2. Tecnologías: (Node, Firebase, Angular2, jasmine, protractor, etc.)(Distinción entre tecnologías de desarrollo, las herramientas y las tecnologías aplicadas a la planificación y la gestión del proyecto)
 \chapter{Tecnologías}
 
-La cantidad de tecnologías que hemos utilizado para realizar presente proyecto es amplia, ya que algunas de las tecnologías principales usadas para su desarrollo necesitan de herramientas adicionales para realizar mejor su función.
+La cantidad de tecnologías que hemos utilizado para realizar el presente proyecto es amplia, ya que algunas de las tecnologías principales usadas para su desarrollo necesitan de herramientas adicionales para realizar mejor su función.
 
-En las tecnologías de desarrollo, se han utilizado tecnologías recientes y que están muy enfocadas al desarrollo de aplicaciones web, utilizando lenguajes de programación muy cercanos a éste tipo de aplicaciones.
+En cuanto a las tecnologías de desarrollo, se han utilizado tecnologías recientes y que están muy enfocadas al desarrollo de aplicaciones web, utilizando lenguajes de programación muy cercanos a éste tipo de aplicaciones, como JavaScript ó TypeScript.
 
 Respecto a las herramientas de planificación, éstas han ayudado a la hora de mantener una planificación y calcular posibles desvíos o impactos de un nuevo cambio. Los resultados obtenidos mediante éstas herramientas se expondrán en el capítulo 4 de la presente memoria.
 
@@ -488,78 +486,42 @@ En ésta sección mostraremos las tecnologías que se han usado para el desarrol
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=5cm]{resumenTecnologias/Resumen_Tecnolog_as_de_Desarrollo.png}
+\includegraphics[totalheight=8cm]{resumenTecnologias/Resumen_Tecnolog_as_de_Desarrollo.png}
 \caption{Resumen Tecnologías de Desarrollo}
 \end{figure}
 \vspace{-5mm}
+
+\pagebreak
 \subsection{Resumen Tecnologías de planificación y gestión del proyecto}
 
 Las tecnologías que se han usado para generar la documentación y la gestión del proyecto son las que a continuación se muestra, mostrando gráficamente en que se centran cada una de ellas.
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=5cm]{resumenTecnologias/Resumen_Tecnolog_as_de_Planificaci_n.png}
+\includegraphics[totalheight=8cm]{resumenTecnologias/Resumen_Tecnolog_as_de_Planificaci_n.png}
 \caption{Resumen Tecnologías de planificación y gestión del proyecto}
 \end{figure}
 
+\pagebreak
 \subsection{Resumen Tecnologías de gestión del código, integración y despliegue continuo}
 
 Éstas tecnologías se encuentran todas en la ``nube'' por lo que sus resultados se encuentran al alcance de cualquier usuario que desea revisarlos, es por ello la representación que se le ha dado en éste apartado.
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=5cm]{resumenTecnologias/Resumen_Tecnolog_as_de_Integraciones.png}
+\includegraphics[totalheight=8cm]{resumenTecnologias/Resumen_Tecnolog_as_de_Integraciones.png}
 \caption{Resumen Tecnologías de gestión del código, integración y despliegue continuo}
 \end{figure}
 
 % 3. Análisis y Diseño: (Mockups, HU, ...)
 \chapter{Análisis y Diseño}
 
-Para analizar y mostrar el diseño de la aplicación, se van a usar distintos diagramas en éste capítulo con la finalidad de mostrar al lector éstos detalles que resultan muy técnicos desde un punto de vista más visual, ofreciéndole la posibilidad de revisar los detalles en la explicación de los diagramas, pero también poder intuir el esquema general de cada parte con sólo revisar dicho diagrama.
-
-Por tanto, dividiremos el capítulo en secciones con los distintos diagramas que constituyen el análisis y el diseño de la aplicación. Mostraremos además en éste capítulo los mockups del proyecto, cabe destacar que pueden diferir en algunos casos, ya que los dichos mockups se realizaron al comienzo de la aplicación, como se mostrará en el capítulo 4 y la aplicación al seguir un procedimiento de ágil, ha sufrido cambio respecto a los requisitos planteados inicialmente.
+Dividiremos el capítulo en secciones con los distintos diagramas que constituyen el análisis y el diseño de la aplicación. Mostraremos además en éste capítulo los mockups del proyecto, cabe destacar que pueden diferir en algunos casos, ya que los dichos mockups se realizaron al comienzo de la aplicación, como se mostrará en el capítulo 4 y la aplicación al seguir un procedimiento de ágil, ha sufrido cambio respecto a los requisitos planteados inicialmente.
 \pagebreak
-\section{Diagrama de Componentes}
- 
- El siguiente diagrama pretende mostrar cómo está compuesta la aplicación, cuales son sus módulos y cual es la finalidad de cada uno de ellos. Para ello, se definirán la función de cada uno de los módulos por separados, con la intención de que el lector conozca la función de cada uno de ellos.
- 
-\begin{figure}[H]
-\centering
-\includegraphics[totalheight=10cm]{diagramas/Diagrama_de_Componentes.png}
-\caption{Diagrama de Componentes}
-\end{figure}
 
-\begin{itemize}
-\item Sistema Central WebApp DreamStill: Es el sistema más importante de la aplicación. Se encarga de obtener y procesar los datos y comunicarlos al resto de subsistemas de la aplicación. En él se encontrarían las funciones más importantes de la aplicación, como la comunicación entre el Subsistema de Integraciones y Firebase o entre éste y el Subsistema de Calendario.
-\item Subsistema de Integraciones: Es el subsistema encargado de abstraer al Sistema Central de las distintas integraciones que se añadan a la aplicación, gracias a éste subsistema, a pesar de las distintas integraciones que se realicen, todas serán iguales a instancias del Sistema Central. Por tanto, es necesario que en éste Subsistema se haga un tratado de los datos de las distintas APIs para procesarlos y homogeneizarlos.
-\item Subsistema de emails: Es el subsistema encargado de realizar las distintas funciones de correo existentes en la aplicación. Entre ellas se encuentran la lectura de los correos enviados por los usuarios de Morpheuz con sus datos de sueño a la aplicación, o el envío de correos a los usuarios que han establecido una alerta en el sistema.
-\item Subistema de Alertas: Es el subsistema encargado de proporcionar al usuario la opción de crear alertas en el sistema, de tal forma que si se cumple una condición impuesta por el usaurio (como por ejemplo dormir menos de 7 horas durante 3 días consecutivos) éste sea informado sin necesitar de tener que acceder a la aplicación para comprobarlo.
-\item Subsistema de Calendario: Es el subsistema encargado de proveer y mostrar el calendario que finalmente el usuario encuentra al entrar en la página principal de la aplicación. Provee las distintas funciones como pueden ser navegar al mes anterior, al siguiente o regresar a la fecha actual.
-\item Login: Es el sistema encargado de la autenticación de los usuarios. Se encarga de comprobar a través de la información que le proporciona el Sistema Central las correctas credenciales de los usuario y de dar acceso a los mismos a la aplicación. Además, se encarga del registro de nuevos usuarios y de la recuperación de la contraseña de los mismos.
-\item Eventos Calendario: Es el subsistema encargado de proveer los eventos que se mostrarán en el calendario de la aplicación, de tal forma que un usuario pueda ver en el calendario en qué días tiene eventos de sueño.
-\item Vista Resumen Sueño Diario: Es la vista encargada de mostrar los datos representados gráficamente de una etapa de sueño concreta. De ésta forma, un usuario puede acceder visualmente a éstos datos y obtener reflexiones interesantes de los mismos.
-\item Firebase: Es el sistema encargado de comunicarse, leer y almacenar todos los datos en Firebase, nuestra base de datos.
-\item Fitbit: Es el subsistema encargado de obtener los datos de Fitbit y transmitirlos al Subsistema de Integraciones para que los procese.
-\item Morpheuz: Es el subsistema encargado de controlar las cuentas de Morpheuz de los usuarios y enviar los correos con los datos necesarios al Subsistema de email.
-\end{itemize}
+\section{Análisis}
 
-\section{Diagrama de Despliegue}
-
-Describe la estructura a nivel de hardware de nuestra aplicación. Pretende mostrar de manera gráfica la estructuración de la aplicación dividida en los distintos niveles hardware que la componen. Para nuestro caso concreto estará estructurado en tres niveles.
-
-\begin{figure}[H]
-\centering
-\includegraphics[totalheight=6cm]{diagramas/Diagrama_de_Despliegue.png}
-\caption{Diagrama de Despliegue}
-\end{figure}
-
-El primero de ellos, pertenece a la parte del cliente. El entorno de ejecución será para nuestro caso cualquier dispositivo con acceso a la aplicación web, éste a su vez ejecutará el contenido de nuestra aplicación perteneciente al lado del cliente, y provocará que se ejecuten los contenidos necesarios del servidor para poder realizar acciones en nuestra aplicación.
-
-Por otro lado, tenemos la parte del servidor. Para nuestro caso concreto, se alojará en los servidores de Heroku que es donde está alojado nuestra aplicación, y el entorno de ejecución será Docker, el cual gracias a sus contenedores provee mayor escalabilidad en la aplicación. Para poder ejecutar el contenido y las funcionalidades de nuestra aplicación, implementaremos la interfaz de Fitbit y la lectura de emails de Morpheuz. 
-
-Por último, tenemos la parte de base de datos. Para nuestro caso Firebase, base de datos en tiempo real que nos permitirá tener nuestros datos en la ``nube'' y tenerlos actualizados de manera continua, además de ofrecernos la posibilidad de tener un fácil acceso a ellos y además de forma segura.
-
-\section{Backlog del producto}
+\subsection{Backlog del producto}
 
 A continuación se detallará el Backlog del producto. Éste contiene los requisitos y el Sprint en el que han de ser implementados, cabe destacar que en algunos casos los requisitos se han dividido en ``Fases'', ésto es debido a la estimación seguida, por la que en el caso de estimar un requisito demasiado grande, se divide en trozos más pequeños, con la filosofía ``Divide y vencerás'' y con la finalidad de poder implementar dicho requisito con éxito. 
 
@@ -677,53 +639,7 @@ A continuación se detallará el Backlog del producto. Éste contiene los requis
 
 En el capítulo 4, se detallará con mayor información el Backlog que a continuación se muestra, mostrando la estimación en horas y puntos de historia que se estimaron.
 
-\section{Mockups}
-
-A continuación se mostrarán los Mockups diseñados para la aplicación. Cabe destacar fueron diseñados al principio de la misma y que por tanto han sufrido en algunas ocasiones importantes cambios respecto a la implantación que se ha llevado a cabo. Además, algunas vistas se han añadido con posterioridad a los mismos, por lo que no se encuentran representadas por éstos Mockups, los cuales representan la funcionalidad básica de la aplicación.
-
-\subsection{Página de Login y Registro}
-
-\begin{figure}[H]
-\centering
-\includegraphics[totalheight=6.5cm]{mockups/LoginPage.png}
-\caption{Mockup Página de Login y Registro}
-\end{figure}
-\par\bigskip 
-\noindent
-
-Se desea hacer el acceso al usuario lo más sencillo posible, tanto para los usuarios que ya son de la aplicación, como los que estarían interesados en serlo. Es por ello que el formulario de registro esté al mismo nivel que el de login, de ésta forma, se pretende que el esfuerzo a realizar entre un usuario que ya sea de la aplicación y uno que no lo sea sea similar, animando así a los nuevos usuarios a empezar en la aplicación. 
-
-Además, al estar el formulario de registro visible en todo momento, evitamos ése posible miedo por parte de los usuarios a pensar que tendrán que rellenar una gran cantidad de datos o que el registro se hará pesado, ya que como se puede comprobar, sólo deberá de rellenar algunos datos básicos para acceder a la misma.
-
-\subsection{Página principal}
-
-\begin{figure}[H]
-\centering
-\includegraphics[totalheight=6.5cm]{mockups/CalendarPage.png}
-\caption{Mockup Página Principal}
-\end{figure}
-\par\bigskip 
-\noindent
-
-Ésta sería la vista principal que todo usuario que se loguease encontraría nada más entrar. En ella, se encontraría con un calendario en el que se representarían los eventos de sueño y sobre el que podría navegar entre los distintos meses del mismo. Además, el usuario tendrá acceso desde los eventos a la página que contendrá la información de los mismos.
-
-Ésta vista es la que posiblemente haya sufrido uno de los mayores cambios respecto al Mockup planificado. Éstos cambios han sido motivados por el cambio a una interfaz más simple, en la que eliminar posibles menús y aunarlos todos en un mismo botón, que es el que encontramos actualmente en la aplicación y que contiene todas las rutas necesarias para acceder a las distintas partes de la aplicación. De ésta forma, queda una vista mucho más limpia y simple, en la que el usuario podrá centrarse en el calendario y en sus eventos sin distracción alguna.
-
-\subsection{Página de Resumen de Sueño Diario}
-
-\begin{figure}[H]
-\centering
-\includegraphics[totalheight=6.5cm]{mockups/DailyDreamPage.png}
-\caption{Mockup Página de Resumen de Sueño Diario}
-\end{figure}
-\par\bigskip 
-\noindent
-
-Se compone de dos gráficas. En la primera de ellas el usuario podrá observar como ha sido su estado de sueño en cada intervalo de tiempo de la noche, conociendo cuales fueron los periodos de mayor actividad y en cuales el usuario estuvo prácticamente inmóvil. En la segunda, se muestra de forma resumida la calidad de sueño que se ha tenido, en función de la actividad de ese usuario durante el intervalo de sueño. 
-
-El objetivo de éstas dos gráficas es que el usuario quede informado de su sueño rápidamente y pueda ahondar en más detalles si lo desea interactuando con las mismas.
-
-\section{Historias de Usuario}
+\subsection{Historias de Usuario}
 
 Al igual que ocurre con los Mockups mostrados anteriormente, algunas de éstas han sido actualizadas o incluso se han añadido más funcionalidades que las definidas en el diseño de las mismas, ya que éstas se diseñaron al inicio de la aplicación. Sin embargo, como se ha podido comprobar en el Backlog, se han implementado en varios Sprints, por lo que la variación final sufrida respecto a el diseño inicial no ha sido tan notable como en el caso de los Mockups.
 
@@ -811,7 +727,95 @@ Seguidamente pasamos a la definición de las Historias de Usuario:
 \item Verificar que el proceso se ejecuta cada vez que se inicia la aplicación.
 \end{itemize}
 
-\section{Diagrama de Capas y Tecnologías}
+\subsection{Mockups}
+
+A continuación se mostrarán los Mockups diseñados para la aplicación. Cabe destacar fueron diseñados al principio de la misma y que por tanto han sufrido en algunas ocasiones importantes cambios respecto a la implantación que se ha llevado a cabo. Además, algunas vistas se han añadido con posterioridad a los mismos, por lo que no se encuentran representadas por éstos Mockups, los cuales representan la funcionalidad básica de la aplicación.
+
+\subsubsection{Página de Login y Registro}
+
+\begin{figure}[H]
+\centering
+\includegraphics[totalheight=6.5cm]{mockups/LoginPage.png}
+\caption{Mockup Página de Login y Registro}
+\end{figure}
+\par\bigskip 
+\noindent
+
+Se desea hacer el acceso al usuario lo más sencillo posible, tanto para los usuarios que ya son de la aplicación, como los que estarían interesados en serlo. Es por ello que el formulario de registro esté al mismo nivel que el de login, de ésta forma, se pretende que el esfuerzo a realizar entre un usuario que ya sea de la aplicación y uno que no lo sea sea similar, animando así a los nuevos usuarios a empezar en la aplicación. 
+
+Además, al estar el formulario de registro visible en todo momento, evitamos ése posible miedo por parte de los usuarios a pensar que tendrán que rellenar una gran cantidad de datos o que el registro se hará pesado, ya que como se puede comprobar, sólo deberá de rellenar algunos datos básicos para acceder a la misma.
+
+\subsubsection{Página principal}
+
+\begin{figure}[H]
+\centering
+\includegraphics[totalheight=6.5cm]{mockups/CalendarPage.png}
+\caption{Mockup Página Principal}
+\end{figure}
+\par\bigskip 
+\noindent
+
+Ésta sería la vista principal que todo usuario que se loguease encontraría nada más entrar. En ella, se encontraría con un calendario en el que se representarían los eventos de sueño y sobre el que podría navegar entre los distintos meses del mismo. Además, el usuario tendrá acceso desde los eventos a la página que contendrá la información de los mismos.
+
+Ésta vista es la que posiblemente haya sufrido uno de los mayores cambios respecto al Mockup planificado. Éstos cambios han sido motivados por el cambio a una interfaz más simple, en la que eliminar posibles menús y aunarlos todos en un mismo botón, que es el que encontramos actualmente en la aplicación y que contiene todas las rutas necesarias para acceder a las distintas partes de la aplicación. De ésta forma, queda una vista mucho más limpia y simple, en la que el usuario podrá centrarse en el calendario y en sus eventos sin distracción alguna.
+
+\subsubsection{Página de Resumen de Sueño Diario}
+
+\begin{figure}[H]
+\centering
+\includegraphics[totalheight=6.5cm]{mockups/DailyDreamPage.png}
+\caption{Mockup Página de Resumen de Sueño Diario}
+\end{figure}
+\par\bigskip 
+\noindent
+
+Se compone de dos gráficas. En la primera de ellas el usuario podrá observar como ha sido su estado de sueño en cada intervalo de tiempo de la noche, conociendo cuales fueron los periodos de mayor actividad y en cuales el usuario estuvo prácticamente inmóvil. En la segunda, se muestra de forma resumida la calidad de sueño que se ha tenido, en función de la actividad de ese usuario durante el intervalo de sueño. 
+
+El objetivo de éstas dos gráficas es que el usuario quede informado de su sueño rápidamente y pueda ahondar en más detalles si lo desea interactuando con las mismas.
+
+\section{Diseño}
+
+\subsection{Diagrama de Componentes}
+ 
+ El siguiente diagrama pretende mostrar cómo está compuesta la aplicación, cuales son sus módulos y cual es la finalidad de cada uno de ellos. Para ello, se definirán la función de cada uno de los módulos por separados, con la intención de que el lector conozca la función de cada uno de ellos.
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[totalheight=10cm]{diagramas/Diagrama_de_Componentes.png}
+\caption{Diagrama de Componentes}
+\end{figure}
+
+\begin{itemize}
+\item Sistema Central WebApp DreamStill: Es el sistema más importante de la aplicación. Se encarga de obtener y procesar los datos y comunicarlos al resto de subsistemas de la aplicación. En él se encontrarían las funciones más importantes de la aplicación, como la comunicación entre el Subsistema de Integraciones y Firebase o entre éste y el Subsistema de Calendario.
+\item Subsistema de Integraciones: Es el subsistema encargado de abstraer al Sistema Central de las distintas integraciones que se añadan a la aplicación, gracias a éste subsistema, a pesar de las distintas integraciones que se realicen, todas serán iguales a instancias del Sistema Central. Por tanto, es necesario que en éste Subsistema se haga un tratado de los datos de las distintas APIs para procesarlos y homogeneizarlos.
+\item Subsistema de emails: Es el subsistema encargado de realizar las distintas funciones de correo existentes en la aplicación. Entre ellas se encuentran la lectura de los correos enviados por los usuarios de Morpheuz con sus datos de sueño a la aplicación, o el envío de correos a los usuarios que han establecido una alerta en el sistema.
+\item Subistema de Alertas: Es el subsistema encargado de proporcionar al usuario la opción de crear alertas en el sistema, de tal forma que si se cumple una condición impuesta por el usaurio (como por ejemplo dormir menos de 7 horas durante 3 días consecutivos) éste sea informado sin necesitar de tener que acceder a la aplicación para comprobarlo.
+\item Subsistema de Calendario: Es el subsistema encargado de proveer y mostrar el calendario que finalmente el usuario encuentra al entrar en la página principal de la aplicación. Provee las distintas funciones como pueden ser navegar al mes anterior, al siguiente o regresar a la fecha actual.
+\item Subsistema de Login: Es el sistema encargado de la autenticación de los usuarios. Se encarga de comprobar a través de la información que le proporciona el Sistema Central las correctas credenciales de los usuario y de dar acceso a los mismos a la aplicación. Además, se encarga del registro de nuevos usuarios y de la recuperación de la contraseña de los mismos.
+\item Subsistema de Eventos Calendario: Es el subsistema encargado de proveer los eventos que se mostrarán en el calendario de la aplicación, de tal forma que un usuario pueda ver en el calendario en qué días tiene eventos de sueño.
+\item Subsistema de Vista Resumen Sueño Diario: Es la vista encargada de mostrar los datos representados gráficamente de una etapa de sueño concreta. De ésta forma, un usuario puede acceder visualmente a éstos datos y obtener reflexiones interesantes de los mismos.
+\item Firebase: Es el sistema encargado de comunicarse, leer y almacenar todos los datos en Firebase, nuestra base de datos.
+\item Fitbit: Es el subsistema encargado de obtener los datos de Fitbit y transmitirlos al Subsistema de Integraciones para que los procese.
+\item Morpheuz: Es el subsistema encargado de controlar las cuentas de Morpheuz de los usuarios y enviar los correos con los datos necesarios al Subsistema de email.
+\end{itemize}
+
+\subsection{Diagrama de Despliegue}
+
+Describe la estructura a nivel de hardware de nuestra aplicación. Pretende mostrar de manera gráfica la estructuración de la aplicación dividida en los distintos niveles hardware que la componen. Para nuestro caso concreto estará estructurado en tres niveles.
+
+\begin{figure}[H]
+\centering
+\includegraphics[totalheight=6cm]{diagramas/Diagrama_de_Despliegue.png}
+\caption{Diagrama de Despliegue}
+\end{figure}
+
+El primero de ellos, pertenece a la parte del cliente. El entorno de ejecución será para nuestro caso cualquier dispositivo con acceso a la aplicación web, éste a su vez ejecutará el contenido de nuestra aplicación perteneciente al lado del cliente, y provocará que se ejecuten los contenidos necesarios del servidor para poder realizar acciones en nuestra aplicación.
+
+Por otro lado, tenemos la parte del servidor. Para nuestro caso concreto, se alojará en los servidores de Heroku que es donde está alojado nuestra aplicación, y el entorno de ejecución será Docker, el cual gracias a sus contenedores provee mayor escalabilidad en la aplicación. Para poder ejecutar el contenido y las funcionalidades de nuestra aplicación, implementaremos la interfaz de Fitbit y la lectura de emails de Morpheuz. 
+
+Por último, tenemos la parte de base de datos. Para nuestro caso Firebase, base de datos en tiempo real que nos permitirá tener nuestros datos en la ``nube'' y tenerlos actualizados de manera continua, además de ofrecernos la posibilidad de tener un fácil acceso a ellos y además de forma segura.
+
+\subsection{Diagrama de Capas y Tecnologías}
 
 Se pretende mostrar al lector como están estructuradas las capas de la aplicación. En cada capa se incluirá además las tecnologías que se han usado en cada una de ellas, con la finalidad de diferenciarlas y conocer sus usos.
 
@@ -822,6 +826,11 @@ Para su estructura se ha seguido el modelo Vista/Controlador, el cual se divide 
 \includegraphics[totalheight=7cm]{diagramas/Diagrama_de_Capas_y_Tecnolog_as.png}
 \caption{Diagrama de Capas y Tecnologías}
 \end{figure}
+
+\subsection{Diagrama UML}
+
+Describe el diagrama de clases seguido en el diseño del esquema de la Base de Datos. A pesar de utilizar Firebase y de ser éste una Base de Datos NoSQL, el cual permite una estructura que puede ser propensa a cambios, se ha seguido una estructura prefijada, ya que así se consigue una correcta gestión de la Base de Datos.
+
 
 % 4. Planificación: (Backlog, Gráficas de Zenhub, Toggl, ...
 \chapter{Planificación}
@@ -1416,6 +1425,8 @@ Una vez realizados éstos pasos con éxito, se nos informará que nuestra contra
 \includegraphics[totalheight=7cm]{manualUsuario/contrase_aRestablecida.png}
 \caption{Página de Contraseña Restablecida}
 \end{figure}
+
+\section{Navegabilidad}
 
 % 8. Conclusiones
 \chapter{Conclusiones}
