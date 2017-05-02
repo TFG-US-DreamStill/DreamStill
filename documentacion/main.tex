@@ -498,7 +498,7 @@ Las tecnologías que se han usado para generar la documentación y la gestión d
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=8cm]{resumenTecnologias/Resumen_Tecnolog_as_de_Planificaci_n.png}
+\includegraphics[totalheight=4cm]{resumenTecnologias/Resumen_Tecnolog_as_de_Planificaci_n.png}
 \caption{Resumen Tecnologías de planificación y gestión del proyecto}
 \end{figure}
 
@@ -831,6 +831,23 @@ Para su estructura se ha seguido el modelo Vista/Controlador, el cual se divide 
 
 Describe el diagrama de clases seguido en el diseño del esquema de la Base de Datos. A pesar de utilizar Firebase y de ser éste una Base de Datos NoSQL, el cual permite una estructura que puede ser propensa a cambios, se ha seguido una estructura prefijada, ya que así se consigue una correcta gestión de la Base de Datos.
 
+\begin{figure}[H]
+\centering
+\includegraphics[totalheight=8cm]{diagramas/Diagrama_de_Clases.png}
+\caption{Diagrama de Clases}
+\end{figure}
+
+Sus clases son las siguientes:
+
+\begin{itemize}
+\item User\_Credentials: Clase que almacena los datos básicos de un usuario.
+\item Alert: Clase que representa si un ususuario tiene el sistema de alertas activados y los parámetros que ha introducido para dicho sistema.
+\item Morpheuz: Clase que almacena el ID de Morpheuz de un usuario y relaciona al mismo con sus datos en dicha aplicación.
+\item MorpheuzData: Clase que almacena los datos de movimiento para una hora y fecha concreta obtenidos mediante la aplicación Morpheuz.
+\item Fitbit: Clase que almacena los datos necesarios para obtener los datos de la API de Fitbit de un usuario y relaciona al mismo con sus datos en dicha aplicación.
+\item FitbitData: Clase que almacena los datos de movimiento para una hora y fecha concreta obtenidos mediante la aplicación Fitbit.
+
+\end{itemize}
 
 % 4. Planificación: (Backlog, Gráficas de Zenhub, Toggl, ...
 \chapter{Planificación}
@@ -1426,7 +1443,17 @@ Una vez realizados éstos pasos con éxito, se nos informará que nuestra contra
 \caption{Página de Contraseña Restablecida}
 \end{figure}
 
+\pagebreak
 \section{Navegabilidad}
+
+A continuación se expone a modo resumen un diagrama con el flujo que se puede seguir para navegar entre las distintas páginas de la aplicación. Con dicho diagrama se pretende que el lector comprenda de un vistazo cuál es la estructura que puede visitar y cual es el flujo para navegar en dicha estructura.
+
+\begin{figure}[H]
+\centering
+\includegraphics[totalheight=9cm]{manualUsuario/Navegabilidad.png}
+\caption{Navegabilidad}
+\end{figure}
+
 
 % 8. Conclusiones
 \chapter{Conclusiones}
