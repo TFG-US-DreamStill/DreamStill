@@ -849,7 +849,7 @@ Sus clases son las siguientes:
 
 \end{itemize}
 
-% 4. Planificación: (Backlog, Gráficas de Zenhub, Toggl, ...
+% 4. Planificación: (Backlog, Gráficas de Zenhub, Toggl, ...)
 \chapter{Planificación}
 
 Para la planificación del proyecto se ha seguido una metodología ágil, en la que cada iteración del proyecto se comprendía en un Sprint. Además, se han desarrollado Historias de Usuario y Mockups, se ha creado un Backlog que contiene todos los requisitos a implementar y se ha creado un fichero de planificación con los requisitos que se implementarán en cada semana durante el transcurso del proyecto.
@@ -1233,19 +1233,82 @@ A lo largo del duodécimo Sprint, se finalizó la customización del sistema de 
 % 6. Pruebas y validación de la solución: (...)
 \chapter{Pruebas y validación de la solución}
 
+Teniendo presente las Historias de Usuario desarrolladas en el capítulo 6 se han realizado las pruebas de la aplicación. Gracias a las pruebas realizadas en la aplicación podremos comprobar que tanto las nuevas funcionalidades que se añadan en la aplicación como las ya existentes funcionan correctamente.
+
+Para la continua ejecución de las pruebas se ha usado la herramienta Travis. Travis nos ha servido para ejecutar las pruebas de la aplicación con cada ``commit'' informándonos en el caso de que el resultado de algunas de ellas fuera un fallo.
+
+Respecto a la validación de la solución, se considera válida aquella en la que las pruebas son exitosas y además se cumple con un mínimo de calidad, es decir, el resultado es similar al esperado y tiene un acabado aceptable. Siguiendo éste criterio se han validado las distintas funciones de la aplicación. Respecto al conjunto, se considera como válida la aplicación al permitir al usuario acceder a sus datos de sueño de distintas fuentes, desde cualquier dispositivo y con una comodidad aceptable, ya que ésta era la idea del proyecto.
+
+A continuación se mostrará como se han realizados las pruebas para cada uno de las Historias de Usuario:
+
+\textbf{HU1 - Registro en la aplicación}:
+
+\begin{itemize}
+\item\textbf{Registrarse con los datos correctos y comprobar que efectivamente se realiza con éxito el registro}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que un usuario puede introducir datos de registros y éstos se almacenan con éxito en la Base de Datos, completándose el registro en la aplicación con éxito.
+\item\textbf{Revisar que al introducir datos erróneos la aplicación avisa de los fallos en esos datos}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos erróneos en el formulario del registro o al dejar alguno de los campos del mismo en blanco, la aplicación impide el registro en la misma e informa de los errores cometidos.
+\end{itemize}
+ 
+\textbf{HU2 - Loguearse en la aplicación}:
+
+\begin{itemize}
+\item\textbf{Ingresar los datos de Login correctos y comprobar que se da acceso al usuario a la aplicación}: Para ésta prueba se ha llevado a cabo una Validación Funcional automatizada. El test automatizado comprueba que al introducir datos de ``login'' correctos se accede con éxito a la aplicación.
+\item\textbf{Revisar que al introducir datos erróneos la aplicación avisa de que los datos introducidos no corresponden con los de ningún usuario registrado}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos erróneos en el formulario de login o al dejar alguno de los campos del mismo en blanco la aplicación impide el acceso a la misma.
+\end{itemize}
+ 
+\textbf{HU3 - Acceder a la página principal}:
+ 
+\begin{itemize}
+\item\textbf{Comprobar que los datos que se le muestran al usuario son los pertenecientes a ese usuario}: Para ésta prueba se ha llevado a cabo una Validación Funcional automatizada. El test automatizado comprueba que cuando un usuario accede a la Página Principal se le muestran los eventos registrados en la Base de Datos de sus datos de sueño.
+\item\textbf{Revisar que todos los enlaces funcionan correctamente y que no hay ningún error a la hora de extraer los datos de la base de datos}: Para ésta prueba se ha llevado a cabo una Validación Funcional automatizada. El test automatizado comprueba que los enlaces en la Página Principal funcionan correctamente.
+\end{itemize}
+ 
+\textbf{HU4 - Gestión de datos de perfil y validación}:
+ 
+\begin{itemize}
+\item\textbf{Comprobar que los datos introducidos se procesan con éxito}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos tanto en el formulario de registro como de login de la aplicación estos se guardan exactamente como se han introducido en la aplicación.
+\item\textbf{Revisar la validación de datos al introducir datos erróneos}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos erroneos tanto en el formulario de registro como de login, la aplicación informa de que estos datos son erróneos.
+\end{itemize}
+ 
+\textbf{HU5 - Representación de datos de Firebase en el calendario}:
+ 
+\begin{itemize}
+\item\textbf{Comprobar que los días que contienen datos de sueño se marcan en el calendario como un evento}: Para ésta prueba se ha llevado a cabo una Validación Funcional automatizada. El test automatizado comprueba que en un mes determinado se le muestran en el calendario los mismos eventos que hay almacenados en Firebase.
+\end{itemize}
+ 
+\textbf{HU6 - Integración de identificación en servicios de 3ºs en los datos de perfil}:
+ 
+\begin{itemize}
+\item\textbf{Comprobar que la integración con éstos servicios se hace correctamente}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación obtiene con éxito los datos de las distintas fuentes configuradas en el perfil de un usuario.
+\item\textbf{Verificar la correcta identificación en dichos servicios}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación se identifica con éxito con los servicios configurados en el perfil de un usuario.
+\end{itemize}
+ 
+\textbf{HU7 -  Acceder a la página de ``Resumen de Sueño'' para un día concreto}:
+
+\begin{itemize}
+\item\textbf{Comprobar que los datos que se le muestran al usuario son los pertenecientes a ese usuario}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación muestra sólo los datos de sueño del usuario que accede a la aplicación.
+\item\textbf{Revisar que no hay ningún error a la hora de extraer los datos de la base de datos}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación muestra en las gráficas de ``Resumen de Sueño'' de un usuario los datos almacenados en la Base de Datos, sin que exista ningún error en ellos.
+\end{itemize}
+ 
+\textbf{HU8 - Terminar el proceso ``batch'' para que procese todos los mails de un usuario}:
+
+\begin{itemize}
+\item\textbf{Comprobar que se procesan los email pendientes correctamente}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que todos los emails pendientes de la aplicación se procesan y almacenan con éxito.
+\item\textbf{Verificar que el proceso se ejecuta cada vez que se inicia la aplicación}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que cada vez que la aplicación se inicia, se inicia el proceso para la lectura de los mails de la aplicación.
+\end{itemize}
 
 % 7.Manual de usuario
 \chapter{Manual de usuario}
 
 Basándonos en las Historias de Usuario definidas para el proyecto, se va a desarrollar el presente capítulo. En éste, se pretende que el lector entienda el funcionamiento de la aplicación y el flujo a seguir en ésta para realizar las distintas actividades que la misma ofrece. Para ello, se dividirá el capítulo en distintos apartados, con el objetivo de explicar en cada uno de ellos una funcionalidad relevante de la aplicación.
 
+\pagebreak
 \section{Registro en la aplicación}
 
 Para proceder al registro en la aplicación, accederemos a la Página de Inicio de ésta.
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/paginaInicio.png}
+\includegraphics[totalheight=6cm]{manualUsuario/paginaInicio.png}
 \caption{Página de Inicio}
 \end{figure}
 
@@ -1253,7 +1316,7 @@ Una vez nos encontremos en la Página de Inicio, nos encontraremos con dos formu
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/registro.png}
+\includegraphics[totalheight=6cm]{manualUsuario/registro.png}
 \caption{Página de Inicio - Registro}
 \end{figure}
 
@@ -1261,7 +1324,7 @@ Si se han seguido éstos pasos, la página nos informará con el mensaje ``¡Reg
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/registroConExito.png}
+\includegraphics[totalheight=6cm]{manualUsuario/registroConExito.png}
 \caption{Página de Inicio - Registro con éxito}
 \end{figure}
 
@@ -1271,7 +1334,7 @@ Para proceder al Login en la aplicación, accederemos a la Página de Inicio de 
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/paginaInicio.png}
+\includegraphics[totalheight=6cm]{manualUsuario/paginaInicio.png}
 \caption{Página de Inicio}
 \end{figure}
 
@@ -1279,7 +1342,7 @@ Una vez nos encontremos en la Página de Inicio, nos encontraremos con dos formu
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/login.png}
+\includegraphics[totalheight=6cm]{manualUsuario/login.png}
 \caption{Página de Inicio - Login}
 \end{figure}
 
@@ -1287,7 +1350,7 @@ Si se han seguido éstos pasos, la página redirigirá a la Página Principal. U
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/logout.png}
+\includegraphics[totalheight=6cm]{manualUsuario/logout.png}
 \caption{Página de Inicio - Logout}
 \end{figure}
 
@@ -1297,7 +1360,7 @@ Para poder acceder a la Página Principal habrá que loguearse primero en la apl
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/login.png}
+\includegraphics[totalheight=6cm]{manualUsuario/login.png}
 \caption{Página de Inicio - Login}
 \end{figure}
 
@@ -1305,7 +1368,7 @@ Una vez nos encontremos en la Página Principal, nos encontraremos con el logo d
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/paginaPrincipal.png}
+\includegraphics[totalheight=6cm]{manualUsuario/paginaPrincipal.png}
 \caption{Página Principal}
 \end{figure}
 
@@ -1313,7 +1376,7 @@ Haciendo ``click'' sobre cualquier día del calendario que contenga un evento, s
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/eventos.png}
+\includegraphics[totalheight=6cm]{manualUsuario/eventos.png}
 \caption{Página Principal - Eventos}
 \end{figure}
 
@@ -1323,7 +1386,7 @@ Para poder acceder a la página de ``Resumen de Sueño Diario'' habrá que encon
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/paginaPrincipal.png}
+\includegraphics[totalheight=6cm]{manualUsuario/paginaPrincipal.png}
 \caption{Página Principal}
 \end{figure}
 
@@ -1331,7 +1394,7 @@ Una vez nos encontremos en la Página Principal con al menos un evento, haremos 
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/eventos.png}
+\includegraphics[totalheight=6cm]{manualUsuario/eventos.png}
 \caption{Página Principal - Eventos}
 \end{figure}
 
@@ -1339,7 +1402,7 @@ En ésta página, se nos mostrarán dos gráficas. La primera de ellas, nos most
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/resumenSue_oDiario.png}
+\includegraphics[totalheight=6cm]{manualUsuario/resumenSue_oDiario.png}
 \caption{Página de Resumen de Sueño Diario}
 \end{figure}
 
@@ -1349,7 +1412,7 @@ Para poder acceder a la página de APIs y manejar nuestras integraciones, habrá
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/paginaPrincipal.png}
+\includegraphics[totalheight=6cm]{manualUsuario/paginaPrincipal.png}
 \caption{Página Principal}
 \end{figure}
 
@@ -1357,7 +1420,7 @@ Una vez nos encontremos en la Página Principal, haremos ``click'' sobre el men�
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/apis.png}
+\includegraphics[totalheight=6cm]{manualUsuario/apis.png}
 \caption{Página Principal - APIs}
 \end{figure}
 
@@ -1365,7 +1428,7 @@ Una vez seleccionemos la opción de ``APIs'', nos encontraremos ante la página 
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/paginaApis.png}
+\includegraphics[totalheight=6cm]{manualUsuario/paginaApis.png}
 \caption{Página de Integraciones con las APIs}
 \end{figure}
 
@@ -1375,7 +1438,7 @@ Para poder acceder a la página de Alertas y manejarlas, habrá que encontrarse 
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/paginaPrincipal.png}
+\includegraphics[totalheight=6cm]{manualUsuario/paginaPrincipal.png}
 \caption{Página Principal}
 \end{figure}
 
@@ -1383,7 +1446,7 @@ Una vez nos encontremos en la Página Principal, haremos ``click'' sobre el men�
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/alertas.png}
+\includegraphics[totalheight=6cm]{manualUsuario/alertas.png}
 \caption{Página Principal - Alertas}
 \end{figure}
 
@@ -1391,7 +1454,7 @@ Una vez seleccionemos la opción de ``Alertas'', nos encontraremos ante la pági
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/paginaAlertas.png}
+\includegraphics[totalheight=6cm]{manualUsuario/paginaAlertas.png}
 \caption{Página de Alertas}
 \end{figure}
 
@@ -1401,7 +1464,7 @@ Para recuperar la contraseña, deberemos encontrarnos en la Página de Inicio de
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/paginaInicio.png}
+\includegraphics[totalheight=6cm]{manualUsuario/paginaInicio.png}
 \caption{Página de Inicio}
 \end{figure}
 
@@ -1409,7 +1472,7 @@ En ésta página se nos mostrarán dos formularios. En el formulario de la derec
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/contrase_aOlvidada.png}
+\includegraphics[totalheight=6cm]{manualUsuario/contrase_aOlvidada.png}
 \caption{Página de Contraseña Olvidada}
 \end{figure}
 
@@ -1417,29 +1480,31 @@ Deberemos de introducirlo y pulsar el botón ``Submit''. Una vez pulsado éste b
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/correoEnviado.png}
+\includegraphics[totalheight=6cm]{manualUsuario/correoEnviado.png}
 \caption{Página de Correo Enviado}
 \end{figure}
 
+\pagebreak
 Al hacer ``click'' sobre el enlace que tendremos en nuestro correo, se nos redirigirá a una página de la aplicación en la que se nos pedirá que introduzcamos la nueva contraseña. La introduciremos y pulsaremos el botón ``Submit''. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/correoRecibido.png}
+\includegraphics[totalheight=6cm]{manualUsuario/correoRecibido.png}
 \caption{Correo Recibido}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/contrase_aRecuperacion.png}
+\includegraphics[totalheight=6cm]{manualUsuario/contrase_aRecuperacion.png}
 \caption{Página de Recuperación de Contraseña}
 \end{figure}
 
+\pagebreak
 Una vez realizados éstos pasos con éxito, se nos informará que nuestra contraseña ha sido restablecida con éxito y se nos invitará a loguearnos con la nueva contraseña en la aplicación.
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{manualUsuario/contrase_aRestablecida.png}
+\includegraphics[totalheight=6cm]{manualUsuario/contrase_aRestablecida.png}
 \caption{Página de Contraseña Restablecida}
 \end{figure}
 
