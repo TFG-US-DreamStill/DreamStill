@@ -1,0 +1,20 @@
+\BOOKMARK [0][-]{chapter*.1}{Lista de figuras}{}% 1
+\BOOKMARK [0][-]{chapter*.2}{Lista de tablas}{}% 2
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 3
+\BOOKMARK [1][-]{section.1.1}{El problema}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{La soluci\363n}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.3}{Estructura del documento}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{Tecnolog\355as}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Tecnolog\355as de desarrollo del proyecto}{chapter.2}% 8
+\BOOKMARK [2][-]{subsection.2.1.1}{Lenguajes de programaci\363n}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.2}{Frameworks y librer\355as}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.3}{Herramientas de desarrollo}{section.2.1}% 11
+\BOOKMARK [1][-]{section.2.2}{Tecnolog\355as de planificaci\363n y gesti\363n del proyecto}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.1}{Toggl}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.2}{Zenhub}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.3}{Google Drive, Docs y Sheets}{section.2.2}% 15
+\BOOKMARK [1][-]{section.2.3}{Tecnolog\355as de gesti\363n del c\363digo, integraci\363n y despliegue continuo}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.3.1}{Github}{section.2.3}% 17
+\BOOKMARK [2][-]{subsection.2.3.2}{Travis}{section.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.3.3}{Heroku}{section.2.3}% 19
+\BOOKMARK [1][-]{section.2.4}{Resumen de las tecnolog\355as}{chapter.2}% 20
