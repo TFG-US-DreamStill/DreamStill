@@ -1382,6 +1382,23 @@ A continuación se mostrará como se han realizados las pruebas para cada uno de
 \item\textbf{Registrarse con los datos correctos y comprobar que efectivamente se realiza con éxito el registro}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que un usuario puede introducir datos de registros y éstos se almacenan con éxito en la Base de Datos, completándose el registro en la aplicación con éxito.
 \item\textbf{Revisar que al introducir datos erróneos la aplicación avisa de los fallos en esos datos}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos erróneos en el formulario del registro o al dejar alguno de los campos del mismo en blanco, la aplicación impide el registro en la misma e informa de los errores cometidos.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas]{Tabla de Pruebas} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+No & Registrarse datos correctos & Enero 2017 & Nombre, email y contraseña de un nuevo usuario & El usuario se almacena en la aplicación & El usuario es almacenado en la aplicación & Juan Ramón Rodríguez \\
+\hline
+No & Revisar datos erróneos & Enero 2017 & Nombre, email y contraseña incorrectos de un nuevo usuario & La aplicación avisa de que los datos son incorrectos & La aplicación valida los datos correctamente & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU2 - Loguearse en la aplicación}:
 
