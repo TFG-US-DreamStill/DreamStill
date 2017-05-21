@@ -69,15 +69,15 @@
 \contentsline {subsection}{\numberline {4.1.13}Sprint 13}{85}{subsection.4.1.13}
 \contentsline {chapter}{\numberline {5}Desarrollo}{86}{chapter.5}
 \contentsline {chapter}{\numberline {6}Pruebas y validaci\IeC {\'o}n de la soluci\IeC {\'o}n}{87}{chapter.6}
-\contentsline {chapter}{\numberline {7}Manual de usuario}{91}{chapter.7}
-\contentsline {section}{\numberline {7.1}Registro en la aplicaci\IeC {\'o}n}{92}{section.7.1}
-\contentsline {section}{\numberline {7.2}Login en la aplicaci\IeC {\'o}n}{94}{section.7.2}
-\contentsline {section}{\numberline {7.3}Acceder a la P\IeC {\'a}gina Principal}{96}{section.7.3}
-\contentsline {section}{\numberline {7.4}Acceder a la p\IeC {\'a}gina de ``Resumen de Sue\IeC {\~n}o Diario''}{98}{section.7.4}
-\contentsline {section}{\numberline {7.5}Manejar integraciones con las APIs de registro de sue\IeC {\~n}o}{100}{section.7.5}
-\contentsline {section}{\numberline {7.6}Manejar alertas}{102}{section.7.6}
-\contentsline {section}{\numberline {7.7}Recuperaci\IeC {\'o}n de contrase\IeC {\~n}a}{104}{section.7.7}
-\contentsline {section}{\numberline {7.8}Navegabilidad}{108}{section.7.8}
-\contentsline {chapter}{\numberline {8}Conclusiones}{109}{chapter.8}
-\contentsline {chapter}{9. Referencias}{113}{chapter.8}
-\contentsline {chapter}{\numberline {A}End Notes}{115}{appendix.Alph1}
+\contentsline {chapter}{\numberline {7}Manual de usuario}{93}{chapter.7}
+\contentsline {section}{\numberline {7.1}Registro en la aplicaci\IeC {\'o}n}{94}{section.7.1}
+\contentsline {section}{\numberline {7.2}Login en la aplicaci\IeC {\'o}n}{96}{section.7.2}
+\contentsline {section}{\numberline {7.3}Acceder a la P\IeC {\'a}gina Principal}{98}{section.7.3}
+\contentsline {section}{\numberline {7.4}Acceder a la p\IeC {\'a}gina de ``Resumen de Sue\IeC {\~n}o Diario''}{100}{section.7.4}
+\contentsline {section}{\numberline {7.5}Manejar integraciones con las APIs de registro de sue\IeC {\~n}o}{102}{section.7.5}
+\contentsline {section}{\numberline {7.6}Manejar alertas}{104}{section.7.6}
+\contentsline {section}{\numberline {7.7}Recuperaci\IeC {\'o}n de contrase\IeC {\~n}a}{106}{section.7.7}
+\contentsline {section}{\numberline {7.8}Navegabilidad}{110}{section.7.8}
+\contentsline {chapter}{\numberline {8}Conclusiones}{111}{chapter.8}
+\contentsline {chapter}{9. Referencias}{115}{chapter.8}
+\contentsline {chapter}{\numberline {A}End Notes}{118}{appendix.Alph1}

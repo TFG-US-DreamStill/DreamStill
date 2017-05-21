@@ -124,7 +124,7 @@ El estilo de vida moderno conlleva un ritmo frenético de las tareas que realiza
 
 Además, el tema de la monitorización del sueño o en inglés ``Sleep Tracking'' se encuentra en auge, ya que con las nuevas tecnologías podemos realizar un seguimiento más exacto y sencillo de nuestras actividades físicas, nuestra nutrición o nuestro descanso. Ésto despierta mucho interés entre los usuarios que desean llevar un estilo de vida saludable y que desean mejorar sus hábitos para mejorar su calidad de vida. 
 
-Debido a éste problema, actualmente existen diversas soluciones que permiten medir nuestro sueño, tanto en términos de cantidad de horas como de calidad del mismo. Pero muchas de éstas soluciones son privativas y necesitan de una plataforma o aplicación específica. Así, un usuario que cambia por ejemplo de smartwatch, pulsómetro o incluso de Smartphone, una práctica bastante habitual hoy día, o al que le surge la necesidad de consultar sus datos desde su ordenador, puede no llegar a tener acceso a los datos de su propio sueño, ya que necesitará una aplicación que sólo se ejecuta en determinadas plataformas. 
+Debido a éste problema, actualmente existen diversas soluciones que permiten medir nuestro sueño, tanto en términos de cantidad de horas como de calidad del mismo. Pero muchas de éstas soluciones son privativas y necesitan de una plataforma o aplicación específica. Así, un usuario que cambia por ejemplo de smartwatch, pulsómetro o incluso de Smartphone, una práctica bastante habitual hoy día \cite{17}, o al que le surge la necesidad de consultar sus datos desde su ordenador, puede no llegar a tener acceso a los datos de su propio sueño, ya que necesitará una aplicación que sólo se ejecuta en determinadas plataformas. 
 
 \section{El problema}
 
@@ -211,7 +211,7 @@ Se podría decir que JavaScript ha sido contemplado durante años por muchos usu
 
 TypeScript es otro de los lenguajes relevantes del proyecto, gracias a él se consigue una mayor lógica en la aplicación sin tener que recurrir a JavaScript, aunque éste sea el producto final de la compilación de TypeScript. Su inclusión en el proyecto se basa en la facilidad para programar una vez que se han adquirido los debidos conocimientos previos y en que es el lenguaje en el que se ha programado Angular2, del que hablaremos más adelante y que ha sido elegido para representar la parte dedicada al Front-end de la aplicación.
 
-Fue diseñado por Microsoft en 2012 y se influyó en lenguajes como Java, C++ y por supuesto JavaScript\cite{2}. Es un lenguaje de programación libre y Open Source mantenido por su diseñador, Microsoft. Está enfocado a aplicaciones escalables construidas con Javascript, añadiendo tipos, clases y módulos a éste lenguaje. Soporta herramientas para un escalado importante en aplicaciones construidas bajo JavaScript para cualquier navegador, servidor o sistema operativo. Como se ha comentado anteriormente, es un lenguaje compilado el cual produce ficheros en JavaScript.
+Fue diseñado por Microsoft en 2012 y se influyó en lenguajes como Java, C++ y por supuesto JavaScript\cite{3}. Es un lenguaje de programación libre y Open Source mantenido por su diseñador, Microsoft. Está enfocado a aplicaciones escalables construidas con Javascript, añadiendo tipos, clases y módulos a éste lenguaje. Soporta herramientas para un escalado importante en aplicaciones construidas bajo JavaScript para cualquier navegador, servidor o sistema operativo. Como se ha comentado anteriormente, es un lenguaje compilado el cual produce ficheros en JavaScript.
 
 Finalmente destacar que es un lenguaje tipado, y que Visual Studio Code, del que se hablará más adelante, tiene un gran enfoque en éste lenguaje, por lo que ambos son la pareja perfecta para un desarrollador que desee programar en TypeScript.
 
@@ -459,7 +459,7 @@ En definitiva Github ha sido una herramienta indispensable a lo largo del desarr
 
 \logo{logos/travis.png}{https://travis-ci.org}
 
-Travis es el servidor de Integración Continua escogido para el proyecto. Ofrece integración con Github, de tal forma que cada vez que se realiza un ``push'', es decir, se sube código al servidor remoto en Github de la aplicación, éste lanza una serie de comandos que pueden definirse fácilmente en un archivo de configuración ``.yml'', en el caso del proyecto, se prepararía el entorno de pruebas, se construiría la aplicación y se lanzarían las pruebas correspondientes, comprobando que todo funciona correctamente.
+Travis es el servidor de Integración Continua escogido para el proyecto. Ofrece integración con Github, de tal forma que cada vez que se realiza un ``push'', es decir, se sube código al servidor remoto en Github de la aplicación, éste lanza una serie de comandos que pueden definirse fácilmente en un archivo de configuración ``.yml''\cite{15}, en el caso del proyecto, se prepararía el entorno de pruebas, se construiría la aplicación y se lanzarían las pruebas correspondientes, comprobando que todo funciona correctamente.
 
 Los servidores de Integración Continua tienen muchas funcionalidades útiles, pero entre todas destacaría la funcionalidad de lanzar las pruebas automáticamente en cada subida de código fuente y comprobar que todo sigue funcionando correctamente. Éste punto es crítico para pruebas de regresión, ya que puede ocurrir que modifiquemos algo que afecte a algo que no teníamos planeado y éste deje de funcionar, gracias a un servidor de Integración Continua y a las debidas pruebas éste problema se vería en el mismo momento en el que subimos el código fuente. Aunque se puede activar o no, una gran funcionalidad de Travis es la notificación al usuario por correo electrónicos de eventos importantes en su código fuente, entre los que se destacan las notificaciones en el caso de que algún test falle, o en el caso de que se arregle un test, es decir, ese o esos mismos tests que fallaban antes, tras una subido vuelven a dar una respuesta positiva.
 
@@ -842,7 +842,7 @@ Por último, tenemos la parte de base de datos. Para nuestro caso Firebase, base
 
 Se pretende mostrar al lector como están estructuradas las capas de la aplicación. En cada capa se incluirá además las tecnologías que se han usado en cada una de ellas, con la finalidad de diferenciarlas y conocer sus usos.
 
-Para su estructura se ha seguido el modelo Vista/Controlador, el cual se divide en tres capas. La primera de ellas, la de persistencia de datos, en la que se sitúa el sistema de almacenamiento de datos y el sistema gestor de almacenamiento de datos si lo hubiera. En la segunda de ellas, se sitúa el controlador, el cual se define como ``el director de orquesta'' ya que orquesta las distintas llamadas al servidor y proporciona las funcionalidades necesarios al resto de capas. En la tercera de ellas, se sitúa la vista, la cual proporciona los datos del lado del cliente, es decir, los datos que se representan en el navegador del usuario, obteniéndolos del controlador.
+Para su estructura se ha seguido el modelo Vista/Controlador\cite{18}, el cual se divide en tres capas. La primera de ellas, la de persistencia de datos, en la que se sitúa el sistema de almacenamiento de datos y el sistema gestor de almacenamiento de datos si lo hubiera. En la segunda de ellas, se sitúa el controlador, el cual se define como ``el director de orquesta'' ya que orquesta las distintas llamadas al servidor y proporciona las funcionalidades necesarios al resto de capas. En la tercera de ellas, se sitúa la vista, la cual proporciona los datos del lado del cliente, es decir, los datos que se representan en el navegador del usuario, obteniéndolos del controlador.
 
 \begin{figure}[H]
 \centering
@@ -852,7 +852,7 @@ Para su estructura se ha seguido el modelo Vista/Controlador, el cual se divide 
 
 \subsection{Diagrama UML}
 
-Describe el diagrama de clases seguido en el diseño del esquema de la Base de Datos. A pesar de utilizar Firebase y de ser éste una Base de Datos NoSQL, el cual permite una estructura que puede ser propensa a cambios, se ha seguido una estructura prefijada, ya que así se consigue una correcta gestión de la Base de Datos.
+Describe el diagrama de clases (Diagrma UML\cite{14}) seguido en el diseño del esquema de la Base de Datos. A pesar de utilizar Firebase y de ser éste una Base de Datos NoSQL, el cual permite una estructura que puede ser propensa a cambios, se ha seguido una estructura prefijada, ya que así se consigue una correcta gestión de la Base de Datos.
 
 \begin{figure}[H]
 \centering
@@ -879,7 +879,7 @@ Para la planificación del proyecto se ha seguido una metodología ágil, en la 
 
 Para llevar el seguimiento de la planificación y calcular posibles desvíos o estimar la duración de ciertas tareas, se han utilizados herramientas destinadas a éste fin. Éstas herramientas nos han proporcionado datos útiles y han conseguido que se observase de forma clara como avanzaba el proyecto en progreso y en tiempo.
 
-Respecto a los requisitos, al seguir una metodología ágil, partimos de una idea inicial, y los requisitos se fueron detallando y añadiendo en cada una de las reuniones que manteníamos mi tutor y yo, éstas reuniones ocurrían al finalizar cada Sprint y suponían el inicio del siguiente, con unos requisitos definidos para dicho Sprint y a partir de los cuales se realizaba la estimación de los mismos. Se ha seguido una metodología SCRUM adaptada a nuestro proyecto, ésta metodología, es una metodología ágil y consiste en la división de trabajos en ``Sprints'' que son periodos de tiempo en los que se planifican una serie de tareas que implican un incremento en el proyecto, ésta metodología es muy usada en proyectos en los que se definen los requisitos durante el transcurso del proyecto y tiene como beneficios un mayor seguimiento de los entregables por parte del cliente, llamado en ésta metodología ``Product Owner'', el cual tendrá una reunión en cada Sprint para conocer como avanza el proyecto y aprobar las tareas para cada uno de éstos Sprints. Por motivos de tiempo ambas partes no podíamos llevar a cabo una ``Daily meeting'' como se recomienda en dicha metodología, por tanto la metodología de Scrum que hemos seguido sería la que se aprecia en la siguiente figura:
+Respecto a los requisitos, al seguir una metodología ágil, partimos de una idea inicial, y los requisitos se fueron detallando y añadiendo en cada una de las reuniones que manteníamos mi tutor y yo, éstas reuniones ocurrían al finalizar cada Sprint y suponían el inicio del siguiente, con unos requisitos definidos para dicho Sprint y a partir de los cuales se realizaba la estimación de los mismos. Se ha seguido una metodología SCRUM\cite{13} adaptada a nuestro proyecto, ésta metodología, es una metodología ágil y consiste en la división de trabajos en ``Sprints'' que son periodos de tiempo en los que se planifican una serie de tareas que implican un incremento en el proyecto\cite{16}, ésta metodología es muy usada en proyectos en los que se definen los requisitos durante el transcurso del proyecto y tiene como beneficios un mayor seguimiento de los entregables por parte del cliente, llamado en ésta metodología ``Product Owner'', el cual tendrá una reunión en cada Sprint para conocer como avanza el proyecto y aprobar las tareas para cada uno de éstos Sprints. Por motivos de tiempo ambas partes no podíamos llevar a cabo una ``Daily meeting'' como se recomienda en dicha metodología, por tanto la metodología de Scrum que hemos seguido sería la que se aprecia en la siguiente figura:
 
 \begin{figure}[H]
 \includegraphics[totalheight=5cm]{scrum.png}
@@ -1388,7 +1388,7 @@ A continuación se mostrará como se han realizados las pruebas para cada uno de
 \setlength{\LTright}{\LTleft}
 \begin{center}
 \begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
-\caption[Tabla de Pruebas]{Tabla de Pruebas} \label{grid_mlmmh} \\
+\caption[Tabla de Pruebas - HU1]{Tabla de Pruebas - HU1} \label{grid_mlmmh} \\
 
 \hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
 \endfirsthead
@@ -1407,12 +1407,46 @@ No & Revisar datos erróneos & Enero 2017 & Nombre, email y contraseña incorrec
 \item\textbf{Revisar que al introducir datos erróneos la aplicación avisa de que los datos introducidos no corresponden con los de ningún usuario registrado}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos erróneos en el formulario de login o al dejar alguno de los campos del mismo en blanco la aplicación impide el acceso a la misma.
 \end{itemize}
  
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU2]{Tabla de Pruebas - HU2} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+Si & Login datos correctos & Enero 2017 & Nombre y contraseña usuario & El usuario accede a la aplicación & El usuario obtiene acceso a la aplicación & Juan Ramón Rodríguez \\
+\hline
+No & Revisar datos erróneos & Enero 2017 & Nombre y contraseña incorrectos de un usuario & La aplicación avisa de que los datos son incorrectos & La aplicación valida los datos correctamente & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
+
 \textbf{HU3 - Acceder a la página principal}:
  
 \begin{itemize}
 \item\textbf{Comprobar que los datos que se le muestran al usuario son los pertenecientes a ese usuario}: Para ésta prueba se ha llevado a cabo una Validación Funcional automatizada. El test automatizado comprueba que cuando un usuario accede a la Página Principal se le muestran los eventos registrados en la Base de Datos de sus datos de sueño.
 \item\textbf{Revisar que todos los enlaces funcionan correctamente y que no hay ningún error a la hora de extraer los datos de la base de datos}: Para ésta prueba se ha llevado a cabo una Validación Funcional automatizada. El test automatizado comprueba que los enlaces en la Página Principal funcionan correctamente.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU3]{Tabla de Pruebas - HU3} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+Si & Datos mostrados correctos & Enero 2017 & Nombre y contraseña de un usuario & El usuario accede a sus datos correctamente & El usuario obtiene acceso a sus datos & Juan Ramón Rodríguez \\
+\hline
+Si & Enlaces correctos & Enero 2017 & Nombre y contraseña de un usuario & Todos los enlaces funcionan correctamente & Los enlaces funcionan correctamente & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU4 - Gestión de datos de perfil y validación}:
  
@@ -1420,12 +1454,44 @@ No & Revisar datos erróneos & Enero 2017 & Nombre, email y contraseña incorrec
 \item\textbf{Comprobar que los datos introducidos se procesan con éxito}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos tanto en el formulario de registro como de login de la aplicación estos se guardan exactamente como se han introducido en la aplicación.
 \item\textbf{Revisar la validación de datos al introducir datos erróneos}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos erroneos tanto en el formulario de registro como de login, la aplicación informa de que estos datos son erróneos.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU4]{Tabla de Pruebas - HU4} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+No & Datos procesados correctos & Enero 2017 & Datos de un usuario & Los datos se almacenan correctamente & Los datos son almacenados correctamente & Juan Ramón Rodríguez \\
+\hline
+No & Validación de datos & Enero 2017 & Datos incorrectos de un usuario & La aplicación informa de los errores & La validación funciona con éxito & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU5 - Representación de datos de Firebase en el calendario}:
  
 \begin{itemize}
 \item\textbf{Comprobar que los días que contienen datos de sueño se marcan en el calendario como un evento}: Para ésta prueba se ha llevado a cabo una Validación Funcional automatizada. El test automatizado comprueba que en un mes determinado se le muestran en el calendario los mismos eventos que hay almacenados en Firebase.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU5]{Tabla de Pruebas - HU5} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+Si & Eventos representado con éxito & Febrero 2017 & Datos y eventos de un usuario & Los eventos se muestran en el calendario & Los eventos son mostrados en el calendario & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU6 - Integración de identificación en servicios de 3ºs en los datos de perfil}:
  
@@ -1433,6 +1499,23 @@ No & Revisar datos erróneos & Enero 2017 & Nombre, email y contraseña incorrec
 \item\textbf{Comprobar que la integración con éstos servicios se hace correctamente}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación obtiene con éxito los datos de las distintas fuentes configuradas en el perfil de un usuario.
 \item\textbf{Verificar la correcta identificación en dichos servicios}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación se identifica con éxito con los servicios configurados en el perfil de un usuario.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU6]{Tabla de Pruebas - HU6} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+No & Comprobar Integración Servicios 3ºs & Febrero 2017 & Datos de un usuario & La integración se realiza correctamente & La integraicón se realiza con éxito & Juan Ramón Rodríguez \\
+\hline
+No & Correcta identificación en Servicios & Febrero 2017 & Datos de un usuario & La aplicación reconoce la identificación del usuario en el Servicio & La aplicación reconoce la correcta identificación del usuario en el Servicio & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU7 -  Acceder a la página de ``Resumen de Sueño'' para un día concreto}:
 
@@ -1440,6 +1523,23 @@ No & Revisar datos erróneos & Enero 2017 & Nombre, email y contraseña incorrec
 \item\textbf{Comprobar que los datos que se le muestran al usuario son los pertenecientes a ese usuario}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación muestra sólo los datos de sueño del usuario que accede a la aplicación.
 \item\textbf{Revisar que no hay ningún error a la hora de extraer los datos de la base de datos}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación muestra en las gráficas de ``Resumen de Sueño'' de un usuario los datos almacenados en la Base de Datos, sin que exista ningún error en ellos.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU7]{Tabla de Pruebas - HU7} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+No & Comprobar datos Usuario ``Resumen de Sueño'' & Febrero 2017 & Datos de un usuario y eventos de sueño & Se muestran sólo los datos de ese usuario & Los datos de sólo ese usuario se muestran correctamente & Juan Ramón Rodríguez \\
+\hline
+No & Correcta extracción de los datos de la BD & Febrero 2017 & Datos de un usuario y eventos de sueño & No existen errores en los datos mostrados & Los datos mostrados no continen ningún error & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU8 - Terminar el proceso ``batch'' para que procese todos los mails de un usuario}:
 
@@ -1447,6 +1547,23 @@ No & Revisar datos erróneos & Enero 2017 & Nombre, email y contraseña incorrec
 \item\textbf{Comprobar que se procesan los email pendientes correctamente}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que todos los emails pendientes de la aplicación se procesan y almacenan con éxito.
 \item\textbf{Verificar que el proceso se ejecuta cada vez que se inicia la aplicación}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que cada vez que la aplicación se inicia, se inicia el proceso para la lectura de los mails de la aplicación.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU8]{Tabla de Pruebas - HU8} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+No & Comprobar procesado de emails & Marzo 2017 & Emails de usuarios & Los emails pendientes se procesan correctamente & Los emails pendientes se procesan con éxito & Juan Ramón Rodríguez \\
+\hline
+No & Verificar la ejecución del proceso al inicio & Marzo 2017 & Emails de usuarios & El proceso se inicia y reconoce los emails correctamente & El proceso se inicia y reconoce los emails con éxito & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
 
 % 7.Manual de usuario
 \chapter{Manual de usuario}
@@ -1717,6 +1834,13 @@ Pero por supuesto he de agradecerle el trabajo que ha ejercido sobre éste TFG m
 \bibitem{10} \textsc{Jasmine} [\url{ttps://en.wikipedia.org/wiki/Jasmine_(JavaScript_testing_framework)}]
 \bibitem{11} \textsc{Protractor} [\url{https://www.adictosaltrabajo.com/tutoriales/introduccion-a-protractor/}]
 \bibitem{12} \textsc{Visual Studio Code} [\url{ttps://en.wikipedia.org/wiki/Visual_Studio_Code}]
+\bibitem{13} \textsc{Scrum: The Art of Doing Twice the Work in Half the Time} [Autor: Jeff Sutherland]
+\bibitem{14} \textsc{UML Distilled} [Autor: Martin Fowler]
+\bibitem{15} \textsc{Travis} [\url{https://en.wikipedia.org/wiki/Travis_CI}]
+\bibitem{16} \textsc{Sprint} [\url{https://proyectosagiles.org/ejecucion-iteracion-sprint/}]
+\bibitem{17} \textsc{¿Cada cuánto solemos renovar el móvil en España?} [\url{http://byemovil.com/renovar-el-movil}]
+\bibitem{18} \textsc{Understanding Model-View-Controller} [Autor: Stefano Borini \url{https://www.gitbook.com/book/stefanoborini/modelviewcontroller/details}]
+
 \end{thebibliography}
 
 \appendix %% Up to you -- I just like to have the end notes as an appendix :-)
