@@ -796,6 +796,7 @@ Se compone de dos gráficas. En la primera de ellas el usuario podrá observar c
 
 El objetivo de éstas dos gráficas es que el usuario quede informado de su sueño rápidamente y pueda ahondar en más detalles si lo desea interactuando con las mismas.
 
+\pagebreak
 \section{Diseño}
 
 \subsection{Diagrama de Componentes}
@@ -838,6 +839,7 @@ Por otro lado, tenemos la parte del servidor. Para nuestro caso concreto, se alo
 
 Por último, tenemos la parte de base de datos. Para nuestro caso Firebase, base de datos en tiempo real que nos permitirá tener nuestros datos en la ``nube'' y tenerlos actualizados de manera continua, además de ofrecernos la posibilidad de tener un fácil acceso a ellos y además de forma segura.
 
+\pagebreak
 \subsection{Diagrama de Capas y Tecnologías}
 
 Se pretende mostrar al lector como están estructuradas las capas de la aplicación. En cada capa se incluirá además las tecnologías que se han usado en cada una de ellas, con la finalidad de diferenciarlas y conocer sus usos.
@@ -846,10 +848,11 @@ Para su estructura se ha seguido el modelo Vista/Controlador\cite{18}, el cual s
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{diagramas/Diagrama_de_Capas_y_Tecnolog_as.png}
+\includegraphics[totalheight=6cm]{diagramas/Diagrama_de_Capas_y_Tecnolog_as.png}
 \caption{Diagrama de Capas y Tecnologías}
 \end{figure}
 
+\pagebreak
 \subsection{Diagrama UML}
 
 Describe el diagrama de clases (Diagrma UML\cite{14}) seguido en el diseño del esquema de la Base de Datos. A pesar de utilizar Firebase y de ser éste una Base de Datos NoSQL, el cual permite una estructura que puede ser propensa a cambios, se ha seguido una estructura prefijada, ya que así se consigue una correcta gestión de la Base de Datos.
@@ -1139,6 +1142,7 @@ En dicho tablero se apuntan las tareas de cada uno de los Sprints y en el estado
 \par\bigskip 
 \noindent
 
+\pagebreak
 Además de éstos Burndown, la herramienta Zenhub almacenaba los puntos de historia estimados y completados en cada Sprint, y representaba un gráfico en el que se mostraba el número de puntos de historia completados en cada Sprint y la velocidad media a la que se implementaban.
 
 \begin{figure}[H]
@@ -1153,6 +1157,7 @@ Además de éstos Burndown, la herramienta Zenhub almacenaba los puntos de histo
 
 En ésta seccion de la planificación se va a detallar el trabajo que se realizó en cada uno de los Sprints a lo largo del proyecto. Además, mostraremos el Burndown de cada uno de los Sprints para analizar cuál fue la desviación respecto a la planificación inicial y se mostrarán los informes de cada uno de los Sprints proporcionados por la herramienta Toggl, gracias a éstos reportes, podremos ver el tiempo que se le dedicó a cada tarea.
 
+\pagebreak
 \subsection{Sprint 1}
 
 A lo largo del primer Sprint, se desarrollaron las tareas iniciales del proyecto. Entre ellas, se realizó el montaje de la infraestructura, la cual incluía la creación del proyecto en la plataforma Github, la generación de una aplicación básica y la realización de alguna prueba con Firebase.
@@ -1386,6 +1391,7 @@ Respecto a la validación de la solución, se considera válida aquella en la qu
 
 A continuación se mostrará como se han realizados las pruebas para cada uno de las Historias de Usuario:
 
+\pagebreak
 \textbf{HU1 - Registro en la aplicación}:
 
 \begin{itemize}
@@ -1458,6 +1464,7 @@ Si & Enlaces correctos & Enero 2017 & Nombre y contraseña de un usuario & Todos
 \end{longtable}
 \end{center}}
  
+\pagebreak
 \textbf{HU4 - Gestión de datos de perfil y validación}:
  
 \begin{itemize}
@@ -1591,6 +1598,7 @@ Para proceder al registro en la aplicación, accederemos a la Página de Inicio 
 \caption{Página de Inicio}
 \end{figure}
 
+\pagebreak
 Una vez nos encontremos en la Página de Inicio, nos encontraremos con dos formularios. Para proceder al registro deberemos de rellenar correctamente los datos del formulario de la derecha y pulsar sobre el botón de ``Sign Up''. 
 
 \begin{figure}[H]
@@ -1611,12 +1619,6 @@ Si se han seguido éstos pasos, la página nos informará con el mensaje ``¡Reg
 
 Para proceder al Login en la aplicación, accederemos a la Página de Inicio de ésta.
 
-\begin{figure}[H]
-\centering
-\includegraphics[totalheight=6cm]{manualUsuario/paginaInicio.png}
-\caption{Página de Inicio}
-\end{figure}
-
 Una vez nos encontremos en la Página de Inicio, nos encontraremos con dos formularios. Para proceder al login deberemos de rellenar con datos correctos los datos del formulario de la izquierda y pulsar sobre el botón de ``Sign In''.
 
 \begin{figure}[H]
@@ -1625,6 +1627,7 @@ Una vez nos encontremos en la Página de Inicio, nos encontraremos con dos formu
 \caption{Página de Inicio - Login}
 \end{figure}
 
+\pagebreak
 Si se han seguido éstos pasos, la página redirigirá a la Página Principal. Una vez en ésta, nos encontraremos con un menú de usuario en la parte superior derecha, si hacemos ``click'' en dicho menú, tendremos la opción de ``LogOut'' la cual nos permitirá desloguearnos del sistema.
 
 \begin{figure}[H]
@@ -1633,15 +1636,10 @@ Si se han seguido éstos pasos, la página redirigirá a la Página Principal. U
 \caption{Página de Inicio - Logout}
 \end{figure}
 
+\pagebreak
 \section{Acceder a la Página Principal}
 
 Para poder acceder a la Página Principal habrá que loguearse primero en la aplicación.
-
-\begin{figure}[H]
-\centering
-\includegraphics[totalheight=6cm]{manualUsuario/login.png}
-\caption{Página de Inicio - Login}
-\end{figure}
 
 Una vez nos encontremos en la Página Principal, nos encontraremos con el logo de la aplicación, un menú de usuario en la parte superior derecha y un calendario que ocupará gran parte de la vista de la aplicación. En el menú podremos acceder a los distintos apartados que nos ofrece la aplicación. Respecto al calendario, podremos navegar entre los distintos meses o pulsar en el botón para volver al mes actual y en el interior del mismo podremos ver representados los eventos de sueño registrados en la aplicación. 
 
@@ -1651,6 +1649,7 @@ Una vez nos encontremos en la Página Principal, nos encontraremos con el logo d
 \caption{Página Principal}
 \end{figure}
 
+\pagebreak
 Haciendo ``click'' sobre cualquier día del calendario que contenga un evento, se nos desplegará un apartado con un enlace para acceder a la página ``Resumen de Sueño Diario'' con los detalles del mismo.
 
 \begin{figure}[H]
@@ -1659,6 +1658,7 @@ Haciendo ``click'' sobre cualquier día del calendario que contenga un evento, s
 \caption{Página Principal - Eventos}
 \end{figure}
 
+\pagebreak
 \section{Acceder a la página de ``Resumen de Sueño Diario''}
 
 Para poder acceder a la página de ``Resumen de Sueño Diario'' habrá que encontrarse en la Página Principal con al menos un evento en el calendario.
@@ -1794,7 +1794,7 @@ A continuación se expone a modo resumen un diagrama con el flujo que se puede s
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=9cm]{manualUsuario/Navegabilidad.png}
+\includegraphics[totalheight=8cm]{manualUsuario/Navegabilidad.png}
 \caption{Navegabilidad}
 \end{figure}
 
@@ -1803,6 +1803,8 @@ A continuación se expone a modo resumen un diagrama con el flujo que se puede s
 \chapter{Conclusiones}
 
 Es el momento de abordar las conclusiones obtenidas tras la realización del Trabajo de Fin de Grado. Llegado a éste punto, si el lector ha seguido ordenadamente los distintos capítulos que se abordan en la memoria debería de tener una idea clara de cual ha sido la motivación, el desarrollo y la ejececución del TFG. Sin embargo, en éste apartado abordaremos algunos de ésos detalles con mayor precisión y se realizará una reflexión final.
+
+Me gustaría comenzar destacando el hecho de que hemos completado con éxito los objetivos que nos propusimos al inicio del TFG, superando incluso las espectativas iniciales. Nuestros objetivos eran el de crear una aplicación para mostrar los datos de sueño de los usuarios empleando tecnologías innovadoras y con un mínimo de calidad a la altura de un Trabajo de Fin de Grado. Pues bien, hemos suplido con éxito estos requisitos, ya que la aplicación ha sido desarrollada siguiendo las tecnologías propuestas y es completamente funcional. Además, para asegurar algunos aspectos de la calidad del proyecto se han llevado a cabo las pruebas que se han visto en el Capítulo 6, con el objetivo de comprobar el funcionamiento de la aplicación.
 
 Tras la ejecución del TFG he sacado la conclusión de que tomé la decisión correcta al elegir las tecnologías que he usado durante su desarrollo. El motivo de ésta conclusión es que he aprendido que tengo autonomía a la hora de conocer lenguajes completamente nuevos y que me desenvuelvo con ellos con algo de soltura. Además, éstos lenguajes me han hecho crecer como programador, ya que me han enseñado nuevos conceptos o me han hecho profundizar en algunos, como es el caso de la programación asincrona, la espera de eventos para realizar una acción o la utilización de ficheros tan simples como JSON para tareas no tan simples como el almacenamiento de datos en una Base de Datos.
 
