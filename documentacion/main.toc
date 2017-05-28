@@ -1,83 +1,70 @@
 \select@language {spanish}
-\contentsline {chapter}{Lista de figuras}{5}{chapter*.1}
-\contentsline {chapter}{Lista de tablas}{9}{chapter*.2}
-\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{10}{chapter.1}
-\contentsline {section}{\numberline {1.1}El problema}{11}{section.1.1}
-\contentsline {section}{\numberline {1.2}La soluci\IeC {\'o}n}{12}{section.1.2}
-\contentsline {section}{\numberline {1.3}Estructura del documento}{13}{section.1.3}
-\contentsline {chapter}{\numberline {2}Tecnolog\IeC {\'\i }as}{15}{chapter.2}
-\contentsline {section}{\numberline {2.1}Tecnolog\IeC {\'\i }as de desarrollo del proyecto}{16}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Lenguajes de programaci\IeC {\'o}n}{16}{subsection.2.1.1}
-\contentsline {subsubsection}{Javascript}{16}{section*.4}
-\contentsline {subsubsection}{TypeScript}{17}{section*.5}
-\contentsline {subsection}{\numberline {2.1.2}Frameworks y librer\IeC {\'\i }as}{18}{subsection.2.1.2}
-\contentsline {subsubsection}{Node.js}{18}{section*.6}
-\contentsline {subsubsection}{Npm}{19}{section*.7}
-\contentsline {subsubsection}{Express}{20}{section*.8}
-\contentsline {subsubsection}{Angular 2}{21}{section*.9}
-\contentsline {subsubsection}{Firebase}{22}{section*.10}
-\contentsline {subsubsection}{Selenium}{23}{section*.11}
-\contentsline {subsubsection}{Jasmine}{23}{section*.12}
-\contentsline {subsubsection}{Cucumber}{24}{section*.13}
-\contentsline {subsubsection}{Protractor}{25}{section*.14}
-\contentsline {subsubsection}{Passport}{25}{section*.15}
-\contentsline {subsubsection}{Jade}{26}{section*.16}
-\contentsline {subsubsection}{Mail Listener}{27}{section*.17}
-\contentsline {subsubsection}{Node Mailer}{27}{section*.18}
-\contentsline {subsubsection}{Typings}{28}{section*.19}
-\contentsline {subsection}{\numberline {2.1.3}Herramientas de desarrollo}{28}{subsection.2.1.3}
-\contentsline {subsubsection}{Visual Studio Code}{28}{section*.20}
-\contentsline {section}{\numberline {2.2}Tecnolog\IeC {\'\i }as de planificaci\IeC {\'o}n y gesti\IeC {\'o}n del proyecto}{30}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Toggl}{30}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Zenhub}{31}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Google Drive, Docs y Sheets}{31}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Tecnolog\IeC {\'\i }as de gesti\IeC {\'o}n del c\IeC {\'o}digo, integraci\IeC {\'o}n y despliegue continuo}{33}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Github}{33}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Travis}{34}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Heroku}{35}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}Resumen de las tecnolog\IeC {\'\i }as}{35}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Resumen Tecnolog\IeC {\'\i }as de desarrollo}{36}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Resumen Tecnolog\IeC {\'\i }as de planificaci\IeC {\'o}n y gesti\IeC {\'o}n del proyecto}{37}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Resumen Tecnolog\IeC {\'\i }as de gesti\IeC {\'o}n del c\IeC {\'o}digo, integraci\IeC {\'o}n y despliegue continuo}{38}{subsection.2.4.3}
-\contentsline {chapter}{\numberline {3}An\IeC {\'a}lisis y Dise\IeC {\~n}o}{39}{chapter.3}
-\contentsline {section}{\numberline {3.1}An\IeC {\'a}lisis}{40}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Backlog del producto}{40}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Historias de Usuario}{41}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Mockups}{44}{subsection.3.1.3}
-\contentsline {subsubsection}{P\IeC {\'a}gina de Login y Registro}{45}{section*.21}
-\contentsline {subsubsection}{P\IeC {\'a}gina principal}{46}{section*.22}
-\contentsline {subsubsection}{P\IeC {\'a}gina de Resumen de Sue\IeC {\~n}o Diario}{47}{section*.23}
-\contentsline {section}{\numberline {3.2}Dise\IeC {\~n}o}{47}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Diagrama de Componentes}{47}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Diagrama de Despliegue}{50}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Diagrama de Capas y Tecnolog\IeC {\'\i }as}{51}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Diagrama UML}{52}{subsection.3.2.4}
-\contentsline {chapter}{\numberline {4}Planificaci\IeC {\'o}n}{54}{chapter.4}
-\contentsline {section}{\numberline {4.1}Detalles de la planificcai\IeC {\'o}n}{60}{section.4.1}
+\contentsline {chapter}{Lista de figuras}{4}{chapter*.1}
+\contentsline {chapter}{Lista de tablas}{7}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{8}{chapter.1}
+\contentsline {section}{\numberline {1.1}El problema}{9}{section.1.1}
+\contentsline {section}{\numberline {1.2}La soluci\IeC {\'o}n}{10}{section.1.2}
+\contentsline {section}{\numberline {1.3}Estructura del documento}{11}{section.1.3}
+\contentsline {chapter}{\numberline {2}Tecnolog\IeC {\'\i }as}{13}{chapter.2}
+\contentsline {section}{\numberline {2.1}Tecnolog\IeC {\'\i }as de desarrollo del proyecto}{14}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Lenguajes de programaci\IeC {\'o}n}{14}{subsection.2.1.1}
+\contentsline {subsubsection}{Javascript}{14}{section*.4}
+\contentsline {subsubsection}{TypeScript}{15}{section*.5}
+\contentsline {subsection}{\numberline {2.1.2}Frameworks y librer\IeC {\'\i }as}{16}{subsection.2.1.2}
+\contentsline {subsubsection}{Node.js}{16}{section*.6}
+\contentsline {subsubsection}{Npm}{17}{section*.7}
+\contentsline {subsubsection}{Express}{18}{section*.8}
+\contentsline {subsubsection}{Angular 2}{19}{section*.9}
+\contentsline {subsubsection}{Firebase}{20}{section*.10}
+\contentsline {subsubsection}{Selenium}{21}{section*.11}
+\contentsline {subsubsection}{Jasmine}{21}{section*.12}
+\contentsline {subsubsection}{Cucumber}{22}{section*.13}
+\contentsline {subsubsection}{Protractor}{23}{section*.14}
+\contentsline {subsubsection}{Passport}{23}{section*.15}
+\contentsline {subsubsection}{Jade}{24}{section*.16}
+\contentsline {subsubsection}{Mail Listener}{25}{section*.17}
+\contentsline {subsubsection}{Node Mailer}{25}{section*.18}
+\contentsline {subsubsection}{Typings}{26}{section*.19}
+\contentsline {subsection}{\numberline {2.1.3}Herramientas de desarrollo}{26}{subsection.2.1.3}
+\contentsline {subsubsection}{Visual Studio Code}{26}{section*.20}
+\contentsline {section}{\numberline {2.2}Tecnolog\IeC {\'\i }as de planificaci\IeC {\'o}n y gesti\IeC {\'o}n del proyecto}{28}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Toggl}{28}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Zenhub}{29}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Google Drive, Docs y Sheets}{29}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Tecnolog\IeC {\'\i }as de gesti\IeC {\'o}n del c\IeC {\'o}digo, integraci\IeC {\'o}n y despliegue continuo}{31}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Github}{31}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Travis}{32}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Heroku}{33}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Resumen de las tecnolog\IeC {\'\i }as}{33}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Resumen Tecnolog\IeC {\'\i }as de desarrollo}{34}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Resumen Tecnolog\IeC {\'\i }as de planificaci\IeC {\'o}n y gesti\IeC {\'o}n del proyecto}{35}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Resumen Tecnolog\IeC {\'\i }as de gesti\IeC {\'o}n del c\IeC {\'o}digo, integraci\IeC {\'o}n y despliegue continuo}{36}{subsection.2.4.3}
+\contentsline {chapter}{\numberline {3}An\IeC {\'a}lisis y Dise\IeC {\~n}o}{37}{chapter.3}
+\contentsline {section}{\numberline {3.1}An\IeC {\'a}lisis}{38}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Backlog del producto}{38}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Historias de Usuario}{39}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Mockups}{42}{subsection.3.1.3}
+\contentsline {subsubsection}{P\IeC {\'a}gina de Login y Registro}{43}{section*.21}
+\contentsline {subsubsection}{P\IeC {\'a}gina principal}{44}{section*.22}
+\contentsline {subsubsection}{P\IeC {\'a}gina de Resumen de Sue\IeC {\~n}o Diario}{45}{section*.23}
+\contentsline {section}{\numberline {3.2}Dise\IeC {\~n}o}{46}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Diagrama de Componentes}{46}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Diagrama de Despliegue}{48}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Diagrama de Capas y Tecnolog\IeC {\'\i }as}{50}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Diagrama UML}{51}{subsection.3.2.4}
+\contentsline {chapter}{\numberline {4}Planificaci\IeC {\'o}n}{53}{chapter.4}
+\contentsline {section}{\numberline {4.1}Detalles de la planificcai\IeC {\'o}n}{59}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Sprint 1}{60}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Sprint 2}{63}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Sprint 3}{65}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}Sprint 4}{67}{subsection.4.1.4}
-\contentsline {subsection}{\numberline {4.1.5}Sprint 5}{69}{subsection.4.1.5}
-\contentsline {subsection}{\numberline {4.1.6}Sprint 6}{71}{subsection.4.1.6}
-\contentsline {subsection}{\numberline {4.1.7}Sprint 7}{73}{subsection.4.1.7}
-\contentsline {subsection}{\numberline {4.1.8}Sprint 8}{75}{subsection.4.1.8}
-\contentsline {subsection}{\numberline {4.1.9}Sprint 9}{77}{subsection.4.1.9}
-\contentsline {subsection}{\numberline {4.1.10}Sprint 10}{79}{subsection.4.1.10}
-\contentsline {subsection}{\numberline {4.1.11}Sprint 11}{81}{subsection.4.1.11}
-\contentsline {subsection}{\numberline {4.1.12}Sprint 12}{83}{subsection.4.1.12}
-\contentsline {subsection}{\numberline {4.1.13}Sprint 13}{85}{subsection.4.1.13}
-\contentsline {chapter}{\numberline {5}Desarrollo}{86}{chapter.5}
-\contentsline {chapter}{\numberline {6}Pruebas y validaci\IeC {\'o}n de la soluci\IeC {\'o}n}{87}{chapter.6}
-\contentsline {chapter}{\numberline {7}Manual de usuario}{93}{chapter.7}
-\contentsline {section}{\numberline {7.1}Registro en la aplicaci\IeC {\'o}n}{94}{section.7.1}
-\contentsline {section}{\numberline {7.2}Login en la aplicaci\IeC {\'o}n}{96}{section.7.2}
-\contentsline {section}{\numberline {7.3}Acceder a la P\IeC {\'a}gina Principal}{98}{section.7.3}
-\contentsline {section}{\numberline {7.4}Acceder a la p\IeC {\'a}gina de ``Resumen de Sue\IeC {\~n}o Diario''}{100}{section.7.4}
-\contentsline {section}{\numberline {7.5}Manejar integraciones con las APIs de registro de sue\IeC {\~n}o}{102}{section.7.5}
-\contentsline {section}{\numberline {7.6}Manejar alertas}{104}{section.7.6}
-\contentsline {section}{\numberline {7.7}Recuperaci\IeC {\'o}n de contrase\IeC {\~n}a}{106}{section.7.7}
-\contentsline {section}{\numberline {7.8}Navegabilidad}{110}{section.7.8}
-\contentsline {chapter}{\numberline {8}Conclusiones}{111}{chapter.8}
-\contentsline {chapter}{9. Referencias}{115}{chapter.8}
-\contentsline {chapter}{\numberline {A}End Notes}{118}{appendix.Alph1}
+\contentsline {subsection}{\numberline {4.1.2}Sprint 2}{62}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Sprint 3}{64}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Sprint 4}{66}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}Sprint 5}{68}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}Sprint 6}{70}{subsection.4.1.6}
+\contentsline {subsection}{\numberline {4.1.7}Sprint 7}{72}{subsection.4.1.7}
+\contentsline {subsection}{\numberline {4.1.8}Sprint 8}{74}{subsection.4.1.8}
+\contentsline {subsection}{\numberline {4.1.9}Sprint 9}{76}{subsection.4.1.9}
+\contentsline {subsection}{\numberline {4.1.10}Sprint 10}{78}{subsection.4.1.10}
+\contentsline {subsection}{\numberline {4.1.11}Sprint 11}{80}{subsection.4.1.11}
+\contentsline {subsection}{\numberline {4.1.12}Sprint 12}{82}{subsection.4.1.12}
+\contentsline {subsection}{\numberline {4.1.13}Sprint 13}{84}{subsection.4.1.13}
+\contentsline {section}{\numberline {4.2}Presupuesto}{86}{section.4.2}
