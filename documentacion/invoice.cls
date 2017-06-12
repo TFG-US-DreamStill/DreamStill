@@ -113,7 +113,6 @@
     \endhead
 }{
     \hline\hline\hline
-    {\bf Coste Total} & & & {\bf \total{cost} \euro} \\
-    {\bf + 21\% IVA} & & & {\bf \total{costiva} \euro} \\
+    {\bf Coste Total (Con 21\% IVA)} & & & {\bf \total{cost} \euro} \\
     \end{longtable}
 }
