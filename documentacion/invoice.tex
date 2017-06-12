@@ -1,0 +1,84 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Invoice Template
+% LaTeX Template
+% Version 1.0 (3/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Trey Hunner (http://www.treyhunner.com/)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the invoice.cls file to be in the same directory as 
+% the .tex file. The invoice.cls file provides the style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\documentclass{invoice} % Use the custom invoice class (invoice.cls)
+
+\def \tab {\hspace*{3ex}} % Define \tab to create some horizontal white space
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	HEADING SECTION
+%----------------------------------------------------------------------------------------
+
+\hfil{\Huge\bf DreamStill}\hfil % Company providing the invoice
+\bigskip\break % Whitespace
+\hrule % Horizontal line
+
+123 Broadway \hfill +34 123456789 \\ % Your address and contact information
+Sevilla, España 41013 \hfill juanrarodriguez18@gmail.com
+\\ \\
+{\bf Factura para:} \\
+\tab John Doe \\ % Invoice recipient
+\tab Generic Corporation \\ % Recipient's company
+
+{\bf Fecha:} \\
+\tab \today \\ % Invoice date
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF EXPENSES
+%----------------------------------------------------------------------------------------
+
+\begin{invoiceTable}
+
+\feetype{Horas de trabajo}
+
+\hourrow{Analista}{25.97}{33.72}
+\hourrow{Diseñador}{27.59}{30.40}
+\hourrow{Test/QA}{15.63}{28.20}
+\hourrow{Programador}{117.79}{23.30}
+\hourrow{Documentalista}{100.40}{16.26}
+
+\subtotal % Prints a subtotal, can be used multiple times
+
+%------------------------------------------------
+ 
+\feetype{Costes Ind. y Amortizaciones}
+
+\monthrow{Amortización equipo}{10}{25}
+\monthrow{Costes indirectos}{10}{185}
+
+%------------------------------------------------
+ 
+\feetype{Hosting}
+\monthrow{Alquiler de hosting}{10}{18.30}
+\feetype{Mantenimiento}
+\monthrow{Periodo de mantenimiento}{6}{450}
+
+\end{invoiceTable}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

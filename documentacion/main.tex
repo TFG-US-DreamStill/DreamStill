@@ -124,7 +124,7 @@ El estilo de vida moderno conlleva un ritmo frenético de las tareas que realiza
 
 Además, el tema de la monitorización del sueño o en inglés ``Sleep Tracking'' se encuentra en auge, ya que con las nuevas tecnologías podemos realizar un seguimiento más exacto y sencillo de nuestras actividades físicas, nuestra nutrición o nuestro descanso. Ésto despierta mucho interés entre los usuarios que desean llevar un estilo de vida saludable y que desean mejorar sus hábitos para mejorar su calidad de vida. 
 
-Debido a éste problema, actualmente existen diversas soluciones que permiten medir nuestro sueño, tanto en términos de cantidad de horas como de calidad del mismo. Pero muchas de éstas soluciones son privativas y necesitan de una plataforma o aplicación específica. Así, un usuario que cambia por ejemplo de smartwatch, pulsómetro o incluso de Smartphone, una práctica bastante habitual hoy día, o al que le surge la necesidad de consultar sus datos desde su ordenador, puede no llegar a tener acceso a los datos de su propio sueño, ya que necesitará una aplicación que sólo se ejecuta en determinadas plataformas. 
+Debido a éste problema, actualmente existen diversas soluciones que permiten medir nuestro sueño, tanto en términos de cantidad de horas como de calidad del mismo. Pero muchas de éstas soluciones son privativas y necesitan de una plataforma o aplicación específica. Así, un usuario que cambia por ejemplo de smartwatch, pulsómetro o incluso de Smartphone, una práctica bastante habitual hoy día \cite{17}, o al que le surge la necesidad de consultar sus datos desde su ordenador, puede no llegar a tener acceso a los datos de su propio sueño, ya que necesitará una aplicación que sólo se ejecuta en determinadas plataformas. 
 
 \section{El problema}
 
@@ -211,7 +211,7 @@ Se podría decir que JavaScript ha sido contemplado durante años por muchos usu
 
 TypeScript es otro de los lenguajes relevantes del proyecto, gracias a él se consigue una mayor lógica en la aplicación sin tener que recurrir a JavaScript, aunque éste sea el producto final de la compilación de TypeScript. Su inclusión en el proyecto se basa en la facilidad para programar una vez que se han adquirido los debidos conocimientos previos y en que es el lenguaje en el que se ha programado Angular2, del que hablaremos más adelante y que ha sido elegido para representar la parte dedicada al Front-end de la aplicación.
 
-Fue diseñado por Microsoft en 2012 y se influyó en lenguajes como Java, C++ y por supuesto JavaScript\cite{2}. Es un lenguaje de programación libre y Open Source mantenido por su diseñador, Microsoft. Está enfocado a aplicaciones escalables construidas con Javascript, añadiendo tipos, clases y módulos a éste lenguaje. Soporta herramientas para un escalado importante en aplicaciones construidas bajo JavaScript para cualquier navegador, servidor o sistema operativo. Como se ha comentado anteriormente, es un lenguaje compilado el cual produce ficheros en JavaScript.
+Fue diseñado por Microsoft en 2012 y se influyó en lenguajes como Java, C++ y por supuesto JavaScript\cite{3}. Es un lenguaje de programación libre y Open Source mantenido por su diseñador, Microsoft. Está enfocado a aplicaciones escalables construidas con Javascript, añadiendo tipos, clases y módulos a éste lenguaje. Soporta herramientas para un escalado importante en aplicaciones construidas bajo JavaScript para cualquier navegador, servidor o sistema operativo. Como se ha comentado anteriormente, es un lenguaje compilado el cual produce ficheros en JavaScript.
 
 Finalmente destacar que es un lenguaje tipado, y que Visual Studio Code, del que se hablará más adelante, tiene un gran enfoque en éste lenguaje, por lo que ambos son la pareja perfecta para un desarrollador que desee programar en TypeScript.
 
@@ -459,7 +459,7 @@ En definitiva Github ha sido una herramienta indispensable a lo largo del desarr
 
 \logo{logos/travis.png}{https://travis-ci.org}
 
-Travis es el servidor de Integración Continua escogido para el proyecto. Ofrece integración con Github, de tal forma que cada vez que se realiza un ``push'', es decir, se sube código al servidor remoto en Github de la aplicación, éste lanza una serie de comandos que pueden definirse fácilmente en un archivo de configuración ``.yml'', en el caso del proyecto, se prepararía el entorno de pruebas, se construiría la aplicación y se lanzarían las pruebas correspondientes, comprobando que todo funciona correctamente.
+Travis es el servidor de Integración Continua escogido para el proyecto. Ofrece integración con Github, de tal forma que cada vez que se realiza un ``push'', es decir, se sube código al servidor remoto en Github de la aplicación, éste lanza una serie de comandos que pueden definirse fácilmente en un archivo de configuración ``.yml''\cite{15}, en el caso del proyecto, se prepararía el entorno de pruebas, se construiría la aplicación y se lanzarían las pruebas correspondientes, comprobando que todo funciona correctamente.
 
 Los servidores de Integración Continua tienen muchas funcionalidades útiles, pero entre todas destacaría la funcionalidad de lanzar las pruebas automáticamente en cada subida de código fuente y comprobar que todo sigue funcionando correctamente. Éste punto es crítico para pruebas de regresión, ya que puede ocurrir que modifiquemos algo que afecte a algo que no teníamos planeado y éste deje de funcionar, gracias a un servidor de Integración Continua y a las debidas pruebas éste problema se vería en el mismo momento en el que subimos el código fuente. Aunque se puede activar o no, una gran funcionalidad de Travis es la notificación al usuario por correo electrónicos de eventos importantes en su código fuente, entre los que se destacan las notificaciones en el caso de que algún test falle, o en el caso de que se arregle un test, es decir, ese o esos mismos tests que fallaban antes, tras una subido vuelven a dar una respuesta positiva.
 
@@ -534,129 +534,133 @@ A continuación se detallará el Backlog del producto. Éste contiene los requis
 \begin{longtable}{| c | M{9.5cm} | M{1.5cm} | M{1cm} | M{1.5cm} |}
 \caption[Backlog del Producto]{Backlog del Producto} \label{grid_mlmmh} \\
 
-\toprule ID    & Nombre & Iteración / Sprint\\
+\hline ID    & Nombre & Iteración / Sprint\\
 \endfirsthead
 
 \multicolumn{3}{c}%
 {{\bfseries \tablename\ \thetable{} -- continuación de la página anterior}} \\
-\toprule ID    & Nombre & Iteración / Sprint\\
+\hline ID    & Nombre & Iteración / Sprint\\
 \hline
 \endhead
 
 \hline \multicolumn{2}{|r|}{{Continúa en la página siguiente}} \\ \hline
 \endfoot
 \endlastfoot
-    \midrule
+    \hline
     1     & Montaje de la infraestructura & 1 \\
-    \midrule
+    \hline
     2     & Instalación y elección de las Herramientas & 1 \\
-    \midrule
+    \hline
     3     & Obtención de datos de Morpheuz & 1 \\
-    \midrule
+    \hline
     4     & Planificación inicial & 1 \\
-    \midrule
+    \hline
     5     & Subsistema de login & 2 \\
-    \midrule
+    \hline
     6     & Almacenamiento de datos en Firebase & 2 \\
-    \midrule
+    \hline
     7     & Daemon Correo y almacenamiento en Firebase & 2 \\
-    \midrule
+    \hline
     8     & Procesamiento de datos de Morpheuz & 2 \\
-    \midrule
+    \hline
     9     & Elegir Framework CSS & 2 \\
-    \midrule
+    \hline
     10    & Planificación inicial & 2 \\
-    \midrule
+    \hline
     11    & Estimar puntos de historia & 3 \\
-    \midrule
+    \hline
     12    & Plantear historias de usuario & 3 \\
-    \midrule
+    \hline
     13    & Login Back-End & 3 \\
-    \midrule
+    \hline
     14    & Almacenamiento de login en Firebase & 3 \\
-    \midrule
+    \hline
     15    & Dummy Chart con movimientos y un componente de Angular & 3 \\
-    \midrule
+    \hline
     16    & Mockups aplicación & 3 \\
-    \midrule
+    \hline
     17    & Incluir Angular Material & 3 \\
-    \midrule
+    \hline
     18    & Imagen Corporativa General & 4 \\
-    \midrule
+    \hline
     19    & Autenticación al usar Firebase & 4 \\
-    \midrule
+    \hline
     20    & HU1: Registro en la aplicacón & 4 \\
-    \midrule
+    \hline
     21    & HU2: Loguearse en la Aplicación & 4 \\
-    \midrule
+    \hline
     22    & Integrar el proyecto con un CI en la nube & 4 \\
-    \midrule
+    \hline
     23    & HU3: Acceder a la página principal & 4 \\
-    \midrule
+    \hline
     24    & HU4: Gestión de datos de perfil y validación & 5 \\
-    \midrule
+    \hline
     25    & HU5: Representación de datos de firebase en calendario & 5 \\
-    \midrule
+    \hline
     26    & HU6: Integración de identificación en servicios de 3ºs en los datos de perfil. & 5 \\
-    \midrule
+    \hline
     27    & HU7: Representación detallada de datos en las gráficas conectada con el calendario. & 5 \\
-    \midrule
+    \hline
     28    & HU8: Terminar el proceso batch para que procese todos los mails de un usuario. & 5 \\
-    \midrule
+    \hline
     29    & Integración con la API de Fitbit - Fase 1 & 6 \\
-    \midrule
+    \hline
     30    & Integración con la API de GoogleFit - Fase 1 & 6 \\
-    \midrule
+    \hline
     31    & Actualizar historias de usuario & 6 \\
-    \midrule
+    \hline
     32    & Integración con la API de Fitbit - Fase 2 & 7 \\
-    \midrule
+    \hline
     33    & Integración con la API de GoogleFit - Fase 2 & 7 \\
-    \midrule
+    \hline
     34    & Tests - Fase 1 & 7 \\
-    \midrule
+    \hline
     35    & Tests - Fase 2 & 8 \\
-    \midrule
+    \hline
     36    & Crear página para que un usuario pueda enlazar sus datos de Morpheuz con la App & 8 \\
-    \midrule
+    \hline
     37    & Estudiar Integración con la API de Sleep As Android & 8 \\
-    \midrule
+    \hline
     38    & Añadir opción para recuperar contraseña & 8 \\
-    \midrule
+    \hline
     39    & Documentar apartado 1 - Introducción & 9 \\
-    \midrule
+    \hline
     40    & Documentar apartado 2 - Introducción & 9 \\
-    \midrule
+    \hline
     41    & Documentar apartado 4 - Introducción & 9 \\
-    \midrule
+    \hline
     42    & Documentar apartado 1 - Revisión & 10 \\
-    \midrule
+    \hline
     43    & Documentar apartado 2 - Revisión & 10 \\
-    \midrule
+    \hline
     44    & Documentar apartado 4 - Revisión & 10 \\
-    \midrule
+    \hline
     45    & Añadir sistema de alertas & 10 \\
-    \midrule
+    \hline
     46    & Documentar apartado 1 - Finalización & 11 \\
-    \midrule
+    \hline
     47    & Documentar apartado 2 - Finalización & 11 \\
-    \midrule
+    \hline
     48    & Documentar apartado 4 - Finalización & 11 \\
-    \midrule
+    \hline
     49    & Documentar apartado 3 - Introducción & 11 \\
-    \midrule
+    \hline
     50    & Documentar apartado 7 - Introducción & 11 \\
-    \midrule
+    \hline
     51	  & Integración con la API de Fitbit - Fase 3 & 11 \\
-    \midrule
+    \hline
     52	  & Parámetro Alertas	& 12 \\
-    \midrule
+    \hline
     53	  & Corregir errores en la documentación & 13 \\
-    \midrule
+    \hline
     54	  & Documentar apartado 6 - Introducción & 13 \\
-    \midrule
+    \hline
     55	  & Documentar apartado 8 - Introducción & 13 \\
-    \bottomrule
+    \hline
+    56	  & Corregir errores en la documentación de los nuevos apartados & 14 \\
+    \hline
+    57	  & Desglose del presupuesto & 14 \\
+    \hline
 \end{longtable}
 \end{center}}
 
@@ -796,6 +800,7 @@ Se compone de dos gráficas. En la primera de ellas el usuario podrá observar c
 
 El objetivo de éstas dos gráficas es que el usuario quede informado de su sueño rápidamente y pueda ahondar en más detalles si lo desea interactuando con las mismas.
 
+\pagebreak
 \section{Diseño}
 
 \subsection{Diagrama de Componentes}
@@ -838,21 +843,23 @@ Por otro lado, tenemos la parte del servidor. Para nuestro caso concreto, se alo
 
 Por último, tenemos la parte de base de datos. Para nuestro caso Firebase, base de datos en tiempo real que nos permitirá tener nuestros datos en la ``nube'' y tenerlos actualizados de manera continua, además de ofrecernos la posibilidad de tener un fácil acceso a ellos y además de forma segura.
 
+\pagebreak
 \subsection{Diagrama de Capas y Tecnologías}
 
 Se pretende mostrar al lector como están estructuradas las capas de la aplicación. En cada capa se incluirá además las tecnologías que se han usado en cada una de ellas, con la finalidad de diferenciarlas y conocer sus usos.
 
-Para su estructura se ha seguido el modelo Vista/Controlador, el cual se divide en tres capas. La primera de ellas, la de persistencia de datos, en la que se sitúa el sistema de almacenamiento de datos y el sistema gestor de almacenamiento de datos si lo hubiera. En la segunda de ellas, se sitúa el controlador, el cual se define como ``el director de orquesta'' ya que orquesta las distintas llamadas al servidor y proporciona las funcionalidades necesarios al resto de capas. En la tercera de ellas, se sitúa la vista, la cual proporciona los datos del lado del cliente, es decir, los datos que se representan en el navegador del usuario, obteniéndolos del controlador.
+Para su estructura se ha seguido el modelo Vista/Controlador\cite{18}, el cual se divide en tres capas. La primera de ellas, la de persistencia de datos, en la que se sitúa el sistema de almacenamiento de datos y el sistema gestor de almacenamiento de datos si lo hubiera. En la segunda de ellas, se sitúa el controlador, el cual se define como ``el director de orquesta'' ya que orquesta las distintas llamadas al servidor y proporciona las funcionalidades necesarios al resto de capas. En la tercera de ellas, se sitúa la vista, la cual proporciona los datos del lado del cliente, es decir, los datos que se representan en el navegador del usuario, obteniéndolos del controlador.
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{diagramas/Diagrama_de_Capas_y_Tecnolog_as.png}
+\includegraphics[totalheight=6cm]{diagramas/Diagrama_de_Capas_y_Tecnolog_as.png}
 \caption{Diagrama de Capas y Tecnologías}
 \end{figure}
 
+\pagebreak
 \subsection{Diagrama UML}
 
-Describe el diagrama de clases seguido en el diseño del esquema de la Base de Datos. A pesar de utilizar Firebase y de ser éste una Base de Datos NoSQL, el cual permite una estructura que puede ser propensa a cambios, se ha seguido una estructura prefijada, ya que así se consigue una correcta gestión de la Base de Datos.
+Describe el diagrama de clases (Diagrma UML\cite{14}) seguido en el diseño del esquema de la Base de Datos. A pesar de utilizar Firebase y de ser éste una Base de Datos NoSQL, el cual permite una estructura que puede ser propensa a cambios, se ha seguido una estructura prefijada, ya que así se consigue una correcta gestión de la Base de Datos.
 
 \begin{figure}[H]
 \centering
@@ -879,7 +886,7 @@ Para la planificación del proyecto se ha seguido una metodología ágil, en la 
 
 Para llevar el seguimiento de la planificación y calcular posibles desvíos o estimar la duración de ciertas tareas, se han utilizados herramientas destinadas a éste fin. Éstas herramientas nos han proporcionado datos útiles y han conseguido que se observase de forma clara como avanzaba el proyecto en progreso y en tiempo.
 
-Respecto a los requisitos, al seguir una metodología ágil, partimos de una idea inicial, y los requisitos se fueron detallando y añadiendo en cada una de las reuniones que manteníamos mi tutor y yo, éstas reuniones ocurrían al finalizar cada Sprint y suponían el inicio del siguiente, con unos requisitos definidos para dicho Sprint y a partir de los cuales se realizaba la estimación de los mismos. Se ha seguido una metodología SCRUM adaptada a nuestro proyecto, ésta metodología, es una metodología ágil y consiste en la división de trabajos en ``Sprints'' que son periodos de tiempo en los que se planifican una serie de tareas que implican un incremento en el proyecto, ésta metodología es muy usada en proyectos en los que se definen los requisitos durante el transcurso del proyecto y tiene como beneficios un mayor seguimiento de los entregables por parte del cliente, llamado en ésta metodología ``Product Owner'', el cual tendrá una reunión en cada Sprint para conocer como avanza el proyecto y aprobar las tareas para cada uno de éstos Sprints. Por motivos de tiempo ambas partes no podíamos llevar a cabo una ``Daily meeting'' como se recomienda en dicha metodología, por tanto la metodología de Scrum que hemos seguido sería la que se aprecia en la siguiente figura:
+Respecto a los requisitos, al seguir una metodología ágil, partimos de una idea inicial, y los requisitos se fueron detallando y añadiendo en cada una de las reuniones que manteníamos mi tutor y yo, éstas reuniones ocurrían al finalizar cada Sprint y suponían el inicio del siguiente, con unos requisitos definidos para dicho Sprint y a partir de los cuales se realizaba la estimación de los mismos. Se ha seguido una metodología SCRUM\cite{13} adaptada a nuestro proyecto, ésta metodología, es una metodología ágil y consiste en la división de trabajos en ``Sprints'' que son periodos de tiempo en los que se planifican una serie de tareas que implican un incremento en el proyecto\cite{16}, ésta metodología es muy usada en proyectos en los que se definen los requisitos durante el transcurso del proyecto y tiene como beneficios un mayor seguimiento de los entregables por parte del cliente, llamado en ésta metodología ``Product Owner'', el cual tendrá una reunión en cada Sprint para conocer como avanza el proyecto y aprobar las tareas para cada uno de éstos Sprints. Por motivos de tiempo ambas partes no podíamos llevar a cabo una ``Daily meeting'' como se recomienda en dicha metodología, por tanto la metodología de Scrum que hemos seguido sería la que se aprecia en la siguiente figura:
 
 \begin{figure}[H]
 \includegraphics[totalheight=5cm]{scrum.png}
@@ -899,129 +906,133 @@ El Backlog, ha sido el documento que se incrementaba al final de cada reunión, 
 \begin{longtable}{| c | M{9.5cm} | M{1.5cm} | M{1cm} | M{1.5cm} |}
 \caption[Backlog del Producto]{Backlog del Producto} \label{grid_mlmmh} \\
 
-\toprule ID    & Nombre & Estimación & Iteración / Sprint & Puntos de historia\\
+\hline ID    & Nombre & Estimación & Iteración / Sprint & Puntos de historia\\
 \endfirsthead
 
 \multicolumn{3}{c}%
 {{\bfseries \tablename\ \thetable{} -- continuación de la página anterior}} \\
-\toprule ID    & Nombre & Estimación & Iteración / Sprint & Puntos de historia\\
+\hline ID    & Nombre & Estimación & Iteración / Sprint & Puntos de historia\\
 \hline
 \endhead
 
 \hline \multicolumn{2}{|r|}{{Continúa en la página siguiente}} \\ \hline
 \endfoot
 \endlastfoot
-    \midrule
+    \hline
     1     & Montaje de la infraestructura & 10    & 1     & 13 \\
-    \midrule
+    \hline
     2     & Instalación y elección de las Herramientas & 3     & 1     & 2 \\
-    \midrule
+    \hline
     3     & Obtención de datos de Morpheuz & 1,5   & 1     & 1 \\
-    \midrule
+    \hline
     4     & Planificación inicial & 2     & 1     & 1 \\
-    \midrule
+    \hline
     5     & Subsistema de login & 5     & 2     & 3 \\
-    \midrule
+    \hline
     6     & Almacenamiento de datos en Firebase & 8     & 2     & 13 \\
-    \midrule
+    \hline
     7     & Daemon Correo y almacenamiento en Firebase & 10    & 2     & 21 \\
-    \midrule
+    \hline
     8     & Procesamiento de datos de Morpheuz & 6     & 2     & 5 \\
-    \midrule
+    \hline
     9     & Elegir Framework CSS & 2,5   & 2     & 1 \\
-    \midrule
+    \hline
     10    & Planificación inicial & 0,5   & 2     & 1 \\
-    \midrule
+    \hline
     11    & Estimar puntos de historia & 1,5   & 3     & 2 \\
-    \midrule
+    \hline
     12    & Plantear historias de usuario & 2     & 3     & 3 \\
-    \midrule
+    \hline
     13    & Login Back-End & 4     & 3     & 5 \\
-    \midrule
+    \hline
     14    & Almacenamiento de login en Firebase & 2     & 3     & 5 \\
-    \midrule
+    \hline
     15    & Dummy Chart con movimientos y un componente de Angular & 8     & 3     & 8 \\
-    \midrule
+    \hline
     16    & Mockups aplicación & 2     & 3     & 3 \\
-    \midrule
+    \hline
     17    & Incluir Angular Material & 2     & 3     & 5 \\
-    \midrule
+    \hline
     18    & Imagen Corporativa General & 5     & 4     & 8 \\
-    \midrule
+    \hline
     19    & Autenticación al usar Firebase & 4     & 4     & 5 \\
-    \midrule
+    \hline
     20    & HU1: Registro en la aplicacón & 3     & 4     & 5 \\
-    \midrule
+    \hline
     21    & HU2: Loguearse en la Aplicación & 1,5   & 4     & 3 \\
-    \midrule
+    \hline
     22    & Integrar el proyecto con un CI en la nube & 5     & 4     & 13 \\
-    \midrule
+    \hline
     23    & HU3: Acceder a la página principal & 3,5   & 4     & 5 \\
-    \midrule
+    \hline
     24    & HU4: Gestión de datos de perfil y validación & 3     & 5     & 5 \\
-    \midrule
+    \hline
     25    & HU5: Representación de datos de firebase en calendario & 5     & 5     & 8 \\
-    \midrule
+    \hline
     26    & HU6: Integración de identificación en servicios de 3ºs en los datos de perfil. & 4     & 5     & 8 \\
-    \midrule
+    \hline
     27    & HU7: Representación detallada de datos en las gráficas conectada con el calendario. & 6     & 5     & 13 \\
-    \midrule
+    \hline
     28    & HU8: Terminar el proceso batch para que procese todos los mails de un usuario. & 4     & 5     & 8 \\
-    \midrule
+    \hline
     29    & Integración con la API de Fitbit - Fase 1 & 12    & 6     & 21 \\
-    \midrule
+    \hline
     30    & Integración con la API de GoogleFit - Fase 1 & 10    & 6     & 21 \\
-    \midrule
+    \hline
     31    & Actualizar historias de usuario & 1,5   & 6     & 3 \\
-    \midrule
+    \hline
     32    & Integración con la API de Fitbit - Fase 2 & 7     & 7     & 13 \\
-    \midrule
+    \hline
     33    & Integración con la API de GoogleFit - Fase 2 & 6     & 7     & 13 \\
-    \midrule
+    \hline
     34    & Tests - Fase 1 & 15    & 7     & 21 \\
-    \midrule
+    \hline
     35    & Tests - Fase 2 & 15    & 8     & 21 \\
-    \midrule
+    \hline
     36    & Crear página para que un usuario pueda enlazar sus datos de Morpheuz con la App & 3     & 8     & 5 \\
-    \midrule
+    \hline
     37    & Estudiar Integración con la API de Sleep As Android & 5     & 8     & 8 \\
-    \midrule
+    \hline
     38    & Añadir opción para recuperar contraseña & 8     & 8     & 5 \\
-    \midrule
+    \hline
     39    & Documentar apartado 1 - Introducción & 7     & 9     & 13 \\
-    \midrule
+    \hline
     40    & Documentar apartado 2 - Introducción & 10    & 9     & 21 \\
-    \midrule
+    \hline
     41    & Documentar apartado 4 - Introducción & 6     & 9     & 13 \\
-    \midrule
+    \hline
     42    & Documentar apartado 1 - Revisión & 4     & 10    & 8 \\
-    \midrule
+    \hline
     43    & Documentar apartado 2 - Revisión & 2     & 10    & 5 \\
-    \midrule
+    \hline
     44    & Documentar apartado 4 - Revisión & 4     & 10    & 8 \\
-    \midrule
+    \hline
     45    & Añadir sistema de alertas & 8     & 10    & 13 \\
-    \midrule
+    \hline
     46    & Documentar apartado 1 - Finalización & 4     & 11    & 8 \\
-    \midrule
+    \hline
     47    & Documentar apartado 2 - Finalización & 2     & 11    & 5 \\
-    \midrule
+    \hline
     48    & Documentar apartado 4 - Finalización & 3     & 11    & 5 \\
-    \midrule
+    \hline
     49    & Documentar apartado 3 - Introducción & 9     & 11    & 21 \\
-    \midrule
+    \hline
     50    & Documentar apartado 7 - Introducción & 9     & 11    & 21 \\
-    \midrule
+    \hline
     51	  & Integración con la API de Fitbit - Fase 3	 & 6	& 11	& 13 \\
-    \midrule
+    \hline
     52	  & Parámetro Alertas	& 7	& 12	& 8 \\
-    \midrule
+    \hline
     53	  & Corregir errores en la documentación & 3	& 13	& 5 \\
-    \midrule
+    \hline
     54	  & Documentar apartado 6 - Introducción	& 9	& 13	& 21 \\
-    \midrule
+    \hline
     55	  & Documentar apartado 8 - Introducción	& 9	& 13	& 21 \\
-    \bottomrule
+    \hline
+    56	  & Corregir errores en la documentación de los nuevos apartados & 5 & 14 & 21 \\
+    \hline
+    57	  & Desglose del presupuesto & 9 & 14 & 13 \\
+    \hline
 \end{longtable}
 \end{center}}
 
@@ -1031,87 +1042,94 @@ Para la planificación de las semanas que ocurrirían durante la duración del p
 \setlength{\LTleft}{-20cm plus -1fill}
 \setlength{\LTright}{\LTleft}
 \begin{center}
-\begin{longtable}{| c | M{9.5cm} | M{1.5cm} | M{1cm} | M{1.5cm} |}
+\begin{longtable}{| M{1.5cm} | M{9.5cm} | M{1.5cm} | M{1cm} | M{1.5cm} |}
 \caption[Backlog del Producto]{Backlog del Producto} \label{grid_mlmmh} \\
 
-\toprule Semana & Tareas & Previsión & Realidad \\
+\hline Semana & Tareas & Previsión & Realidad \\
 \endfirsthead
 
-\midrule
-10-10-2016 & Instalación y Elección de las Herramientas, Planificación inicial & 5,00  & 8,55 \\
-\midrule
-17-10-2016 & Montaje de la infraestructura, Obtención de datos de Morpheuz & 11,50  & 3,70 \\
-\midrule
-24-10-2016 & Planificación inicial, Subsistema de login, Almacenamiento de datos en Firebase & 12,50  & 8,40 \\
-\midrule
-31-10-2016 & Daemon Correo y almacenamiento en Firebase, Procesamiento de datos de Morpheuz, Elegir Framework CSS & 18,50  & 6,40 \\
-\midrule
-07-11-2016 & Estimar puntos de historia, Plantear historias de usuario, Login Back-End, Almacenamiento de login en Firebase & 11,50  & 6,80 \\
-\midrule
-14-11-2016 & Dummy Chart con movimientos y un componente de Angular, Mockups aplicación, Incluir Angular Material & 12,00  & 6,50 \\
-\midrule
-21-11-2016 & Imagen Corporativa General, Autenticación al usar Firebase, HU1: Registro en la aplicacón & 10,00  & 5,14 \\
-\midrule
-28-11-2016 & HU2: Login, Integración con un CI, HU3: Acceder a la página principal & 8,00  & 7,52 \\
-\midrule
-05-12-2016 & Vectorización del logo, HU4: Gestión de datos de perfil y validación, HU5: Representación de datos de Firebase en calendario & 5,00  & 4,75 \\
-\midrule
-12-12-2016 & HU6: Integración de identificación en servicios de 3ºs, HU7: Representación detallada de dato, HU8: Terminar el proceso batch. & 10,00  & 7,25  \\
-\midrule
-19-12-2016 & Actualizar historias de usuario & 8,00  & 1,00 \\
-\midrule
-26-12-2016 & Integración con la API de GoogleFit & 5,00  & 5,45 \\
-\midrule
+\multicolumn{3}{c}%
+{{\bfseries \tablename\ \thetable{} -- continuación de la página anterior}} \\
+\hline Semana & Tareas & Previsión & Realidad\\
+\hline
+\endhead
+
+\hline \multicolumn{2}{|r|}{{Continúa en la página siguiente}} \\ \hline
+\endfoot
+\endlastfoot
+\hline
+10-10-2016 & Instalación y Elección de las Herramientas, Planificación inicial & 5,00  & 8,54 \\
+\hline
+17-10-2016 & Montaje de la infraestructura, Obtención de datos de Morpheuz & 11,50  & 3,68 \\
+\hline
+24-10-2016 & Planificación inicial, Subsistema de login, Almacenamiento de datos en Firebase & 12,50  & 8,44 \\
+\hline
+31-10-2016 & Daemon Correo y almacenamiento en Firebase, Procesamiento de datos de Morpheuz, Elegir Framework CSS & 18,50  & 6,41 \\
+\hline
+07-11-2016 & Estimar puntos de historia, Plantear historias de usuario, Login Back-End, Almacenamiento de login en Firebase & 11,50  & 6,82 \\
+\hline
+14-11-2016 & Dummy Chart con movimientos y un componente de Angular, Mockups aplicación, Incluir Angular Material & 12,00  & 6,60 \\
+\hline
+21-11-2016 & Imagen Corporativa General, Autenticación al usar Firebase, HU1: Registro en la aplicacón & 10,00  & 5,15 \\
+\hline
+28-11-2016 & HU2: Login, Integración con un CI, HU3: Acceder a la página principal & 8,00  & 7,54 \\
+\hline
+05-12-2016 & Vectorización del logo, HU4: Gestión de datos de perfil y validación, HU5: Representación de datos de Firebase en calendario & 5,00  & 4,74 \\
+\hline
+12-12-2016 & HU6: Integración de identificación en servicios de 3ºs, HU7: Representación detallada de dato, HU8: Terminar el proceso batch. & 10,00  & 7,12  \\
+\hline
+19-12-2016 & Actualizar historias de usuario & 8,00  & 9,00 \\
+\hline
+26-12-2016 & Integración con la API de GoogleFit & 5,00  & 5,42 \\
+\hline
 02-01-2017 & Integración con la API de Fitbit & 5,00  & 3,00 \\
-\midrule
-09-01-2017 & Finalización de la Integración con las APIs de GoogleFit y Fitbit & 10,00  & 7,40 \\
-\midrule
-16-01-2017 & Preparar tests aplicación y crear test de prueba en la página principal & 12,00  & 11,95 \\
-\midrule
+\hline
+09-01-2017 & Finalización de la Integración con las APIs de GoogleFit y Fitbit & 10,00  & 7,42 \\
+\hline
+16-01-2017 & Preparar tests aplicación y crear test de prueba en la página principal & 12,00  & 11,84 \\
+\hline
 23-01-2017 & Página Morpheuz & 12,00  & 8,76 \\
-\midrule
+\hline
 30-01-2017 & Sleep As Android, Tests & 8,00  & 8,94 \\
-\midrule
+\hline
 06-02-2017 & Añadir opción para recuperar contraseña & 8,00  & 9,73 \\
-\midrule
-13-02-2017 & Documentación apartado 1 & 12,00  & 7,62 \\
-\midrule
-20-02-2017 & Documentación apartado 2 y 4 & 8,00  & 6,04 \\
-\midrule
+\hline
+13-02-2017 & Documentación apartado 1 & 12,00  & 17,62 \\
+\hline
+20-02-2017 & Documentación apartado 2 y 4 & 8,00  & 14,04 \\
+\hline
 27-02-2017 & Revisión apartados 1 y 2 & 8,00  & 8,05 \\
-\midrule
+\hline
 06-03-2017 & Revisión apartado 4 y sistema de notificaciones & 12,00  & 7,04 \\
-\midrule
+\hline
 13-03-2017 & Finalizar apartados 1, 2 y 4 & 12,00  & 7,35 \\
-\midrule
+\hline
 20-03-2017 & Documentación apartados 3 y 7 & 8,00  & 7,09 \\
-\midrule
-27-03-2017 & Integración con la API de Fitbit & 8,00  & 5,60 \\
-\midrule
+\hline
+27-03-2017 & Integración con la API de Fitbit & 8,00  & 10,60 \\
+\hline
 03-04-2017 & Parámetro Alertas & 12,00  & 6,48 \\
-\midrule
-10-04-2017 & Parámetro Alertas & 5,00  & 0,27 \\
-\midrule
-17-04-2017 & Corregir errores en la documentación & 8,00  & 3,23 \\
-\midrule
-24-04-2017 & Corregir errores en la documentación & 6,00  & 2,05 \\
-\midrule
-01-05-2017 & Documentación Apartado 6 y 8 & 5,00  & \\
-\midrule
-08-05-2017 &  & 12,00  & \\
-\midrule
-15-05-2017 &  & 10,00  & \\
-\midrule
-22-05-2017 &  & 12,00  & \\
-\midrule
-29-05-2017 &  & 12,00  & \\
-\midrule
-05-06-2017 &  & 8,00  & \\
-\midrule
-12-06-2017 &  & 8,00  & \\
-\midrule
-TOTAL & 240 & 338,00  & 182,06 \\
-\bottomrule
+\hline
+10-04-2017 & Parámetro Alertas & 5,00  & 5,27 \\
+\hline
+17-04-2017 & Corregir errores en la documentación & 8,00  & 9,23 \\
+\hline
+24-04-2017 & Corregir errores en la documentación & 6,00  & 9,05 \\
+\hline
+01-05-2017 & Documentación Apartado 6 y 8 & 5,00  & 7,67 \\
+\hline
+08-05-2017 & Documentación Apartado 8 & 12,00  & 16,48 \\
+\hline
+15-05-2017 & Corregir errores en la documentación de los nuevos apartados & 10,00  & 10,57 \\
+\hline
+22-05-2017 & Corregir errores en la documentación de los nuevos apartados & 12,00  & 12,08 \\
+\hline
+29-05-2017 & Desglose del presupuesto & 12,00  & 1,07 \\
+\hline
+05-06-2017 & Desglose del presupuesto & 8,00  & 8,39 \\
+\hline
+TOTAL & 240 & 338,00  & 284,40 \\
+\hline
 \end{longtable}
 \end{center}}
 
@@ -1139,6 +1157,7 @@ En dicho tablero se apuntan las tareas de cada uno de los Sprints y en el estado
 \par\bigskip 
 \noindent
 
+\pagebreak
 Además de éstos Burndown, la herramienta Zenhub almacenaba los puntos de historia estimados y completados en cada Sprint, y representaba un gráfico en el que se mostraba el número de puntos de historia completados en cada Sprint y la velocidad media a la que se implementaban.
 
 \begin{figure}[H]
@@ -1153,6 +1172,7 @@ Además de éstos Burndown, la herramienta Zenhub almacenaba los puntos de histo
 
 En ésta seccion de la planificación se va a detallar el trabajo que se realizó en cada uno de los Sprints a lo largo del proyecto. Además, mostraremos el Burndown de cada uno de los Sprints para analizar cuál fue la desviación respecto a la planificación inicial y se mostrarán los informes de cada uno de los Sprints proporcionados por la herramienta Toggl, gracias a éstos reportes, podremos ver el tiempo que se le dedicó a cada tarea.
 
+\pagebreak
 \subsection{Sprint 1}
 
 A lo largo del primer Sprint, se desarrollaron las tareas iniciales del proyecto. Entre ellas, se realizó el montaje de la infraestructura, la cual incluía la creación del proyecto en la plataforma Github, la generación de una aplicación básica y la realización de alguna prueba con Firebase.
@@ -1163,7 +1183,7 @@ Se realizó también la elección y la instalación de las herramientas de desar
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint1.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint1.png}
 \caption{Sprint 1}
 \end{figure}
 
@@ -1181,7 +1201,7 @@ Sin embargo, los datos de Morpheuz debían de ser procesados antes de almacenarl
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint2.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint2.png}
 \caption{Sprint 2}
 \end{figure}
 
@@ -1199,7 +1219,7 @@ Para terminar, en éste Sprint se diseñaron los Mockups y se incluyo el Framewo
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint3.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint3.png}
 \caption{Sprint 3}
 \end{figure}
 
@@ -1215,7 +1235,7 @@ A lo largo del cuarto Sprint, se diseñó la Imagen Corporativa General de la ap
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint4.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint4.png}
 \caption{Sprint 4}
 \end{figure}
 
@@ -1231,7 +1251,7 @@ A lo largo del quinto Sprint, se desarrollaron las siguientes 5 historias de usu
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint5.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint5.png}
 \caption{Sprint 5}
 \end{figure}
 
@@ -1249,7 +1269,7 @@ Debido a nuevas ideas que surgieron durante la ejecución del presente Sprint, s
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint6.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint6.png}
 \caption{Sprint 6}
 \end{figure}
 
@@ -1265,7 +1285,7 @@ A lo largo del séptimo Sprint, se continuó la fase de integración con las API
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint7.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint7.png}
 \caption{Sprint 7}
 \end{figure}
 
@@ -1283,7 +1303,7 @@ Para terminar, en éste Sprint se añadió la opción de recuperación de contra
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint8.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint8.png}
 \caption{Sprint 8}
 \end{figure}
 
@@ -1299,7 +1319,7 @@ A lo largo del noveno Sprint, se comenzó con la documentación de la presente m
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint9.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint9.png}
 \caption{Sprint 9}
 \end{figure}
 
@@ -1315,7 +1335,7 @@ A lo largo del décimo Sprint, se revisaron los capítulos comenzados en el Spri
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint10.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint10.png}
 \caption{Sprint 10}
 \end{figure}
 
@@ -1331,7 +1351,7 @@ A lo largo del undécimo Sprint, se finalizó la documentación de los capítulo
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=7cm]{burndowns/Sprint11.png}
+\includegraphics[totalheight=6cm]{burndowns/Sprint11.png}
 \caption{Sprint 11}
 \end{figure}
 
@@ -1357,31 +1377,87 @@ A lo largo del duodécimo Sprint, se finalizó la customización del sistema de 
 
 \subsection{Sprint 13}
 
+A lo largo del decimotercero Sprint, se finalizó con los apartados 6 y 8 de la documentación. Además, se corrigieron errores que se habían cometido en la documentación en las tareas anteriores.
+
 - Burndown:
+
+\begin{figure}[H]
+\centering
+\includegraphics[totalheight=7cm]{burndowns/Sprint13.png}
+\caption{Sprint 13}
+\end{figure}
 
 - Informe de Toggl:
 
-% 5. Desarrollo: (Las cosas más interesantes que hemos aprendido, ...)
-\chapter{Desarrollo}
+\includepdf[pages={1}]{togglReports/Sprint13.pdf}
 
+\subsection{Sprint 14}
+
+A lo largo del decimocuarto Sprint, se corrigieron los errores restantes en la documentación. Además, se realizó el presupuesto del presente TFG.
+
+- Burndown:
+
+\begin{figure}[H]
+\centering
+\includegraphics[totalheight=7cm]{burndowns/Sprint14.png}
+\caption{Sprint 14}
+\end{figure}
+
+- Informe de Toggl:
+
+\includepdf[pages={1}]{togglReports/Sprint14.pdf}
+
+\section{Presupuesto}
+
+Para la elaboración del presupuesto, se han tenido en cuenta las distintas etapas y perfil que conforman la ejeución del TFG. 
+
+Los sueldos establecidos han sido obtenidos a partir de datos oficiales de la Junta de Andalucía, con la finalidad de que sean lo más reales posibles y aproximar el presupuesto a un presupuesto que se mostraría en un desarrollo real. 
+
+He de destacar la gran aportación que ha hecho Toggl en la elaboración del presupuesto, ya que gracias a tener registradas todas las tareas en el mismo, se ha podido obtener con gran exactitud el coste del mismo. Además, gracias a la claridad de los nombres de las tareas, se ha podido distinguir con bastante exactitud qué perfil ha realizado cada tarea.
+
+La mayor parte del coste se invertirá en el pago de los sueldos a los distintos perfiles. Además de éste coste se han considerado otros aspectos los cuales creemos que han de estar en un presupuesto de un proyecto como éste.
+
+Se han tenido en cuenta costes indirectos como (luz, agua o Internet) y además la amortización de los equipos necesarios para la realización de un proyecto. Para el cálculo de los costes indirectos se ha realizado un estudio del pago medio en una vivienda unifamiliar y se ha realizado una estimación de los costes a partir de la misma. Respecto a la amortización de equipos, sólo se ha utilizado un equipo, mi portátil personal valorado en 900 euros.
+
+Además se han presupuestado los costes de Hosting (teniendo en cuenta los precios que nos ofrecen en DigitalOcean) y se ha calculado el alquiler derivado de dicho servicio. Respecto al mantenimiento, se ha presupuestado un mantenimiento de 6 meses. Este valor se ha obtenido de los plazos de mantenimiento que exige la Junta de Andalucía en muchos de sus proyectos Software. 
+
+\includepdf[pages={1}]{invoice.pdf}
 
 % 6. Pruebas y validación de la solución: (...)
 \chapter{Pruebas y validación de la solución}
 
 Teniendo presente las Historias de Usuario desarrolladas en el capítulo 6 se han realizado las pruebas de la aplicación. Gracias a las pruebas realizadas en la aplicación podremos comprobar que tanto las nuevas funcionalidades que se añadan en la aplicación como las ya existentes funcionan correctamente.
 
-Para la continua ejecución de las pruebas se ha usado la herramienta Travis. Travis nos ha servido para ejecutar las pruebas de la aplicación con cada ``commit'' informándonos en el caso de que el resultado de algunas de ellas fuera un fallo.
+Se ha usado la herramienta Travis para la ejecución continua de las pruebas. Con cada ``commit'' (se considera commit la acción de subir nuevos cambios de código fuente a un sistema de control versiones) Travis ejecutará las pruebas de la aplicación y nos informará en el caso de que haya ocurrido un fallo en la ejecución de alguna de ellas.
 
-Respecto a la validación de la solución, se considera válida aquella en la que las pruebas son exitosas y además se cumple con un mínimo de calidad, es decir, el resultado es similar al esperado y tiene un acabado aceptable. Siguiendo éste criterio se han validado las distintas funciones de la aplicación. Respecto al conjunto, se considera como válida la aplicación al permitir al usuario acceder a sus datos de sueño de distintas fuentes, desde cualquier dispositivo y con una comodidad aceptable, ya que ésta era la idea del proyecto.
+Respecto a la validación de la solución, se considera válida aquella en la que las pruebas son exitosas y además se cumple con un mínimo de calidad, es decir, el resultado es similar al esperado y tiene un acabado aceptable. Siguiendo éste criterio se han validado las distintas funciones de la aplicación. 
 
 A continuación se mostrará como se han realizados las pruebas para cada uno de las Historias de Usuario:
 
+\pagebreak
 \textbf{HU1 - Registro en la aplicación}:
 
 \begin{itemize}
 \item\textbf{Registrarse con los datos correctos y comprobar que efectivamente se realiza con éxito el registro}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que un usuario puede introducir datos de registros y éstos se almacenan con éxito en la Base de Datos, completándose el registro en la aplicación con éxito.
 \item\textbf{Revisar que al introducir datos erróneos la aplicación avisa de los fallos en esos datos}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos erróneos en el formulario del registro o al dejar alguno de los campos del mismo en blanco, la aplicación impide el registro en la misma e informa de los errores cometidos.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU1]{Tabla de Pruebas - HU1} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+No & Registrarse datos correctos & Enero 2017 & Nombre, email y contraseña de un nuevo usuario & El usuario se almacena en la aplicación & El usuario es almacenado en la aplicación & Juan Ramón Rodríguez \\
+\hline
+No & Revisar datos erróneos & Enero 2017 & Nombre, email y contraseña incorrectos de un nuevo usuario & La aplicación avisa de que los datos son incorrectos & La aplicación valida los datos correctamente & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU2 - Loguearse en la aplicación}:
 
@@ -1390,25 +1466,92 @@ A continuación se mostrará como se han realizados las pruebas para cada uno de
 \item\textbf{Revisar que al introducir datos erróneos la aplicación avisa de que los datos introducidos no corresponden con los de ningún usuario registrado}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos erróneos en el formulario de login o al dejar alguno de los campos del mismo en blanco la aplicación impide el acceso a la misma.
 \end{itemize}
  
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU2]{Tabla de Pruebas - HU2} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+Si & Login datos correctos & Enero 2017 & Nombre y contraseña usuario & El usuario accede a la aplicación & El usuario obtiene acceso a la aplicación & Juan Ramón Rodríguez \\
+\hline
+No & Revisar datos erróneos & Enero 2017 & Nombre y contraseña incorrectos de un usuario & La aplicación avisa de que los datos son incorrectos & La aplicación valida los datos correctamente & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
+
 \textbf{HU3 - Acceder a la página principal}:
  
 \begin{itemize}
 \item\textbf{Comprobar que los datos que se le muestran al usuario son los pertenecientes a ese usuario}: Para ésta prueba se ha llevado a cabo una Validación Funcional automatizada. El test automatizado comprueba que cuando un usuario accede a la Página Principal se le muestran los eventos registrados en la Base de Datos de sus datos de sueño.
 \item\textbf{Revisar que todos los enlaces funcionan correctamente y que no hay ningún error a la hora de extraer los datos de la base de datos}: Para ésta prueba se ha llevado a cabo una Validación Funcional automatizada. El test automatizado comprueba que los enlaces en la Página Principal funcionan correctamente.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU3]{Tabla de Pruebas - HU3} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+Si & Datos mostrados correctos & Enero 2017 & Nombre y contraseña de un usuario & El usuario accede a sus datos correctamente & El usuario obtiene acceso a sus datos & Juan Ramón Rodríguez \\
+\hline
+Si & Enlaces correctos & Enero 2017 & Nombre y contraseña de un usuario & Todos los enlaces funcionan correctamente & Los enlaces funcionan correctamente & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
+\pagebreak
 \textbf{HU4 - Gestión de datos de perfil y validación}:
  
 \begin{itemize}
 \item\textbf{Comprobar que los datos introducidos se procesan con éxito}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos tanto en el formulario de registro como de login de la aplicación estos se guardan exactamente como se han introducido en la aplicación.
 \item\textbf{Revisar la validación de datos al introducir datos erróneos}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que al introducir datos erroneos tanto en el formulario de registro como de login, la aplicación informa de que estos datos son erróneos.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU4]{Tabla de Pruebas - HU4} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+No & Datos procesados correctos & Enero 2017 & Datos de un usuario & Los datos se almacenan correctamente & Los datos son almacenados correctamente & Juan Ramón Rodríguez \\
+\hline
+No & Validación de datos & Enero 2017 & Datos incorrectos de un usuario & La aplicación informa de los errores & La validación funciona con éxito & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU5 - Representación de datos de Firebase en el calendario}:
  
 \begin{itemize}
 \item\textbf{Comprobar que los días que contienen datos de sueño se marcan en el calendario como un evento}: Para ésta prueba se ha llevado a cabo una Validación Funcional automatizada. El test automatizado comprueba que en un mes determinado se le muestran en el calendario los mismos eventos que hay almacenados en Firebase.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU5]{Tabla de Pruebas - HU5} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+Si & Eventos representado con éxito & Febrero 2017 & Datos y eventos de un usuario & Los eventos se muestran en el calendario & Los eventos son mostrados en el calendario & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU6 - Integración de identificación en servicios de 3ºs en los datos de perfil}:
  
@@ -1416,6 +1559,23 @@ A continuación se mostrará como se han realizados las pruebas para cada uno de
 \item\textbf{Comprobar que la integración con éstos servicios se hace correctamente}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación obtiene con éxito los datos de las distintas fuentes configuradas en el perfil de un usuario.
 \item\textbf{Verificar la correcta identificación en dichos servicios}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación se identifica con éxito con los servicios configurados en el perfil de un usuario.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU6]{Tabla de Pruebas - HU6} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+No & Comprobar Integración Servicios 3ºs & Febrero 2017 & Datos de un usuario & La integración se realiza correctamente & La integraicón se realiza con éxito & Juan Ramón Rodríguez \\
+\hline
+No & Correcta identificación en Servicios & Febrero 2017 & Datos de un usuario & La aplicación reconoce la identificación del usuario en el Servicio & La aplicación reconoce la correcta identificación del usuario en el Servicio & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU7 -  Acceder a la página de ``Resumen de Sueño'' para un día concreto}:
 
@@ -1423,6 +1583,23 @@ A continuación se mostrará como se han realizados las pruebas para cada uno de
 \item\textbf{Comprobar que los datos que se le muestran al usuario son los pertenecientes a ese usuario}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación muestra sólo los datos de sueño del usuario que accede a la aplicación.
 \item\textbf{Revisar que no hay ningún error a la hora de extraer los datos de la base de datos}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que la aplicación muestra en las gráficas de ``Resumen de Sueño'' de un usuario los datos almacenados en la Base de Datos, sin que exista ningún error en ellos.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU7]{Tabla de Pruebas - HU7} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+No & Comprobar datos Usuario ``Resumen de Sueño'' & Febrero 2017 & Datos de un usuario y eventos de sueño & Se muestran sólo los datos de ese usuario & Los datos de sólo ese usuario se muestran correctamente & Juan Ramón Rodríguez \\
+\hline
+No & Correcta extracción de los datos de la BD & Febrero 2017 & Datos de un usuario y eventos de sueño & No existen errores en los datos mostrados & Los datos mostrados no continen ningún error & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
  
 \textbf{HU8 - Terminar el proceso ``batch'' para que procese todos los mails de un usuario}:
 
@@ -1430,6 +1607,23 @@ A continuación se mostrará como se han realizados las pruebas para cada uno de
 \item\textbf{Comprobar que se procesan los email pendientes correctamente}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que todos los emails pendientes de la aplicación se procesan y almacenan con éxito.
 \item\textbf{Verificar que el proceso se ejecuta cada vez que se inicia la aplicación}: Para ésta prueba se ha llevado a cabo una Validación Funcional manual. Se ha comprobado que cada vez que la aplicación se inicia, se inicia el proceso para la lectura de los mails de la aplicación.
 \end{itemize}
+
+{\tiny
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+\begin{center}
+\begin{longtable}{| c | M{1.5cm} | M{1.5cm} | M{2.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} |}
+\caption[Tabla de Pruebas - HU8]{Tabla de Pruebas - HU8} \label{grid_mlmmh} \\
+
+\hline Automatizada & Prueba & Fecha & Datos de Entrada & Resultado & Esperado & Ejecutada por \\
+\endfirsthead
+\hline
+No & Comprobar procesado de emails & Marzo 2017 & Emails de usuarios & Los emails pendientes se procesan correctamente & Los emails pendientes se procesan con éxito & Juan Ramón Rodríguez \\
+\hline
+No & Verificar la ejecución del proceso al inicio & Marzo 2017 & Emails de usuarios & El proceso se inicia y reconoce los emails correctamente & El proceso se inicia y reconoce los emails con éxito & Juan Ramón Rodríguez \\
+\hline
+\end{longtable}
+\end{center}}
 
 % 7.Manual de usuario
 \chapter{Manual de usuario}
@@ -1447,6 +1641,7 @@ Para proceder al registro en la aplicación, accederemos a la Página de Inicio 
 \caption{Página de Inicio}
 \end{figure}
 
+\pagebreak
 Una vez nos encontremos en la Página de Inicio, nos encontraremos con dos formularios. Para proceder al registro deberemos de rellenar correctamente los datos del formulario de la derecha y pulsar sobre el botón de ``Sign Up''. 
 
 \begin{figure}[H]
@@ -1467,12 +1662,6 @@ Si se han seguido éstos pasos, la página nos informará con el mensaje ``¡Reg
 
 Para proceder al Login en la aplicación, accederemos a la Página de Inicio de ésta.
 
-\begin{figure}[H]
-\centering
-\includegraphics[totalheight=6cm]{manualUsuario/paginaInicio.png}
-\caption{Página de Inicio}
-\end{figure}
-
 Una vez nos encontremos en la Página de Inicio, nos encontraremos con dos formularios. Para proceder al login deberemos de rellenar con datos correctos los datos del formulario de la izquierda y pulsar sobre el botón de ``Sign In''.
 
 \begin{figure}[H]
@@ -1481,6 +1670,7 @@ Una vez nos encontremos en la Página de Inicio, nos encontraremos con dos formu
 \caption{Página de Inicio - Login}
 \end{figure}
 
+\pagebreak
 Si se han seguido éstos pasos, la página redirigirá a la Página Principal. Una vez en ésta, nos encontraremos con un menú de usuario en la parte superior derecha, si hacemos ``click'' en dicho menú, tendremos la opción de ``LogOut'' la cual nos permitirá desloguearnos del sistema.
 
 \begin{figure}[H]
@@ -1489,15 +1679,10 @@ Si se han seguido éstos pasos, la página redirigirá a la Página Principal. U
 \caption{Página de Inicio - Logout}
 \end{figure}
 
+\pagebreak
 \section{Acceder a la Página Principal}
 
 Para poder acceder a la Página Principal habrá que loguearse primero en la aplicación.
-
-\begin{figure}[H]
-\centering
-\includegraphics[totalheight=6cm]{manualUsuario/login.png}
-\caption{Página de Inicio - Login}
-\end{figure}
 
 Una vez nos encontremos en la Página Principal, nos encontraremos con el logo de la aplicación, un menú de usuario en la parte superior derecha y un calendario que ocupará gran parte de la vista de la aplicación. En el menú podremos acceder a los distintos apartados que nos ofrece la aplicación. Respecto al calendario, podremos navegar entre los distintos meses o pulsar en el botón para volver al mes actual y en el interior del mismo podremos ver representados los eventos de sueño registrados en la aplicación. 
 
@@ -1507,6 +1692,7 @@ Una vez nos encontremos en la Página Principal, nos encontraremos con el logo d
 \caption{Página Principal}
 \end{figure}
 
+\pagebreak
 Haciendo ``click'' sobre cualquier día del calendario que contenga un evento, se nos desplegará un apartado con un enlace para acceder a la página ``Resumen de Sueño Diario'' con los detalles del mismo.
 
 \begin{figure}[H]
@@ -1515,6 +1701,7 @@ Haciendo ``click'' sobre cualquier día del calendario que contenga un evento, s
 \caption{Página Principal - Eventos}
 \end{figure}
 
+\pagebreak
 \section{Acceder a la página de ``Resumen de Sueño Diario''}
 
 Para poder acceder a la página de ``Resumen de Sueño Diario'' habrá que encontrarse en la Página Principal con al menos un evento en el calendario.
@@ -1650,7 +1837,7 @@ A continuación se expone a modo resumen un diagrama con el flujo que se puede s
 
 \begin{figure}[H]
 \centering
-\includegraphics[totalheight=9cm]{manualUsuario/Navegabilidad.png}
+\includegraphics[totalheight=8cm]{manualUsuario/Navegabilidad.png}
 \caption{Navegabilidad}
 \end{figure}
 
@@ -1658,7 +1845,9 @@ A continuación se expone a modo resumen un diagrama con el flujo que se puede s
 % 8. Conclusiones
 \chapter{Conclusiones}
 
-Es el momento de abordar las conclusiones obtenidas tras la realización del Trabajo de Fin de Grado. Llegado a éste punto, si el lector ha seguido ordenadamente los distintos capítulos que se abordan en la memoria debería de tener una idea clara de cual ha sido la motivación, el desarrollo y la ejececución del TFG. Sin embargo, en éste apartado abordaremos algunos de ésos detalles con mayor precisión y se tratará una reflexión final.
+Es el momento de abordar las conclusiones obtenidas tras la realización del Trabajo de Fin de Grado. Llegado a éste punto, si el lector ha seguido ordenadamente los distintos capítulos que se abordan en la memoria debería de tener una idea clara de cual ha sido la motivación, el desarrollo y la ejececución del TFG. Sin embargo, en éste apartado abordaremos algunos de ésos detalles con mayor precisión y se realizará una reflexión final.
+
+Me gustaría comenzar destacando el hecho de que hemos completado con éxito los objetivos que nos propusimos al inicio del TFG, superando incluso las espectativas iniciales. Nuestros objetivos eran el de crear una aplicación para mostrar los datos de sueño de los usuarios empleando tecnologías innovadoras y con un mínimo de calidad a la altura de un Trabajo de Fin de Grado. Pues bien, hemos suplido con éxito estos requisitos, ya que la aplicación ha sido desarrollada siguiendo las tecnologías propuestas y es completamente funcional. Además, para asegurar algunos aspectos de la calidad del proyecto se han llevado a cabo las pruebas que se han visto en el Capítulo 6, con el objetivo de comprobar el funcionamiento de la aplicación.
 
 Tras la ejecución del TFG he sacado la conclusión de que tomé la decisión correcta al elegir las tecnologías que he usado durante su desarrollo. El motivo de ésta conclusión es que he aprendido que tengo autonomía a la hora de conocer lenguajes completamente nuevos y que me desenvuelvo con ellos con algo de soltura. Además, éstos lenguajes me han hecho crecer como programador, ya que me han enseñado nuevos conceptos o me han hecho profundizar en algunos, como es el caso de la programación asincrona, la espera de eventos para realizar una acción o la utilización de ficheros tan simples como JSON para tareas no tan simples como el almacenamiento de datos en una Base de Datos.
 
@@ -1666,19 +1855,19 @@ Tras la ejecución del TFG he sacado la conclusión de que tomé la decisión co
 
 Respecto a la motivación con la idea principal, fue un problema personal que me surgió y en momentos no excesivamente amenos del transcurso del TFG, ya fuera por falta de tiempo o por que ésa parte del proyecto no me motivara especialmente, me ha ayudado a continuar con el mismo ímpetu como en otros momentos. La idea inicial era la de conseguir que una aplicación almacenar los datos no sólo del día anterior, si no un histórico de todos los días que se quisiera. He de reconocer que mi idea principal era mucho más sencilla que la que finalmente he desarrollado y no contemplaba la inclusión de otras tecnologías. Sin embargo, a pesar de requerir mayor esfuerzo, ha sido una motivación para mi, ya que veía como mi idea evolucionaba y se convertía una una mejor solución y más genérica, por lo que más personas con problemas similares al mío podrian verse beneficiadas de ella.
 
-Tras probar distintas tecnologías para el desarrollo de aplicaciones web, he llegado a la conclusión que cada una están diseñadas con un enfoque más concreto a ciertos aspectos a pesar de que el ámbito sea el mismo. Tenía experiencia desarollando éste tipo de aplicaciones en Java, y tras probar Node.JS en lugar de Java para Backend, he llegado a la conclusión en que ambas tienen sus pros y sus contras. La elección de una u otra dependerá del tipo de proyecto, de la embergadura de éste y del alcance que se le quiera dar, mi conclusión es que ambas tecnologías son muy potentes para desarrollar aplicaciones web, decantándome más por Node.JS en la realización debido a mi curiosidad por conocer ésta tecnología y aprender más acerca de ella.
+Tras probar distintas tecnologías para el desarrollo de aplicaciones web, he llegado a la conclusión que cada una están diseñadas con un enfoque más concreto a ciertos aspectos a pesar de que el ámbito sea el mismo. Tenía experiencia desarollando éste tipo de aplicaciones en Java, y tras probar Node.JS en lugar de Java para Backend, he llegado a la conclusión De que ambas tienen sus pros y sus contras. La elección de una u otra dependerá del tipo de proyecto, de la embergadura de éste y del alcance que se le quiera dar, mi conclusión es que ambas tecnologías son muy potentes para desarrollar aplicaciones web, decantándome más por Node.JS en la realización debido a mi curiosidad por conocer ésta tecnología y aprender más acerca de ella.
 
-Acostumbrado a desarrollar sólo el BackEnd de las aplicaciones, el presente TFG me ha llevado a desarrollar ambas partes y vivir la experiencia de ser desarrollador tanto en BackEnd como en FrontEnd. La conclusión que he sacado al respecto es que ambas tareas son importantes y conllevan un esfuerzo importante, aunque sigo decantándome por el desarrollo en BackEnd, la experiencia que he adquirido me ayudará en futuros proyectos en los que tenga que desarrollar en FrontEnd y me ayudará a desarrollarlos con mayor agilidad. Respecto al FrontEnd, gracias a teconologías como ``Angular Material'' he aprendido que actualmente se pueden desarrollar aplicaciones con un buen acabado sin necesidad de tener unos conocimientos muy avanzados, ya que librerías como éstas agilizan mucho el proceso al contener componentes ya diseñados y modificables por el desarrollador y al suavizar en gran medida la curva de aprendizaje con lenguajes como CSS y JavaScript en el lado del cliente.
+Acostumbrado a desarrollar sólo el BackEnd de las aplicaciones, el presente TFG me ha llevado a desarrollar ambas partes y vivir la experiencia de ser desarrollador tanto en BackEnd como en FrontEnd. La conclusión que he sacado al respecto es que ambas tareas son importantes y conllevan un esfuerzo considerable. Personalmente, sigo decantándome por el desarrollo en BackEnd. Sin embargo, la experiencia que he adquirido me ayudará en futuros proyectos en los que tenga que desarrollar en FrontEnd y me ayudará a desarrollarlos con mayor agilidad. Respecto al FrontEnd, gracias a teconologías como ``Angular Material'' he aprendido que actualmente se pueden desarrollar aplicaciones con un buen acabado sin necesidad de tener unos conocimientos muy avanzados. Librerías como éstas, agilizan mucho el proceso al contener componentes ya diseñados y modificables por el desarrollador y al suavizar en gran medida la curva de aprendizaje con lenguajes como CSS y JavaScript en el lado del cliente.
 
-El presente Trabajo de Fin de Grado ha resultado para mi un reto. La necesidad de aprender nuevas tecnologías, el no tener un alcance del todo claro al inicio del mismo y la presión de tener que ejecutar su desarrollo con una planificación muy cuadrada para no cometer errores de planificación al final ha supuesto un esfuerzo y un reto por mi parte que he asumido en la ejecución del mismo. Sin embargo, he sacado como conclusión que como todo esfuerzo o reto si se ejecuta como es debido se obtiene una recompensa, en mi caso la culminación de la ejecución del TFG y el poder tener una aplicación funcional y real, con la que además he aprendido y conocido nuevas tecnologías y estilos de programación que me pueden servir en un futuro. 
+El presente Trabajo de Fin de Grado ha resultado para mi un reto. La necesidad de aprender nuevas tecnologías, el no tener un alcance del todo claro al inicio del mismo y la presión de tener que ejecutar su desarrollo con una planificación muy cuadrada para no cometer errores de planificación al final, ha supuesto un esfuerzo y un reto por mi parte que he asumido en la ejecución del mismo. Sin embargo, he sacado como conclusión que como todo esfuerzo o reto si se ejecuta como es debido se obtiene una recompensa, en mi caso la culminación de la ejecución del TFG y el poder tener una aplicación funcional y real, con la que además he aprendido y conocido nuevas tecnologías y estilos de programación que me pueden servir en un futuro. 
 
-Respecto a la Base de Datos elegida, Firebase, creo que fue una decisión acertada. Firebase ha tenido un comportamiento estable y me ha permitido conocer el ámbito NOSQL el cual es bastante elegido actualmente gracias a algunas de las ventajas que tiene respecto a otros tipos de Bases de Datos. El contar con una empresa como Google respaldando su estabilidad me ha servido de apoyo, ya que no tenía que preocuparme del mantenimiento de la misma y podía despreocuparme de problemas como la caida de la Base de Datos durante el tiempo del desarrollo o que se corrompieran algunos de sus datos. Además considero que es una Base de Datos móvil con un gran potencial y que tiene una curva de aprendizaje muy suavizada, por lo que pienso que es recomendable para que cualquier desarrollador se inicio en este tipo de Bases de Datos y desarrolle aplicaciones gracias a ellas.
+Respecto a la Base de Datos elegida, Firebase, creo que fue una decisión acertada. Firebase ha tenido un comportamiento estable y me ha permitido conocer el ámbito NOSQL. Éste ámbito es bastante popular actualmente gracias a algunas de las ventajas que tiene respecto a otros tipos de Bases de Datos. El contar con una empresa como Google respaldando su estabilidad me ha servido de apoyo, ya que no tenía que preocuparme del mantenimiento de la misma y podía despreocuparme de problemas como la caida de la Base de Datos durante el tiempo del desarrollo o que se corrompieran algunos de sus datos. Además considero que es una Base de Datos móvil con un gran potencial y que tiene una curva de aprendizaje muy suavizada, por lo que pienso que es recomendable para que cualquier desarrollador se inicie en este tipo de Bases de Datos y desarrolle aplicaciones gracias a ellas.
 
-En las herramientas utilizadas para llevar a cabo el desarrollo, pienso que he elegido correctamente. Con Google Drive tenía experiencia anteriormente y sabía que podría suplir mis necesidades a la hora de documentar. Toggl la descrubrí gracias a la proposición de usar ésta tecnología que me hizo mi tutor, aunque tenía experiencia con herramientas similaresr. A pesar de ello, reconozco que es una herramienta que me cautivó y que intento utilizarla en todos los proyectos tanto personales, como educativos en los que me es posible, ya que me ha ayudado a llevar un control muy exacto y claro de en qué invertía en mi tiempo, además de mostrar facilmente los resultados como vimos en el Cápitulo 4.
+En las herramientas utilizadas para llevar a cabo el desarrollo, pienso que he elegido correctamente. Con Google Drive tenía experiencia anteriormente y sabía que podría suplir mis necesidades a la hora de documentar. Toggl la descrubrí gracias a la proposición de usar ésta tecnología que me hizo mi tutor, aunque tenía experiencia con herramientas similares. A pesar de ello, reconozco que es una herramienta que me cautivó y que intento utilizarla en todos los proyectos tanto personales, como educativos en los que me es posible, ya que me ha ayudado a llevar un control muy exacto y claro de en qué invertía mi tiempo, además de mostrar facilmente los resultados como vimos en el Cápitulo 4.
 
-Pero sin duda, me he dejado el mayor descubrimiento para el final, hablo de Visual Studio Code. He de reconocer que tenía en mente utilizar otra herramienta de una empresa con la que tenía experiencias positivas en el Software que ofrecen. Visual Studio Code fue al igual que Toggl una recomendación de mi tutor, ya que es cada vez más usadas por los desarrolladores de Angular, y ése motivo y mi curiosidad por probar nuevas herramientas en mi desarrollo fue lo que me convenció. He llegado a la conclusión tras su uso durante la ejecución del TFG de que es una herramienta muy potente y versátil. Potente ya que suple muchas de las necesidades de los desarrolladores con funcionalidades de ``serie'', como la necesidad de una consola integrada, un cliente de gestor de versiones (principalmente ``git''), un apartado para el debug, un buscador de funcionalidades, y un largo etcétera. Versátil ya que gracias a sus extensiones se le pueden agregar muchas funcionalidades y sobre todo compatibilidad con un gran número de lenguajes, lo que me ha permitido desde desarrollar en Node.JS, hasta en CSS como incluso la presente memoria en LaTeX. Tódos estos lenguajes soportados gracias al propio Code o a extensiones del mismo y no sólo dando las funcionalidades que podrían darnos un editor de texto plano.
+Pero sin duda, me he dejado el mayor descubrimiento para el final, hablo de Visual Studio Code. He de reconocer que tenía en mente utilizar otra herramienta de una empresa con la que tenía experiencias positivas en el Software que ofrecen. Visual Studio Code fue al igual que Toggl una recomendación de mi tutor, ya que es cada vez más usadas por los desarrolladores de Angular, y ése motivo y mi curiosidad por probar nuevas herramientas en mi desarrollo fue lo que me convenció. He llegado a la conclusión tras su uso durante la ejecución del TFG de que es una herramienta muy potente y versátil. Potente ya que suple muchas de las necesidades de los desarrolladores con funcionalidades de ``serie'', como la necesidad de una consola integrada, un cliente de gestor de versiones (principalmente ``git''), un apartado para el debug, un buscador de funcionalidades, y un largo etcétera. Versátil ya que gracias a sus extensiones se le pueden agregar muchas funcionalidades y sobre todo compatibilidad con un gran número de lenguajes, lo que me ha permitido desarrollar desde en Node.JS, hasta en CSS, como incluso en el lenguaje de la presente memoria, LaTeX. Tódos estos lenguajes soportados gracias al propio Code o a extensiones del mismo y no sólo dando las funcionalidades que podrían darnos un editor de texto plano.
 
-En resumen, a lo largo del TFG he llegado a la conclusión de que todo el esfuerzo realizado ha merecido la pena, que los resultados obtenidos son mayores a los que deseaba en un principio y que mi curiosidad por aprender nuevas tecnologías se ha suplido con éxito. El camino que he recorrido me ha llevado a llegar a éstas conclusiones y al visualizar los resultados éstas se consolidan, ya que considero que he cumplido con mis propósitos respecto a lo que me ofrece la aplicación que he desarrollado y ya que he conseguido superar las curvas de aprendizaje con éxito y solventar los problemas con los lenguajes y tecnologías que he ido encontrando por el camino. Es por éste motivo por lo que me considero orgulloso del trabajo que he realizado y considero que incluso puede tener un ámbito más allá de su propia realización, pudiendo implantarse como una aplicación real que sea utilizada por las personas que lo necesiten.
+En resumen, a lo largo del TFG he llegado a la conclusión de que todo el esfuerzo realizado ha merecido la pena, que los resultados obtenidos son mayores a los que deseaba en un principio y que mi curiosidad por aprender nuevas tecnologías se ha suplido con éxito. El camino que he recorrido me ha llevado a llegar a éstas conclusiones y al visualizar los resultados éstas se consolidan. Considero que he cumplido con mis propósitos respecto a lo que me ofrece la aplicación que he desarrollado y además, he conseguido superar las curvas de aprendizaje con éxito y solventar los problemas con los lenguajes y tecnologías que he ido encontrando por el camino. Por ello, me considero orgulloso del trabajo que he realizado y considero que incluso puede tener un ámbito más allá de su propia realización, pudiendo implantarse como una aplicación real que sea utilizada por las personas que lo necesiten.
 
 No me gustaría terminar la presente memoria sin abordar los distintos agradecimientos a las personas que me han apoyado en el transcurso del Trabajo de Fin de Grado. Le doy las gracias a mi familia, la cual ha sabido apoyarme en todo momento y valorar el trabajo que estaba realizando, interesándose por el mismo y reconociendolo a nivel público. A mi madre que ha sabido recordarme a diario la necesidad de ejecutar el trabajo con éxito y produciendo buenos resultados, apoyándome en los momentos que lo he necesitado. A mi padre, el cual me enseyó a terminar las cosas que empiezo y que siempre hay un momento para hacer las cosas y no es coveniente que ése momento pase. A mi pareja, ya que me ha apoyado incondicionalmente y ha sabido ayudarme en los momentos en los que la he necesitado a mi lado, aguantándome en los momentos más duros del desarrollo y valorando mi trabajo desde el principio hasta el final del mismo. 
 
@@ -1700,9 +1889,13 @@ Pero por supuesto he de agradecerle el trabajo que ha ejercido sobre éste TFG m
 \bibitem{10} \textsc{Jasmine} [\url{ttps://en.wikipedia.org/wiki/Jasmine_(JavaScript_testing_framework)}]
 \bibitem{11} \textsc{Protractor} [\url{https://www.adictosaltrabajo.com/tutoriales/introduccion-a-protractor/}]
 \bibitem{12} \textsc{Visual Studio Code} [\url{ttps://en.wikipedia.org/wiki/Visual_Studio_Code}]
-\end{thebibliography}
+\bibitem{13} \textsc{Scrum: The Art of Doing Twice the Work in Half the Time} [Autor: Jeff Sutherland]
+\bibitem{14} \textsc{UML Distilled} [Autor: Martin Fowler]
+\bibitem{15} \textsc{Travis} [\url{https://en.wikipedia.org/wiki/Travis_CI}]
+\bibitem{16} \textsc{Sprint} [\url{https://proyectosagiles.org/ejecucion-iteracion-sprint/}]
+\bibitem{17} \textsc{¿Cada cuánto solemos renovar el móvil en España?} [\url{http://byemovil.com/renovar-el-movil}]
+\bibitem{18} \textsc{Understanding Model-View-Controller} [Autor: Stefano Borini \url{https://www.gitbook.com/book/stefanoborini/modelviewcontroller/details}]
 
-\appendix %% Up to you -- I just like to have the end notes as an appendix :-)
-\printnotes*
+\end{thebibliography}
 
 \end{document}
